@@ -1,9 +1,11 @@
 <script setup>
 import { ref } from "vue";
+import kanbanarea from "../components/live2d/kanbanarea.vue";
 </script>
 
 <template>
-	<bg :defalutImg="'/images/bg.jpg'"></bg>
+	<xtt-web-bg src="/images/bg.jpg"></xtt-web-bg>
+	<kanbanarea></kanbanarea>
 </template>
 
 <style></style>
