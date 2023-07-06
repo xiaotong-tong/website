@@ -28,6 +28,7 @@ onMounted(() => {
 	bottom: 0;
 	width: 500px;
 	height: 500px;
+	z-index: 999;
 }
 .live2d {
 	position: absolute;
