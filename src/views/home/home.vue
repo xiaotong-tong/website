@@ -18,7 +18,7 @@
 			</p>
 
 			<p>
-				<!-- <nami-link to="/blog">blog</nami-link> -->
+				<nami-link to="/blog">blog</nami-link>
 			</p>
 		</div>
 	</section>

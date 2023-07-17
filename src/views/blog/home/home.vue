@@ -1,5 +1,7 @@
 <template>
-	<section class="container">blog home</section>
+	<section class="container">
+		<nami-link to="/blog/editor">editor</nami-link>
+	</section>
 </template>
 
 <script setup>
