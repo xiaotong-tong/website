@@ -1,7 +1,12 @@
 <template>
 	<section class="container">
 		<div class="character-wrap">
-			<img class="character" src="/images/lian5.png" alt="人物立绘" draggable="false" />
+			<img
+				class="character"
+				src="http://image.xtt.moe/images/2023/07/19/lian5.png"
+				alt="人物立绘"
+				draggable="false"
+			/>
 		</div>
 		<div class="info-wrap">
 			<h2>Hi, 我是小恸恸，这里是我的主页</h2>
@@ -31,9 +36,8 @@ import { ref } from "vue";
 <style scoped>
 .container {
 	display: flex;
-	width: min(100%, 800px);
 	background-color: #ffffff77;
-	transform: translate(calc(50vw - 50%), calc(50vh - 50%));
+	transform: translateY(calc(50vh - 50%));
 	backdrop-filter: blur(5px);
 }
 .character-wrap {

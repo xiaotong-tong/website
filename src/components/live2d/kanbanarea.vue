@@ -1,6 +1,8 @@
 <template>
 	<!-- nami_live2d.js 文件中的捕获鼠标位置是 canvas.closest(".live2d-wrapper, html") 这种代码捕获的
 		所以这里必须使用 live2d-wrapper 包裹，否则鼠标移动到 canvas 之外的区域时，模型会跟着移动
+		当前模型在鼠标较远时转向角度过大，所以作此调整。如果模型在外屏范围内转向角度设置正常的话，可以不用这个包裹
+		没钱优化模型，只能这样了
 	-->
 	<section class="live2d-wrapper">
 		<canvas id="live2d" width="170" height="370" class="live2d"></canvas>
@@ -29,6 +31,7 @@ onMounted(() => {
 	width: 500px;
 	height: 500px;
 	z-index: 999;
+	pointer-events: none;
 }
 .live2d {
 	position: absolute;

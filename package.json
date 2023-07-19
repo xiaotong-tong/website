@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "vite",
 		"prebuild": "rimraf dist",
-		"build": "vite build",
+		"build": "vite build --mode production",
 		"preview": "vite preview",
 		"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
 		"format": "prettier --write src/"
@@ -15,7 +15,7 @@
 		"pinia": "^2.0.36",
 		"vue": "^3.2.47",
 		"vue-router": "^4.1.6",
-		"xtt-ui": "0.0.2-alpha.5",
+		"xtt-ui": "^0.0.3",
 		"xtt-utils": "0.1.2"
 	},
 	"devDependencies": {

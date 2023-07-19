@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const http = axios.create({
-	// baseURL: "https://xtt.moe/api/"
-	baseURL: "http://localhost:5001/"
+	baseURL: import.meta.env.VITE_API_URL
 });
 
 export default http;
