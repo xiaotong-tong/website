@@ -53,7 +53,6 @@ const acticleList = reactive({
 
 .card {
 	display: flex;
-	outline: thin solid red;
 	padding: 8px;
 	column-gap: 8px;
 }
@@ -62,6 +61,8 @@ const acticleList = reactive({
 }
 .thumbnail-wrap {
 	flex: 0 0 380px;
+	aspect-ratio: 16 / 9;
+	overflow: hidden;
 }
 .thumbnail {
 	width: 100%;

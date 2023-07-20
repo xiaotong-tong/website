@@ -21,10 +21,6 @@
 			<p>
 				你好，我是凌涟漪，也叫星川涟。目标是成为文学少女的见习生，担任本站的看板娘，请多多关照！
 			</p>
-
-			<p>
-				<nami-link to="/blog">blog</nami-link>
-			</p>
 		</div>
 	</section>
 </template>

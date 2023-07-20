@@ -12,4 +12,12 @@ async function getActicleById(id) {
 	return await http.get(`/acticle/${id}`);
 }
 
-export { addActicle, getActicleList, getActicleById };
+async function editActicleById(id, body) {
+	return await http.put(`/acticle/edit/${id}`, body);
+}
+
+async function deleteActicleById(id) {
+	return await http.delete(`/acticle/delete/${id}`);
+}
+
+export { addActicle, getActicleList, getActicleById, editActicleById, deleteActicleById };

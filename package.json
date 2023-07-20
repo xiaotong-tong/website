@@ -11,11 +11,12 @@
 		"format": "prettier --write src/"
 	},
 	"dependencies": {
+		"@mdi/js": "^7.2.96",
 		"axios": "^1.4.0",
 		"pinia": "^2.0.36",
 		"vue": "^3.2.47",
 		"vue-router": "^4.1.6",
-		"xtt-ui": "^0.0.3",
+		"xtt-ui": "^0.0.4-alpha.1",
 		"xtt-utils": "0.1.2"
 	},
 	"devDependencies": {

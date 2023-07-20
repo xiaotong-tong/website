@@ -6,6 +6,12 @@
 	-->
 	<section class="live2d-wrapper">
 		<canvas id="live2d" width="170" height="370" class="live2d"></canvas>
+
+		<div class="icon-hover-wrap">
+			<div class="icon-wrap">
+				<slot name="icon"></slot>
+			</div>
+		</div>
 	</section>
 </template>
 
@@ -37,5 +43,32 @@ onMounted(() => {
 	position: absolute;
 	left: 8px;
 	bottom: -75px;
+}
+
+.icon-hover-wrap {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 200px;
+	height: 350px;
+	pointer-events: auto;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.icon-wrap {
+	display: none;
+	width: 30px;
+	margin-block-start: 40px;
+	margin-inline-end: 10px;
+	flex-wrap: wrap;
+	flex-direction: column;
+	gap: 8px;
+	font-size: 24px;
+	transition: all 0.3s;
+}
+
+.icon-hover-wrap:hover .icon-wrap {
+	display: flex;
 }
 </style>
