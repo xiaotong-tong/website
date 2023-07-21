@@ -16,7 +16,7 @@
 		"pinia": "^2.0.36",
 		"vue": "^3.2.47",
 		"vue-router": "^4.1.6",
-		"xtt-ui": "^0.0.4-alpha.1",
+		"xtt-ui": "^0.0.4-alpha.2",
 		"xtt-utils": "0.1.2"
 	},
 	"devDependencies": {

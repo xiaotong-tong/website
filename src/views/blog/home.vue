@@ -13,7 +13,7 @@
 			</div>
 			<div class="info-wrap">
 				<h2>
-					<nami-link class="title-link" inline-block :to="'/blog/article/' + item.id">{{
+					<nami-link class="title-link" inline-block :to="'/article/' + item.id">{{
 						item.title
 					}}</nami-link>
 				</h2>

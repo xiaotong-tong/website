@@ -1,9 +1,6 @@
 <template>
 	<div class="title-operate-area">
-		<xtt-button
-			v-if="store.loginUid"
-			type="primary"
-			@click="router.push('/blog/editor/edit/' + id)"
+		<xtt-button v-if="store.loginUid" type="primary" @click="router.push('/editor/edit/' + id)"
 			>编辑</xtt-button
 		>
 	</div>

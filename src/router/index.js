@@ -10,28 +10,28 @@ const router = createRouter({
 			children: [
 				{
 					path: "/",
-					name: "homeView",
-					component: () => import("../views/home/home.vue")
-				},
-				{
-					path: "/blog",
 					name: "blog",
 					component: () => import("../views/blog/home.vue")
 				},
 				{
-					path: "/blog/editor/add",
+					path: "/editor/add",
 					name: "blogEditorAdd",
 					component: () => import("../views/blog/editor/add.vue")
 				},
 				{
-					path: "/blog/editor/edit/:id",
+					path: "/editor/edit/:id",
 					name: "blogEditorEdit",
 					component: () => import("../views/blog/editor/edit.vue")
 				},
 				{
-					path: "/blog/article/:id",
+					path: "/article/:id",
 					name: "blogArticle",
 					component: () => import("../views/blog/article/article.vue")
+				},
+				{
+					path: "/about",
+					name: "about",
+					component: () => import("../views/about/index.vue")
 				}
 			]
 		}

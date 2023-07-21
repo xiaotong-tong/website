@@ -13,7 +13,9 @@ import {
 	mdiPower,
 	mdiLogin,
 	mdiEmailOpenHeartOutline,
-	mdiBookEditOutline
+	mdiBookEditOutline,
+	mdiClose,
+	mdiRobotConfusedOutline
 } from "@mdi/js";
 
 const props = defineProps({
@@ -35,6 +37,10 @@ const reflectIcon = (icon) => {
 			return mdiEmailOpenHeartOutline;
 		case "mdiBookEditOutline":
 			return mdiBookEditOutline;
+		case "mdiClose":
+			return mdiClose;
+		case "mdiRobotConfusedOutline":
+			return mdiRobotConfusedOutline;
 		default:
 			return mdiPower;
 	}

@@ -5,7 +5,17 @@
 
 	<div>标题： <xtt-textarea autosize class="title" v-model="title"></xtt-textarea></div>
 	<div>作者： <xtt-textarea autosize v-model="author">xtt</xtt-textarea></div>
-	<div>分类： <xtt-textarea autosize v-model="category"></xtt-textarea></div>
+
+	<div>
+		分类：
+		<xtt-select ref="category">
+			<option value="网络互联" selected>网络互联</option>
+			<option value="喵随笔">喵随笔</option>
+			<option value="日语学习">日语学习</option>
+			<option value="test">test</option>
+		</xtt-select>
+	</div>
+	<div>标签： <xtt-textarea autosize v-model="tags"></xtt-textarea></div>
 	<div>
 		缩略图： <xtt-button ref="upload" @click="uploadImageEvent">上传图片</xtt-button>
 		<img v-if="thumbnail" class="thumbnail" :src="thumbnail" alt="缩略图" />
@@ -28,7 +38,8 @@ const router = useRouter();
 const title = ref("");
 const content = ref("");
 const author = ref("");
-const category = ref("");
+const category = ref(null);
+const tags = ref("");
 const abstract = ref("");
 const upload = ref(null);
 
@@ -42,13 +53,14 @@ const submitEvent = async () => {
 		title: title.value,
 		content: content.value,
 		author: author.value,
-		category: category.value,
+		category: category.value.value,
+		tags: tags.value,
 		abstract: abstract.value,
 		thumbnail: thumbnail.value
 	});
 
 	console.log(res);
-	router.push("/blog");
+	router.push("/");
 };
 
 const uploadImageEvent = async () => {

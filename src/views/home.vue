@@ -1,15 +1,15 @@
 <template>
 	<xtt-web-bg
-		src="http://image.xtt.moe/images/2023/07/18/b885910a19d8bc3eed2c5e98828ba61ea8d34544.jpg"
+		src="https://image.xtt.moe/images/2023/07/18/b885910a19d8bc3eed2c5e98828ba61ea8d34544.jpg"
 	></xtt-web-bg>
-	<kanbanarea>
+	<kanbanarea v-show="live2dShowed">
 		<template #icon>
 			<namiIcon
 				:ref="appendIcon"
 				class="icon"
 				icon="mdiHomeOutline"
-				data-xtt-tooltip="blog 首页"
-				@click="router.push('/blog')"
+				data-xtt-tooltip="首页"
+				@click="router.push('/')"
 			></namiIcon>
 			<namiIcon
 				:ref="appendIcon"
@@ -24,7 +24,21 @@
 				class="icon"
 				icon="mdiBookEditOutline"
 				data-xtt-tooltip="新增 blog"
-				@click="router.push('/blog/editor/add')"
+				@click="router.push('/editor/add')"
+			></namiIcon>
+			<namiIcon
+				:ref="appendIcon"
+				class="icon"
+				icon="mdiRobotConfusedOutline"
+				data-xtt-tooltip="关于"
+				@click="router.push('/about')"
+			></namiIcon>
+			<namiIcon
+				:ref="appendIcon"
+				class="icon"
+				icon="mdiClose"
+				data-xtt-tooltip="隐藏 live2d"
+				@click="live2dShowed = false"
 			></namiIcon>
 		</template>
 	</kanbanarea>
@@ -45,8 +59,9 @@ import { useStore } from "@/stores/index.js";
 const store = useStore();
 const router = useRouter();
 
-const iconTooltip = ref(null);
+const live2dShowed = ref(true);
 
+const iconTooltip = ref(null);
 const icons = [];
 
 const appendIcon = (icon) => {
