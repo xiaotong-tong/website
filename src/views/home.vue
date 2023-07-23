@@ -45,6 +45,8 @@
 
 	<xtt-tooltip ref="iconTooltip">default value</xtt-tooltip>
 
+	<pageNav></pageNav>
+
 	<main class="main">
 		<RouterView />
 	</main>
@@ -53,6 +55,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import kanbanarea from "../components/live2d/kanbanarea.vue";
+import pageNav from "../components/page/pageNav/pageNav.vue";
 import { verifyMasterUid } from "../api/blog/verify.js";
 import { useRouter } from "vue-router";
 import { useStore } from "@/stores/index.js";

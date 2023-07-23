@@ -13,6 +13,7 @@
 			<option value="喵随笔">喵随笔</option>
 			<option value="日语学习">日语学习</option>
 			<option value="test">test</option>
+			<option value="其它">其它</option>
 		</xtt-select>
 	</div>
 	<div>标签： <xtt-textarea autosize v-model="tags"></xtt-textarea></div>

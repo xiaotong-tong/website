@@ -17,7 +17,7 @@ const acticleList = reactive({
 });
 
 (async () => {
-	const { data } = await getActicleList();
+	const { data } = await getActicleList({ category: "日语学习" });
 	acticleList.list = data.data;
 })();
 </script>

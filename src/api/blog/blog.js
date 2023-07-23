@@ -4,8 +4,19 @@ async function addActicle(body) {
 	return await http.post("/acticle/add", body);
 }
 
-async function getActicleList() {
-	return await http.get("/acticle/list");
+async function getActicleList(filters) {
+	return await http.get(
+		"/acticle/list",
+		filters?.category
+			? {
+					params: {
+						filters: {
+							category: filters.category
+						}
+					}
+			  }
+			: undefined
+	);
 }
 
 async function getActicleById(id) {
