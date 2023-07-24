@@ -5,7 +5,7 @@
 				class="thumbnail"
 				:src="
 					info.thumbnail ||
-					'http://image.xtt.moe/images/2023/07/18/b885910a19d8bc3eed2c5e98828ba61ea8d34544.jpg'
+					'https://image.xtt.moe/images/2023/07/18/b885910a19d8bc3eed2c5e98828ba61ea8d34544.jpg'
 				"
 				alt="缩略图"
 			/>

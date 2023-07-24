@@ -15,7 +15,9 @@ import {
 	mdiEmailOpenHeartOutline,
 	mdiBookEditOutline,
 	mdiClose,
-	mdiRobotConfusedOutline
+	mdiRobotConfusedOutline,
+	mdiVolumeHigh,
+	mdiMusicNote
 } from "@mdi/js";
 
 const props = defineProps({
@@ -41,6 +43,10 @@ const reflectIcon = (icon) => {
 			return mdiClose;
 		case "mdiRobotConfusedOutline":
 			return mdiRobotConfusedOutline;
+		case "mdiVolumeHigh":
+			return mdiVolumeHigh;
+		case "mdiMusicNote":
+			return mdiMusicNote;
 		default:
 			return mdiPower;
 	}

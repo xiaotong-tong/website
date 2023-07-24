@@ -1,6 +1,18 @@
 <template>
 	<section class="container">
 		<namiMainCard
+			:info="{
+				headerLink: '/jp/words',
+				title: '日本語単語勉強',
+				author: 'xtt',
+				category: '日语学习',
+				tags: null,
+				createDate: '2023-07-23',
+				thumbnail: 'https://image.xtt.moe/images/2023/07/23/23.jpg',
+				abstract: '日本語勉強'
+			}"
+		/>
+		<namiMainCard
 			v-for="item in acticleList.list"
 			:key="item.id"
 			:info="{ ...item, headerLink: '/article/' + item.id }"

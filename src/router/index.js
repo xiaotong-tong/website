@@ -37,6 +37,16 @@ const router = createRouter({
 					path: "/jp",
 					name: "jp",
 					component: () => import("../views/blog/jp/jp.vue")
+				},
+				{
+					path: "/jp/words",
+					name: "jpWords",
+					component: () => import("../views/blog/jp/words/words.vue")
+				},
+				{
+					path: "/jp/words/add",
+					name: "jpWordsAdd",
+					component: () => import("../views/blog/jp/words/add.vue")
 				}
 			]
 		}

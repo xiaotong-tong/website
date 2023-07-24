@@ -27,6 +27,14 @@
 				@click="router.push('/editor/add')"
 			></namiIcon>
 			<namiIcon
+				v-if="store.loginUid"
+				:ref="appendIcon"
+				class="icon"
+				icon="mdiBookEditOutline"
+				data-xtt-tooltip="新增日语单词"
+				@click="router.push('/jp/words/add')"
+			></namiIcon>
+			<namiIcon
 				:ref="appendIcon"
 				class="icon"
 				icon="mdiRobotConfusedOutline"

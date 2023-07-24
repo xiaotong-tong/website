@@ -29,6 +29,7 @@ const props = defineProps({});
 	width: min(1000px, 100%);
 	margin: 0 auto 2px;
 	column-gap: 8px;
+	padding: 0;
 }
 
 .list > li {
