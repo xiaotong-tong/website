@@ -43,6 +43,11 @@ getActicle();
 watch(
 	() => route.params,
 	(newURL) => {
+		// 如果变化后不是当前页面，就不执行
+		if (!route.path.startsWith("/article")) {
+			return;
+		}
+
 		id.value = newURL.id;
 		getActicle();
 	}

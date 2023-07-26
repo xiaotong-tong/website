@@ -5,13 +5,13 @@
 				<namiLink class="link" inline-block to="/">首页</namiLink>
 			</li>
 			<li>
-				<namiLink class="link" inline-block to="/">网络互联</namiLink>
+				<namiLink class="link" inline-block to="/net">网络互联</namiLink>
 			</li>
 			<li>
 				<namiLink class="link" inline-block to="/jp">日语学习</namiLink>
 			</li>
 			<li>
-				<namiLink class="link" inline-block to="/">喵随笔</namiLink>
+				<namiLink class="link" inline-block to="/note">喵随笔</namiLink>
 			</li>
 		</ul>
 	</nav>

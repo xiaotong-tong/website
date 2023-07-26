@@ -1,6 +1,7 @@
 <template>
 	<section class="container">
 		<namiMainCard
+			class="card"
 			v-for="item in acticleList.list"
 			:key="item.id"
 			:info="{ ...item, headerLink: '/article/' + item.id }"
@@ -24,9 +25,12 @@ const acticleList = reactive({
 
 <style scoped>
 .container {
+	padding: 8px;
+}
+
+.card {
 	background-color: #ffffffaa;
 	backdrop-filter: blur(5px);
-	padding: 8px;
 }
 
 .card + .card {

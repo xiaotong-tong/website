@@ -44,6 +44,7 @@ const props = defineProps({
 	display: flex;
 	padding: 8px;
 	column-gap: 8px;
+	border-radius: 5px;
 }
 
 .thumbnail-wrap {
@@ -88,6 +89,15 @@ const props = defineProps({
 @media screen and (max-width: 992px) {
 	.thumbnail-wrap {
 		flex: 0 0 312px;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.card {
+		flex-wrap: wrap;
+	}
+	.thumbnail-wrap {
+		flex: 0 0 100%;
 	}
 }
 </style>

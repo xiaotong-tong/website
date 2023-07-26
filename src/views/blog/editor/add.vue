@@ -4,7 +4,7 @@
 	</div>
 
 	<div>标题： <xtt-textarea autosize class="title" v-model="title"></xtt-textarea></div>
-	<div>作者： <xtt-textarea autosize v-model="author">xtt</xtt-textarea></div>
+	<div>作者： <xtt-input autosize v-model="author">xtt</xtt-input></div>
 
 	<div>
 		分类：
@@ -16,7 +16,7 @@
 			<option value="其它">其它</option>
 		</xtt-select>
 	</div>
-	<div>标签： <xtt-textarea autosize v-model="tags"></xtt-textarea></div>
+	<div>标签： <xtt-input autosize v-model="tags"></xtt-input></div>
 	<div>
 		缩略图： <xtt-button ref="upload" @click="uploadImageEvent">上传图片</xtt-button>
 		<img v-if="thumbnail" class="thumbnail" :src="thumbnail" alt="缩略图" />
@@ -75,7 +75,7 @@ const uploadImageEvent = async () => {
 
 		const { data } = await uploadImage(fd);
 		console.log(data);
-		thumbnail.value = data.image.url;
+		thumbnail.value = data.image.url.replace("http:", "https:");
 	};
 };
 </script>

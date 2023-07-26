@@ -2,19 +2,6 @@
 	<section class="container">
 		<namiMainCard
 			class="card"
-			:info="{
-				headerLink: '/jp/words',
-				title: '日本語単語勉強',
-				author: 'xtt',
-				category: '日语学习',
-				tags: null,
-				createDate: '2023-07-23',
-				thumbnail: 'https://image.xtt.moe/images/2023/07/23/23.jpg',
-				abstract: '日本語勉強'
-			}"
-		/>
-		<namiMainCard
-			class="card"
 			v-for="item in acticleList.list"
 			:key="item.id"
 			:info="{ ...item, headerLink: '/article/' + item.id }"
@@ -31,7 +18,7 @@ const acticleList = reactive({
 });
 
 (async () => {
-	const { data } = await getActicleList({ category: "日语学习" });
+	const { data } = await getActicleList({ category: "网络互联" });
 	acticleList.list = data.data;
 })();
 </script>

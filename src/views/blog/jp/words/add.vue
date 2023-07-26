@@ -5,7 +5,7 @@
 
 	<div>单词: <xtt-input v-model="word"></xtt-input></div>
 	<div>仮名: <xtt-input v-model="kana"></xtt-input></div>
-	<div>重音: <xtt-input v-model="accent"></xtt-input></div>
+	<div>重音: <xtt-number-field v-model="accent"></xtt-number-field></div>
 	<div>意味: <xtt-textarea v-model="mean" block></xtt-textarea></div>
 	<div>音声URL: <xtt-input v-model="read" block></xtt-input></div>
 </template>
@@ -34,7 +34,7 @@ const submitEvent = async () => {
 	});
 
 	console.log(res);
-	router.push("/jp");
+	router.push("/jp/words");
 };
 </script>
 
