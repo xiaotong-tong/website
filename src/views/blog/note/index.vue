@@ -9,17 +9,32 @@
 	</section>
 </template>
 
-<script setup>
-import { ref, reactive } from "vue";
-import { getActicleList } from "@/api/blog/blog.js";
+<script setup lang="ts">
+import { reactive } from "vue";
+import { getActicleList } from "@/api/blog/blog";
+import type { UUID } from "crypto";
 
-const acticleList = reactive({
+interface ActicleList {
+	list: {
+		id: number;
+		uid: UUID;
+		title: string;
+		content: string;
+		author: string;
+		category: string;
+		tags: string;
+		createDate: string;
+		thumbnail: string;
+		abstract: string;
+	}[];
+}
+const acticleList: ActicleList = reactive({
 	list: []
 });
 
 (async () => {
-	const { data } = await getActicleList({ category: "喵随笔" });
-	acticleList.list = data.data;
+	const data = await getActicleList({ category: "喵随笔" });
+	acticleList.list = data;
 })();
 </script>
 

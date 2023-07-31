@@ -4,7 +4,7 @@
 			<img
 				class="thumbnail"
 				:src="
-					info.thumbnail ||
+					props.info.thumbnail ||
 					'https://image.xtt.moe/images/2023/07/18/b885910a19d8bc3eed2c5e98828ba61ea8d34544.jpg'
 				"
 				alt="缩略图"
@@ -12,30 +12,44 @@
 		</div>
 		<div class="info-wrap">
 			<h2>
-				<nami-link class="title-link" inline-block :to="info.headerLink">{{
-					info.title
+				<nami-link class="title-link" inline-block :to="props.info.headerLink">{{
+					props.info.title
 				}}</nami-link>
 			</h2>
 			<p>
-				发布于<span>{{ info.createDate }}</span>
+				发布于<span>{{ props.info.createDate }}</span>
 
-				&nbsp;&nbsp;&nbsp; # {{ info.category }}
+				&nbsp;&nbsp;&nbsp; # {{ props.info.category }}
 			</p>
 			<p class="abstract">
-				{{ info.abstract || info.content }}
+				{{ props.info.abstract || props.info.content }}
 			</p>
 		</div>
 	</div>
 </template>
 
-<script setup>
-import { ref } from "vue";
-
-const props = defineProps({
+<script setup lang="ts">
+interface Props {
 	info: {
-		type: Object,
-		required: true
-	}
+		headerLink: string;
+		title: string;
+		content: string;
+		createDate: string;
+		category: string;
+		thumbnail: string;
+		abstract: string;
+	};
+}
+const props = withDefaults(defineProps<Props>(), {
+	info: () => ({
+		headerLink: "",
+		title: "",
+		content: "",
+		createDate: "",
+		category: "",
+		thumbnail: "",
+		abstract: ""
+	})
 });
 </script>
 

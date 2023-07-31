@@ -6,29 +6,44 @@
 	</div>
 	<section class="container">
 		<h2>
-			{{ acticle.title }}
+			{{ acticle?.title }}
 		</h2>
 		<p>
-			发布于<span>{{ acticle.createDate }}</span>
+			发布于<span>{{ acticle?.createDate }}</span>
 
-			&nbsp;&nbsp;&nbsp; # {{ acticle.category }}
+			&nbsp;&nbsp;&nbsp; # {{ acticle?.category }}
 		</p>
 
-		<xtt-markdown class="md">{{ acticle.content }}</xtt-markdown>
+		<xtt-markdown class="md">{{ acticle?.content }}</xtt-markdown>
 	</section>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import type { Ref } from "vue";
+import type { UUID } from "crypto";
 import { ref, watch } from "vue";
-import { getActicleById } from "@/api/blog/blog.js";
+import { getActicleById } from "@/api/blog/blog";
 import { useRoute, useRouter } from "vue-router";
-import { useStore } from "@/stores/index.js";
+import { useStore } from "@/stores/index";
 const store = useStore();
 const route = useRoute();
 const router = useRouter();
 
-const id = ref(route.params.id);
-const acticle = ref({});
+const id = ref(Number(route.params.id));
+
+interface Acticle {
+	id: number;
+	uid: UUID;
+	title: string;
+	content: string;
+	author: string;
+	category: string;
+	tags: string;
+	createDate: string;
+	thumbnail: string;
+	abstract: string;
+}
+const acticle: Ref<Acticle | null> = ref(null);
 
 // 获取文章内容
 const getActicle = async () => {
@@ -48,7 +63,7 @@ watch(
 			return;
 		}
 
-		id.value = newURL.id;
+		id.value = Number(newURL.id);
 		getActicle();
 	}
 );

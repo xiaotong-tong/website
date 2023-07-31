@@ -6,8 +6,7 @@
 	</xtt-icon>
 </template>
 
-<script setup>
-import { ref } from "vue";
+<script setup lang="ts">
 import {
 	mdiHomeOutline,
 	mdiPower,
@@ -27,7 +26,7 @@ const props = defineProps({
 	}
 });
 
-const reflectIcon = (icon) => {
+const reflectIcon = (icon: string) => {
 	switch (icon) {
 		case "mdiHomeOutline":
 			return mdiHomeOutline;

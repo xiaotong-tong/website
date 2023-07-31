@@ -29,9 +29,7 @@
 	</section>
 </template>
 
-<script setup>
-import { ref } from "vue";
-</script>
+<script setup lang="ts"></script>
 
 <style scoped>
 .container {

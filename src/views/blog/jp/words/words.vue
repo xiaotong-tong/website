@@ -20,11 +20,21 @@
 	</section>
 </template>
 
-<script setup>
-import { ref, reactive } from "vue";
-import { getWordList } from "@/api/blog/word.js";
+<script setup lang="ts">
+import { reactive } from "vue";
+import { getWordList } from "@/api/blog/word";
 
-const wordList = reactive({
+interface wordList {
+	list: {
+		id: number;
+		word: string;
+		kana: string;
+		accent: number;
+		mean: string;
+		read: string;
+	}[];
+}
+const wordList: wordList = reactive({
 	list: []
 });
 
@@ -33,8 +43,9 @@ const wordList = reactive({
 	wordList.list = data.data;
 })();
 
-const playSound = (e) => {
-	const audio = e.currentTarget.nextElementSibling;
+const playSound = (e: MouseEvent) => {
+	const audio: HTMLAudioElement = (e.currentTarget as HTMLElement)
+		?.nextElementSibling as HTMLAudioElement;
 	audio?.play();
 };
 </script>

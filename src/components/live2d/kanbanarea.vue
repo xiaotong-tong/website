@@ -15,13 +15,13 @@
 	</section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted } from "vue";
 
-const loadModel = (resourcePath, modelNames) => {
-	live2dLoader.resourcesConfig.setResourcesPath(resourcePath);
-	live2dLoader.resourcesConfig.setModelNames(modelNames);
-	live2dLoader.start();
+const loadModel = (resourcePath: string, modelNames: string[]) => {
+	window.live2dLoader.resourcesConfig.setResourcesPath(resourcePath);
+	window.live2dLoader.resourcesConfig.setModelNames(modelNames);
+	window.live2dLoader.start();
 };
 
 onMounted(() => {

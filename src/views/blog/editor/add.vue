@@ -29,10 +29,10 @@
 	</div>
 </template>
 
-<script setup>
-import { ref, onMounted } from "vue";
-import { addActicle } from "@/api/blog/blog.js";
-import { uploadImage } from "@/api/image/image.js";
+<script setup lang="ts">
+import { ref } from "vue";
+import { addActicle } from "@/api/blog/blog";
+import { uploadImage } from "@/api/image/image";
 import { useRouter } from "vue-router";
 const router = useRouter();
 
@@ -54,7 +54,7 @@ const submitEvent = async () => {
 		title: title.value,
 		content: content.value,
 		author: author.value,
-		category: category.value.value,
+		category: (category.value && (category.value as HTMLSelectElement)?.value) || "网络互联",
 		tags: tags.value,
 		abstract: abstract.value,
 		thumbnail: thumbnail.value
@@ -70,6 +70,9 @@ const uploadImageEvent = async () => {
 	file.click();
 
 	file.onchange = async () => {
+		if (!file.files) {
+			return;
+		}
 		const fd = new FormData();
 		fd.append("source", file.files[0]);
 

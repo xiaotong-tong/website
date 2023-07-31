@@ -30,17 +30,17 @@
 	</div>
 </template>
 
-<script setup>
-import { ref, watch, reactive } from "vue";
-import { getActicleById, editActicleById, deleteActicleById } from "@/api/blog/blog.js";
-import { uploadImage } from "@/api/image/image.js";
+<script setup lang="ts">
+import { ref, watch } from "vue";
+import { getActicleById, editActicleById, deleteActicleById } from "@/api/blog/blog";
+import { uploadImage } from "@/api/image/image";
 import { useRoute, useRouter } from "vue-router";
-import { useStore } from "@/stores/index.js";
+import { useStore } from "@/stores/index";
 const store = useStore();
 const route = useRoute();
 const router = useRouter();
 
-const id = ref(route.params.id);
+const id = ref(Number(route.params.id));
 
 const title = ref("");
 const content = ref("");
@@ -85,6 +85,9 @@ const uploadImageEvent = async () => {
 	file.click();
 
 	file.onchange = async () => {
+		if (!file.files) {
+			return;
+		}
 		const fd = new FormData();
 		fd.append("source", file.files[0]);
 
@@ -117,7 +120,7 @@ watch(
 		if (!route.path.startsWith("/editor/edit")) {
 			return;
 		}
-		id.value = newURL.id;
+		id.value = Number(newURL.id);
 		getActicle();
 	}
 );

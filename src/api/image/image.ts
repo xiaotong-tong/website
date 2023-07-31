@@ -4,7 +4,7 @@ const http = axios.create({
 	baseURL: import.meta.env.VITE_API_IMAGE_URL
 });
 
-async function uploadImage(file) {
+export async function uploadImage(file: FormData) {
 	return await http.post(
 		`/api/1/upload/?key=${import.meta.env.VITE_API_IMAGE_KEY}&format=json`,
 
@@ -16,5 +16,3 @@ async function uploadImage(file) {
 		}
 	);
 }
-
-export { uploadImage };

@@ -1,4 +1,6 @@
-import http from "../axios.js";
+import { UUID } from "crypto";
+import http from "../axios";
+import { AxiosResponse } from "axios";
 
 const catchs = new Map();
 
@@ -12,22 +14,49 @@ const catchs = new Map();
 // 	}
 // }, 1000 * 60 * 5); // 每5分钟检查一次
 
-async function addActicle(body) {
+export interface AddActicleBody {
+	title: string;
+	content: string;
+	author: string;
+	category: string;
+	tags: string;
+	abstract?: string;
+	thumbnail?: string;
+}
+
+export async function addActicle(body: AddActicleBody): Promise<any> {
 	// 数据添加后，清除缓存
 	catchs.clear();
 
 	return await http.post("/acticle/add", body);
 }
 
-async function getActicleList(filters) {
+export interface GetActicleListFilters {
+	category?: string;
+}
+export interface GetActicleListResponse {
+	id: number;
+	uid: UUID;
+	title: string;
+	content: string;
+	author: string;
+	category: string;
+	tags: string;
+	createDate: string;
+	thumbnail: string;
+	abstract: string;
+}
+export async function getActicleList(
+	filters?: GetActicleListFilters
+): Promise<GetActicleListResponse[]> {
 	const filterCategory = filters?.category || "";
 
 	// 如果缓存中有数据，直接返回缓存中的数据
 	if (catchs.has("acticle" + filterCategory)) {
-		return catchs.get("acticle" + filterCategory).value;
+		return catchs.get("acticle" + filterCategory).value.data;
 	}
 
-	const data = await http.get(
+	const data: AxiosResponse<GetActicleListResponse[]> = await http.get(
 		"/acticle/list",
 		filterCategory
 			? {
@@ -46,25 +75,33 @@ async function getActicleList(filters) {
 		expires: Date.now() + 1000 * 60 * 10 // 设置缓存时间为10分钟，其实没有意义，因为数据不会改变
 	});
 
-	return data;
+	return data.data;
 }
 
-async function getActicleById(id) {
+export async function getActicleById(id: number) {
 	return await http.get(`/acticle/${id}`);
 }
 
-async function editActicleById(id, body) {
+export interface EditActicleBody {
+	title: string;
+	content: string;
+	author: string;
+	category: string;
+	tags: string;
+	abstract: string;
+	thumbnail: string;
+}
+
+export async function editActicleById(id: number, body: EditActicleBody) {
 	// 数据修改后，清除缓存
 	catchs.clear();
 
 	return await http.put(`/acticle/edit/${id}`, body);
 }
 
-async function deleteActicleById(id) {
+export async function deleteActicleById(id: number) {
 	// 数据删除后，清除缓存
 	catchs.clear();
 
 	return await http.delete(`/acticle/delete/${id}`);
 }
-
-export { addActicle, getActicleList, getActicleById, editActicleById, deleteActicleById };

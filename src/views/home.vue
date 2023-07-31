@@ -60,33 +60,36 @@
 	</main>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from "vue";
+import type { Ref } from "vue";
 import kanbanarea from "../components/live2d/kanbanarea.vue";
 import pageNav from "../components/page/pageNav/pageNav.vue";
-import { verifyMasterUid } from "../api/blog/verify.js";
+import { verifyMasterUid } from "../api/blog/verify";
 import { useRouter } from "vue-router";
-import { useStore } from "@/stores/index.js";
+import { useStore } from "@/stores/index";
+import type { UUID } from "crypto";
+
 const store = useStore();
 const router = useRouter();
 
 const live2dShowed = ref(true);
 
-const iconTooltip = ref(null);
-const icons = [];
+const iconTooltip: Ref<xttTooltipElement | null> = ref(null);
+const icons: HTMLElement[] = [];
 
-const appendIcon = (icon) => {
+const appendIcon = (icon: any) => {
 	icons.push(icon?.$el);
 };
 
 onMounted(() => {
-	iconTooltip.value.initTrigger(icons);
+	iconTooltip.value?.initTrigger(icons);
 });
 
 const verifyLogin = async () => {
 	const pw = window.prompt("请输入主人口令");
 	if (pw) {
-		const { data } = await verifyMasterUid(pw);
+		const { data } = await verifyMasterUid(pw as UUID);
 		if (data.value === "success") {
 			store.loginUid = pw;
 			localStorage.setItem("loginUid", pw);

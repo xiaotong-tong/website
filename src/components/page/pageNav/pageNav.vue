@@ -17,11 +17,7 @@
 	</nav>
 </template>
 
-<script setup>
-import { ref } from "vue";
-
-const props = defineProps({});
-</script>
+<script setup lang="ts"></script>
 
 <style scoped>
 .list {

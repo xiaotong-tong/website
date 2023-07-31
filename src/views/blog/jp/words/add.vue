@@ -10,9 +10,9 @@
 	<div>音声URL: <xtt-input v-model="read" block></xtt-input></div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
-import { addWord } from "@/api/blog/word.js";
+import { addWord } from "@/api/blog/word";
 import { useRouter } from "vue-router";
 const router = useRouter();
 
@@ -28,7 +28,7 @@ const submitEvent = async () => {
 	const res = await addWord({
 		word: word.value,
 		kana: kana.value,
-		accent: accent.value,
+		accent: +accent.value,
 		mean: mean.value,
 		read: read.value
 	});

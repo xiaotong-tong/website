@@ -1,4 +1,4 @@
-import http from "../axios.js";
+import http from "../axios";
 
 const catchs = new Map();
 
@@ -12,14 +12,21 @@ const catchs = new Map();
 // 	}
 // }, 1000 * 60 * 5); // 每5分钟检查一次
 
-async function addWord(body) {
+export interface AddWordBody {
+	word: string;
+	kana: string;
+	accent: number;
+	mean: string;
+	read: string;
+}
+export async function addWord(body: AddWordBody) {
 	// 数据添加后，清除缓存
 	catchs.clear();
 
 	return await http.post("/word/add", body);
 }
 
-async function getWordList() {
+export async function getWordList() {
 	if (catchs.has("word")) {
 		return catchs.get("word").value;
 	}
@@ -33,5 +40,3 @@ async function getWordList() {
 
 	return data;
 }
-
-export { addWord, getWordList };
