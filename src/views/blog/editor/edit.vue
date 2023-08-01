@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 import { ref, watch } from "vue";
-import { getActicleById, editActicleById, deleteActicleById } from "@/api/blog/blog";
+import { getActicleById, editActicleById, deleteActicleById } from "@/api/blog/acticle";
 import { uploadImage } from "@/api/image/image";
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "@/stores/index";

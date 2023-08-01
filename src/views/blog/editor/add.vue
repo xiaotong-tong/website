@@ -31,7 +31,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { addActicle } from "@/api/blog/blog";
+import { addActicle } from "@/api/blog/acticle";
 import { uploadImage } from "@/api/image/image";
 import { useRouter } from "vue-router";
 const router = useRouter();

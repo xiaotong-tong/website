@@ -22,7 +22,7 @@
 import type { Ref } from "vue";
 import type { UUID } from "crypto";
 import { ref, watch } from "vue";
-import { getActicleById } from "@/api/blog/blog";
+import { getActicleById } from "@/api/blog/acticle";
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "@/stores/index";
 const store = useStore();

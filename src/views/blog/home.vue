@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import { reactive } from "vue";
-import { getActicleList } from "@/api/blog/blog";
+import { getActicleList } from "@/api/blog/acticle";
 import type { UUID } from "crypto";
 
 interface ActicleList {

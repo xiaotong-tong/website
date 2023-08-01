@@ -4,10 +4,6 @@ declare module "*.vue" {
 	export default component;
 }
 
-declare module "xtt-utils" {
-	export function throttle(fn: Function, delay: number): Function;
-}
-
 interface mouseSnowOptions {
 	color?: string;
 	character?: string;

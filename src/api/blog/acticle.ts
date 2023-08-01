@@ -1,4 +1,4 @@
-import { UUID } from "crypto";
+import type { UUID } from "crypto";
 import http from "../axios";
 import { AxiosResponse } from "axios";
 

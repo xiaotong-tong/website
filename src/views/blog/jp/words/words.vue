@@ -56,7 +56,6 @@ const playSound = (e: MouseEvent) => {
 	backdrop-filter: blur(5px);
 	padding: 8px;
 
-	width: 100%;
 	display: grid;
 	grid-template:
 		"title title title title title"
