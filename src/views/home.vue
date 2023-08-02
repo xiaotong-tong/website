@@ -68,7 +68,6 @@ import pageNav from "../components/page/pageNav/pageNav.vue";
 import { verifyMasterUid } from "../api/blog/verify";
 import { useRouter } from "vue-router";
 import { useStore } from "@/stores/index";
-import type { UUID } from "crypto";
 
 const store = useStore();
 const router = useRouter();
@@ -89,7 +88,7 @@ onMounted(() => {
 const verifyLogin = async () => {
 	const pw = window.prompt("请输入主人口令");
 	if (pw) {
-		const { data } = await verifyMasterUid(pw as UUID);
+		const { data } = await verifyMasterUid(pw);
 		if (data.value === "success") {
 			store.loginUid = pw;
 			localStorage.setItem("loginUid", pw);

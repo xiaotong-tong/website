@@ -7,7 +7,7 @@
 			<span>意味</span>
 			<span>音声</span>
 		</div>
-		<div v-for="item in wordList.list" :key="item.id">
+		<div v-for="item in wordList" :key="item.id">
 			<span>{{ item.word }}</span>
 			<span>{{ item.kana }}</span>
 			<span>{{ item.accent }}</span>
@@ -21,26 +21,18 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue";
+import type { Ref } from "vue";
+import type { JPWord } from "@/types/word";
+import { ref } from "vue";
 import { getWordList } from "@/api/blog/word";
 
-interface wordList {
-	list: {
-		id: number;
-		word: string;
-		kana: string;
-		accent: number;
-		mean: string;
-		read: string;
-	}[];
-}
-const wordList: wordList = reactive({
-	list: []
-});
+const wordList: Ref<JPWord[] | null> = ref(null);
 
 (async () => {
-	const { data } = await getWordList();
-	wordList.list = data.data;
+	const data = await getWordList();
+	console.log(data);
+
+	wordList.value = data;
 })();
 
 const playSound = (e: MouseEvent) => {

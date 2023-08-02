@@ -2,7 +2,7 @@
 	<section class="container">
 		<namiMainCard
 			class="card"
-			v-for="item in acticleList.list"
+			v-for="item in acticleList"
 			:key="item.id"
 			:info="{ ...item, headerLink: '/article/' + item.id }"
 		/>
@@ -10,31 +10,16 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue";
+import type { Ref } from "vue";
+import type { Acticle } from "@/types/acticle";
+import { ref } from "vue";
 import { getActicleList } from "@/api/blog/acticle";
-import type { UUID } from "crypto";
 
-interface ActicleList {
-	list: {
-		id: number;
-		uid: UUID;
-		title: string;
-		content: string;
-		author: string;
-		category: string;
-		tags: string;
-		createDate: string;
-		thumbnail: string;
-		abstract: string;
-	}[];
-}
-const acticleList: ActicleList = reactive({
-	list: []
-});
+const acticleList: Ref<Acticle[] | null> = ref(null);
 
 (async () => {
 	const data = await getActicleList();
-	acticleList.list = data;
+	acticleList.value = data;
 })();
 </script>
 

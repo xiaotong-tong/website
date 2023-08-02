@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
 import type { Ref } from "vue";
-import type { UUID } from "crypto";
+import type { Acticle } from "@/types/acticle";
 import { ref, watch } from "vue";
 import { getActicleById } from "@/api/blog/acticle";
 import { useRoute, useRouter } from "vue-router";
@@ -31,18 +31,6 @@ const router = useRouter();
 
 const id = ref(Number(route.params.id));
 
-interface Acticle {
-	id: number;
-	uid: UUID;
-	title: string;
-	content: string;
-	author: string;
-	category: string;
-	tags: string;
-	createDate: string;
-	thumbnail: string;
-	abstract: string;
-}
 const acticle: Ref<Acticle | null> = ref(null);
 
 // 获取文章内容

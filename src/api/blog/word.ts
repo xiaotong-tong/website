@@ -1,3 +1,4 @@
+import type { JPWord, AddWordBody } from "@/types/word";
 import http from "../axios";
 
 const catchs = new Map();
@@ -12,13 +13,6 @@ const catchs = new Map();
 // 	}
 // }, 1000 * 60 * 5); // 每5分钟检查一次
 
-export interface AddWordBody {
-	word: string;
-	kana: string;
-	accent: number;
-	mean: string;
-	read: string;
-}
 export async function addWord(body: AddWordBody) {
 	// 数据添加后，清除缓存
 	catchs.clear();
@@ -26,9 +20,9 @@ export async function addWord(body: AddWordBody) {
 	return await http.post("/word/add", body);
 }
 
-export async function getWordList() {
+export async function getWordList(): Promise<JPWord[]> {
 	if (catchs.has("word")) {
-		return catchs.get("word").value;
+		return catchs.get("word").value.data;
 	}
 
 	const data = await http.get("/word/list");
@@ -38,5 +32,5 @@ export async function getWordList() {
 		expires: Date.now() + 1000 * 60 * 10 // 设置缓存时间为10分钟，其实没有意义，因为数据不会改变
 	});
 
-	return data;
+	return data.data;
 }

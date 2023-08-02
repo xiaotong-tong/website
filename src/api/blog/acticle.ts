@@ -1,6 +1,6 @@
-import type { UUID } from "crypto";
+import type { AxiosResponse } from "axios";
+import type { Acticle, AddActicleBody, EditActicleBody } from "@/types/acticle";
 import http from "../axios";
-import { AxiosResponse } from "axios";
 
 const catchs = new Map();
 
@@ -14,16 +14,6 @@ const catchs = new Map();
 // 	}
 // }, 1000 * 60 * 5); // 每5分钟检查一次
 
-export interface AddActicleBody {
-	title: string;
-	content: string;
-	author: string;
-	category: string;
-	tags: string;
-	abstract?: string;
-	thumbnail?: string;
-}
-
 export async function addActicle(body: AddActicleBody): Promise<any> {
 	// 数据添加后，清除缓存
 	catchs.clear();
@@ -34,21 +24,8 @@ export async function addActicle(body: AddActicleBody): Promise<any> {
 export interface GetActicleListFilters {
 	category?: string;
 }
-export interface GetActicleListResponse {
-	id: number;
-	uid: UUID;
-	title: string;
-	content: string;
-	author: string;
-	category: string;
-	tags: string;
-	createDate: string;
-	thumbnail: string;
-	abstract: string;
-}
-export async function getActicleList(
-	filters?: GetActicleListFilters
-): Promise<GetActicleListResponse[]> {
+
+export async function getActicleList(filters?: GetActicleListFilters): Promise<Acticle[]> {
 	const filterCategory = filters?.category || "";
 
 	// 如果缓存中有数据，直接返回缓存中的数据
@@ -56,7 +33,7 @@ export async function getActicleList(
 		return catchs.get("acticle" + filterCategory).value.data;
 	}
 
-	const data: AxiosResponse<GetActicleListResponse[]> = await http.get(
+	const data: AxiosResponse<Acticle[]> = await http.get(
 		"/acticle/list",
 		filterCategory
 			? {
@@ -80,16 +57,6 @@ export async function getActicleList(
 
 export async function getActicleById(id: number) {
 	return await http.get(`/acticle/${id}`);
-}
-
-export interface EditActicleBody {
-	title: string;
-	content: string;
-	author: string;
-	category: string;
-	tags: string;
-	abstract: string;
-	thumbnail: string;
 }
 
 export async function editActicleById(id: number, body: EditActicleBody) {
