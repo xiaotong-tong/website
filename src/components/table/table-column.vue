@@ -7,16 +7,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { useRouter } from "vue-router";
-const router = useRouter();
+// import { ref } from "vue";
 
-interface Props {
-	prop: string;
-}
-const props = withDefaults(defineProps<Props>(), {
-	prop: ""
-});
+// interface Props {
+// 	prop: string;
+// }
+// const props = withDefaults(defineProps<Props>(), {
+// 	prop: ""
+// });
 </script>
 
 <style></style>

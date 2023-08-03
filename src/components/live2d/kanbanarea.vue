@@ -25,7 +25,23 @@ const loadModel = (resourcePath: string, modelNames: string[]) => {
 };
 
 onMounted(() => {
-	loadModel("/live2d/models/", ["nami"]);
+	const live2dCubismcoreScript = document.createElement("script");
+	live2dCubismcoreScript.src = "/live2d/js/live2dcubismcore.min.js";
+	live2dCubismcoreScript.async = true;
+
+	live2dCubismcoreScript.onload = () => {
+		const live2dScript = document.createElement("script");
+		live2dScript.src = "/live2d/js/nami_live2d.js";
+		live2dScript.async = true;
+
+		live2dScript.onload = () => {
+			loadModel("/live2d/models/", ["nami"]);
+		};
+
+		document.body.appendChild(live2dScript);
+	};
+
+	document.body.appendChild(live2dCubismcoreScript);
 });
 </script>
 

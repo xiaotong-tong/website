@@ -5,14 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { Ref, ref } from "vue";
-
-const props = defineProps({
-	to: {
-		type: String,
-		default: "#"
-	}
-});
+// import { Ref, ref } from "vue";
 </script>
 
 <style></style>
