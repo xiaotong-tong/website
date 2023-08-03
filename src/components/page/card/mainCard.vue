@@ -1,5 +1,5 @@
 <template>
-	<div class="card">
+	<div class="card" :dark="store.isDark ? '' : undefined">
 		<div class="thumbnail-wrap">
 			<img
 				class="thumbnail"
@@ -29,6 +29,9 @@
 </template>
 
 <script setup lang="ts">
+import { useStore } from "@/stores/index";
+const store = useStore();
+
 interface Props {
 	info: {
 		headerLink: string;
@@ -59,6 +62,13 @@ const props = withDefaults(defineProps<Props>(), {
 	padding: 8px;
 	column-gap: 8px;
 	border-radius: 5px;
+	background-color: #ffffffaa;
+	backdrop-filter: blur(5px);
+}
+.card[dark] {
+	background-color: #00000020;
+	backdrop-filter: blur(5px);
+	color: #cfd3dc;
 }
 
 .thumbnail-wrap {
@@ -70,6 +80,10 @@ const props = withDefaults(defineProps<Props>(), {
 	width: 100%;
 	display: block;
 	border-radius: 5px;
+}
+/* 有的图片太亮，将亮度调低一些 */
+.card[dark] .thumbnail {
+	filter: brightness(0.7);
 }
 
 .info-wrap {

@@ -16,14 +16,28 @@ import {
 	mdiClose,
 	mdiRobotConfusedOutline,
 	mdiVolumeHigh,
-	mdiMusicNote
+	mdiMusicNote,
+	mdiThemeLightDark,
+	mdiPenPlus
 } from "@mdi/js";
 
-const props = defineProps({
-	icon: {
-		type: String,
-		default: "mdiPower"
-	}
+interface Props {
+	icon:
+		| "mdiHomeOutline"
+		| "mdiPower"
+		| "mdiLogin"
+		| "mdiEmailOpenHeartOutline"
+		| "mdiBookEditOutline"
+		| "mdiClose"
+		| "mdiRobotConfusedOutline"
+		| "mdiVolumeHigh"
+		| "mdiMusicNote"
+		| "mdiThemeLightDark"
+		| "mdiPenPlus";
+}
+
+const props = withDefaults(defineProps<Props>(), {
+	icon: "mdiPower"
 });
 
 const reflectIcon = (icon: string) => {
@@ -46,6 +60,10 @@ const reflectIcon = (icon: string) => {
 			return mdiVolumeHigh;
 		case "mdiMusicNote":
 			return mdiMusicNote;
+		case "mdiThemeLightDark":
+			return mdiThemeLightDark;
+		case "mdiPenPlus":
+			return mdiPenPlus;
 		default:
 			return mdiPower;
 	}

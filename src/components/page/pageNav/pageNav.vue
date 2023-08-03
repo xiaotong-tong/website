@@ -20,6 +20,9 @@
 <script setup lang="ts"></script>
 
 <style scoped>
+[dark] .list {
+	color: #fff;
+}
 .list {
 	display: flex;
 	width: min(1000px, 100%);

@@ -4,7 +4,7 @@
 			>编辑</xtt-button
 		>
 	</div>
-	<section class="container">
+	<section class="container" :dark="store.isDark ? '' : undefined">
 		<h2>
 			{{ acticle?.title }}
 		</h2>
@@ -62,6 +62,11 @@ watch(
 	background-color: #ffffffaa;
 	backdrop-filter: blur(5px);
 	padding: 8px;
+}
+.container[dark] {
+	background-color: #00000020;
+	backdrop-filter: blur(5px);
+	color: #cfd3dc;
 }
 .md {
 	--md-bg-color: transparent;

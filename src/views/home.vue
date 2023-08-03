@@ -1,6 +1,7 @@
 <template>
 	<xtt-web-bg
 		src="https://image.xtt.moe/images/2023/07/18/b885910a19d8bc3eed2c5e98828ba61ea8d34544.jpg"
+		:mask="store.isDark ? '' : undefined"
 	></xtt-web-bg>
 	<kanbanarea v-show="live2dShowed">
 		<template #icon>
@@ -30,7 +31,7 @@
 				v-if="store.loginUid"
 				:ref="appendIcon"
 				class="icon"
-				icon="mdiBookEditOutline"
+				icon="mdiPenPlus"
 				data-xtt-tooltip="新增日语单词"
 				@click="router.push('/jp/words/add')"
 			></namiIcon>
@@ -44,6 +45,13 @@
 			<namiIcon
 				:ref="appendIcon"
 				class="icon"
+				icon="mdiThemeLightDark"
+				data-xtt-tooltip="切换主题"
+				@click="store.isDark = !store.isDark"
+			></namiIcon>
+			<namiIcon
+				:ref="appendIcon"
+				class="icon"
 				icon="mdiClose"
 				data-xtt-tooltip="隐藏 live2d"
 				@click="live2dShowed = false"
@@ -53,7 +61,7 @@
 
 	<xtt-tooltip ref="iconTooltip">default value</xtt-tooltip>
 
-	<pageNav></pageNav>
+	<pageNav :dark="store.isDark ? '' : undefined"></pageNav>
 
 	<main class="main">
 		<RouterView />

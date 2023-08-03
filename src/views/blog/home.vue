@@ -28,11 +28,6 @@ const acticleList: Ref<Acticle[] | null> = ref(null);
 	padding: 8px;
 }
 
-.card {
-	background-color: #ffffffaa;
-	backdrop-filter: blur(5px);
-}
-
 .card + .card {
 	margin-top: 16px;
 }
