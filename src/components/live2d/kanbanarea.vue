@@ -4,7 +4,7 @@
 		当前模型在鼠标较远时转向角度过大，所以作此调整。如果模型在外屏范围内转向角度设置正常的话，可以不用这个包裹
 		没钱优化模型，只能这样了
 	-->
-	<section class="live2d-wrapper">
+	<section class="live2d-wrapper" v-show="live2dLoaded">
 		<canvas id="live2d" width="170" height="370" class="live2d"></canvas>
 
 		<div class="icon-hover-wrap">
@@ -16,7 +16,9 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
+
+const live2dLoaded = ref(false);
 
 const loadModel = (resourcePath: string, modelNames: string[]) => {
 	window.live2dLoader.resourcesConfig.setResourcesPath(resourcePath);
@@ -25,6 +27,7 @@ const loadModel = (resourcePath: string, modelNames: string[]) => {
 };
 
 onMounted(() => {
+	// live2d 相关的文件过大，在首页加载会影响首页加载速度，所以在首页加载完成后再加载 live2d 相关文件
 	const live2dCubismcoreScript = document.createElement("script");
 	live2dCubismcoreScript.src = "/live2d/js/live2dcubismcore.min.js";
 	live2dCubismcoreScript.async = true;
@@ -36,6 +39,8 @@ onMounted(() => {
 
 		live2dScript.onload = () => {
 			loadModel("/live2d/models/", ["nami"]);
+
+			live2dLoaded.value = true;
 		};
 
 		document.body.appendChild(live2dScript);

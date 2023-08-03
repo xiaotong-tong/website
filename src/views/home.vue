@@ -83,6 +83,14 @@ const appendIcon = (icon: any) => {
 
 onMounted(() => {
 	iconTooltip.value?.initTrigger(icons);
+
+	window.addEventListener("resize", () => {
+		if (window.innerWidth < 768) {
+			live2dShowed.value = false;
+		} else {
+			live2dShowed.value = true;
+		}
+	});
 });
 
 const verifyLogin = async () => {
