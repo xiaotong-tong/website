@@ -14,7 +14,9 @@
 			&nbsp;&nbsp;&nbsp; # {{ acticle?.category }}
 		</p>
 
-		<xtt-markdown class="md">{{ acticle?.content }}</xtt-markdown>
+		<xtt-markdown class="md" :dark="store.isDark ? '' : undefined">{{
+			acticle?.content
+		}}</xtt-markdown>
 	</section>
 </template>
 
