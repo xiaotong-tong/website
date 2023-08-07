@@ -56,12 +56,11 @@
 				data-xtt-tooltip="隐藏 live2d"
 				@click="live2dShowed = false"
 			></namiIcon>
+			<xtt-tooltip ref="iconTooltip">default value</xtt-tooltip>
 		</template>
 	</kanbanarea>
 
-	<xtt-tooltip ref="iconTooltip">default value</xtt-tooltip>
-
-	<pageNav :dark="store.isDark ? '' : undefined"></pageNav>
+	<namiHeader></namiHeader>
 
 	<main class="main">
 		<RouterView />
@@ -72,7 +71,7 @@
 import { ref, onMounted } from "vue";
 import type { Ref } from "vue";
 import kanbanarea from "../components/live2d/kanbanarea.vue";
-import pageNav from "../components/page/pageNav/pageNav.vue";
+import namiHeader from "../components/page/header/header.vue";
 import { verifyMasterUid } from "../api/blog/verify";
 import { useRouter } from "vue-router";
 import { useStore } from "@/stores/index";
@@ -123,5 +122,8 @@ const verifyLogin = async () => {
 
 .icon {
 	cursor: pointer;
+}
+.theme-dark .icon {
+	color: #fff;
 }
 </style>

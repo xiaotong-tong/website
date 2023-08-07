@@ -1,4 +1,4 @@
-import { ref, watch } from "vue";
+import { ref, watch, watchEffect } from "vue";
 import { defineStore } from "pinia";
 
 export const useStore = defineStore("main", () => {
@@ -17,5 +17,18 @@ export const useStore = defineStore("main", () => {
 		localStorage.setItem("settings", JSON.stringify(settings));
 	});
 
-	return { loginUid, isDark };
+	const isSmallScreen = ref(window.innerWidth <= 768);
+
+	window.addEventListener("resize", () => {
+		isSmallScreen.value = window.innerWidth <= 768;
+	});
+
+	// 在 isDark 发生变化时，同步改变 body 的 class
+	// 在 isSmallScreen 发生变化时，同步改变 body 的 class
+	watchEffect(() => {
+		document.body.classList.toggle("theme-dark", !!isDark.value);
+		document.body.classList.toggle("small-screen", !!isSmallScreen.value);
+	});
+
+	return { loginUid, isDark, isSmallScreen };
 });

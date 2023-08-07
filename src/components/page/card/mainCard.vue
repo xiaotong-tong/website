@@ -81,7 +81,7 @@ const props = withDefaults(defineProps<Props>(), {
 	display: block;
 	border-radius: 5px;
 }
-/* 有的图片太亮，将亮度调低一些 */
+/* 在 dark 模式下，有的图片太亮，将亮度调低一些 */
 .card[dark] .thumbnail {
 	filter: brightness(0.7);
 }
