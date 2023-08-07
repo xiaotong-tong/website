@@ -1,23 +1,16 @@
 <template>
-	<section class="container">
-		<div>
-			<span>単語</span>
-			<span>仮名</span>
-			<span>重音</span>
-			<span>意味</span>
-			<span>音声</span>
-		</div>
-		<div v-for="item in wordList" :key="item.id">
-			<span>{{ item.word }}</span>
-			<span>{{ item.kana }}</span>
-			<span>{{ item.accent }}</span>
-			<span>{{ item.mean }}</span>
-			<span
-				><nami-icon icon="mdiMusicNote" @click="playSound"></nami-icon>
-				<audio :src="item.read" preload="metadata"></audio
-			></span>
-		</div>
-	</section>
+	<namiTable :data="wordList" class="container">
+		<namiTableColumn prop="word" label="単語"> </namiTableColumn>
+		<namiTableColumn prop="kana" label="仮名"></namiTableColumn>
+		<namiTableColumn prop="accent" label="重音" width="50px"></namiTableColumn>
+		<namiTableColumn prop="mean" label="意味"></namiTableColumn>
+		<namiTableColumn prop="read" label="音声" width="50px">
+			<template #default="scope">
+				<nami-icon icon="mdiMusicNote" @click="playSound"></nami-icon>
+				<audio :src="scope.row.read" preload="metadata"></audio>
+			</template>
+		</namiTableColumn>
+	</namiTable>
 </template>
 
 <script setup lang="ts">
@@ -26,11 +19,10 @@ import type { JPWord } from "@/types/word";
 import { ref } from "vue";
 import { getWordList } from "@/api/blog/word";
 
-const wordList: Ref<JPWord[] | null> = ref(null);
+const wordList: Ref<JPWord[]> = ref([]);
 
 (async () => {
 	const data = await getWordList();
-	console.log(data);
 
 	wordList.value = data;
 })();
@@ -47,17 +39,5 @@ const playSound = (e: MouseEvent) => {
 	background-color: #ffffffaa;
 	backdrop-filter: blur(5px);
 	padding: 8px;
-
-	display: grid;
-	grid-template:
-		"title title title title title"
-		"word kana accent mean read"
-		/ auto auto 50px auto 50px;
-
-	row-gap: 8px;
-}
-
-.container div {
-	display: contents;
 }
 </style>
