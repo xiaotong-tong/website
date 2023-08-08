@@ -88,6 +88,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 .info-wrap {
 	flex: 1;
+	min-width: 0;
 }
 .info-wrap h2 {
 	margin-block-start: 8px;

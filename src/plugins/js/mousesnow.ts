@@ -11,6 +11,6 @@ document.addEventListener("mousemove", (ev) => {
 
 document.addEventListener("touchmove", (ev) => {
 	for (const touch of ev.touches) {
-		moveEvent(touch);
+		moveEvent(touch.clientX, touch.clientY);
 	}
 });

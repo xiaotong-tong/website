@@ -54,6 +54,10 @@
 	justify-content: flex-end;
 }
 
+.small-screen .right {
+	display: none;
+}
+
 .list > li {
 	list-style: none;
 }
