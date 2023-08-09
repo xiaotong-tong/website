@@ -19,7 +19,8 @@ import {
 	mdiMusicNote,
 	mdiThemeLightDark,
 	mdiPenPlus,
-	mdiGithub
+	mdiGithub,
+	mdiMapSearchOutline
 } from "@mdi/js";
 
 interface Props {
@@ -35,7 +36,8 @@ interface Props {
 		| "mdiMusicNote"
 		| "mdiThemeLightDark"
 		| "mdiPenPlus"
-		| "mdiGithub";
+		| "mdiGithub"
+		| "mdiMapSearchOutline";
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -68,6 +70,8 @@ const reflectIcon = (icon: string) => {
 			return mdiPenPlus;
 		case "mdiGithub":
 			return mdiGithub;
+		case "mdiMapSearchOutline":
+			return mdiMapSearchOutline;
 		default:
 			return mdiPower;
 	}

@@ -17,6 +17,11 @@
 		<xtt-markdown class="md" :dark="store.isDark ? '' : undefined">{{
 			acticle?.content
 		}}</xtt-markdown>
+
+		<namiCommentList class="comment-list" :comments="commentList"></namiCommentList>
+
+		<h3>发布评论：</h3>
+		<namiCommentPanel class="comment-panel" @submit="commentSubmitEvent"></namiCommentPanel>
 	</section>
 </template>
 
@@ -25,6 +30,7 @@ import type { Ref } from "vue";
 import type { Acticle } from "@/types/acticle";
 import { ref, watch } from "vue";
 import { getActicleById } from "@/api/blog/acticle";
+import { addComment, getCommentList } from "@/api/blog/comment";
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "@/stores/index";
 const store = useStore();
@@ -42,7 +48,26 @@ const getActicle = async () => {
 	const { data } = await getActicleById(id.value);
 	acticle.value = data.data;
 };
+const commentSubmitEvent = (data: { commentText: string; nickname: string; email: string }) => {
+	addComment({
+		nickname: data.nickname,
+		email: data.email,
+		content: data.commentText,
+		articleId: id.value
+	}).then(() => {
+		getComments();
+	});
+};
+
+const commentList = ref([]);
+const getComments = async () => {
+	const data = await getCommentList(id.value);
+
+	commentList.value = data;
+};
+
 getActicle();
+getComments();
 
 // 监听页面 id 的变化
 watch(
@@ -76,5 +101,12 @@ watch(
 .title-operate-area {
 	display: flex;
 	justify-content: flex-end;
+}
+
+.comment-list {
+	margin-block-start: 50px;
+}
+.comment-panel {
+	margin-block-start: 20px;
 }
 </style>
