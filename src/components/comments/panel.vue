@@ -87,6 +87,10 @@ const submitEvent = () => {
 		nickname: nickname.value,
 		email: email.value
 	});
+
+	commentText.value = "";
+	nickname.value = "";
+	email.value = "";
 };
 </script>
 

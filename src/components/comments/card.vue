@@ -1,39 +1,65 @@
 <template>
-	<div class="comment" v-if="!delected">
-		<div class="left">
-			<img
-				src="https://image.xtt.moe/images/2023/08/09/mlian2.md.png"
-				alt="评论者头像"
-				class="pic"
-			/>
-		</div>
-		<div class="center">
-			<div>
-				<span class="nickname">{{ props.comment.nickname || "匿名" }}</span>
-				<span class="date">{{ props.comment.createDate }}</span>
+	<div>
+		<div class="comment" v-if="!delected">
+			<div class="left">
+				<img
+					src="https://image.xtt.moe/images/2023/08/09/mlian2.md.png"
+					alt="评论者头像"
+					class="pic"
+				/>
 			</div>
-			<div class="content">{{ props.comment.content }}</div>
+			<div class="center">
+				<div>
+					<span class="nickname">{{ props.comment.nickname || "匿名" }}</span>
+					<span class="date">{{ props.comment.createDate }}</span>
+				</div>
+				<div class="content">{{ props.comment.content }}</div>
+			</div>
+			<div class="right">
+				<xtt-button
+					v-if="store.loginUid"
+					class="deleteBtn"
+					text
+					type="danger"
+					data-xtt-tooltip="删除该条评论"
+					@click="deleteBtnClick"
+				>
+					删除
+				</xtt-button>
+
+				<xtt-button
+					class="replyBtn"
+					text
+					data-xtt-tooltip="回复该条评论"
+					@click="replyCommentShowed = !replyCommentShowed"
+				>
+					<namiIcon icon="mdiReplyOutline" />
+				</xtt-button>
+			</div>
 		</div>
-		<div class="right">
-			<xtt-button
-				v-if="store.loginUid"
-				class="deleteBtn"
-				text
-				type="danger"
-				data-xtt-tooltip="删除该条评论"
-				@click="deleteBtnClick"
-			>
-				删除
-			</xtt-button>
-		</div>
+		<transition name="fade">
+			<namiCommentPanel
+				v-if="replyCommentShowed"
+				class="reply-comment-panel"
+				@submit="replyCommentSubmitEvent"
+			></namiCommentPanel>
+		</transition>
+
+		<namiCommentList
+			class="children-comment-list"
+			:comments="props.comment.children || []"
+			:isChildren="true"
+		></namiCommentList>
 	</div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { delectComment } from "@/api/blog/comment";
+import { ref, provide, inject } from "vue";
+import { delectComment, addComment } from "@/api/blog/comment";
 import { useStore } from "@/stores/index";
+import { useRoute } from "vue-router";
 const store = useStore();
+const route = useRoute();
 
 interface Props {
 	comment: object;
@@ -51,13 +77,44 @@ const deleteBtnClick = () => {
 		});
 	}
 };
+
+const parentCommentId = inject("commentId", null);
+
+const replyCommentShowed = ref(false);
+
+const replyCommentSubmitEvent = (data: {
+	commentText: string;
+	nickname: string;
+	email: string;
+}) => {
+	const articleId = Number(route.params.id);
+
+	if (!articleId) return;
+
+	const commentBody = {
+		nickname: data.nickname,
+		email: data.email,
+		content: data.commentText,
+		articleId,
+		parent: parentCommentId || props.comment.id,
+		replyId: props.comment.id,
+		replyNickName: props.comment.nickname
+	};
+
+	addComment(commentBody).then(() => {
+		replyCommentShowed.value = false;
+	});
+};
+
+provide("commentId", props.comment.id);
 </script>
 
 <style scoped>
 .comment {
 	display: flex;
-	align-items: center;
+	align-items: start;
 	column-gap: 8px;
+	margin-block-end: 8px;
 }
 .pic {
 	width: 50px;
@@ -73,5 +130,35 @@ const deleteBtnClick = () => {
 	color: #999;
 	font-size: 12px;
 	margin-inline-start: 10px;
+}
+
+.right {
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+}
+
+.replyBtn {
+	font-size: 24px;
+}
+.replyBtn:hover {
+	background-color: transparent;
+	color: #f34159;
+}
+
+.reply-comment-panel {
+	margin-block-start: 10px;
+	margin-inline-start: 50px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+	max-height: 300px;
+	transition: max-height 0.3s, opacity 0.3s;
+}
+.fade-enter-from,
+.fade-leave-to {
+	max-height: 0px;
+	opacity: 0;
 }
 </style>
