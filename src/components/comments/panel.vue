@@ -51,7 +51,6 @@
 </template>
 
 <script setup lang="ts">
-import type { Ref } from "vue";
 import { ref, nextTick } from "vue";
 
 const emits = defineEmits<{
@@ -59,7 +58,7 @@ const emits = defineEmits<{
 }>();
 
 const previewShowed = ref(false);
-const previewMd: Ref<HTMLElement | null> = ref(null);
+const previewMd = ref<HTMLElement | null>(null);
 
 const commentText = ref("");
 const nickname = ref("");

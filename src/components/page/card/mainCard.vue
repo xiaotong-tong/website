@@ -1,5 +1,13 @@
 <template>
-	<div class="card" :dark="store.isDark ? '' : undefined">
+	<div
+		:dark="store.isDark ? '' : undefined"
+		ref="card"
+		:class="{
+			card: true,
+			visibled: visibled,
+			unvisibled: !visibled
+		}"
+	>
 		<div class="thumbnail-wrap">
 			<img
 				class="thumbnail"
@@ -29,6 +37,7 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted, ref, onBeforeUnmount } from "vue";
 import { useStore } from "@/stores/index";
 const store = useStore();
 
@@ -53,6 +62,36 @@ const props = withDefaults(defineProps<Props>(), {
 		thumbnail: "",
 		abstract: ""
 	})
+});
+
+const card = ref<HTMLElement | null>(null);
+const visibled = ref(false);
+
+const intersectionObserver = new IntersectionObserver(
+	(entries) => {
+		const entry = entries[0];
+
+		if (entry.intersectionRatio > 0) {
+			visibled.value = true;
+
+			// 在更新完成后，取消监听
+			intersectionObserver.unobserve(entry.target);
+		}
+	},
+	{
+		threshold: [0.1]
+	}
+);
+
+onMounted(() => {
+	if (card.value) {
+		intersectionObserver.observe(card.value);
+	}
+});
+
+onBeforeUnmount(() => {
+	// 在组件卸载前，如果还在监听，就取消监听
+	intersectionObserver?.disconnect();
 });
 </script>
 
@@ -128,5 +167,16 @@ const props = withDefaults(defineProps<Props>(), {
 	.thumbnail-wrap {
 		flex: 0 0 100%;
 	}
+}
+
+/* 显示动画 */
+.card.unvisibled {
+	opacity: 0;
+	transform: scale(0.3);
+}
+.card.visibled {
+	opacity: 1;
+	transform: scale(1);
+	transition: opacity 0.3s, transform 0.4s ease-in-out;
 }
 </style>
