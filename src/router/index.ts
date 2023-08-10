@@ -60,7 +60,18 @@ const router = createRouter({
 				}
 			]
 		}
-	]
+	],
+	// 在切换页面时，滚动到顶部
+	scrollBehavior(_to, _from, savedPosition) {
+		if (savedPosition) {
+			return savedPosition;
+		} else {
+			return {
+				top: 0,
+				behavior: "smooth"
+			};
+		}
+	}
 });
 
 export default router;
