@@ -15,8 +15,9 @@
 </template>
 
 <script setup lang="ts">
+import type { Comment } from "@/types/comment";
 interface Props {
-	comments: any[];
+	comments: Comment[];
 	isChildren?: boolean;
 }
 const props = withDefaults(defineProps<Props>(), {

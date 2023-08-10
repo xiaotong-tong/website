@@ -54,6 +54,7 @@
 </template>
 
 <script setup lang="ts">
+import type { Comment } from "@/types/comment";
 import { ref, provide, inject } from "vue";
 import { delectComment, addComment } from "@/api/blog/comment";
 import { useStore } from "@/stores/index";
@@ -62,10 +63,10 @@ const store = useStore();
 const route = useRoute();
 
 interface Props {
-	comment: object;
+	comment: Comment;
 }
 const props = withDefaults(defineProps<Props>(), {
-	comment: () => ({})
+	comment: () => ({} as Comment)
 });
 
 const delected = ref(false);

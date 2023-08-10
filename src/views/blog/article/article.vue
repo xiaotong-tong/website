@@ -28,6 +28,7 @@
 <script setup lang="ts">
 import type { Ref } from "vue";
 import type { Acticle } from "@/types/acticle";
+import type { Comment } from "@/types/comment";
 import { ref, watch } from "vue";
 import { getActicleById } from "@/api/blog/acticle";
 import { addComment, getCommentList } from "@/api/blog/comment";
@@ -59,7 +60,7 @@ const commentSubmitEvent = (data: { commentText: string; nickname: string; email
 	});
 };
 
-const commentList = ref([]);
+const commentList: Ref<Comment[]> = ref([]);
 const getComments = async () => {
 	const data = await getCommentList(id.value);
 

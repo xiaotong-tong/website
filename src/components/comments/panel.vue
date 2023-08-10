@@ -51,6 +51,7 @@
 </template>
 
 <script setup lang="ts">
+import type { Ref } from "vue";
 import { ref, nextTick } from "vue";
 
 const emits = defineEmits<{
@@ -58,15 +59,13 @@ const emits = defineEmits<{
 }>();
 
 const previewShowed = ref(false);
-const previewMd = ref(null);
+const previewMd: Ref<HTMLElement | null> = ref(null);
 
 const commentText = ref("");
 const nickname = ref("");
 const email = ref("");
-const textInputEvent = (e: Event) => {
-	if (previewShowed.value) {
-		console.log(typeof commentText.value);
-
+const textInputEvent = () => {
+	if (previewShowed.value && previewMd.value) {
 		previewMd.value.textContent = commentText.value;
 	}
 };
@@ -75,7 +74,7 @@ const previewBtnClick = () => {
 	previewShowed.value = !previewShowed.value;
 
 	nextTick(() => {
-		if (previewShowed.value) {
+		if (previewShowed.value && previewMd.value) {
 			previewMd.value.textContent = commentText.value;
 		}
 	});
@@ -114,9 +113,6 @@ const submitEvent = () => {
 	border: none;
 }
 
-.content {
-	/* padding: 8px 16px; */
-}
 .textarea::part(textarea) {
 	min-height: 100px;
 	border: none;
