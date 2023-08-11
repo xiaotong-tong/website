@@ -10,6 +10,7 @@
 <style scoped>
 .logo {
 	display: flex;
+	font-family: "luoliti", Arial, Helvetica, sans-serif;
 }
 .logo::part(link) {
 	box-sizing: border-box;
