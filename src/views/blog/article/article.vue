@@ -23,10 +23,14 @@
 		<h3>发布评论：</h3>
 		<namiCommentPanel class="comment-panel" @submit="commentSubmitEvent"></namiCommentPanel>
 	</section>
+
+	<Teleport to="head">
+		<!-- 如果文章中有 tags 属性，那么就将 tags 的内容添加到 meta 标签中的 keywords 中 -->
+		<meta v-if="acticle?.tags" name="keywords" :content="acticle?.tags" />
+	</Teleport>
 </template>
 
 <script setup lang="ts">
-import type { Ref } from "vue";
 import type { Acticle } from "@/types/acticle";
 import type { Comment } from "@/types/comment";
 import { ref, watch } from "vue";
@@ -40,7 +44,7 @@ const router = useRouter();
 
 const id = ref(Number(route.params.id));
 
-const acticle: Ref<Acticle | null> = ref(null);
+const acticle = ref<Acticle | null>(null);
 
 // 获取文章内容
 const getActicle = async () => {
@@ -48,6 +52,9 @@ const getActicle = async () => {
 
 	const { data } = await getActicleById(id.value);
 	acticle.value = data.data;
+
+	// 修改页面标题
+	document.title = `${data.data.title} - 星川漣の家`;
 };
 const commentSubmitEvent = (data: { commentText: string; nickname: string; email: string }) => {
 	addComment({
@@ -60,7 +67,7 @@ const commentSubmitEvent = (data: { commentText: string; nickname: string; email
 	});
 };
 
-const commentList: Ref<Comment[]> = ref([]);
+const commentList = ref<Comment[]>([]);
 const getComments = async () => {
 	const data = await getCommentList(id.value);
 

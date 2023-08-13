@@ -7,6 +7,14 @@
 			:info="{ ...item, headerLink: '/article/' + item.id }"
 		/>
 	</section>
+
+	<Teleport to="head">
+		<meta name="keywords" content="星川漣,小恸恸,博客,前端,日语" />
+		<meta
+			name="description"
+			content="星川漣的个人博客,主要记录一些前端代码功能, 以及一些代码设计。"
+		/>
+	</Teleport>
 </template>
 
 <script setup lang="ts">
@@ -21,6 +29,9 @@ const acticleList: Ref<Acticle[] | null> = ref(null);
 	const data = await getActicleList();
 	acticleList.value = data;
 })();
+
+// 修改页面标题
+document.title = "星川漣の家";
 </script>
 
 <style scoped>

@@ -8,7 +8,11 @@ export const useStore = defineStore("main", () => {
 
 	const settings = JSON.parse(localStorage.getItem("settings") || "{}");
 
-	const isDark = ref(settings.isDark || false);
+	// window.matchMedia("(prefers-color-scheme: dark)").matches 用于检测系统是否开启了暗黑模式
+	// 如果用户没有设置过主题，那么就使用系统的主题
+	const isDark = ref(
+		settings.isDark || window.matchMedia("(prefers-color-scheme: dark)").matches
+	);
 
 	// 在 isDark 发生变化时，同步改变 localStorage 中的设置
 	watch(isDark, (val) => {

@@ -14,12 +14,11 @@
 </template>
 
 <script setup lang="ts">
-import type { Ref } from "vue";
 import type { JPWord } from "@/types/word";
 import { ref } from "vue";
 import { getWordList } from "@/api/blog/word";
 
-const wordList: Ref<JPWord[]> = ref([]);
+const wordList = ref<JPWord[]>([]);
 
 (async () => {
 	const data = await getWordList();
@@ -32,6 +31,9 @@ const playSound = (e: MouseEvent) => {
 		?.nextElementSibling as HTMLAudioElement;
 	audio?.play();
 };
+
+// 修改页面标题
+document.title = "日本語単語勉強 - 星川漣の家";
 </script>
 
 <style scoped>
