@@ -12,11 +12,14 @@
 				<slot name="icon"></slot>
 			</div>
 		</div>
+
+		<namiChatBox ref="chatBox"></namiChatBox>
 	</section>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
+import namiChatBox from "@/components/live2d/chatbox.vue";
 
 const live2dLoaded = ref(false);
 
@@ -47,6 +50,16 @@ onMounted(() => {
 	};
 
 	document.body.appendChild(live2dCubismcoreScript);
+});
+
+const chatBox = ref<InstanceType<typeof namiChatBox>>();
+
+const showChatBox = (msg: string) => {
+	chatBox.value?.showChatBox(msg);
+};
+
+defineExpose({
+	showChatBox
 });
 </script>
 

@@ -3,7 +3,7 @@
 		src="https://image.xtt.moe/images/2023/07/18/b885910a19d8bc3eed2c5e98828ba61ea8d34544.jpg"
 		:mask="store.isDark ? '' : undefined"
 	></xtt-web-bg>
-	<kanbanarea v-show="live2dShowed">
+	<kanbanarea v-show="live2dShowed" ref="live2d">
 		<template #icon>
 			<namiIcon
 				:ref="appendIcon"
@@ -11,6 +11,7 @@
 				icon="mdiHomeOutline"
 				data-xtt-tooltip="首页"
 				@click="router.push('/')"
+				@mouseenter="live2d?.showChatBox('要回到首页吗？')"
 			></namiIcon>
 			<namiIcon
 				:ref="appendIcon"
@@ -79,6 +80,7 @@ import { useStore } from "@/stores/index";
 const store = useStore();
 const router = useRouter();
 
+const live2d = ref<InstanceType<typeof kanbanarea>>();
 const live2dShowed = ref(true);
 
 const iconTooltip: Ref<xttTooltipElement | null> = ref(null);
