@@ -3,7 +3,7 @@
 		src="https://image.xtt.moe/images/2023/07/18/b885910a19d8bc3eed2c5e98828ba61ea8d34544.jpg"
 		:mask="store.isDark ? '' : undefined"
 	></xtt-web-bg>
-	<kanbanarea v-show="live2dShowed" ref="live2d">
+	<kanbanarea v-if="live2dShowed && !store.isSmallScreen" ref="live2d">
 		<template #icon>
 			<namiIcon
 				:ref="appendIcon"
@@ -11,7 +11,7 @@
 				icon="mdiHomeOutline"
 				data-xtt-tooltip="首页"
 				@click="router.push('/')"
-				@mouseenter="live2d?.showChatBox('要回到首页吗？')"
+				@mouseenter="live2d?.showChatBox('要回到首页吗？', 3000)"
 			></namiIcon>
 			<namiIcon
 				:ref="appendIcon"
@@ -19,6 +19,7 @@
 				icon="mdiEmailOpenHeartOutline"
 				data-xtt-tooltip="私密服务"
 				@click="verifyLogin"
+				@mouseenter="live2d?.showChatBox('要确认身份吗？', 3000)"
 			></namiIcon>
 			<namiIcon
 				v-if="store.loginUid"
@@ -49,6 +50,7 @@
 				icon="mdiThemeLightDark"
 				data-xtt-tooltip="切换主题"
 				@click="store.isDark = !store.isDark"
+				@mouseenter="live2d?.showChatBox('点击可以切换深色或浅色模式哦~', 3000)"
 			></namiIcon>
 			<namiIcon
 				:ref="appendIcon"
@@ -56,6 +58,7 @@
 				icon="mdiClose"
 				data-xtt-tooltip="隐藏 live2d"
 				@click="live2dShowed = false"
+				@mouseenter="live2d?.showChatBox('还需要我帮忙吗？', 3000)"
 			></namiIcon>
 			<xtt-tooltip ref="iconTooltip">default value</xtt-tooltip>
 		</template>
@@ -70,7 +73,6 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import type { Ref } from "vue";
 import kanbanarea from "../components/live2d/kanbanarea.vue";
 import namiHeader from "../components/page/header/header.vue";
 import { verifyMasterUid } from "../api/blog/verify";
@@ -83,7 +85,7 @@ const router = useRouter();
 const live2d = ref<InstanceType<typeof kanbanarea>>();
 const live2dShowed = ref(true);
 
-const iconTooltip: Ref<xttTooltipElement | null> = ref(null);
+const iconTooltip = ref<xttTooltipElement | null>(null);
 const icons: HTMLElement[] = [];
 
 const appendIcon = (icon: any) => {
@@ -92,14 +94,6 @@ const appendIcon = (icon: any) => {
 
 onMounted(() => {
 	iconTooltip.value?.initTrigger(icons);
-
-	window.addEventListener("resize", () => {
-		if (window.innerWidth < 768) {
-			live2dShowed.value = false;
-		} else {
-			live2dShowed.value = true;
-		}
-	});
 });
 
 const verifyLogin = async () => {

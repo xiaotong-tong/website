@@ -29,10 +29,18 @@ const store = useStore();
 	backdrop-filter: blur(5px);
 }
 
+.theme-dark .header:hover {
+	background-color: #00000020;
+}
+
 .small-screen .header {
 	background-color: #ffffffaa;
 	backdrop-filter: blur(5px);
 }
+.small-screen.theme-dark .header {
+	background-color: #00000020;
+}
+
 .logo {
 	width: calc((100% - 1000px) / 2);
 	min-width: 36px;

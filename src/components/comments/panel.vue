@@ -110,12 +110,19 @@ const submitEvent = () => {
 }
 .input::part(input) {
 	border: none;
+	background-color: transparent;
+}
+.theme-dark .input::part(input) {
+	color: #fff;
 }
 
 .textarea::part(textarea) {
 	min-height: 100px;
 	border: none;
 	background-color: transparent;
+}
+.theme-dark .textarea::part(textarea) {
+	color: #fff;
 }
 
 .footer {

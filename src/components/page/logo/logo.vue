@@ -12,6 +12,9 @@
 	display: flex;
 	font-family: "luoliti", Arial, Helvetica, sans-serif;
 }
+.theme-dark .logo {
+	color: #fff;
+}
 .logo::part(link) {
 	box-sizing: border-box;
 	align-items: center;

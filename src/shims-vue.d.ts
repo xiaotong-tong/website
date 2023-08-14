@@ -20,9 +20,7 @@ interface xttTooltipElement extends HTMLElement {
 	initTrigger: (icons: HTMLElement[] | HTMLElement | NodeList) => void;
 }
 
-interface Window {
-	live2dLoader: any;
-}
+declare var live2dLoader: any;
 
 declare global {
 	interface HTMLElementTagNameMap {

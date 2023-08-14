@@ -24,9 +24,9 @@ import namiChatBox from "@/components/live2d/chatbox.vue";
 const live2dLoaded = ref(false);
 
 const loadModel = (resourcePath: string, modelNames: string[]) => {
-	window.live2dLoader.resourcesConfig.setResourcesPath(resourcePath);
-	window.live2dLoader.resourcesConfig.setModelNames(modelNames);
-	window.live2dLoader.start();
+	live2dLoader.resourcesConfig.setResourcesPath(resourcePath);
+	live2dLoader.resourcesConfig.setModelNames(modelNames);
+	live2dLoader.start();
 };
 
 onMounted(() => {
@@ -54,8 +54,8 @@ onMounted(() => {
 
 const chatBox = ref<InstanceType<typeof namiChatBox>>();
 
-const showChatBox = (msg: string) => {
-	chatBox.value?.showChatBox(msg);
+const showChatBox = (msg: string, hideDelay: number = 5000) => {
+	chatBox.value?.showChatBox(msg, hideDelay);
 };
 
 defineExpose({
