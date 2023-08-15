@@ -64,6 +64,8 @@
 		</template>
 	</kanbanarea>
 
+	<namiAplayer></namiAplayer>
+
 	<namiHeader></namiHeader>
 
 	<main class="main">
@@ -74,6 +76,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import kanbanarea from "../components/live2d/kanbanarea.vue";
+import namiAplayer from "../components/aplayer/aplayer.vue";
 import namiHeader from "../components/page/header/header.vue";
 import { verifyMasterUid } from "../api/blog/verify";
 import { useRouter } from "vue-router";

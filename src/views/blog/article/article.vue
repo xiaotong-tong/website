@@ -4,7 +4,7 @@
 			>编辑</xtt-button
 		>
 	</div>
-	<section class="container" :dark="store.isDark ? '' : undefined">
+	<section class="container" :dark="store.isDark ? '' : undefined" v-if="acticle">
 		<h2>
 			{{ acticle?.title }}
 		</h2>
@@ -23,6 +23,7 @@
 		<h3>发布评论：</h3>
 		<namiCommentPanel class="comment-panel" @submit="commentSubmitEvent"></namiCommentPanel>
 	</section>
+	<section v-else>少女祈祷中...</section>
 
 	<Teleport to="head">
 		<!-- 如果文章中有 tags 属性，那么就将 tags 的内容添加到 meta 标签中的 keywords 中 -->

@@ -16,6 +16,12 @@ declare module "xtt-ui/plugins/xtt-mouseSnow" {
 	}
 }
 
+declare module "aplayer" {
+	export default class APlayer {
+		constructor(options: any);
+	}
+}
+
 interface xttTooltipElement extends HTMLElement {
 	initTrigger: (icons: HTMLElement[] | HTMLElement | NodeList) => void;
 }

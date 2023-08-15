@@ -33,3 +33,4 @@ pnpm-lock.yaml
 .env.*
 
 public/sounds/
+public/musics/

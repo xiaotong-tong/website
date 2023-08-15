@@ -67,7 +67,7 @@ defineExpose({
 .live2d-wrapper {
 	position: fixed;
 	left: 0;
-	bottom: 0;
+	bottom: 65px;
 	width: 500px;
 	height: 500px;
 	z-index: 999;
