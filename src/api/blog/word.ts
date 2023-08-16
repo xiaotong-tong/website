@@ -34,3 +34,10 @@ export async function getWordList(): Promise<JPWord[]> {
 
 	return data.data;
 }
+
+export async function editWordById(id: number, body: AddWordBody) {
+	// 数据修改后，清除缓存
+	catchs.clear();
+
+	return await http.put(`/word/edit/${id}`, body);
+}

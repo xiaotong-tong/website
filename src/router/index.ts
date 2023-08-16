@@ -44,11 +44,6 @@ const router = createRouter({
 					component: () => import("../views/blog/jp/words/words.vue")
 				},
 				{
-					path: "/jp/words/add",
-					name: "jpWordsAdd",
-					component: () => import("../views/blog/jp/words/add.vue")
-				},
-				{
 					path: "/net",
 					name: "net",
 					component: () => import("../views/blog/net/index.vue")

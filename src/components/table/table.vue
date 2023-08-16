@@ -27,7 +27,10 @@ const props = withDefaults(defineProps<Props>(), {
 
 const colCount = ref(0);
 
-const columnSlot = slots.default?.();
+let columnSlot = slots.default?.();
+
+// 当前组件的子组件如果不是 table-column 则过滤掉
+columnSlot = columnSlot?.filter((item: any) => item.type?.__name === "table-column");
 
 colCount.value = columnSlot?.length || 0;
 
@@ -59,5 +62,6 @@ const tableCellComponents = (i: number, row: any): any => {
 	display: grid;
 	grid-template-columns: v-bind(girdTemplateColumns);
 	row-gap: 8px;
+	column-gap: 4px;
 }
 </style>

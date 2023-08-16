@@ -13,6 +13,7 @@
 		</div>
 
 		<p>选择列表</p>
+		<span class="info">自定义上传的头像会向所有人员公开，所有人都可以使用</span>
 		<div class="photoWrap">
 			<img
 				class="photo"
@@ -188,5 +189,11 @@ onMounted(() => {
 	height: 50px;
 	border-radius: 50%;
 	cursor: pointer;
+}
+
+.info {
+	color: red;
+	display: block;
+	margin-block-end: 8px;
 }
 </style>
