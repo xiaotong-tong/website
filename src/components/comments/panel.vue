@@ -2,6 +2,10 @@
 	<div class="comment-panel">
 		<div class="header">
 			<label class="label"
+				>头像
+				<namiCommentsPhoto v-model:src="photoSrc"></namiCommentsPhoto>
+			</label>
+			<label class="label"
 				>昵称
 				<xtt-input type="text" class="input" maxlength="32" v-model="nickname" />
 			</label>
@@ -52,13 +56,19 @@
 
 <script setup lang="ts">
 import { ref, nextTick } from "vue";
+import namiCommentsPhoto from "./photo.vue";
 
 const emits = defineEmits<{
-	(e: "submit", data: { commentText: string; nickname: string; email: string }): void;
+	(
+		e: "submit",
+		data: { commentText: string; nickname: string; email: string; photoUrl: string }
+	): void;
 }>();
 
 const previewShowed = ref(false);
 const previewMd = ref<HTMLElement | null>(null);
+
+const photoSrc = ref("https://image.xtt.moe/images/2023/08/09/mlian2.md.png");
 
 const commentText = ref("");
 const nickname = ref("");
@@ -83,7 +93,8 @@ const submitEvent = () => {
 	emits("submit", {
 		commentText: commentText.value,
 		nickname: nickname.value,
-		email: email.value
+		email: email.value,
+		photoUrl: photoSrc.value
 	});
 
 	commentText.value = "";
@@ -105,6 +116,7 @@ const submitEvent = () => {
 	padding-block-start: 4px;
 	border-block-end: 1px solid #ccc;
 }
+
 .label {
 	padding-inline-start: 16px;
 }

@@ -57,9 +57,15 @@ const getActicle = async () => {
 	// 修改页面标题
 	document.title = `${data.data.title} - 星川漣の家`;
 };
-const commentSubmitEvent = (data: { commentText: string; nickname: string; email: string }) => {
+const commentSubmitEvent = (data: {
+	commentText: string;
+	nickname: string;
+	email: string;
+	photoUrl: string;
+}) => {
 	addComment({
 		nickname: data.nickname,
+		photoUrl: data.photoUrl,
 		email: data.email,
 		content: data.commentText,
 		articleId: id.value

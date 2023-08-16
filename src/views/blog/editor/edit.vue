@@ -81,6 +81,7 @@ const deleteEvent = async () => {
 
 const uploadImageEvent = async () => {
 	const file = document.createElement("input");
+	file.accept = "image/*";
 	file.type = "file";
 	file.click();
 

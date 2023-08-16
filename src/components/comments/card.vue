@@ -3,7 +3,10 @@
 		<div class="comment" v-if="!delected">
 			<div class="left">
 				<img
-					src="https://image.xtt.moe/images/2023/08/09/mlian2.md.png"
+					:src="
+						props.comment.photoUrl ||
+						'https://image.xtt.moe/images/2023/08/09/mlian2.md.png'
+					"
 					alt="评论者头像"
 					class="pic"
 				/>
@@ -87,6 +90,7 @@ const replyCommentSubmitEvent = (data: {
 	commentText: string;
 	nickname: string;
 	email: string;
+	photoUrl: string;
 }) => {
 	const articleId = Number(route.params.id);
 
@@ -96,6 +100,7 @@ const replyCommentSubmitEvent = (data: {
 		nickname: data.nickname,
 		email: data.email,
 		content: data.commentText,
+		photoUrl: data.photoUrl,
 		articleId,
 		parent: parentCommentId || props.comment.id,
 		replyId: props.comment.id,

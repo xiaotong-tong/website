@@ -25,11 +25,15 @@ declare module "aplayer" {
 interface xttTooltipElement extends HTMLElement {
 	initTrigger: (icons: HTMLElement[] | HTMLElement | NodeList) => void;
 }
+interface xttDialogElement extends HTMLElement {
+	open: () => void;
+}
 
 declare var live2dLoader: any;
 
 declare global {
 	interface HTMLElementTagNameMap {
 		"xtt-tooltip": xttTooltipElement;
+		"xtt-dialog": xttDialogElement;
 	}
 }

@@ -67,6 +67,7 @@ const submitEvent = async () => {
 const uploadImageEvent = async () => {
 	const file = document.createElement("input");
 	file.type = "file";
+	file.accept = "image/*";
 	file.click();
 
 	file.onchange = async () => {
@@ -79,6 +80,8 @@ const uploadImageEvent = async () => {
 		const { data } = await uploadImage(fd);
 		console.log(data);
 		thumbnail.value = data.image.url.replace("http:", "https:");
+
+		file.remove();
 	};
 };
 </script>
