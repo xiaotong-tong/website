@@ -52,6 +52,7 @@
 	display: flex;
 	column-gap: 8px;
 	padding: 0;
+	white-space: nowrap;
 }
 
 .right {
