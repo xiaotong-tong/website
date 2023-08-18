@@ -116,7 +116,7 @@ const verifyLogin = async () => {
 <style scoped>
 .main {
 	width: min(900px, 90%);
-	margin: 0 auto;
+	margin: 0 auto 60px;
 }
 
 .icon {
