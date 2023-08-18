@@ -1,9 +1,11 @@
 <template>
 	<div>
-		<div class="count" v-if="!props.isChildren">
-			<span>{{ props.comments.length }}</span
-			>条评论
-		</div>
+		<template v-if="!props.isGuestbook">
+			<div class="count" v-if="!props.isChildren">
+				<span>{{ props.comments.length }}</span
+				>条评论
+			</div>
+		</template>
 
 		<div :class="{ isChildren: props.isChildren }">
 			<template v-for="comment in props.comments" :key="comment.id">
@@ -19,10 +21,12 @@ import type { Comment } from "@/types/comment";
 interface Props {
 	comments: Comment[];
 	isChildren?: boolean;
+	isGuestbook?: boolean;
 }
 const props = withDefaults(defineProps<Props>(), {
 	comments: () => [],
-	isChildren: false
+	isChildren: false,
+	isGuestbook: false
 });
 </script>
 

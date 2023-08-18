@@ -13,6 +13,9 @@
 			<li>
 				<namiLink class="link" inline-block to="/note">喵随笔</namiLink>
 			</li>
+			<li>
+				<namiLink class="link" inline-block to="/guestbook">留言板</namiLink>
+			</li>
 		</ul>
 
 		<ul class="list right">
@@ -70,5 +73,9 @@
 .github-link::part(link) {
 	align-items: center;
 	column-gap: 8px;
+}
+
+.small-screen .link {
+	--link-padding: 2px 4px;
 }
 </style>

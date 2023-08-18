@@ -2,7 +2,8 @@ import http from "../axios";
 import type { Comment } from "@/types/comment";
 
 interface AddCommentBody {
-	articleId: number;
+	articleId?: number;
+	isGuestbook?: boolean;
 	photoUrl?: string;
 	nickname?: string;
 	email?: string;
@@ -12,14 +13,30 @@ interface AddCommentBody {
 	parentId?: number;
 }
 export async function addComment(body: AddCommentBody) {
+	if (!body.articleId && !body.isGuestbook) {
+		throw new Error("articleId or isGuestbook is required");
+	}
 	return await http.post("/comment/add", body);
 }
 
-export async function getCommentList(articleId: number): Promise<Comment[]> {
+export async function getCommentList(options: {
+	articleId?: number;
+	isGuestbook?: boolean;
+}): Promise<Comment[]> {
+	const { articleId, isGuestbook } = options;
+
+	if (!articleId && !isGuestbook) {
+		throw new Error("articleId or isGuestbook is required");
+	}
+
 	const data = await http.get("/comment/list", {
-		params: {
-			articleId
-		}
+		params: isGuestbook
+			? {
+					isGuestbook
+			  }
+			: {
+					articleId
+			  }
 	});
 
 	return data.data;

@@ -4,6 +4,7 @@ export interface Comment {
 	id: number;
 	uid: UUID;
 	articleId: number;
+	isGuestbook: boolean;
 	photoUrl: string;
 	nickname: string;
 	content: string;

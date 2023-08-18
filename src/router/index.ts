@@ -52,6 +52,11 @@ const router = createRouter({
 					path: "/note",
 					name: "note",
 					component: () => import("../views/blog/note/index.vue")
+				},
+				{
+					path: "/guestbook",
+					name: "guestbook",
+					component: () => import("../views/blog/guestbook/index.vue")
 				}
 			]
 		}

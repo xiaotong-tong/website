@@ -132,6 +132,10 @@ onBeforeUnmount(() => {
 .info-wrap h2 {
 	margin-block-start: 8px;
 }
+
+.small-screen .info-wrap h2 {
+	font-size: 18px;
+}
 .info-wrap .title-link {
 	width: 100%;
 	--link-padding: 0;

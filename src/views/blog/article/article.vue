@@ -76,7 +76,9 @@ const commentSubmitEvent = (data: {
 
 const commentList = ref<Comment[]>([]);
 const getComments = async () => {
-	const data = await getCommentList(id.value);
+	const data = await getCommentList({
+		articleId: id.value
+	});
 
 	commentList.value = data;
 };

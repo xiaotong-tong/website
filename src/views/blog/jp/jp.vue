@@ -23,12 +23,11 @@
 </template>
 
 <script setup lang="ts">
-import type { Ref } from "vue";
 import type { Acticle } from "@/types/acticle";
 import { ref } from "vue";
 import { getActicleList } from "@/api/blog/acticle";
 
-const acticleList: Ref<Acticle[] | null> = ref(null);
+const acticleList = ref<Acticle[] | null>(null);
 
 (async () => {
 	const data = await getActicleList({ category: "日语学习" });
