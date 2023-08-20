@@ -33,4 +33,8 @@ body {
 	font-family: "luoliti";
 	src: url("/fonts/LuoLiTi-2.ttf");
 }
+@font-face {
+	font-family: "katong";
+	src: url("/fonts/katong.ttf");
+}
 </style>

@@ -1,6 +1,8 @@
 import "xtt-ui/nami";
 import "./js/mousesnow.js";
 
+// import "galmuri/dist/galmuri.css";
+
 import { App } from "vue";
 
 import link from "../components/link/link.vue";

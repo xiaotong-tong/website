@@ -43,6 +43,6 @@ const store = useStore();
 
 .logo {
 	width: calc((100% - 1000px) / 2);
-	min-width: 36px;
+	min-width: 80px;
 }
 </style>
