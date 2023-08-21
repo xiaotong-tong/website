@@ -1,5 +1,5 @@
 import type { AxiosResponse } from "axios";
-import type { Acticle, AddActicleBody, EditActicleBody } from "@/types/acticle";
+import type { Acticle, AddActicleBody, EditActicleBody, ActicleById } from "@/types/acticle";
 import http from "../axios";
 
 const catchs = new Map();
@@ -55,8 +55,8 @@ export async function getActicleList(filters?: GetActicleListFilters): Promise<A
 	return data.data;
 }
 
-export async function getActicleById(id: number) {
-	return await http.get(`/acticle/${id}`);
+export async function getActicleById(id: number): Promise<ActicleById> {
+	return (await http.get(`/acticle/${id}`)).data;
 }
 
 export async function editActicleById(id: number, body: EditActicleBody) {

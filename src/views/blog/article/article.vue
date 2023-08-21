@@ -18,6 +18,15 @@
 			acticle?.content
 		}}</xtt-markdown>
 
+		<div class="pagination">
+			<nami-link :to="'/article/' + acticle?.prev.id" v-if="acticle?.prev" class="link">
+				上一篇: {{ acticle?.prev.title }}</nami-link
+			>
+			<nami-link :to="'/article/' + acticle?.next.id" v-if="acticle?.next" class="link"
+				>下一篇: {{ acticle?.next.title }}</nami-link
+			>
+		</div>
+
 		<namiCommentList class="comment-list" :comments="commentList"></namiCommentList>
 
 		<h3>发布评论：</h3>
@@ -32,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Acticle } from "@/types/acticle";
+import type { ActicleById } from "@/types/acticle";
 import type { Comment } from "@/types/comment";
 import { ref, watch } from "vue";
 import { getActicleById } from "@/api/blog/acticle";
@@ -45,17 +54,17 @@ const router = useRouter();
 
 const id = ref(Number(route.params.id));
 
-const acticle = ref<Acticle | null>(null);
+const acticle = ref<ActicleById | null>(null);
 
 // 获取文章内容
 const getActicle = async () => {
 	if (!id.value) return;
 
-	const { data } = await getActicleById(id.value);
-	acticle.value = data.data;
+	const data = await getActicleById(id.value);
+	acticle.value = data;
 
 	// 修改页面标题
-	document.title = `${data.data.title} - 星川漣の家`;
+	document.title = `${data.title} - 星川漣の家`;
 };
 const commentSubmitEvent = (data: {
 	commentText: string;
@@ -97,6 +106,7 @@ watch(
 
 		id.value = Number(newURL.id);
 		getActicle();
+		getComments();
 	}
 );
 </script>
@@ -125,5 +135,16 @@ watch(
 }
 .comment-panel {
 	margin-block-start: 20px;
+}
+
+.pagination {
+	display: flex;
+	justify-content: space-between;
+	column-gap: 16px;
+	margin-block-start: 24px;
+	font-family: "miaowu", Arial, Helvetica, sans-serif;
+}
+.pagination .link:hover {
+	color: #f34159;
 }
 </style>

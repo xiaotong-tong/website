@@ -13,6 +13,19 @@ export interface Acticle {
 	abstract: string;
 }
 
+export interface ActicleById extends Acticle {
+	next: {
+		id: number;
+		uid: UUID;
+		title: string;
+	};
+	prev: {
+		id: number;
+		uid: UUID;
+		title: string;
+	};
+}
+
 export interface AddActicleBody {
 	title: string;
 	content: string;

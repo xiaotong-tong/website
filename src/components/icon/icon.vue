@@ -21,7 +21,8 @@ import {
 	mdiPenPlus,
 	mdiGithub,
 	mdiMapSearchOutline,
-	mdiReplyOutline
+	mdiReplyOutline,
+	mdiArrowLeft
 } from "@mdi/js";
 
 interface Props {
@@ -39,7 +40,8 @@ interface Props {
 		| "mdiPenPlus"
 		| "mdiGithub"
 		| "mdiMapSearchOutline"
-		| "mdiReplyOutline";
+		| "mdiReplyOutline"
+		| "mdiArrowLeft";
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -61,7 +63,8 @@ const reflectIcon = (icon: Props["icon"]) => {
 		mdiPenPlus,
 		mdiGithub,
 		mdiMapSearchOutline,
-		mdiReplyOutline
+		mdiReplyOutline,
+		mdiArrowLeft
 	};
 
 	return mdiMap[icon];
