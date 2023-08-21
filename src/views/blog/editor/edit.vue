@@ -102,14 +102,14 @@ const uploadImageEvent = async () => {
 const getActicle = async () => {
 	if (!id.value) return;
 
-	const { data } = await getActicleById(id.value);
-	title.value = data.data.title;
-	content.value = data.data.content;
-	author.value = data.data.author;
-	category.value.value = data.data.category;
-	tags.value = data.data.tags;
-	abstract.value = data.data.abstract;
-	thumbnail.value = data.data.thumbnail;
+	const data = await getActicleById(id.value);
+	title.value = data.title;
+	content.value = data.content;
+	author.value = data.author;
+	category.value.value = data.category;
+	tags.value = data.tags;
+	abstract.value = data.abstract;
+	thumbnail.value = data.thumbnail;
 };
 getActicle();
 
