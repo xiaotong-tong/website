@@ -97,23 +97,36 @@ onMounted(() => {
 		}
 	});
 
+	// 设置媒体会话的行为
 	if ("mediaSession" in navigator) {
-		// 设置媒体会话的行为
+		// 播放
 		navigator.mediaSession.setActionHandler("play", function () {
 			ap.play();
 		});
+		// 暂停
 		navigator.mediaSession.setActionHandler("pause", function () {
 			ap.pause();
 		});
-		navigator.mediaSession.setActionHandler("seekbackward", function () {
-			ap.seek(Math.max(ap.audio.currentTime - 10, 0));
+		// 后退，如果 seekOffset 存在，就使用 seekOffset，否则默认 10 秒
+		navigator.mediaSession.setActionHandler("seekbackward", function (action) {
+			const { seekOffset = 10 } = action;
+			ap.seek(Math.max(ap.audio.currentTime - seekOffset, 0));
 		});
-		navigator.mediaSession.setActionHandler("seekforward", function () {
-			ap.seek(Math.min(ap.audio.currentTime + 10, ap.audio.duration));
+		// 前进，如果 seekOffset 存在，就使用 seekOffset，否则默认 10 秒
+		navigator.mediaSession.setActionHandler("seekforward", function (action) {
+			const { seekOffset = 10 } = action;
+			ap.seek(Math.min(ap.audio.currentTime + seekOffset, ap.audio.duration));
 		});
+		// 跳转到指定时间
+		navigator.mediaSession.setActionHandler("seekto", function (action) {
+			const { seekTime } = action;
+			ap.seek(seekTime);
+		});
+		// 上一首
 		navigator.mediaSession.setActionHandler("previoustrack", function () {
 			ap.skipBack();
 		});
+		// 下一首
 		navigator.mediaSession.setActionHandler("nexttrack", function () {
 			ap.skipForward();
 		});
