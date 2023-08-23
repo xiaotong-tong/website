@@ -16,9 +16,9 @@
 			<namiIcon
 				:ref="appendIcon"
 				class="icon"
-				icon="mdiChatOutline"
-				data-xtt-tooltip="打开聊天框"
-				@click="live2d?.chatInputShow()"
+				:icon="chatInputBoxShowed ? 'mdiChatRemoveOutline' : 'mdiChatOutline'"
+				:data-xtt-tooltip="chatInputBoxShowed ? '关闭聊天框' : '打开聊天框'"
+				@click="chatInputBoxClickEvent"
 				@mouseenter="live2d?.showChatBox('想聊聊天吗？', 3000)"
 			></namiIcon>
 			<namiIcon
@@ -90,6 +90,17 @@ const live2dShowed = ref(true);
 
 const iconTooltip = ref<xttTooltipElement | null>(null);
 const icons: HTMLElement[] = [];
+
+const chatInputBoxShowed = ref(false);
+const chatInputBoxClickEvent = () => {
+	chatInputBoxShowed.value = !chatInputBoxShowed.value;
+
+	if (chatInputBoxShowed.value) {
+		live2d.value?.chatInputShow();
+	} else {
+		live2d.value?.chatInputHide();
+	}
+};
 
 const appendIcon = (icon: any) => {
 	icons.push(icon?.$el);

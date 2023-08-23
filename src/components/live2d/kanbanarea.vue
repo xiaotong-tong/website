@@ -17,7 +17,9 @@
 
 		<div class="chat-input-box" v-if="chatInputShowed">
 			<xtt-input v-model="chatInputElConent"></xtt-input>
-			<xtt-button @click="chatInputSubmitEvent">提交</xtt-button>
+			<xtt-button @click="chatInputSubmitEvent" :disabled="chatLoading ? true : undefined"
+				>提交</xtt-button
+			>
 		</div>
 	</section>
 </template>
@@ -66,14 +68,19 @@ const showChatBox = (msg: string, hideDelay: number = 5000) => {
 
 const chatInputShowed = ref(false);
 const chatInputElConent = ref("");
+const chatLoading = ref(false);
 const chatInputSubmitEvent = async () => {
 	if (!chatInputElConent.value) return;
+	chatLoading.value = true;
 
 	const res = await chatWithBot(chatInputElConent.value);
 
+	// 打印聊天内容，防止聊天内容过长，无法完全阅读，留个记录
+	console.log(`q: ${chatInputElConent.value}`, `\na: ${res}`);
+
 	chatInputElConent.value = "";
-	chatInputShowed.value = false;
 	showChatBox(res, 10000);
+	chatLoading.value = false;
 };
 
 const chatInputShow = () => {
