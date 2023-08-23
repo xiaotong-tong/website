@@ -44,6 +44,16 @@
 				>
 					<namiIcon icon="mdiMapSearchOutline" />
 				</xtt-button>
+				<!-- <xtt-button
+					class="previewBtn"
+					text
+					data-xtt-tooltip="选择字体"
+					:style="{
+						color: previewShowed ? '#f34159' : undefined
+					}"
+				>
+					<namiIcon icon="mdiFormatFont" />
+				</xtt-button> -->
 			</div>
 			<div class="end">
 				<xtt-button type="primary" @click="submitEvent" @keydown.enter="submitEvent"

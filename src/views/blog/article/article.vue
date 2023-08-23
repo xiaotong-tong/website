@@ -142,7 +142,7 @@ watch(
 	justify-content: space-between;
 	column-gap: 16px;
 	margin-block-start: 24px;
-	font-family: "miaowu", Arial, Helvetica, sans-serif;
+	font-family: "luoliti", Arial, Helvetica, sans-serif;
 }
 .pagination .link:hover {
 	color: #f34159;

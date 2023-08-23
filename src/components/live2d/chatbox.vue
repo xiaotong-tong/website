@@ -1,6 +1,12 @@
 <template>
 	<transition name="fade">
-		<div class="chatbox" ref="chatbox" v-show="chatBoxShowed">
+		<div
+			class="chatbox"
+			ref="chatbox"
+			v-show="chatBoxShowed"
+			@mouseenter="mouseenterEvent"
+			@mouseleave="mouseleaveEvent"
+		>
 			<div class="chatWrap">
 				<p class="chat" ref="chat" v-html="chatContent"></p>
 			</div>
@@ -28,6 +34,18 @@ const showChatBox = (msg: string, hideDelay: number = 5000) => {
 	timer = window.setTimeout(() => {
 		chatBoxShowed.value = false;
 	}, hideDelay);
+};
+
+// 在鼠标移入时清除定时器，鼠标移出时重新设置定时器，防止文字过长，无法完全阅读
+const mouseenterEvent = () => {
+	if (timer) {
+		clearTimeout(timer);
+	}
+};
+const mouseleaveEvent = () => {
+	timer = window.setTimeout(() => {
+		chatBoxShowed.value = false;
+	}, 3000);
 };
 
 onMounted(() => {
@@ -127,7 +145,7 @@ defineExpose({
 
 .chatWrap {
 	max-width: 160px;
-	max-height: 52px;
+	max-height: 250px;
 	/* scrollbar-gutter: stable; */
 	overflow-y: auto;
 	pointer-events: auto;

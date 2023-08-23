@@ -26,15 +26,16 @@ body {
 }
 
 @font-face {
-	font-family: "miaowu";
-	src: url("/fonts/miaowu.ttf");
-}
-@font-face {
 	font-family: "luoliti";
 	src: url("/fonts/LuoLiTi-2.ttf");
 }
 @font-face {
 	font-family: "katong";
 	src: url("/fonts/katong.ttf");
+}
+/* https://www.yishuzi.cn/sucai/84277.html 可爱少女体 */
+@font-face {
+	font-family: "popuramu";
+	src: url("/fonts/popuramu.otf");
 }
 </style>

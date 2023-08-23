@@ -16,6 +16,14 @@
 			<namiIcon
 				:ref="appendIcon"
 				class="icon"
+				icon="mdiChatOutline"
+				data-xtt-tooltip="打开聊天框"
+				@click="live2d?.chatInputShow()"
+				@mouseenter="live2d?.showChatBox('想聊聊天吗？', 3000)"
+			></namiIcon>
+			<namiIcon
+				:ref="appendIcon"
+				class="icon"
 				icon="mdiEmailOpenHeartOutline"
 				data-xtt-tooltip="私密服务"
 				@click="verifyLogin"
@@ -28,14 +36,6 @@
 				icon="mdiBookEditOutline"
 				data-xtt-tooltip="新增 blog"
 				@click="router.push('/editor/add')"
-			></namiIcon>
-			<namiIcon
-				v-if="store.loginUid"
-				:ref="appendIcon"
-				class="icon"
-				icon="mdiPenPlus"
-				data-xtt-tooltip="新增日语单词"
-				@click="router.push('/jp/words/add')"
 			></namiIcon>
 			<namiIcon
 				:ref="appendIcon"

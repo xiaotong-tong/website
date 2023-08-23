@@ -43,7 +43,7 @@
 	align-items: center;
 	width: min(1000px, 100%);
 	padding: 0 8px;
-	font-family: "miaowu", Arial, Helvetica, sans-serif;
+	font-family: "luoliti", Arial, Helvetica, sans-serif;
 }
 [dark] .list {
 	color: #fff;

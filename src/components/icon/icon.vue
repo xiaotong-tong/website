@@ -22,7 +22,9 @@ import {
 	mdiGithub,
 	mdiMapSearchOutline,
 	mdiReplyOutline,
-	mdiArrowLeft
+	mdiArrowLeft,
+	mdiFormatFont,
+	mdiChatOutline
 } from "@mdi/js";
 
 interface Props {
@@ -41,7 +43,9 @@ interface Props {
 		| "mdiGithub"
 		| "mdiMapSearchOutline"
 		| "mdiReplyOutline"
-		| "mdiArrowLeft";
+		| "mdiArrowLeft"
+		| "mdiFormatFont"
+		| "mdiChatOutline";
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -64,7 +68,9 @@ const reflectIcon = (icon: Props["icon"]) => {
 		mdiGithub,
 		mdiMapSearchOutline,
 		mdiReplyOutline,
-		mdiArrowLeft
+		mdiArrowLeft,
+		mdiFormatFont,
+		mdiChatOutline
 	};
 
 	return mdiMap[icon];

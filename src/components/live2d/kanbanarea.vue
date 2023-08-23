@@ -14,12 +14,18 @@
 		</div>
 
 		<namiChatBox ref="chatBox"></namiChatBox>
+
+		<div class="chat-input-box" v-if="chatInputShowed">
+			<xtt-input v-model="chatInputElConent"></xtt-input>
+			<xtt-button @click="chatInputSubmitEvent">提交</xtt-button>
+		</div>
 	</section>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import namiChatBox from "@/components/live2d/chatbox.vue";
+import { chatWithBot } from "@/api/chat/chat";
 
 const live2dLoaded = ref(false);
 
@@ -58,8 +64,29 @@ const showChatBox = (msg: string, hideDelay: number = 5000) => {
 	chatBox.value?.showChatBox(msg, hideDelay);
 };
 
+const chatInputShowed = ref(false);
+const chatInputElConent = ref("");
+const chatInputSubmitEvent = async () => {
+	if (!chatInputElConent.value) return;
+
+	const res = await chatWithBot(chatInputElConent.value);
+
+	chatInputElConent.value = "";
+	chatInputShowed.value = false;
+	showChatBox(res, 10000);
+};
+
+const chatInputShow = () => {
+	chatInputShowed.value = true;
+};
+const chatInputHide = () => {
+	chatInputShowed.value = false;
+};
+
 defineExpose({
-	showChatBox
+	showChatBox,
+	chatInputShow,
+	chatInputHide
 });
 </script>
 
@@ -104,5 +131,15 @@ defineExpose({
 
 .icon-hover-wrap:hover .icon-wrap {
 	display: flex;
+}
+
+.chat-input-box {
+	position: absolute;
+	left: 16px;
+	bottom: 100px;
+	pointer-events: auto;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
 }
 </style>
