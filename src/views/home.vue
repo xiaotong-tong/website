@@ -113,8 +113,8 @@ onMounted(() => {
 const verifyLogin = async () => {
 	const pw = window.prompt("请输入主人口令");
 	if (pw) {
-		const { data } = await verifyMasterUid(pw);
-		if (data.value === "success") {
+		const data = await verifyMasterUid(pw);
+		if (data === "验证成功") {
 			store.loginUid = pw;
 			localStorage.setItem("loginUid", pw);
 		} else {

@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { useStore } from "@/stores/index";
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -72,6 +73,21 @@ const router = createRouter({
 			};
 		}
 	}
+});
+
+router.beforeEach((to, _from, next) => {
+	const store = useStore();
+	// 对于 /editor/add， /editor/edit/:id 等路由，需要登录才能访问
+	if (to.path.startsWith("/editor")) {
+		if (store.loginUid) {
+			next();
+		} else {
+			next("/");
+		}
+		return;
+	}
+
+	next();
 });
 
 export default router;
