@@ -1,4 +1,5 @@
-import "xtt-ui/nami";
+import "xtt-ui";
+import "xtt-ui/xtt-web-bg.js";
 import "./js/mousesnow.js";
 
 // import "galmuri/dist/galmuri.css";

@@ -81,6 +81,7 @@ import namiHeader from "../components/page/header/header.vue";
 import { verifyMasterUid } from "../api/blog/verify";
 import { useRouter } from "vue-router";
 import { useStore } from "@/stores/index";
+import type { XttTooltipElement } from "xtt-ui/index.d.ts";
 
 const store = useStore();
 const router = useRouter();
@@ -88,7 +89,7 @@ const router = useRouter();
 const live2d = ref<InstanceType<typeof kanbanarea>>();
 const live2dShowed = ref(true);
 
-const iconTooltip = ref<xttTooltipElement | null>(null);
+const iconTooltip = ref<XttTooltipElement | null>(null);
 const icons: HTMLElement[] = [];
 
 const chatInputBoxShowed = ref(false);

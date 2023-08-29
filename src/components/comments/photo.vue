@@ -77,6 +77,7 @@
 </template>
 
 <script setup lang="ts">
+import type { XttDialogElement } from "xtt-ui";
 import { ref, reactive, onMounted } from "vue";
 import namiCropper from "@/components/cropper/cropper.vue";
 import { uploadImage } from "@/api/image/image";
@@ -110,7 +111,7 @@ const getPhotos = async () => {
 };
 getPhotos();
 
-const choicePicDialog = ref<xttDialogElement | null>(null);
+const choicePicDialog = ref<XttDialogElement | null>(null);
 const cropper = ref<InstanceType<typeof namiCropper> | null>(null);
 
 const openChoicePicDialog = () => {

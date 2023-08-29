@@ -37,6 +37,7 @@
 </template>
 
 <script setup lang="ts">
+import type { XttDialogElement } from "xtt-ui";
 import type { JPWord } from "@/types/word";
 import { ref, onMounted } from "vue";
 import { getWordList, addWord, editWordById } from "@/api/blog/word";
@@ -59,7 +60,7 @@ const playSound = (e: MouseEvent) => {
 	audio?.play();
 };
 
-const uploadWordDialog = ref<xttDialogElement | null>(null);
+const uploadWordDialog = ref<XttDialogElement | null>(null);
 const word = ref("");
 const kana = ref("");
 const accent = ref("");

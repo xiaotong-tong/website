@@ -19,5 +19,25 @@ export default defineConfig({
 		alias: {
 			"@": resolve(__dirname, "src")
 		}
+	},
+	build: {
+		rollupOptions: {
+			output: {
+				manualChunks: {
+					index: [
+						"./src/views/home.vue",
+						"./src/views/blog/home.vue",
+						"./src/views/blog/article/article.vue",
+						"./src/views/blog/jp/jp.vue",
+						"./src/views/blog/net/index.vue",
+						"./src/views/blog/note/index.vue"
+					],
+					master: ["./src/views/blog/editor/add.vue", "./src/views/blog/editor/edit.vue"],
+					about: ["./src/views/about/index.vue"],
+					jp: ["./src/views/blog/jp/words/words.vue"],
+					guestbook: ["./src/views/blog/guestbook/index.vue"]
+				}
+			}
+		}
 	}
 });
