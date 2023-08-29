@@ -27,15 +27,16 @@ body {
 
 @font-face {
 	font-family: "luoliti";
-	src: url("/fonts/LuoLiTi-2.ttf");
+	/* 优先读取 woff2 格式的字体文件，然后再读取 ttf 格式的备用文件 */
+	src: url("/fonts/LuoLiTi-2.woff2") format("woff2"), url("/fonts/LuoLiTi-2.ttf");
 }
 @font-face {
 	font-family: "katong";
-	src: url("/fonts/katong.ttf");
+	src: url("/fonts/katong.woff2") format("woff2"), url("/fonts/katong.ttf");
 }
 /* https://www.yishuzi.cn/sucai/84277.html 可爱少女体 */
-@font-face {
+/* @font-face {
 	font-family: "popuramu";
 	src: url("/fonts/popuramu.otf");
-}
+} */
 </style>
