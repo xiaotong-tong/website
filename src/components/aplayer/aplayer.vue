@@ -1,5 +1,7 @@
 <template>
-	<div id="aplayer" ref="aplayerEl"></div>
+	<!-- 该组件内部没有做 a11y 适配， 内部的 button 会被 axe  和 lighthouse 捕获报错，所以这里简单使用 aria-hidden 隐藏屏幕阅读器对内部的捕获 -->
+	<!-- 内部有的图标是 span，有的图标是 button，且没有暴露接口，暂不做单独适配 -->
+	<div id="aplayer" ref="aplayerEl" aria-hidden="true"></div>
 </template>
 
 <script setup lang="ts">

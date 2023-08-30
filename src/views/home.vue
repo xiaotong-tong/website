@@ -64,13 +64,13 @@
 		</template>
 	</kanbanarea>
 
-	<namiAplayer></namiAplayer>
-
 	<namiHeader></namiHeader>
 
 	<main class="main">
 		<RouterView />
 	</main>
+
+	<namiAplayer></namiAplayer>
 </template>
 
 <script setup lang="ts">

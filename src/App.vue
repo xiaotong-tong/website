@@ -33,6 +33,7 @@ body {
 @font-face {
 	font-family: "katong";
 	src: url("/fonts/katong.woff2") format("woff2"), url("/fonts/katong.ttf");
+	font-display: block;
 }
 /* https://www.yishuzi.cn/sucai/84277.html 可爱少女体 */
 /* @font-face {
