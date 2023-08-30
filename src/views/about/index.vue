@@ -27,6 +27,11 @@
 			</p>
 		</div> -->
 	</section>
+
+	<Teleport to="head">
+		<meta name="keywords" content="小恸恸,星川涟" />
+		<meta name="description" content="关于本网站的一些信息" />
+	</Teleport>
 </template>
 
 <script setup lang="ts"></script>

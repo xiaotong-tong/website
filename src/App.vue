@@ -29,6 +29,7 @@ body {
 	font-family: "luoliti";
 	/* 优先读取 woff2 格式的字体文件，然后再读取 ttf 格式的备用文件 */
 	src: url("/fonts/LuoLiTi-2.woff2") format("woff2"), url("/fonts/LuoLiTi-2.ttf");
+	font-display: swap;
 }
 @font-face {
 	font-family: "katong";
