@@ -1,5 +1,5 @@
 <template>
-	<section class="container">
+	<section class="container web-color-default">
 		<header class="header">
 			<h2>留言板</h2>
 			<p>欢迎留言，欢迎灌水，尽量回复，各位随意~</p>
@@ -51,14 +51,7 @@ const commentSubmitEvent = (data: {
 
 <style scoped>
 .container {
-	background-color: #ffffffaa;
-	backdrop-filter: blur(5px);
 	padding: 8px;
-}
-.container[dark] {
-	background-color: #00000020;
-	backdrop-filter: blur(5px);
-	color: #cfd3dc;
 }
 
 .header {

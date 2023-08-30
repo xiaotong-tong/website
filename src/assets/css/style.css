@@ -1,0 +1,39 @@
+/* 覆盖标签默认样式 */
+body {
+	margin: 0;
+}
+
+/* 自定义页面滚动条 */
+::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
+	margin: 5px 0;
+}
+::-webkit-scrollbar-thumb {
+	margin: 5px 0;
+	border-radius: 15px;
+	background: grey;
+}
+
+::-webkit-scrollbar-track {
+	margin: 5px 0;
+	border-radius: 15px;
+}
+
+/* 自定义网站字体 */
+@font-face {
+	font-family: "luoliti";
+	/* 优先读取 woff2 格式的字体文件，然后再读取 ttf 格式的备用文件 */
+	src: url("/fonts/LuoLiTi-2.woff2") format("woff2"), url("/fonts/LuoLiTi-2.ttf");
+	font-display: swap;
+}
+@font-face {
+	font-family: "katong";
+	src: url("/fonts/katong.woff2") format("woff2"), url("/fonts/katong.ttf");
+	font-display: block;
+}
+/* https://www.yishuzi.cn/sucai/84277.html 可爱少女体 */
+/* @font-face {
+	font-family: "popuramu";
+	src: url("/fonts/popuramu.otf");
+} */

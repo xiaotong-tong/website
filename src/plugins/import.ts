@@ -1,11 +1,20 @@
+// 加载 xtt-ui 组件库
 import "xtt-ui";
 import "xtt-ui/xtt-web-bg.js";
+
+// 加载 mouse-snow 鼠标雪花特效
 import "./js/mousesnow.js";
 
+// 加载网站公共样式
+import "@/assets/css/style.css";
+import "@/assets/css/color.css";
+
+// 一个像素字体文件库，暂时没有使用
 // import "galmuri/dist/galmuri.css";
 
 import { App } from "vue";
 
+// 加载自定义组件
 import link from "../components/link/link.vue";
 import icon from "../components/icon/icon.vue";
 

@@ -1,0 +1,14 @@
+.web-color-default {
+	background-color: #ffffffaa;
+	backdrop-filter: blur(5px);
+}
+.theme-dark .web-color-default {
+	background-color: #00000020;
+	backdrop-filter: blur(5px);
+	color: #cfd3dc;
+}
+
+/* 使用 :where 来降低选择器权重 */
+:where(.theme-dark) a {
+	color: #58a6ff;
+}

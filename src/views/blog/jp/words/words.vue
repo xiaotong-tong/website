@@ -3,7 +3,7 @@
 		<xtt-button type="primary" @click="addWordEvent">添加</xtt-button>
 	</div>
 
-	<namiTable :data="wordList" class="container">
+	<namiTable :data="wordList" class="container web-color-default">
 		<namiTableColumn prop="word" label="単語"> </namiTableColumn>
 		<namiTableColumn prop="kana" label="仮名"></namiTableColumn>
 		<namiTableColumn prop="accent" label="重音" width="50px"></namiTableColumn>
@@ -150,8 +150,6 @@ document.title = "日本語単語勉強 - 星川漣の家";
 }
 
 .container {
-	background-color: #ffffffaa;
-	backdrop-filter: blur(5px);
 	padding: 8px;
 }
 

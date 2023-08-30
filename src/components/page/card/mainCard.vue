@@ -4,6 +4,7 @@
 		ref="card"
 		:class="{
 			card: true,
+			'web-color-default': true,
 			visibled: visibled,
 			unvisibled: !visibled
 		}"
@@ -101,13 +102,6 @@ onBeforeUnmount(() => {
 	padding: 8px;
 	column-gap: 8px;
 	border-radius: 5px;
-	background-color: #ffffffaa;
-	backdrop-filter: blur(5px);
-}
-.card[dark] {
-	background-color: #00000020;
-	backdrop-filter: blur(5px);
-	color: #cfd3dc;
 }
 
 .thumbnail-wrap {
