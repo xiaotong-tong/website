@@ -30,27 +30,20 @@
 				<h2>关于看板娘</h2>
 				<p>
 					姓名：星川涟<br />
-					职业：文学少女见习生
-				</p>
-
-				<h2>关于本站</h2>
-				<p>
-					本站是个人网站，主要用于存放一些个人作品，以及一些个人的日常记录。<br />
-					本站的代码全部开源，您可以在 Github 上找到本站的源代码：<br />
-					前端: https://github.com/xiaotong-tong/website <br />
-					后端: https://github.com/xiaotong-tong/website-server
+					职业：想要成为文学少女的看板娘
 				</p>
 			</div>
 		</div>
-
-		<!-- <h2>关于本网站</h2>
-		<div>
-			<p>
-				本网站代码全部开源，您可以在 Github 上找到本网站的源代码：<br />
-				前端: https://github.com/xiaotong-tong/website <br />
-				后端: https://github.com/xiaotong-tong/website-server
-			</p>
-		</div> -->
+		<h2>关于本站</h2>
+		<p>
+			本站是个人网站，主要用于存放一些个人作品，以及一些个人的日常记录。<br />
+			本站的代码全部开源，您可以在 Github 上找到本站的源代码：<br />
+			前端: https://github.com/xiaotong-tong/website <br />
+			后端: https://github.com/xiaotong-tong/website-server <br />
+			更详细信息请访问这篇文章：<nami-link to="/article/15" style="color: #f34159"
+				>关于本站</nami-link
+			>
+		</p>
 	</section>
 
 	<Teleport to="head">
@@ -83,6 +76,10 @@
 }
 .nami-title {
 	font-size: 1.4em;
+}
+
+p {
+	line-height: 2;
 }
 
 @media screen and (max-width: 800px) {

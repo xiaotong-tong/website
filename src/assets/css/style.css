@@ -3,6 +3,12 @@ body {
 	margin: 0;
 }
 
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
 /* 自定义页面滚动条 */
 ::-webkit-scrollbar {
 	width: 5px;

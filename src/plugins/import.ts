@@ -27,6 +27,8 @@ import commentCard from "../components/comments/card.vue";
 
 import mainCard from "../components/page/card/mainCard.vue";
 
+import pagination from "../components/pagination/pagination.vue";
+
 const importPlugin = {
 	install(app: App) {
 		app.component("namiLink", link);
@@ -40,6 +42,8 @@ const importPlugin = {
 		app.component("namiCommentCard", commentCard);
 
 		app.component("namiMainCard", mainCard);
+
+		app.component("namiPagination", pagination);
 	}
 };
 

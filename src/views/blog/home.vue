@@ -2,10 +2,18 @@
 	<section class="container">
 		<namiMainCard
 			class="card"
-			v-for="item in acticleList"
+			v-for="item in acticleList.showLists"
 			:key="item.id"
 			:info="{ ...item, headerLink: '/article/' + item.id }"
 		/>
+
+		<namiPagination
+			class="pagination"
+			v-if="acticleList.lists?.length"
+			:total="acticleList.lists.length"
+			v-model:currentPage="currentPage"
+			@currentChange="changePage"
+		></namiPagination>
 	</section>
 
 	<Teleport to="head">
@@ -18,17 +26,36 @@
 </template>
 
 <script setup lang="ts">
-import type { Ref } from "vue";
 import type { Acticle } from "@/types/acticle";
-import { ref } from "vue";
+import { ref, reactive, watchEffect } from "vue";
 import { getActicleList } from "@/api/blog/acticle";
 
-const acticleList: Ref<Acticle[] | null> = ref(null);
+const acticleList: {
+	lists: Acticle[];
+	showLists: Acticle[];
+} = reactive({
+	lists: [],
+	showLists: []
+});
 
 (async () => {
 	const data = await getActicleList();
-	acticleList.value = data;
+	acticleList.lists = data;
 })();
+
+const currentPage = ref(1);
+const pageSize = 10;
+const changePage = (page: number) => {
+	currentPage.value = page;
+};
+
+watchEffect(() => {
+	acticleList.showLists =
+		acticleList.lists?.slice(
+			(currentPage.value - 1) * pageSize,
+			currentPage.value * pageSize
+		) || [];
+});
 
 // 修改页面标题
 document.title = "星川漣の家";
@@ -40,6 +67,10 @@ document.title = "星川漣の家";
 }
 
 .card + .card {
+	margin-top: 16px;
+}
+
+.pagination {
 	margin-top: 16px;
 }
 </style>

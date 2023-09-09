@@ -1,5 +1,5 @@
 <template>
-	<header class="header">
+	<header class="header web-color-default">
 		<pageLogo class="logo"></pageLogo>
 		<pageNav :dark="store.isDark ? '' : undefined"></pageNav>
 	</header>
@@ -23,22 +23,6 @@ const store = useStore();
 	z-index: 100;
 	height: 36px;
 	transition: background-color 0.5s;
-}
-.header:hover {
-	background-color: #ffffffaa;
-	backdrop-filter: blur(5px);
-}
-
-.theme-dark .header:hover {
-	background-color: #00000020;
-}
-
-.small-screen .header {
-	background-color: #ffffffaa;
-	backdrop-filter: blur(5px);
-}
-.small-screen.theme-dark .header {
-	background-color: #00000020;
 }
 
 .logo {

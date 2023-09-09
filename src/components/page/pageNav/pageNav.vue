@@ -51,7 +51,6 @@
 .list {
 	display: flex;
 	column-gap: 8px;
-	padding: 0;
 	white-space: nowrap;
 }
 
@@ -61,10 +60,6 @@
 
 .small-screen .right {
 	display: none;
-}
-
-.list > li {
-	list-style: none;
 }
 
 .link:hover {
