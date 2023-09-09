@@ -2,10 +2,12 @@ import { resolve } from "path";
 
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
+import mdPlugin from "./plugins/mdToTextPlain";
 
 // https://vitejs.dev/config/
 export default defineConfig({
 	plugins: [
+		mdPlugin(),
 		vue({
 			template: {
 				compilerOptions: {
@@ -35,7 +37,8 @@ export default defineConfig({
 					master: ["./src/views/blog/editor/add.vue", "./src/views/blog/editor/edit.vue"],
 					about: ["./src/views/about/index.vue"],
 					jp: ["./src/views/blog/jp/words/words.vue"],
-					guestbook: ["./src/views/blog/guestbook/index.vue"]
+					guestbook: ["./src/views/blog/guestbook/index.vue"],
+					link: ["./src/views/blog/links/links.vue"]
 				}
 			}
 		}

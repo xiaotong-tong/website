@@ -16,6 +16,12 @@
 			<li>
 				<namiLink class="link" inline-block to="/guestbook">留言板</namiLink>
 			</li>
+			<li>
+				<namiLink class="link" inline-block to="/link">链接</namiLink>
+			</li>
+			<li>
+				<namiLink class="link" inline-block to="/about">关于</namiLink>
+			</li>
 		</ul>
 
 		<ul class="list right">

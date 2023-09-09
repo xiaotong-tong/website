@@ -4,6 +4,10 @@ declare module "*.vue" {
 	export default component;
 }
 
+declare module "*.md" {
+	export default string;
+}
+
 interface mouseSnowOptions {
 	color?: string;
 	character?: string;
