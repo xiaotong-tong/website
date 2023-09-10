@@ -65,9 +65,13 @@ onMounted(() => {
 	// 设置媒体会话的行为
 	if ("mediaSession" in navigator) {
 		// 播放
-		navigator.mediaSession.setActionHandler("play", ap.play);
+		navigator.mediaSession.setActionHandler("play", function () {
+			ap.play();
+		});
 		// 暂停
-		navigator.mediaSession.setActionHandler("pause", ap.pause);
+		navigator.mediaSession.setActionHandler("pause", function () {
+			ap.pause();
+		});
 		// 后退，如果 seekOffset 存在，就使用 seekOffset，否则默认 10 秒
 		navigator.mediaSession.setActionHandler("seekbackward", function (action) {
 			const { seekOffset = 10 } = action;
@@ -84,9 +88,13 @@ onMounted(() => {
 			ap.seek(seekTime);
 		});
 		// 上一首
-		navigator.mediaSession.setActionHandler("previoustrack", ap.skipBack);
+		navigator.mediaSession.setActionHandler("previoustrack", function () {
+			ap.skipBack();
+		});
 		// 下一首
-		navigator.mediaSession.setActionHandler("nexttrack", ap.skipForward);
+		navigator.mediaSession.setActionHandler("nexttrack", function () {
+			ap.skipForward();
+		});
 	}
 });
 </script>
