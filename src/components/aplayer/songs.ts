@@ -40,5 +40,11 @@ export const audioList = [
 		url: "/musics/ヤバス,りぃふ - ライアーメイデン (feat. りぃふ).mp3",
 		cover: "/musics/ヤバス,りぃふ - ライアーメイデン (feat. りぃふ).jpg",
 		lrc: "/musics/ヤバス,りぃふ - ライアーメイデン (feat. りぃふ).lrc"
+	},
+	{
+		name: "迷星叫",
+		artist: "MyGO!!!!!",
+		url: "/musics/迷星叫.mp3",
+		cover: "/musics/迷星叫.jpg"
 	}
 ];
