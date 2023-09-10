@@ -3,10 +3,10 @@
 		<namiMainCard
 			class="card"
 			:info="{
-				headerLink: '/jp/words',
+				headerLink: '/lang/words',
 				title: '日本語単語勉強',
 				author: 'xtt',
-				category: '日语学习',
+				category: '语言学习',
 				tags: null,
 				createDate: '2023-07-23',
 				thumbnail: 'https://image.xtt.moe/images/2023/07/23/23.jpg',
@@ -30,7 +30,7 @@ import { getActicleList } from "@/api/blog/acticle";
 const acticleList = ref<Acticle[] | null>(null);
 
 (async () => {
-	const data = await getActicleList({ category: "日语学习" });
+	const data = await getActicleList({ category: "语言学习" });
 	acticleList.value = data;
 })();
 </script>

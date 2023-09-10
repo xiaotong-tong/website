@@ -1,3 +1,3 @@
 User-agent: *
 Disallow: /editor/
-Sitemap: http://xtt.moe/sitemap.xml
+Sitemap: https://xtt.moe/sitemap.xml

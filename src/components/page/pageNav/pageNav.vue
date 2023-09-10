@@ -8,7 +8,7 @@
 				<namiLink class="link" inline-block to="/net">网络互联</namiLink>
 			</li>
 			<li>
-				<namiLink class="link" inline-block to="/jp">日语学习</namiLink>
+				<namiLink class="link" inline-block to="/lang">语言学习</namiLink>
 			</li>
 			<li>
 				<namiLink class="link" inline-block to="/note">喵随笔</namiLink>

@@ -35,14 +35,14 @@ const router = createRouter({
 					component: () => import("../views/about/index.vue")
 				},
 				{
-					path: "/jp",
-					name: "jp",
-					component: () => import("../views/blog/jp/jp.vue")
+					path: "/lang",
+					name: "lang",
+					component: () => import("../views/blog/lang/lang.vue")
 				},
 				{
-					path: "/jp/words",
+					path: "/lang/words",
 					name: "jpWords",
-					component: () => import("../views/blog/jp/words/words.vue")
+					component: () => import("../views/blog/lang/words/words.vue")
 				},
 				{
 					path: "/net",

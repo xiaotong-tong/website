@@ -11,7 +11,7 @@
 		<xtt-select ref="category">
 			<option value="网络互联" selected>网络互联</option>
 			<option value="喵随笔">喵随笔</option>
-			<option value="日语学习">日语学习</option>
+			<option value="语言学习">语言学习</option>
 			<option value="test">test</option>
 			<option value="其它">其它</option>
 		</xtt-select>
