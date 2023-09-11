@@ -11,8 +11,7 @@
 		<namiTableColumn prop="mean" label="意味"></namiTableColumn>
 		<namiTableColumn prop="read" label="音声" width="50px">
 			<template #default="scope">
-				<nami-icon icon="mdiMusicNote" @click="playSound" v-if="scope.row.read"></nami-icon>
-				<audio :src="scope.row.read" preload="metadata" v-if="scope.row.read"></audio>
+				<xtt-sound :src="scope.row.read" v-if="scope.row.read"></xtt-sound>
 			</template>
 		</namiTableColumn>
 		<namiTableColumn label="操作" width="100px" v-if="store.loginUid">
@@ -53,12 +52,6 @@ const getWords = async () => {
 	wordList.value = data;
 };
 getWords();
-
-const playSound = (e: MouseEvent) => {
-	const audio: HTMLAudioElement = (e.currentTarget as HTMLElement)
-		?.nextElementSibling as HTMLAudioElement;
-	audio?.play();
-};
 
 const uploadWordDialog = ref<XttDialogElement | null>(null);
 const word = ref("");
