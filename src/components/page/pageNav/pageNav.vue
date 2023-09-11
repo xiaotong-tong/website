@@ -24,6 +24,7 @@
 					<namiLink class="link" inline-block to="/net">网络互联</namiLink>
 					<namiLink class="link" inline-block to="/lang">语言学习</namiLink>
 					<namiLink class="link" inline-block to="/note">喵随笔</namiLink>
+					<namiLink class="link" inline-block to="/star">其它</namiLink>
 				</div>
 			</li>
 			<li>

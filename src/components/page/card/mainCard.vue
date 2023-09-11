@@ -28,7 +28,16 @@
 			<p>
 				发布于<span>{{ props.info.createDate }}</span>
 
-				&nbsp;&nbsp;&nbsp; # {{ props.info.category }}
+				&nbsp;&nbsp;&nbsp;
+				<nami-link
+					class="tag-link"
+					:to="
+						{ 网络互联: '/net', 语言学习: '/lang', 喵随笔: '/note', 其它: '/star' }[
+							props.info.category
+						]
+					"
+					># {{ props.info.category }}</nami-link
+				>
 			</p>
 			<p class="abstract">
 				{{ props.info.abstract || props.info.content }}
@@ -141,7 +150,8 @@ onBeforeUnmount(() => {
 	justify-content: flex-start;
 	padding: 0;
 }
-.info-wrap .title-link::part(link):hover {
+.info-wrap .title-link::part(link):hover,
+.tag-link::part(link):hover {
 	color: #f34159;
 }
 
