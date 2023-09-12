@@ -19,7 +19,8 @@
 	<div>标签： <xtt-textarea autosize v-model="tags"></xtt-textarea></div>
 
 	<div>
-		缩略图： <xtt-button ref="upload" @click="uploadImageEvent">上传图片</xtt-button>
+		缩略图： <xtt-button ref="upload" @click="uploadImageEvent">上传图片</xtt-button><br />
+		<xtt-textarea autosize v-model="thumbnail"></xtt-textarea><br />
 		<img v-if="thumbnail" class="thumbnail" :src="thumbnail" alt="缩略图" />
 	</div>
 	<p>正文：</p>
@@ -56,7 +57,7 @@ const submitEvent = async () => {
 	if (!title.value) return alert("标题不能为空");
 	if (!content.value) return alert("内容不能为空");
 
-	const res = await editActicleById(id.value, {
+	await editActicleById(id.value, {
 		title: title.value,
 		content: content.value,
 		author: author.value,
@@ -66,7 +67,6 @@ const submitEvent = async () => {
 		thumbnail: thumbnail.value
 	});
 
-	console.log(res);
 	router.push("/article/" + id.value);
 };
 
@@ -93,8 +93,10 @@ const uploadImageEvent = async () => {
 		fd.append("source", file.files[0]);
 
 		const { data } = await uploadImage(fd);
-		console.log(data);
-		thumbnail.value = data.image.url;
+		// console.log(data);
+
+		// 优先使用 display_url 的图片地址，display_url 地址为压缩后的图片地址，url 为原图地址
+		thumbnail.value = data.image.display_url || data.image.url;
 	};
 };
 

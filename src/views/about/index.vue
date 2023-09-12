@@ -1,6 +1,6 @@
 <template>
 	<section class="container web-color-default">
-		<p style="text-align: center">君に出会えて本当に良かった！</p>
+		<p class="title">君に出会えて本当に良かった！</p>
 		<div class="content-section">
 			<div class="character-wrap">
 				<img
@@ -30,7 +30,8 @@
 				<h2>关于看板娘</h2>
 				<p>
 					姓名：星川涟<br />
-					职业：想要成为文学少女的看板娘
+					职业：想要成为文学少女的看板娘<br />
+					爱好：阅读文字
 				</p>
 			</div>
 		</div>
@@ -86,5 +87,11 @@ p {
 	.character-wrap {
 		display: none;
 	}
+}
+
+.title {
+	text-align: center;
+	font-size: 24px;
+	font-family: "luoliti", Arial, Helvetica, sans-serif;
 }
 </style>

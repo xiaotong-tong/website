@@ -6,6 +6,7 @@
 
 -   [Clippy](https://bennettfeely.com/clippy/) - 一个在线的 CSS clip-path 生成器。
 -   [mdi](https://pictogrammers.com/library/mdi/) - 一个图标库，包含了很多图标。
+-   [CoeFont](https://coefont.cloud/coefonts) - 一个 AI 语音生成网站。有各种各样的音色可以选择，一些角色中文，日文，英文都可以生成，本网站中使用的就是该网站下的 ミリアル。
 
 ## 教程
 
@@ -21,6 +22,15 @@
 ## 文章
 
 暂无
+
+## 平台
+
+-   [BigFrontEnd](https://bigfrontend.dev/zh) - 前端刷题网站，支持中文。
+
+## 日语
+
+-   [時雨の町](https://www.sigure.tw/) - 一个日语学习网站，包含了日语的各种知识点。(中文内容)
+-   [絵でわかる日本語](http://www.edewakaru.com/) - 一个日语学习网站，用图片对话的形式介绍日语相关的内容。但是该网站是全日语网站。
 
 ## 星空涟漪 (杂货铺)
 

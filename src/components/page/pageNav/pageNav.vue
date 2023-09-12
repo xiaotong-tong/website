@@ -39,6 +39,9 @@
 		</ul>
 
 		<ul class="list right">
+			<li class="light-dark-wrap link" @click="store.isDark = !store.isDark">
+				<namiIcon icon="mdiThemeLightDark"></namiIcon>
+			</li>
 			<li>
 				<namiLink
 					class="link github-link"
@@ -56,7 +59,9 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { useStore } from "@/stores/index";
 
+const store = useStore();
 const tagsPopShow = ref(false);
 
 // 防止 blur 事件与 focus 事件冲突
@@ -103,10 +108,6 @@ const shareBlurHandler = () => {
 	display: none;
 }
 
-.link:hover {
-	color: #f34159;
-}
-
 .github-link::part(link) {
 	align-items: center;
 	column-gap: 8px;
@@ -127,5 +128,18 @@ const shareBlurHandler = () => {
 }
 .tags .link {
 	display: flex;
+}
+
+.light-dark-wrap {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+/* 移动设备在点击后元素元素会一直保持 hover 状态，使用 @media (hover: hover) 包裹后，移动设备就不会加载 hover 样式了。 */
+@media (hover: hover) {
+	.link:hover {
+		color: #f34159;
+	}
 }
 </style>

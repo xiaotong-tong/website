@@ -18,7 +18,8 @@
 	</div>
 	<div>标签： <xtt-input autosize v-model="tags"></xtt-input></div>
 	<div>
-		缩略图： <xtt-button ref="upload" @click="uploadImageEvent">上传图片</xtt-button>
+		缩略图： <xtt-button ref="upload" @click="uploadImageEvent">上传图片</xtt-button><br />
+		<xtt-textarea autosize block v-model="thumbnail"></xtt-textarea><br />
 		<img v-if="thumbnail" class="thumbnail" :src="thumbnail" alt="缩略图" />
 	</div>
 	<p>正文：</p>
@@ -78,8 +79,10 @@ const uploadImageEvent = async () => {
 		fd.append("source", file.files[0]);
 
 		const { data } = await uploadImage(fd);
-		console.log(data);
-		thumbnail.value = data.image.url.replace("http:", "https:");
+		// console.log(data);
+
+		// 优先使用 display_url 的图片地址，display_url 地址为压缩后的图片地址，url 为原图地址
+		thumbnail.value = data.image.display_url || data.image.url;
 
 		file.remove();
 	};
