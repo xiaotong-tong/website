@@ -110,6 +110,8 @@ const submitEvent = () => {
 	commentText.value = "";
 	nickname.value = "";
 	email.value = "";
+
+	previewShowed.value = false;
 };
 </script>
 

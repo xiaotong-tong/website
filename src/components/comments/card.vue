@@ -16,7 +16,9 @@
 					<span class="nickname">{{ props.comment.nickname || "匿名" }}</span>
 					<span class="date">{{ props.comment.createDate }}</span>
 				</div>
-				<div class="content">{{ props.comment.content }}</div>
+				<xtt-markdown class="content" ref="previewMd">{{
+					props.comment.content
+				}}</xtt-markdown>
 			</div>
 			<div class="right">
 				<xtt-button
