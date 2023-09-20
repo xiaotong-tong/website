@@ -69,9 +69,12 @@ const route = useRoute();
 
 interface Props {
 	comment: Comment;
+	isGuestbook?: boolean;
 }
+
 const props = withDefaults(defineProps<Props>(), {
-	comment: () => ({} as Comment)
+	comment: () => ({} as Comment),
+	isGuestbook: false
 });
 
 const delected = ref(false);
@@ -85,6 +88,7 @@ const deleteBtnClick = () => {
 };
 
 const parentCommentId = inject("commentId", null);
+const childSubmitCallback = inject("commentsChildSubmitCallback", Function.prototype);
 
 const replyCommentShowed = ref(false);
 
@@ -96,21 +100,26 @@ const replyCommentSubmitEvent = (data: {
 }) => {
 	const articleId = Number(route.params.id);
 
-	if (!articleId) return;
+	if (!articleId && !props.isGuestbook) return;
 
-	const commentBody = {
-		nickname: data.nickname,
-		email: data.email,
-		content: data.commentText,
-		photoUrl: data.photoUrl,
-		articleId,
-		parent: parentCommentId || props.comment.id,
-		replyId: props.comment.id,
-		replyNickName: props.comment.nickname
-	};
+	const commentBody = Object.assign(
+		{
+			nickname: data.nickname,
+			email: data.email,
+			content: data.commentText,
+			photoUrl: data.photoUrl,
+			parent: parentCommentId || props.comment.id,
+			replyId: props.comment.id,
+			replyNickName: props.comment.nickname
+		},
+
+		articleId ? { articleId } : { isGuestbook: true }
+	);
 
 	addComment(commentBody).then(() => {
 		replyCommentShowed.value = false;
+
+		childSubmitCallback?.();
 	});
 };
 

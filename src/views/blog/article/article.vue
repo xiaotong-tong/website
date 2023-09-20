@@ -47,7 +47,7 @@
 <script setup lang="ts">
 import type { ActicleById } from "@/types/acticle";
 import type { Comment } from "@/types/comment";
-import { ref, watch } from "vue";
+import { ref, watch, provide } from "vue";
 import { getActicleById } from "@/api/blog/acticle";
 import { addComment, getCommentList } from "@/api/blog/comment";
 import { useRoute, useRouter } from "vue-router";
@@ -98,6 +98,10 @@ const getComments = async () => {
 
 getActicle();
 getComments();
+
+provide("commentsChildSubmitCallback", () => {
+	getComments();
+});
 
 // 监听页面 id 的变化
 watch(

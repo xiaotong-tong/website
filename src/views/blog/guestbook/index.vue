@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, provide } from "vue";
 import type { Comment } from "@/types/comment";
 import { addComment, getCommentList } from "@/api/blog/comment";
 
@@ -27,7 +27,7 @@ const getComments = async () => {
 		isGuestbook: true
 	});
 
-	commentList.value = data;
+	commentList.value = data.reverse();
 };
 getComments();
 
@@ -47,6 +47,10 @@ const commentSubmitEvent = (data: {
 		getComments();
 	});
 };
+
+provide("commentsChildSubmitCallback", () => {
+	getComments();
+});
 </script>
 
 <style scoped>

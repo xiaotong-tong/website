@@ -9,7 +9,11 @@
 
 		<div :class="{ isChildren: props.isChildren }">
 			<template v-for="comment in props.comments" :key="comment.id">
-				<namiCommentCard class="comment-card" :comment="comment"></namiCommentCard>
+				<namiCommentCard
+					class="comment-card"
+					:comment="comment"
+					:isGuestbook="props.isGuestbook"
+				></namiCommentCard>
 				<div class="hr"></div>
 			</template>
 		</div>
