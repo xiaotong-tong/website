@@ -68,6 +68,13 @@ const router = createRouter({
 					path: "/link",
 					name: "link",
 					component: () => import("../views/blog/links/links.vue")
+				},
+
+				// something
+				{
+					path: "/something/img2base64",
+					name: "img2base64",
+					component: () => import("../views/somethings/img2base64.vue")
 				}
 			]
 		}

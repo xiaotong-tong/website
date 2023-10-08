@@ -39,7 +39,8 @@ export default defineConfig({
 					about: ["./src/views/about/index.vue"],
 					jpWord: ["./src/views/blog/lang/words/words.vue"],
 					guestbook: ["./src/views/blog/guestbook/index.vue"],
-					link: ["./src/views/blog/links/links.vue"]
+					link: ["./src/views/blog/links/links.vue"],
+					something: ["./src/views/somethings/img2base64.vue"]
 				}
 			}
 		}
