@@ -75,6 +75,19 @@ const router = createRouter({
 					path: "/something/img2base64",
 					name: "img2base64",
 					component: () => import("../views/somethings/img2base64.vue")
+				},
+
+				// 404页面
+				{
+					path: "/404",
+					name: "404",
+					component: () => import("../views/404.vue")
+				},
+				// 未匹配到的路由，重定向到404页面
+				{
+					path: "/:pathMatch(.*)*",
+					name: "notFount",
+					redirect: "/404"
 				}
 			]
 		}

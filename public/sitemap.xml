@@ -36,4 +36,8 @@
     <loc>https://xtt.moe/link</loc>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://xtt.moe/404</loc>
+    <priority>0.1</priority>
+  </url>
 </urlset>

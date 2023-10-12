@@ -3,6 +3,13 @@
 		src="https://image.xtt.moe/images/2023/07/18/b885910a19d8bc3eed2c5e98828ba61ea8d34544.jpg"
 		:mask="store.isDark ? '' : undefined"
 	></xtt-web-bg>
+
+	<namiHeader></namiHeader>
+
+	<main class="main">
+		<RouterView />
+	</main>
+
 	<kanbanarea v-if="live2dShowed && !store.isSmallScreen" ref="live2d">
 		<template #icon>
 			<namiIcon
@@ -63,12 +70,6 @@
 			<xtt-tooltip ref="iconTooltip">default value</xtt-tooltip>
 		</template>
 	</kanbanarea>
-
-	<namiHeader></namiHeader>
-
-	<main class="main">
-		<RouterView />
-	</main>
 
 	<namiAplayer></namiAplayer>
 </template>

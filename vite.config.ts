@@ -33,7 +33,8 @@ export default defineConfig({
 						"./src/views/blog/lang/lang.vue",
 						"./src/views/blog/net/index.vue",
 						"./src/views/blog/note/index.vue",
-						"./src/views/blog/star/index.vue"
+						"./src/views/blog/star/index.vue",
+						"./src/views/404.vue"
 					],
 					master: ["./src/views/blog/editor/add.vue", "./src/views/blog/editor/edit.vue"],
 					about: ["./src/views/about/index.vue"],
