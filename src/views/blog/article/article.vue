@@ -64,11 +64,22 @@ const acticle = ref<ActicleById | null>(null);
 const getActicle = async () => {
 	if (!id.value) return;
 
-	const data = await getActicleById(id.value);
-	acticle.value = data;
+	try {
+		const data = await getActicleById(id.value);
+		console.log(data);
 
-	// 修改页面标题
-	document.title = `${data.title} - 星川漣の家`;
+		acticle.value = data;
+
+		// 修改页面标题
+		document.title = `${data.title} - 星川漣の家`;
+	} catch (error) {
+		// 如果请求文章失败，并且状态码为 404，那么就跳转到 404 页面
+		if ((error as any).response?.status === 404) {
+			router.push("/404");
+		} else {
+			console.error(error);
+		}
+	}
 };
 const commentSubmitEvent = (data: {
 	commentText: string;
