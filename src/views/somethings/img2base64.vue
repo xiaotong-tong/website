@@ -12,6 +12,8 @@
 import { ref } from "vue";
 import { toDataUrl } from "xtt-utils";
 
+document.title = "将图片转换为base64 - 星川漣の家";
+
 const textarea = ref("");
 
 const fileChange = (e: any) => {

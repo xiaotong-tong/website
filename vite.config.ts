@@ -41,7 +41,10 @@ export default defineConfig({
 					jpWord: ["./src/views/blog/lang/words/words.vue"],
 					guestbook: ["./src/views/blog/guestbook/index.vue"],
 					link: ["./src/views/blog/links/links.vue"],
-					something: ["./src/views/somethings/img2base64.vue"]
+					something: [
+						"./src/views/somethings/img2base64.vue",
+						"./src/views/somethings/toWebp.vue"
+					]
 				}
 			}
 		}

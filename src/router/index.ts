@@ -76,6 +76,11 @@ const router = createRouter({
 					name: "img2base64",
 					component: () => import("../views/somethings/img2base64.vue")
 				},
+				{
+					path: "/something/towebp",
+					name: "toWebp",
+					component: () => import("../views/somethings/toWebp.vue")
+				},
 
 				// 404页面
 				{
