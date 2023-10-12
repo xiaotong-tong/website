@@ -1,7 +1,7 @@
 <template>
 	<section class="box">
 		<img
-			src="http://192.168.3.105:7777/images/2023/10/12/QQ20231012111248.md.jpg"
+			src="https://image.xtt.moe/images/2023/10/12/QQ20231012111248.md.jpg"
 			alt="404背景图片"
 			class="bg"
 		/>
