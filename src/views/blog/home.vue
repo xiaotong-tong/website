@@ -47,6 +47,12 @@ const currentPage = ref(1);
 const pageSize = 10;
 const changePage = (page: number) => {
 	currentPage.value = page;
+
+	// 切换分页页面后滚动到最顶端
+	scrollTo({
+		top: 0,
+		behavior: "smooth"
+	});
 };
 
 watchEffect(() => {
