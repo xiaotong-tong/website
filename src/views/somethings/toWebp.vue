@@ -10,12 +10,15 @@
 </template>
 
 <script setup lang="ts">
-// import { toDataUrl } from "xtt-utils";
-
 document.title = "将图片转换为webp - 星川漣の家";
 
 const fileChange = async (e: any) => {
 	const file = e.target.files[0];
+
+	if (file.type === "image/svg+xml") {
+		alert("不支持 svg 格式的图片");
+		return;
+	}
 
 	// 将文件转换为 canvas，再转换为 webp
 	const canvas = document.createElement("canvas");
@@ -30,7 +33,6 @@ const fileChange = async (e: any) => {
 	ctx?.drawImage(img, 0, 0);
 
 	const webpDataUrl = canvas.toDataURL("image/webp");
-	console.log(webpDataUrl);
 
 	// 下载 webp 图片
 	const a = document.createElement("a");
