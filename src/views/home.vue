@@ -10,6 +10,8 @@
 		<RouterView />
 	</main>
 
+	<namiFooter></namiFooter>
+
 	<kanbanarea v-if="live2dShowed && !store.isSmallScreen" ref="live2d">
 		<template #icon>
 			<namiIcon
@@ -79,6 +81,7 @@ import { ref, onMounted } from "vue";
 import kanbanarea from "../components/live2d/kanbanarea.vue";
 import namiAplayer from "../components/aplayer/aplayer.vue";
 import namiHeader from "../components/page/header/header.vue";
+import namiFooter from "../components/page/footer/footer.vue";
 import { verifyMasterUid } from "../api/blog/verify";
 import { useRouter } from "vue-router";
 import { useStore } from "@/stores/index";
@@ -129,7 +132,8 @@ const verifyLogin = async () => {
 <style scoped>
 .main {
 	width: min(900px, 90%);
-	margin: 0 auto 60px;
+	min-height: calc(100vh - 112px);
+	margin: 0 auto 16px;
 }
 
 .icon {

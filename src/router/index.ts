@@ -67,7 +67,14 @@ const router = createRouter({
 				{
 					path: "/link",
 					name: "link",
-					component: () => import("../views/blog/links/links.vue")
+					component: () => import("../views/links/links.vue")
+				},
+
+				// 站点地图页面
+				{
+					path: "/sitemap",
+					name: "sitemap",
+					component: () => import("../views/sitemap/index.vue")
 				},
 
 				// something

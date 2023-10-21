@@ -3,6 +3,8 @@
   <url>
     <loc>https://xtt.moe/</loc>
     <priority>1.0</priority>
+    <lastmod>2023-10-21</lastmod>
+    <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://xtt.moe/net</loc>
@@ -13,10 +15,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://xtt.moe/lang/words</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://xtt.moe/note</loc>
     <priority>0.7</priority>
   </url>
@@ -25,21 +23,34 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://xtt.moe/article/{id}</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://xtt.moe/about</loc>
     <priority>0.6</priority>
+    <lastmod>2023-09-12</lastmod>
+    <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://xtt.moe/link</loc>
     <priority>0.6</priority>
+    <lastmod>2023-10-12</lastmod>
+    <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://xtt.moe/sitemap</loc>
+    <priority>1.0</priority>
+    <lastmod>2023-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- 留言板页面也不算是网站中的有效页面，因为没有内容，所以从 sitemap 文件中排除 -->
+  <!-- <url>
+    <loc>https://xtt.moe/guestbook</loc>
+    <priority>0.6</priority>
+  </url> -->
+  <!-- 404 页面不需要包含在 sitemap 文件中， 因为 404 页面不是网站中的有效页面 -->
+  <!-- <url>
     <loc>https://xtt.moe/404</loc>
     <priority>0.1</priority>
-  </url>
+  </url> -->
   <url>
     <loc>https://xtt.moe/something/towebp</loc>
     <priority>0.7</priority>
@@ -51,5 +62,116 @@
     <priority>0.7</priority>
     <lastmod>2023-10-8</lastmod>
     <changefreq>never</changefreq>
+  </url>
+
+  <url>
+    <loc>https://xtt.moe/lang/words</loc>
+    <priority>0.8</priority>
+  </url>
+  <!-- <url>
+    <loc>https://xtt.moe/article/{id}</loc>
+    <priority>0.8</priority>
+  </url> -->
+  <url>
+    <loc>https://xtt.moe/article/2</loc>
+    <priority>0.8</priority>
+    <lastmod>2023-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/article/4</loc>
+    <priority>0.8</priority>
+    <lastmod>2023-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/article/6</loc>
+    <priority>0.8</priority>
+    <lastmod>2023-07-25</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/article/7</loc>
+    <priority>0.8</priority>
+    <lastmod>2023-07-25</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/article/8</loc>
+    <priority>0.8</priority>
+    <lastmod>2023-07-28</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/article/9</loc>
+    <priority>0.8</priority>
+    <lastmod>2023-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/article/10</loc>
+    <priority>0.8</priority>
+    <lastmod>2023-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/article/11</loc>
+    <priority>0.8</priority>
+    <lastmod>2023-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/article/12</loc>
+    <priority>0.8</priority>
+    <lastmod>2023-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/article/13</loc>
+    <priority>0.8</priority>
+    <lastmod>2023-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/article/14</loc>
+    <priority>0.8</priority>
+    <lastmod>2023-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/article/15</loc>
+    <priority>0.8</priority>
+    <lastmod>2023-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/article/16</loc>
+    <priority>0.8</priority>
+    <lastmod>2023-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/article/17</loc>
+    <priority>0.8</priority>
+    <lastmod>2023-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/article/19</loc>
+    <priority>0.8</priority>
+    <lastmod>2023-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/article/20</loc>
+    <priority>0.8</priority>
+    <lastmod>2023-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/article/21</loc>
+    <priority>0.8</priority>
+    <lastmod>2023-10-13</lastmod>
+    <changefreq>monthly</changefreq>
   </url>
 </urlset>

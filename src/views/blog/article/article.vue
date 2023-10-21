@@ -66,8 +66,6 @@ const getActicle = async () => {
 
 	try {
 		const data = await getActicleById(id.value);
-		console.log(data);
-
 		acticle.value = data;
 
 		// 修改页面标题
