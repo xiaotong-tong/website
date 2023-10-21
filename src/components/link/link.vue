@@ -19,8 +19,15 @@ const props = defineProps({
 const link: Ref = ref(null);
 
 const linkClickEvent = (ev: MouseEvent) => {
-	// 如果 to 属性为空，则不进行如何操作
+	// 如果 to 属性为空，则不进行任何操作
 	if (props.to === "") {
+		ev.preventDefault();
+		return;
+	}
+
+	// 如果在点击时 ctrl 键被按下，则在新的标签页中打开链接
+	if (ev.ctrlKey) {
+		window.open(props.to, "_blank");
 		ev.preventDefault();
 		return;
 	}
