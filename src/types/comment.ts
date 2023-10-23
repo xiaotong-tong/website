@@ -15,3 +15,15 @@ export interface Comment {
 	replyId: number;
 	children: Comment[];
 }
+
+export interface recentCommentBody {
+	id: number;
+	uid: UUID;
+	articleId: number;
+	articleTitle?: string;
+	isGuestbook: boolean;
+	photoUrl: string;
+	nickname: string;
+	content: string;
+	createDate: string;
+}

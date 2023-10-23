@@ -6,6 +6,7 @@
 -   [关于](/about)
 -   [留言板](/guestbook)
 -   [链接](/link)
+-   [仪表盘](/dashboard)
 
 ### 小工具
 

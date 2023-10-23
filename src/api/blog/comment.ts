@@ -1,5 +1,5 @@
 import http from "../axios";
-import type { Comment } from "@/types/comment";
+import type { Comment, recentCommentBody } from "@/types/comment";
 
 interface AddCommentBody {
 	articleId?: number;
@@ -54,5 +54,15 @@ export async function uploadPhoto(url: string) {
 
 export async function getPhotoList() {
 	const data = await http.get("/comment/photo/list");
+	return data.data;
+}
+
+// 获取最新评论
+export async function getRecentCommentList(limit?: number): Promise<recentCommentBody[]> {
+	const data = await http.get("/comment/list/recent", {
+		params: {
+			limit
+		}
+	});
 	return data.data;
 }

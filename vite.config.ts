@@ -42,6 +42,7 @@ export default defineConfig({
 					guestbook: ["./src/views/blog/guestbook/index.vue"],
 					link: ["./src/views/links/links.vue"],
 					sitemap: ["./src/views/sitemap/index.vue"],
+					dashboard: ["./src/views/dashboard/index.vue"],
 					something: [
 						"./src/views/somethings/img2base64.vue",
 						"./src/views/somethings/toWebp.vue"

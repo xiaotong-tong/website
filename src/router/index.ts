@@ -77,6 +77,12 @@ const router = createRouter({
 					component: () => import("../views/sitemap/index.vue")
 				},
 
+				{
+					path: "/dashboard",
+					name: "dashboard",
+					component: () => import("../views/dashboard/index.vue")
+				},
+
 				// something
 				{
 					path: "/something/img2base64",
