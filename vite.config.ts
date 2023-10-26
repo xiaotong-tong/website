@@ -45,7 +45,9 @@ export default defineConfig({
 					dashboard: ["./src/views/dashboard/index.vue"],
 					something: [
 						"./src/views/somethings/img2base64.vue",
-						"./src/views/somethings/toWebp.vue"
+						"./src/views/somethings/toWebp.vue",
+						"./src/views/somethings/pinyin.vue",
+						"./src/views/somethings/kana.vue"
 					]
 				}
 			}

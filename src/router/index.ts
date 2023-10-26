@@ -99,6 +99,11 @@ const router = createRouter({
 					name: "pinyin",
 					component: () => import("../views/somethings/pinyin.vue")
 				},
+				{
+					path: "/something/kana",
+					name: "kana",
+					component: () => import("../views/somethings/kana.vue")
+				},
 
 				// 404页面
 				{
