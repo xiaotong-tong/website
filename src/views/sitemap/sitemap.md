@@ -11,7 +11,8 @@
 ### 小工具
 
 -   [towebp](/something/towebp) - 将图片转换为 webp 格式
--   [tobase64](/something/tobase64) - 将图片转换为 base64 格式
+-   [img2base64](/something/img2base64) - 将图片转换为 base64 格式
+-   [拼音](/something/pinyin) - 为汉字注音
 
 ## 分类目录
 

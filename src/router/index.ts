@@ -94,6 +94,11 @@ const router = createRouter({
 					name: "toWebp",
 					component: () => import("../views/somethings/toWebp.vue")
 				},
+				{
+					path: "/something/pinyin",
+					name: "pinyin",
+					component: () => import("../views/somethings/pinyin.vue")
+				},
 
 				// 404页面
 				{
