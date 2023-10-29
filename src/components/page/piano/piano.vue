@@ -64,6 +64,15 @@
 		</li>
 	</ul>
 
+	<ul class="score-box">
+		<li>
+			<div @click="autoPlayPiano('1155665-4433221-5544332-5544332-1155665-4433221', 120)">
+				<nami-icon icon="mdiMusicNote"></nami-icon>
+				小星星
+			</div>
+		</li>
+	</ul>
+
 	<!-- 预加载 piano 音频文件 -->
 	<!-- as="audio" 目前没被 chrome 等浏览器支持， 详见 https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes/rel/preload#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7 -->
 	<!-- <Teleport to="head">
@@ -134,6 +143,43 @@ const keydownHandler = (e: KeyboardEvent) => {
 	keyEl?.addEventListener("transitionend", () => {
 		keyEl?.classList.remove("active");
 	});
+};
+
+const autoPlayPiano = (score: string, speed = 75) => {
+	const timeUnit = (1000 * 60) / speed;
+	const scoreArr = score.split("");
+	let i = 0;
+
+	const keyMap = [undefined, "c3", "d3", "e3", "f3", "g3", "a3", "b3"];
+
+	const loop = (unit: number | "-") => {
+		if (unit === 0 || unit === "-") {
+			return;
+		}
+		const key = keyMap[unit];
+
+		if (!key) {
+			return;
+		}
+
+		const keyEl = document.querySelector(`.piano-key[data-key="${key}"]`);
+		keyEl?.classList.add("active");
+
+		playPianoAudio(key as PianoKey);
+
+		keyEl?.addEventListener("transitionend", () => {
+			keyEl?.classList.remove("active");
+		});
+	};
+
+	const timer = setInterval(() => {
+		loop(+scoreArr[i]);
+		i++;
+
+		if (i > scoreArr.length) {
+			clearInterval(timer);
+		}
+	}, timeUnit);
 };
 
 onMounted(() => {
@@ -221,5 +267,15 @@ onUnmounted(() => {
 	height: 100%;
 	display: flex;
 	align-items: center;
+}
+
+.score-box {
+	margin-block-start: 16px;
+	width: 100%;
+	display: flex;
+}
+.score-box li {
+	flex: 0 0 50%;
+	text-align: center;
 }
 </style>

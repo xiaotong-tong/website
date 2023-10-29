@@ -1,13 +1,28 @@
 <template>
-	<section class="box web-color-default">
+	<section class="box web-color-default" v-if="!store.isSmallScreen">
 		<h1 class="return-home" aria-label="404 Not Found">迷子でもいい、迷子でも進め!</h1>
 
 		<namiPiano></namiPiano>
+	</section>
+
+	<section class="box" v-else>
+		<img
+			src="https://image.xtt.moe/images/2023/10/12/QQ20231012111248.md.jpg"
+			alt="404背景图片"
+			class="bg"
+		/>
+		<h1 class="nf-404">404</h1>
+		<h2 class="nf">Not Found</h2>
+
+		<nami-link to="/" class="return-home">迷子でもいい、迷子でも進め！→ 前往首页</nami-link>
 	</section>
 </template>
 
 <script setup lang="ts">
 import namiPiano from "@/components/page/piano/piano.vue";
+import { useStore } from "@/stores/index";
+
+const store = useStore();
 </script>
 
 <style scoped>
@@ -48,5 +63,32 @@ import namiPiano from "@/components/page/piano/piano.vue";
 	100% {
 		transform: rotateX(360deg);
 	}
+}
+
+.bg {
+	position: absolute;
+	z-index: -1;
+	top: 8px;
+	filter: brightness(0.6);
+	max-width: 100vw;
+	min-width: 444px;
+}
+
+.nf-404 {
+	font-size: 150px;
+	font-weight: 700;
+	color: transparent;
+	background-image: linear-gradient(310deg, #f53939, #fac60b);
+	-webkit-background-clip: text;
+	background-clip: text;
+	margin: 0;
+}
+.nf {
+	font-size: 30px;
+	color: transparent;
+	background-image: linear-gradient(310deg, #f53939, #fac60b);
+	-webkit-background-clip: text;
+	background-clip: text;
+	margin: 0;
 }
 </style>
