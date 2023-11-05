@@ -2,17 +2,22 @@
 	<nav class="nav">
 		<ul class="list left">
 			<li>
-				<namiLink class="link" inline-block to="/">首页</namiLink>
+				<namiLink
+					class="link"
+					inline-block
+					to="/"
+					v-text="i18nStore.messages.main.nav.home"
+				></namiLink>
 			</li>
 			<li
 				class="share-wrap"
 				@mouseenter="tagsPopShow = true"
 				@mouseleave="tagsPopShow = false"
-				@focusin="shareFocusHandler"
-				@focusout="shareBlurHandler"
+				@focusin="focusHandler('share')"
+				@focusout="blurHandler('share')"
 			>
-				<namiLink class="link share" inline-block
-					>喵分享
+				<namiLink class="link share" inline-block>
+					{{ i18nStore.messages.main.nav.share }}
 					<namiIcon icon="mdiChevronDown"></namiIcon>
 				</namiLink>
 
@@ -21,24 +26,62 @@
 					v-show="tagsPopShow"
 					@click="tagsPopShow = false"
 				>
-					<namiLink class="link" inline-block to="/net">网络互联</namiLink>
-					<namiLink class="link" inline-block to="/lang">语言学习</namiLink>
-					<namiLink class="link" inline-block to="/note">喵随笔</namiLink>
-					<namiLink class="link" inline-block to="/star">其它</namiLink>
+					<namiLink class="link" inline-block to="/net">{{
+						i18nStore.messages.main.nav.net
+					}}</namiLink>
+					<namiLink class="link" inline-block to="/lang">
+						{{ i18nStore.messages.main.nav.lang }}
+					</namiLink>
+					<namiLink class="link" inline-block to="/note">
+						{{ i18nStore.messages.main.nav.note }}
+					</namiLink>
+					<namiLink class="link" inline-block to="/star">
+						{{ i18nStore.messages.main.nav.star }}
+					</namiLink>
 				</div>
 			</li>
 			<li>
-				<namiLink class="link" inline-block to="/guestbook">留言板</namiLink>
+				<namiLink class="link" inline-block to="/guestbook">
+					{{ i18nStore.messages.main.nav.guestbook }}
+				</namiLink>
 			</li>
 			<li>
-				<namiLink class="link" inline-block to="/link">链接</namiLink>
+				<namiLink class="link" inline-block to="/link">
+					{{ i18nStore.messages.main.nav.link }}
+				</namiLink>
 			</li>
 			<li>
-				<namiLink class="link" inline-block to="/about">关于</namiLink>
+				<namiLink class="link" inline-block to="/about">
+					{{ i18nStore.messages.main.nav.about }}
+				</namiLink>
 			</li>
 		</ul>
 
 		<ul class="list right">
+			<li
+				class="lang-translate"
+				@mouseenter="translatePopShow = true"
+				@mouseleave="translatePopShow = false"
+				@focusin="focusHandler('lang')"
+				@focusout="blurHandler('lang')"
+			>
+				<namiIcon icon="mdiTranslate" class="link"></namiIcon>
+
+				<div
+					class="langs web-color-default"
+					v-show="translatePopShow"
+					@click="translatePopShow = false"
+				>
+					<div
+						class="lang-item"
+						v-if="i18nStore.lang === 'zh'"
+						@click="i18nStore.lang = 'jp'"
+					>
+						日本語
+					</div>
+					<div class="lang-item" v-else @click="i18nStore.lang = 'zh'">中文</div>
+				</div>
+			</li>
 			<li class="light-dark-wrap link" @click="store.isDark = !store.isDark">
 				<namiIcon icon="mdiThemeLightDark"></namiIcon>
 			</li>
@@ -60,24 +103,29 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useStore } from "@/stores/index";
+import { useI18nStore } from "@/stores/i18n";
 
 const store = useStore();
+const i18nStore = useI18nStore();
 const tagsPopShow = ref(false);
+const translatePopShow = ref(false);
 
 // 防止 blur 事件与 focus 事件冲突
 const blurDelay = 100;
 let blurTimer: number;
 
-const shareFocusHandler = () => {
+const focusHandler = (target: "share" | "lang") => {
 	if (blurTimer) {
 		window.clearTimeout(blurTimer);
 		blurTimer = 0;
 	}
-	tagsPopShow.value = true;
+	const targetRef = target === "share" ? tagsPopShow : translatePopShow;
+	targetRef.value = true;
 };
-const shareBlurHandler = () => {
+const blurHandler = (target: "share" | "lang") => {
 	blurTimer = window.setTimeout(() => {
-		tagsPopShow.value = false;
+		const targetRef = target === "share" ? tagsPopShow : translatePopShow;
+		targetRef.value = false;
 	}, blurDelay);
 };
 </script>
@@ -120,7 +168,8 @@ const shareBlurHandler = () => {
 .share::part(link) {
 	align-items: center;
 }
-.tags {
+.tags,
+.langs {
 	position: absolute;
 	border-radius: 4px;
 	box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
@@ -130,15 +179,26 @@ const shareBlurHandler = () => {
 	display: flex;
 }
 
-.light-dark-wrap {
+.langs {
+	top: 24px;
+	left: -16px;
+}
+.lang-item {
+	padding: 4px 8px;
+}
+
+.light-dark-wrap,
+.lang-translate {
 	display: flex;
 	align-items: center;
 	cursor: pointer;
+	position: relative;
 }
 
 /* 移动设备在点击后元素元素会一直保持 hover 状态，使用 @media (hover: hover) 包裹后，移动设备就不会加载 hover 样式了。 */
 @media (hover: hover) {
-	.link:hover {
+	.link:hover,
+	.lang-item:hover {
 		color: #f34159;
 	}
 }
