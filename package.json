@@ -19,6 +19,7 @@
 		"galmuri": "^2.38.7",
 		"pinia": "^2.0.36",
 		"pinyin-pro": "^3.17.0",
+		"three": "^0.158.0",
 		"vue": "^3.2.47",
 		"vue-router": "^4.1.6",
 		"xtt-ui": "^0.1.1-alpha.5",
@@ -27,6 +28,7 @@
 	"devDependencies": {
 		"@rushstack/eslint-patch": "^1.2.0",
 		"@types/node": "^20.4.5",
+		"@types/three": "^0.158.1",
 		"@types/vue": "^2.0.0",
 		"@vitejs/plugin-vue": "^4.2.1",
 		"@vue/eslint-config-prettier": "^7.1.0",

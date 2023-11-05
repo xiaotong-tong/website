@@ -48,7 +48,8 @@ export default defineConfig({
 						"./src/views/somethings/toWebp.vue",
 						"./src/views/somethings/pinyin.vue",
 						"./src/views/somethings/kana.vue"
-					]
+					],
+					ex: ["./src/views/ex/space/index.vue"]
 				}
 			}
 		}
