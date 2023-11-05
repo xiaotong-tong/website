@@ -1,8 +1,8 @@
 <template>
 	<section class="container web-color-default">
 		<header class="header">
-			<h2>留言板</h2>
-			<p>欢迎留言，欢迎灌水，尽量回复，各位随意~</p>
+			<h2>{{ i18nStore.messages.guestbook.title }}</h2>
+			<p>{{ i18nStore.messages.guestbook.subContent }}</p>
 		</header>
 
 		<namiCommentList
@@ -11,7 +11,7 @@
 			:isGuestbook="true"
 		></namiCommentList>
 
-		<h3>发布留言：</h3>
+		<h3>{{ i18nStore.messages.guestbook.commentTitle }}</h3>
 		<namiCommentPanel class="comment-panel" @submit="commentSubmitEvent"></namiCommentPanel>
 	</section>
 </template>
@@ -20,6 +20,9 @@
 import { ref, provide } from "vue";
 import type { Comment } from "@/types/comment";
 import { addComment, getCommentList } from "@/api/blog/comment";
+import { useI18nStore } from "@/stores/i18n";
+
+const i18nStore = useI18nStore();
 
 const commentList = ref<Comment[]>([]);
 const getComments = async () => {

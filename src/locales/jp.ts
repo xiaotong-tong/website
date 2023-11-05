@@ -14,5 +14,20 @@ export const jpMsg = {
 		footer: {
 			sitemap: "sitemap"
 		}
+	},
+	guestbook: {
+		title: "ゲストブック",
+		subContent:
+			"ようこそ、メッセージをご自由にどうぞ！できるだけ返信しますので、みなさん、お気軽にどうぞ！",
+		commentTitle: "コメントする:"
+	},
+	comment: {
+		avatar: "アバター",
+		nickname: "ネーム：",
+		email: "メール：",
+		submitText: "返信",
+		previewTitle: "プレビュー：",
+		previewTipOpen: "プレビューを表示",
+		previewTipClose: "プレビューを隠す"
 	}
 };

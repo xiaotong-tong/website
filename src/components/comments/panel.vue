@@ -1,17 +1,23 @@
 <template>
 	<div class="comment-panel">
 		<div class="header">
-			<label class="label"
-				>头像
-				<namiCommentsPhoto v-model:src="photoSrc"></namiCommentsPhoto>
+			<label class="label">
+				{{ i18nStore.messages.comment.avatar }}
+				<namiCommentsPhoto v-model:src="photoSrc" />
 			</label>
-			<label class="label"
-				>昵称
-				<xtt-input type="text" class="input" maxlength="32" v-model="nickname" />
+			<label class="label">
+				{{ i18nStore.messages.comment.nickname }}
+				<xtt-input
+					type="text"
+					class="input"
+					maxlength="32"
+					v-model="nickname"
+					placeholder="匿名"
+				/>
 			</label>
-			<label class="label"
-				>邮箱
-				<xtt-input type="text" class="input" v-model="email" />
+			<label class="label">
+				{{ i18nStore.messages.comment.email }}
+				<xtt-input type="text" class="input" v-model="email" placeholder="example@a.com" />
 			</label>
 		</div>
 		<div class="content">
@@ -25,7 +31,9 @@
 			/>
 
 			<div class="preview" v-if="previewShowed">
-				<div>预览：</div>
+				<div>
+					{{ i18nStore.messages.comment.previewTitle }}
+				</div>
 				<div class="preview-content">
 					<xtt-markdown class="md" ref="previewMd"></xtt-markdown>
 				</div>
@@ -36,7 +44,11 @@
 				<xtt-button
 					class="previewBtn"
 					text
-					data-xtt-tooltip="预览"
+					:data-xtt-tooltip="
+						previewShowed
+							? i18nStore.messages.comment.previewTipClose
+							: i18nStore.messages.comment.previewTipOpen
+					"
 					:style="{
 						color: previewShowed ? '#f34159' : undefined
 					}"
@@ -56,9 +68,9 @@
 				</xtt-button> -->
 			</div>
 			<div class="end">
-				<xtt-button type="primary" @click="submitEvent" @keydown.enter="submitEvent"
-					>提交</xtt-button
-				>
+				<xtt-button type="primary" @click="submitEvent" @keydown.enter="submitEvent">
+					{{ i18nStore.messages.comment.submitText }}
+				</xtt-button>
 			</div>
 		</div>
 	</div>
@@ -67,6 +79,9 @@
 <script setup lang="ts">
 import { ref, nextTick } from "vue";
 import namiCommentsPhoto from "./photo.vue";
+import { useI18nStore } from "@/stores/i18n";
+
+const i18nStore = useI18nStore();
 
 const emits = defineEmits<{
 	(

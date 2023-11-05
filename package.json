@@ -22,7 +22,7 @@
 		"three": "^0.158.0",
 		"vue": "^3.2.47",
 		"vue-router": "^4.1.6",
-		"xtt-ui": "^0.1.1-alpha.5",
+		"xtt-ui": "^0.1.1-alpha.6",
 		"xtt-utils": "^0.2.0"
 	},
 	"devDependencies": {
