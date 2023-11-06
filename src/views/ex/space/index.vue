@@ -100,20 +100,20 @@ async function getCsv() {
 		return res;
 	};
 
-	const { data } = await axios.get("/space/hip_constellation_line_star.csv");
+	const res = await Promise.all([
+		axios.get("/space/hip_constellation_line_star.csv"),
+		axios.get("/space/hip_lite_a.csv"),
+		axios.get("/space/hip_lite_b.csv")
+	]);
 
 	//星座線恒星データ
-	hipColor = tranCsv(data);
-
-	const { data: hipLiteA } = await axios.get("/space/hip_lite_a.csv");
+	hipColor = tranCsv(res[0].data);
 
 	//基礎データA
-	hipA = tranCsv(hipLiteA);
-
-	const { data: hipLiteB } = await axios.get("/space/hip_lite_b.csv");
+	hipA = tranCsv(res[1].data);
 
 	//基礎データB
-	hipB = tranCsv(hipLiteB);
+	hipB = tranCsv(res[2].data);
 
 	//基礎データA、基礎データBを1つに結合
 	hipArray = hipA.concat(hipB);
