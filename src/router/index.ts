@@ -74,6 +74,11 @@ const router = createRouter({
 					name: "link",
 					component: () => import("../views/links/links.vue")
 				},
+				{
+					path: "/archives",
+					name: "archives",
+					component: () => import("../views/archives/archives.vue")
+				},
 
 				// 站点地图页面
 				{

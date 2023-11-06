@@ -3,7 +3,7 @@
   <url>
     <loc>https://xtt.moe/</loc>
     <priority>1.0</priority>
-    <lastmod>2023-10-21</lastmod>
+    <lastmod>2023-11-06</lastmod>
     <changefreq>daily</changefreq>
   </url>
   <url>
@@ -31,13 +31,19 @@
   <url>
     <loc>https://xtt.moe/link</loc>
     <priority>0.6</priority>
-    <lastmod>2023-10-12</lastmod>
+    <lastmod>2023-11-05</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://xtt.moe/sitemap</loc>
     <priority>1.0</priority>
     <lastmod>2023-10-26</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/archives</loc>
+    <priority>0.7</priority>
+    <lastmod>2023-11-06</lastmod>
     <changefreq>weekly</changefreq>
   </url>
 
@@ -73,6 +79,13 @@
     <loc>https://xtt.moe/something/kana</loc>
     <priority>0.7</priority>
     <lastmod>2023-10-26</lastmod>
+    <changefreq>never</changefreq>
+  </url>
+
+  <url>
+    <loc>https://xtt.moe/ex/space</loc>
+    <priority>0.3</priority>
+    <lastmod>2023-11-05</lastmod>
     <changefreq>never</changefreq>
   </url>
 

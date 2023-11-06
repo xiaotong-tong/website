@@ -9,7 +9,8 @@ export const jpMsg = {
 			star: "ほか",
 			guestbook: "ゲストブック",
 			link: "リンク",
-			about: "について"
+			about: "について",
+			archives: "アーカイブ"
 		},
 		footer: {
 			sitemap: "sitemap"

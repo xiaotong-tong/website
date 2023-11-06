@@ -29,6 +29,9 @@ import mainCard from "../components/page/card/mainCard.vue";
 
 import pagination from "../components/pagination/pagination.vue";
 
+import timeline from "../components/timeline/timeline.vue";
+import timelineItem from "../components/timeline/timeline-item.vue";
+
 const importPlugin = {
 	install(app: App) {
 		app.component("namiLink", link);
@@ -44,6 +47,9 @@ const importPlugin = {
 		app.component("namiMainCard", mainCard);
 
 		app.component("namiPagination", pagination);
+
+		app.component("namiTimeline", timeline);
+		app.component("namiTimelineItem", timelineItem);
 	}
 };
 

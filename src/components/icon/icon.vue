@@ -27,7 +27,9 @@ import {
 	mdiChatOutline,
 	mdiChatRemoveOutline,
 	mdiChevronDown,
-	mdiTranslate
+	mdiTranslate,
+	mdiCat,
+	mdiPaw
 } from "@mdi/js";
 
 interface Props {
@@ -51,7 +53,9 @@ interface Props {
 		| "mdiChatOutline"
 		| "mdiChatRemoveOutline"
 		| "mdiChevronDown"
-		| "mdiTranslate";
+		| "mdiTranslate"
+		| "mdiCat"
+		| "mdiPaw";
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -79,7 +83,9 @@ const reflectIcon = (icon: Props["icon"]) => {
 		mdiChatOutline,
 		mdiChatRemoveOutline,
 		mdiChevronDown,
-		mdiTranslate
+		mdiTranslate,
+		mdiCat,
+		mdiPaw
 	};
 
 	return mdiMap[icon];

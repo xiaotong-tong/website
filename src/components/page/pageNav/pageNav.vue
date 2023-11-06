@@ -51,6 +51,11 @@
 				</namiLink>
 			</li>
 			<li>
+				<namiLink class="link" inline-block to="/archives">
+					{{ i18nStore.messages.main.nav.archives }}
+				</namiLink>
+			</li>
+			<li>
 				<namiLink class="link" inline-block to="/about">
 					{{ i18nStore.messages.main.nav.about }}
 				</namiLink>
