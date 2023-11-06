@@ -1,17 +1,16 @@
 import { ref, watch } from "vue";
 import { defineStore } from "pinia";
-import { useRouter, useRoute } from "vue-router";
+import { useRouter } from "vue-router";
 
 import { zhMsg } from "@/locales/zh";
 import { jpMsg } from "@/locales/jp";
 
 const getLang = () => {
-	let lang = navigator.language;
-
-	const route = useRoute();
-	if (route.query.lang) {
-		lang = route.query.lang as string;
+	if (location.pathname.startsWith("/jp")) {
+		return "jp";
 	}
+
+	let lang = navigator.language;
 
 	if (lang.startsWith("jp")) {
 		return "jp";
@@ -31,8 +30,13 @@ export const useI18nStore = defineStore("i18n", () => {
 	watch(lang, (val) => {
 		messages.value = val === "zh" ? zhMsg : jpMsg;
 
-		// 往 router 中添加语言 hash 参数
-		router.push({ query: { lang: val } });
+		// 切换到 /jp/xxx 或 /xxx 页面
+		const path = router.currentRoute.value.path;
+		if (val === "jp" && !path.startsWith("/jp")) {
+			router.push("/jp" + path);
+		} else if (path.startsWith("/jp")) {
+			router.push(path.slice(3));
+		}
 	});
 
 	return { lang, messages };
