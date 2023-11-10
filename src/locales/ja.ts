@@ -1,4 +1,4 @@
-export const jpMsg = {
+export const jaMsg = {
 	main: {
 		nav: {
 			home: "ホーム",

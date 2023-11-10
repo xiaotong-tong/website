@@ -80,7 +80,7 @@
 					<div
 						class="lang-item"
 						v-if="i18nStore.lang === 'zh'"
-						@click="i18nStore.lang = 'jp'"
+						@click="i18nStore.lang = 'ja'"
 					>
 						日本語
 					</div>

@@ -3,17 +3,17 @@ import { defineStore } from "pinia";
 import { useRouter } from "vue-router";
 
 import { zhMsg } from "@/locales/zh";
-import { jpMsg } from "@/locales/jp";
+import { jaMsg } from "@/locales/ja";
 
 const getLang = () => {
-	if (location.pathname.startsWith("/jp")) {
-		return "jp";
+	if (location.pathname.startsWith("/ja")) {
+		return "ja";
 	}
 
 	let lang = navigator.language;
 
-	if (lang.startsWith("jp")) {
-		return "jp";
+	if (lang.startsWith("ja")) {
+		return "ja";
 	}
 
 	return "zh";
@@ -25,16 +25,22 @@ export const useI18nStore = defineStore("i18n", () => {
 	// 当前语言
 	const lang = ref(getLang());
 
-	const messages = ref(lang.value === "zh" ? zhMsg : jpMsg);
+	// 切换 html lang 属性
+	document.documentElement.lang = lang.value === "ja" ? "ja" : "zh-CN";
+
+	const messages = ref(lang.value === "zh" ? zhMsg : jaMsg);
 
 	watch(lang, (val) => {
-		messages.value = val === "zh" ? zhMsg : jpMsg;
+		messages.value = val === "zh" ? zhMsg : jaMsg;
 
-		// 切换到 /jp/xxx 或 /xxx 页面
+		// 切换 html lang 属性
+		document.documentElement.lang = val === "ja" ? "ja" : "zh-CN";
+
+		// 切换到 /ja/xxx 或 /xxx 页面
 		const path = router.currentRoute.value.path;
-		if (val === "jp" && !path.startsWith("/jp")) {
-			router.push("/jp" + path);
-		} else if (path.startsWith("/jp")) {
+		if (val === "ja" && !path.startsWith("/ja")) {
+			router.push("/ja" + path);
+		} else if (path.startsWith("/ja")) {
 			router.push(path.slice(3));
 		}
 	});

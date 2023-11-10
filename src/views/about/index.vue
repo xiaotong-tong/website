@@ -10,7 +10,7 @@
 					draggable="false"
 				/>
 			</div>
-			<div class="info-wrap" v-if="i18nStore.lang !== 'jp'">
+			<div class="info-wrap" v-if="i18nStore.lang !== 'ja'">
 				<h2>关于我</h2>
 				<p>
 					常用名：小恸恸，星川涟<br />
@@ -35,7 +35,7 @@
 				</p>
 			</div>
 			<div v-else>
-				<h2>私について</h2>
+				<h2>私って</h2>
 				<p>
 					名前：小恸恸<br />
 					職業：フロントエンドエンジニア<br />
@@ -43,7 +43,7 @@
 					E-Mail: wtt150249@gmail.com<br />
 				</p>
 
-				<h2>看板娘について</h2>
+				<h2>看板娘って</h2>
 				<p>
 					名前：<ruby>星川漣 <rt>ほしかわさざなみ</rt></ruby
 					>、ナミ<br />
@@ -52,7 +52,7 @@
 				</p>
 			</div>
 		</div>
-		<template v-if="i18nStore.lang !== 'jp'">
+		<template v-if="i18nStore.lang !== 'ja'">
 			<h2>关于本站</h2>
 			<p>
 				本站是个人网站，主要用于存放一些个人作品，以及一些个人的日常记录。<br />
@@ -65,7 +65,7 @@
 			</p>
 		</template>
 		<template v-else>
-			<h2>サイトについて</h2>
+			<h2>サイトって</h2>
 			<p>
 				このサイトは個人サイトで、主に個人作品や個人の日常記録を保存するために使用されます。<br />
 				サイトのコードはすべてオープンソースで、Githubでこのサイトのソースコードを見つけることができます：<br />
@@ -80,7 +80,7 @@
 		</template>
 	</section>
 
-	<Teleport to="head" v-if="i18nStore.lang !== 'jp'">
+	<Teleport to="head" v-if="i18nStore.lang !== 'ja'">
 		<meta name="keywords" content="小恸恸,星川涟" />
 		<meta name="description" content="关于本网站的一些信息" />
 	</Teleport>

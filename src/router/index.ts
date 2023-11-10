@@ -131,31 +131,31 @@ let routes = [
 ];
 
 // 添加 jp 的路由
-const jpRoutes: any[] = [];
+const jaRoutes: any[] = [];
 
 routes.forEach((route) => {
 	const jpRoute = {
 		...route,
-		path: "/jp" + route.path,
-		name: "jp" + route.name
+		path: "/ja" + route.path,
+		name: "ja" + route.name
 	};
 
 	if (jpRoute.children) {
 		jpRoute.children = jpRoute.children.map((child) => {
 			return {
 				...child,
-				path: "/jp" + child.path,
-				name: "jp" + child.name
+				path: "/ja" + child.path,
+				name: "ja" + child.name
 			};
 		});
 	}
 
-	jpRoutes.push(jpRoute);
+	jaRoutes.push(jpRoute);
 });
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
-	routes: [...routes, ...jpRoutes],
+	routes: [...routes, ...jaRoutes],
 	// 在切换页面时，滚动到顶部
 	scrollBehavior(_to, _from, savedPosition) {
 		if (savedPosition) {
@@ -182,9 +182,9 @@ router.beforeEach((to, _from, next) => {
 		return;
 	}
 
-	// 如果 i18nStore.lang 为 jp, 则重定向到 /jp, 因为路由跳转时，是不会自动加上 /jp 的
-	if (i18nStore.lang === "jp" && !to.path.startsWith("/jp")) {
-		next("/jp" + to.path);
+	// 如果 i18nStore.lang 为 ja, 则重定向到 /ja, 因为路由跳转时，是不会自动加上 /ja 的
+	if (i18nStore.lang === "ja" && !to.path.startsWith("/ja")) {
+		next("/ja" + to.path);
 		return;
 	}
 
