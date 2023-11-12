@@ -1,6 +1,6 @@
 <template>
 	<section class="container">
-		<namiMainCard
+		<!-- <namiMainCard
 			class="card"
 			:info="{
 				headerLink: '/lang/words',
@@ -12,7 +12,7 @@
 				thumbnail: 'https://image.xtt.moe/images/2023/07/23/23.jpg',
 				abstract: '日本語勉強'
 			}"
-		/>
+		/> -->
 		<namiMainCard
 			class="card"
 			v-for="item in acticleList"
@@ -30,7 +30,7 @@ import { getActicleList } from "@/api/blog/acticle";
 const acticleList = ref<Acticle[] | null>(null);
 
 (async () => {
-	const data = await getActicleList({ category: "语言学习" });
+	const data = await getActicleList({ category: "1" });
 	acticleList.value = data;
 })();
 </script>

@@ -89,10 +89,10 @@
     <changefreq>never</changefreq>
   </url>
 
-  <url>
+  <!-- <url>
     <loc>https://xtt.moe/lang/words</loc>
     <priority>0.8</priority>
-  </url>
+  </url> -->
   <!-- <url>
     <loc>https://xtt.moe/article/{id}</loc>
     <priority>0.8</priority>

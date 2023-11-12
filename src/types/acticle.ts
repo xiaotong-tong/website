@@ -11,6 +11,11 @@ export interface Acticle {
 	createDate: string;
 	thumbnail: string;
 	abstract: string;
+	jaTitle: string;
+	jaContent: string;
+	jaAuthor: string;
+	jaAbstract: string;
+	jaTags: string;
 }
 
 export interface ActicleById extends Acticle {

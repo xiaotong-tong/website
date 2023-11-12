@@ -17,7 +17,7 @@ import { getActicleList } from "@/api/blog/acticle";
 const acticleList = ref<Acticle[] | null>(null);
 
 (async () => {
-	const data = await getActicleList({ category: "网络互联" });
+	const data = await getActicleList({ category: "0" });
 	acticleList.value = data;
 })();
 </script>

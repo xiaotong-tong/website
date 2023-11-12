@@ -20,25 +20,37 @@
 		<div class="info-wrap">
 			<h2>
 				<nami-link class="title-link" inline-block :to="props.info.headerLink">{{
-					props.info.title
+					i18nStore.lang === "ja"
+						? props.info.jaTitle || props.info.title
+						: props.info.title
 				}}</nami-link>
 			</h2>
 			<p>
-				发布于<span>{{ props.info.createDate }}</span>
+				<span>{{
+					(i18nStore.lang === "ja" ? "post on " : "发布于 ") + props.info.createDate
+				}}</span>
 
 				&nbsp;&nbsp;&nbsp;
 				<nami-link
 					class="tag-link"
-					:to="
-						{ 网络互联: '/net', 语言学习: '/lang', 喵随笔: '/note', 其它: '/star' }[
-							props.info.category
-						]
-					"
-					># {{ props.info.category }}</nami-link
+					:to="['/net', '/lang', '/note', '/star'][Number(props.info.category)]"
+					>#
+					{{
+						useStateType.ActicleCategoryType[
+							i18nStore.lang === "ja" ? "jaShowText" : "showText"
+						][Number(props.info.category)]
+					}}</nami-link
 				>
 			</p>
 			<p class="abstract">
-				{{ props.info.abstract || props.info.content }}
+				{{
+					i18nStore.lang === "ja"
+						? props.info.jaAbstract ||
+						  props.info.jaContent ||
+						  props.info.abstract ||
+						  props.info.content
+						: props.info.abstract || props.info.content
+				}}
 			</p>
 		</div>
 	</div>
@@ -47,7 +59,11 @@
 <script setup lang="ts">
 import { onMounted, ref, onBeforeUnmount } from "vue";
 import { useStore } from "@/stores/index";
+import { useStateTypeStore } from "@/stores/stateType";
+import { useI18nStore } from "@/stores/i18n";
 const store = useStore();
+const useStateType = useStateTypeStore();
+const i18nStore = useI18nStore();
 
 interface Props {
 	info: {
@@ -58,6 +74,11 @@ interface Props {
 		category: string;
 		thumbnail: string;
 		abstract: string;
+		jaTitle: string;
+		jaContent: string;
+		jaAuthor: string;
+		jaAbstract: string;
+		jaTags: string;
 	};
 }
 const props = withDefaults(defineProps<Props>(), {
@@ -68,7 +89,12 @@ const props = withDefaults(defineProps<Props>(), {
 		createDate: "",
 		category: "",
 		thumbnail: "",
-		abstract: ""
+		abstract: "",
+		jaTitle: "",
+		jaContent: "",
+		jaAuthor: "",
+		jaAbstract: "",
+		jaTags: ""
 	})
 });
 

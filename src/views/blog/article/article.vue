@@ -10,23 +10,30 @@
 		v-if="acticle"
 	>
 		<h2>
-			{{ acticle?.title }}
+			{{ i18nStore.lang === "ja" ? acticle.jaTitle || acticle.title : acticle.title }}
 		</h2>
 		<p>
-			发布于<span>{{ acticle?.createDate }}</span>
+			<span>{{
+				(i18nStore.lang === "ja" ? "post on " : "发布于 ") + acticle?.createDate
+			}}</span>
 
-			&nbsp;&nbsp;&nbsp; # {{ acticle?.category }}
+			&nbsp;&nbsp;&nbsp; #
+			{{
+				useStateType.ActicleCategoryType[
+					i18nStore.lang === "ja" ? "jaShowText" : "showText"
+				][Number(acticle.category)]
+			}}
 		</p>
 
 		<xtt-markdown class="md" :dark="store.isDark ? '' : undefined">{{
-			acticle?.content
+			i18nStore.lang === "ja" ? acticle?.jaContent || acticle?.content : acticle?.content
 		}}</xtt-markdown>
 
 		<div class="pagination">
-			<nami-link :to="'/article/' + acticle?.prev.id" v-if="acticle?.prev" class="link">
+			<nami-link :to="'/article/' + acticle.prev.id" v-if="acticle?.prev" class="link">
 				上一篇: {{ acticle?.prev.title }}</nami-link
 			>
-			<nami-link :to="'/article/' + acticle?.next.id" v-if="acticle?.next" class="link"
+			<nami-link :to="'/article/' + acticle.next.id" v-if="acticle?.next" class="link"
 				>下一篇: {{ acticle?.next.title }}</nami-link
 			>
 		</div>
@@ -52,9 +59,13 @@ import { getActicleById } from "@/api/blog/acticle";
 import { addComment, getCommentList } from "@/api/blog/comment";
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "@/stores/index";
+import { useI18nStore } from "@/stores/i18n";
+import { useStateTypeStore } from "@/stores/stateType";
 const store = useStore();
 const route = useRoute();
 const router = useRouter();
+const useStateType = useStateTypeStore();
+const i18nStore = useI18nStore();
 
 const id = ref(Number(route.params.id));
 
