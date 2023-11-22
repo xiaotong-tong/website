@@ -29,8 +29,9 @@ ul {
 /* 自定义网站字体 */
 @font-face {
 	font-family: "luoliti";
-	/* 优先读取 woff2 格式的字体文件，然后再读取 ttf 格式的备用文件 */
-	src: url("/fonts/LuoLiTi-2.woff2") format("woff2"), url("/fonts/LuoLiTi-2.ttf");
+	/* 优先读取 woff2 格式的字体文件，如果不支持或者读取失败，就读取 ttf 格式的备用文件 */
+	src: url("https://file.xtt.moe/files/fonts/LuoLiTi-2.woff2") format("woff2"),
+		url("https://file.xtt.moe/files/fonts/LuoLiTi-2.ttf");
 	font-display: swap;
 }
 /* 目前为了缓解请求压力，logo 使用了 base64 文字图片，当前不使用字体，也就不需要请求字体文件了 */

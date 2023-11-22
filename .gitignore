@@ -34,7 +34,7 @@ pnpm-lock.yaml
 .env.production
 
 public/sounds/
-public/musics/
+extras/musics/
 
 // 以 _ 开头的 md 文件不上传
 docs/**/_*.md

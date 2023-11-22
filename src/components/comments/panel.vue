@@ -93,7 +93,7 @@ const emits = defineEmits<{
 const previewShowed = ref(false);
 const previewMd = ref<HTMLElement | null>(null);
 
-const photoSrc = ref("https://image.xtt.moe/images/2023/08/09/mlian2.md.png");
+const photoSrc = ref("https://image.xtt.moe/images/mlian2.md.webp");
 
 const commentText = ref("");
 const nickname = ref("");

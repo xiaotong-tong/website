@@ -12,7 +12,7 @@
 		<div class="thumbnail-wrap">
 			<img
 				class="thumbnail"
-				:src="props.info.thumbnail || 'https://image.xtt.moe/images/2023/10/23/bg.webp'"
+				:src="props.info.thumbnail || 'https://image.xtt.moe/images/bg.webp'"
 				alt="缩略图"
 				loading="lazy"
 			/>

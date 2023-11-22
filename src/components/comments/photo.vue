@@ -13,13 +13,14 @@
 		</div>
 
 		<p>选择列表</p>
+		<span class="info">功能维护中，暂时无法上传</span>
 		<span class="info">自定义上传的头像会向所有人员公开，所有人都可以使用</span>
 		<div class="photoWrap">
 			<img
 				class="photo"
-				src="https://image.xtt.moe/images/2023/08/09/mlian2.md.png"
+				src="https://image.xtt.moe/images/mlian2.md.webp"
 				alt="头像图片"
-				@click="choicePhtotClick('https://image.xtt.moe/images/2023/08/09/mlian2.md.png')"
+				@click="choicePhtotClick('https://image.xtt.moe/images/mlian2.md.webp')"
 			/>
 			<img
 				class="photo"
@@ -88,7 +89,7 @@ const props = withDefaults(
 		src: string;
 	}>(),
 	{
-		src: "https://image.xtt.moe/images/2023/08/09/mlian2.md.png"
+		src: "https://image.xtt.moe/images/mlian2.md.webp"
 	}
 );
 const emits = defineEmits(["update:src"]);
@@ -122,21 +123,24 @@ const openChoicePicDialog = () => {
 const cropperSrc = ref("");
 
 const uploadImageEvent = () => {
-	const file = document.createElement("input");
-	file.type = "file";
-	file.accept = "image/*";
-	file.click();
+	// 功能维护中，暂时无法上传
+	return;
 
-	file.onchange = async () => {
-		if (!file.files) {
-			return;
-		}
-		const url = URL.createObjectURL(file.files[0]);
+	// const file = document.createElement("input");
+	// file.type = "file";
+	// file.accept = "image/*";
+	// file.click();
 
-		cropperSrc.value = url;
+	// file.onchange = async () => {
+	// 	if (!file.files) {
+	// 		return;
+	// 	}
+	// 	const url = URL.createObjectURL(file.files[0]);
 
-		file.remove();
-	};
+	// 	cropperSrc.value = url;
+
+	// 	file.remove();
+	// };
 };
 const getCropPic = async () => {
 	const b64Data = await cropper.value?.toFileOfBase64();

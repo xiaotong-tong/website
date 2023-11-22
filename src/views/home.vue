@@ -1,6 +1,6 @@
 <template>
 	<xtt-web-bg
-		src="https://image.xtt.moe/images/2023/10/23/bg.webp"
+		src="https://image.xtt.moe/images/bg.webp"
 		:mask="store.isDark ? '' : undefined"
 	></xtt-web-bg>
 

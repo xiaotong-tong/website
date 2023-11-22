@@ -5,7 +5,7 @@
 			<div class="character-wrap">
 				<img
 					class="character"
-					src="https://image.xtt.moe/images/2023/07/19/lian5.png"
+					src="https://image.xtt.moe/images/lian5.webp"
 					alt="人物立绘"
 					draggable="false"
 				/>
