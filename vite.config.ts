@@ -26,6 +26,8 @@ export default defineConfig({
 		rollupOptions: {
 			output: {
 				manualChunks: {
+					xttUtils: ["xtt-utils"],
+
 					index: [
 						"./src/views/home.vue",
 						"./src/views/blog/home.vue",
