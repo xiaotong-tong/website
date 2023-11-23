@@ -8,6 +8,7 @@
 -   [链接](/link)
 -   [仪表盘](/dashboard)
 -   [归档](/archives)
+-   [简历](/cv/pdf)
 
 ### 小工具
 

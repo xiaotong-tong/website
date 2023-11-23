@@ -49,7 +49,8 @@ export default defineConfig({
 						"./src/views/somethings/pinyin.vue",
 						"./src/views/somethings/kana.vue"
 					],
-					ex: ["./src/views/ex/space/index.vue"]
+					ex: ["./src/views/ex/space/index.vue"],
+					cv: ["./src/views/cv/cv.pdf.vue"]
 				}
 			}
 		}

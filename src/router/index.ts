@@ -114,6 +114,13 @@ let routes = [
 				component: () => import("../views/somethings/kana.vue")
 			},
 
+			// cv 页面
+			{
+				path: "/cv/pdf",
+				name: "cvpdf",
+				component: () => import("../views/cv/cv.pdf.vue")
+			},
+
 			// 404页面
 			{
 				path: "/404",

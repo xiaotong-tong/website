@@ -48,7 +48,7 @@ const store = useStore();
 	transition: transform 0.5s;
 }
 
-/* 在非 hover 时做选择动画 */
+/* 在非 hover 时做旋转动画 */
 .return-home:not(:hover) {
 	animation: flip 2s infinite;
 }
