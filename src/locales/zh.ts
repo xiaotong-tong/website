@@ -10,7 +10,8 @@ export const zhMsg = {
 			guestbook: "留言板",
 			link: "链接",
 			about: "关于",
-			archives: "归档"
+			archives: "归档",
+			music: "音乐"
 		},
 		footer: {
 			sitemap: "站点地图"

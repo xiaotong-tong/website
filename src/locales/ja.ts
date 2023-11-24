@@ -10,7 +10,8 @@ export const jaMsg = {
 			guestbook: "ゲストブック",
 			link: "リンク",
 			about: "について",
-			archives: "アーカイブ"
+			archives: "アーカイブ",
+			music: "音楽"
 		},
 		footer: {
 			sitemap: "sitemap"

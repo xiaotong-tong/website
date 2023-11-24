@@ -1,7 +1,12 @@
 <template>
 	<nav class="nav">
 		<ul class="list left">
-			<li>
+			<li
+				class="piano-key"
+				data-key="c3"
+				@mouseenter="mouseenterHandler"
+				@mouseleave="mouseleaveHandler"
+			>
 				<namiLink
 					class="link"
 					inline-block
@@ -10,9 +15,10 @@
 				></namiLink>
 			</li>
 			<li
-				class="share-wrap"
-				@mouseenter="tagsPopShow = true"
-				@mouseleave="tagsPopShow = false"
+				class="piano-key share-wrap"
+				data-key="d3"
+				@mouseenter="popLiMouseenterHandler"
+				@mouseleave="popLiMouseleaveHandler"
 				@focusin="focusHandler('share')"
 				@focusout="blurHandler('share')"
 			>
@@ -40,22 +46,52 @@
 					</namiLink>
 				</div>
 			</li>
-			<li>
+			<li
+				class="piano-key"
+				data-key="e3"
+				@mouseenter="mouseenterHandler"
+				@mouseleave="mouseleaveHandler"
+			>
+				<namiLink class="link" inline-block to="/music">
+					{{ i18nStore.messages.main.nav.music }}
+				</namiLink>
+			</li>
+			<li
+				class="piano-key"
+				data-key="f3"
+				@mouseenter="mouseenterHandler"
+				@mouseleave="mouseleaveHandler"
+			>
 				<namiLink class="link" inline-block to="/guestbook">
 					{{ i18nStore.messages.main.nav.guestbook }}
 				</namiLink>
 			</li>
-			<li>
+			<li
+				class="piano-key"
+				data-key="g3"
+				@mouseenter="mouseenterHandler"
+				@mouseleave="mouseleaveHandler"
+			>
 				<namiLink class="link" inline-block to="/link">
 					{{ i18nStore.messages.main.nav.link }}
 				</namiLink>
 			</li>
-			<li>
+			<li
+				class="piano-key"
+				data-key="a3"
+				@mouseenter="mouseenterHandler"
+				@mouseleave="mouseleaveHandler"
+			>
 				<namiLink class="link" inline-block to="/archives">
 					{{ i18nStore.messages.main.nav.archives }}
 				</namiLink>
 			</li>
-			<li>
+			<li
+				class="piano-key"
+				data-key="b3"
+				@mouseenter="mouseenterHandler"
+				@mouseleave="mouseleaveHandler"
+			>
 				<namiLink class="link" inline-block to="/about">
 					{{ i18nStore.messages.main.nav.about }}
 				</namiLink>
@@ -106,7 +142,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useStore } from "@/stores/index";
 import { useI18nStore } from "@/stores/i18n";
 
@@ -133,6 +169,59 @@ const blurHandler = (target: "share" | "lang") => {
 		targetRef.value = false;
 	}, blurDelay);
 };
+
+type PianoKey = "c3" | "d3" | "e3" | "f3" | "g3" | "a3" | "b3";
+
+const playPianoAudio = (key: PianoKey) => {
+	let audio = new Audio(`/piano/${key}.mp3`);
+
+	audio?.play();
+
+	audio?.addEventListener("ended", () => {
+		audio?.remove();
+	});
+};
+
+const mouseenterHandler = (e: MouseEvent) => {
+	const target = e.target as HTMLElement;
+	const keyEl = target.closest(".piano-key") as HTMLElement;
+	const key = keyEl.dataset.key;
+	keyEl?.classList.add("active");
+	playPianoAudio(key as PianoKey);
+};
+const mouseleaveHandler = (e: MouseEvent) => {
+	const target = e.target as HTMLElement;
+	const keyEl = target.closest(".piano-key") as HTMLElement;
+	keyEl?.classList.remove("active");
+};
+const popLiMouseenterHandler = (e: MouseEvent) => {
+	tagsPopShow.value = true;
+	mouseenterHandler(e);
+};
+const popLiMouseleaveHandler = (e: MouseEvent) => {
+	tagsPopShow.value = false;
+	mouseleaveHandler(e);
+};
+
+onMounted(() => {
+	// 预加载 piano 音频文件
+	const preload = (urlList: string[]) => {
+		urlList.forEach((url) => {
+			const audio = new Audio(url);
+			audio.preload = "metadata";
+			audio.load();
+		});
+	};
+	preload([
+		"/piano/c3.mp3",
+		"/piano/d3.mp3",
+		"/piano/e3.mp3",
+		"/piano/f3.mp3",
+		"/piano/g3.mp3",
+		"/piano/a3.mp3",
+		"/piano/b3.mp3"
+	]);
+});
 </script>
 
 <style scoped>
@@ -149,12 +238,12 @@ const blurHandler = (target: "share" | "lang") => {
 }
 .list {
 	display: flex;
-	column-gap: 8px;
 	white-space: nowrap;
 }
 
 .right {
 	justify-content: flex-end;
+	column-gap: 8px;
 }
 
 .small-screen .right {
@@ -173,6 +262,7 @@ const blurHandler = (target: "share" | "lang") => {
 .share::part(link) {
 	align-items: center;
 }
+
 .tags,
 .langs {
 	position: absolute;
@@ -182,6 +272,7 @@ const blurHandler = (target: "share" | "lang") => {
 }
 .tags .link {
 	display: flex;
+	color: #000;
 }
 
 .langs {
@@ -202,9 +293,55 @@ const blurHandler = (target: "share" | "lang") => {
 
 /* 移动设备在点击后元素元素会一直保持 hover 状态，使用 @media (hover: hover) 包裹后，移动设备就不会加载 hover 样式了。 */
 @media (hover: hover) {
-	.link:hover,
+	.right .link:hover,
+	.tags .link:hover,
 	.lang-item:hover {
 		color: #f34159;
 	}
+}
+
+.piano-key {
+	--df-color: #f17559;
+	overflow: hidden;
+}
+.piano-key.active {
+	color: #fff;
+}
+.piano-key:nth-child(1) {
+	--df-color: #f17559;
+}
+.piano-key:nth-child(2) {
+	--df-color: #f2b25b;
+}
+.piano-key:nth-child(3) {
+	--df-color: #f0dc59;
+}
+.piano-key:nth-child(4) {
+	--df-color: #bbf15b;
+}
+.piano-key:nth-child(5) {
+	--df-color: #59f1b7;
+}
+.piano-key:nth-child(6) {
+	--df-color: #59e1f1;
+}
+.piano-key:nth-child(7) {
+	--df-color: #597ff1;
+}
+
+.piano-key::after {
+	content: "";
+	display: block;
+	position: relative;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	background-color: var(--df-color);
+	transform: translateY(-5%);
+	transition: transform 0.3s;
+}
+
+.piano-key.active::after {
+	transform: translateY(-100%);
 }
 </style>

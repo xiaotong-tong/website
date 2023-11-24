@@ -1,7 +1,7 @@
 <template>
 	<!-- 该组件内部没有做 a11y 适配， 内部的 button 会被 axe  和 lighthouse 捕获报错，所以这里简单使用 aria-hidden 隐藏屏幕阅读器对内部的捕获 -->
 	<!-- 内部有的图标是 span，有的图标是 button，且没有暴露接口，暂不做单独适配 -->
-	<div id="aplayer" ref="aplayerEl" aria-hidden="true"></div>
+	<div id="aplayerView" ref="aplayerEl" aria-hidden="true"></div>
 </template>
 
 <script setup lang="ts">
@@ -12,17 +12,15 @@ const aplayerEl = ref<HTMLElement | null>(null);
 
 onMounted(() => {
 	const ap: any = new APlayer({
-		container: (aplayerEl.value as HTMLElement) || document.getElementById("aplayer"),
-		fixed: true,
+		container: (aplayerEl.value as HTMLElement) || document.getElementById("aplayerView"),
 		autoplay: false,
+		view: true,
 		lrcType: 3,
+		mutex: true,
+		listMaxHeight: "100%",
 		theme: "#E7FBD2",
 		audio: audioList
 	});
-
-	// 默认关闭歌词
-	// 这里不使用 ap.lrc.hide()的原因是这个方法调用后不会改变播放器中的歌词按钮的状态
-	(aplayerEl.value?.querySelector(".aplayer-icon-lrc") as HTMLElement)?.click();
 
 	let setMediaSessionOfFirstAudio = () => {
 		if ("mediaSession" in navigator) {
@@ -97,7 +95,22 @@ onMounted(() => {
 </script>
 
 <style scoped>
-#aplayer {
-	z-index: 1000;
+#aplayerView {
+	width: 100%;
+	height: 100%;
+}
+
+#aplayerView ::v-deep(.aplayer-music) {
+	text-align: center;
+}
+#aplayerView ::v-deep(.aplayer-title) {
+	font-size: 24px;
+}
+#aplayerView ::v-deep(.aplayer-author) {
+	font-size: 16px;
+}
+
+#aplayerView ::v-deep(.aplayer-lrc p) {
+	font-size: 16px;
 }
 </style>

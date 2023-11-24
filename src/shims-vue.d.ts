@@ -26,4 +26,8 @@ declare module "aplayer" {
 	}
 }
 
+declare class APlayer {
+	constructor(options: any);
+}
+
 declare var live2dLoader: any;

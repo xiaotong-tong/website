@@ -46,5 +46,26 @@ export const audioList = [
 		artist: "MyGO!!!!!",
 		url: "https://file.xtt.moe/files/musics/迷星叫.mp3",
 		cover: "https://file.xtt.moe/files/musics/迷星叫.webp"
+	},
+	{
+		name: "めめしぃ",
+		artist: "茉那",
+		url: "https://file.xtt.moe/files/musics/茉那 - めめしぃ.mp3",
+		cover: "https://file.xtt.moe/files/musics/茉那 - めめしぃ.webp",
+		lrc: "https://file.xtt.moe/files/musics/茉那 - めめしぃ.lrc"
+	},
+	{
+		name: "蝶々結び",
+		artist: "Aimer",
+		url: "https://file.xtt.moe/files/musics/Aimer - 蝶々結び.mp3",
+		cover: "https://file.xtt.moe/files/musics/Aimer - 蝶々結び.webp",
+		lrc: "https://file.xtt.moe/files/musics/Aimer - 蝶々結び.lrc"
+	},
+	{
+		name: "告白",
+		artist: "初音ミク,SireN",
+		url: "https://file.xtt.moe/files/musics/初音ミク,SireN - 告白.mp3",
+		cover: "https://file.xtt.moe/files/musics/初音ミク,SireN - 告白.webp",
+		lrc: "https://file.xtt.moe/files/musics/初音ミク,SireN - 告白.lrc"
 	}
 ];

@@ -184,24 +184,6 @@ const autoPlayPiano = (score: string, speed = 75) => {
 
 onMounted(() => {
 	document.addEventListener("keydown", keydownHandler);
-
-	// 预加载 piano 音频文件
-	const preload = (urlList: string[]) => {
-		urlList.forEach((url) => {
-			const audio = new Audio(url);
-			audio.preload = "metadata";
-			audio.load();
-		});
-	};
-	preload([
-		"/piano/c3.mp3",
-		"/piano/d3.mp3",
-		"/piano/e3.mp3",
-		"/piano/f3.mp3",
-		"/piano/g3.mp3",
-		"/piano/a3.mp3",
-		"/piano/b3.mp3"
-	]);
 });
 
 onUnmounted(() => {

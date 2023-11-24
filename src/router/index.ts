@@ -121,6 +121,13 @@ let routes = [
 				component: () => import("../views/cv/cv.pdf.vue")
 			},
 
+			// 音乐页面
+			{
+				path: "/music",
+				name: "music",
+				component: () => import("../views/music/music.vue")
+			},
+
 			// 404页面
 			{
 				path: "/404",
