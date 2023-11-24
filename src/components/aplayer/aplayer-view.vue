@@ -15,9 +15,9 @@ onMounted(() => {
 		container: (aplayerEl.value as HTMLElement) || document.getElementById("aplayerView"),
 		autoplay: false,
 		view: true,
+		mview: true,
 		lrcType: 3,
 		mutex: true,
-		listMaxHeight: "100%",
 		theme: "#E7FBD2",
 		audio: audioList
 	});

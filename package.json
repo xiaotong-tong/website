@@ -3,6 +3,7 @@
 	"version": "0.0.0",
 	"private": true,
 	"scripts": {
+		"start": "npm run dev",
 		"dev": "vite --host",
 		"prebuild": "rimraf dist",
 		"build": "vue-tsc && vite build --mode production",
