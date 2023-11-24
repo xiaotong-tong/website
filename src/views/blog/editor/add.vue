@@ -9,11 +9,11 @@
 	<div>
 		分类：
 		<xtt-select ref="category">
-			<option value="网络互联" selected>网络互联</option>
-			<option value="喵随笔">喵随笔</option>
-			<option value="语言学习">语言学习</option>
-			<option value="test">test</option>
-			<option value="其它">其它</option>
+			<option value="0" selected>网络互联</option>
+			<option value="1">喵随笔</option>
+			<option value="2">语言学习</option>
+			<option value="3">test</option>
+			<option value="4">其它</option>
 		</xtt-select>
 	</div>
 	<div>标签： <xtt-input autosize v-model="tags"></xtt-input></div>
@@ -55,7 +55,7 @@ const submitEvent = async () => {
 		title: title.value,
 		content: content.value,
 		author: author.value,
-		category: (category.value && (category.value as HTMLSelectElement)?.value) || "网络互联",
+		category: (category.value && (category.value as HTMLSelectElement)?.value) || "0",
 		tags: tags.value,
 		abstract: abstract.value,
 		thumbnail: thumbnail.value
