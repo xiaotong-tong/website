@@ -113,6 +113,11 @@ let routes = [
 				name: "kana",
 				component: () => import("../views/somethings/kana.vue")
 			},
+			{
+				path: "/something/chat",
+				name: "chat",
+				component: () => import("../views/somethings/chat.vue")
+			},
 
 			// cv 页面
 			{

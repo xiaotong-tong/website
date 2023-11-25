@@ -16,6 +16,7 @@
 -   [img2base64](/something/img2base64) - 将图片转换为 base64 格式
 -   [拼音](/something/pinyin) - 为汉字注音
 -   [仮名](/something/kana) - 为日文注音
+-   [文心一言](/something/chat) - 文心一言 API 调用
 
 ### Example
 
