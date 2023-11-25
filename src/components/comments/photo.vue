@@ -13,7 +13,6 @@
 		</div>
 
 		<p>选择列表</p>
-		<span class="info">功能维护中，暂时无法上传</span>
 		<span class="info">自定义上传的头像会向所有人员公开，所有人都可以使用</span>
 		<div class="photoWrap">
 			<img
@@ -123,24 +122,21 @@ const openChoicePicDialog = () => {
 const cropperSrc = ref("");
 
 const uploadImageEvent = () => {
-	// 功能维护中，暂时无法上传
-	return;
+	const file = document.createElement("input");
+	file.type = "file";
+	file.accept = "image/*";
+	file.click();
 
-	// const file = document.createElement("input");
-	// file.type = "file";
-	// file.accept = "image/*";
-	// file.click();
+	file.onchange = async () => {
+		if (!file.files) {
+			return;
+		}
+		const url = URL.createObjectURL(file.files[0]);
 
-	// file.onchange = async () => {
-	// 	if (!file.files) {
-	// 		return;
-	// 	}
-	// 	const url = URL.createObjectURL(file.files[0]);
+		cropperSrc.value = url;
 
-	// 	cropperSrc.value = url;
-
-	// 	file.remove();
-	// };
+		file.remove();
+	};
 };
 const getCropPic = async () => {
 	const b64Data = await cropper.value?.toFileOfBase64();
@@ -148,9 +144,7 @@ const getCropPic = async () => {
 	if (b64Data) {
 		const { data } = await uploadImage(b64Data);
 
-		const url = data.image.url;
-
-		await uploadPhoto(url);
+		await uploadPhoto(data.url);
 		cropperSrc.value = "";
 		getPhotos();
 	}
