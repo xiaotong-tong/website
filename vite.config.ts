@@ -49,7 +49,8 @@ export default defineConfig({
 						"./src/views/somethings/img2base64.vue",
 						"./src/views/somethings/toWebp.vue",
 						"./src/views/somethings/pinyin.vue",
-						"./src/views/somethings/kana.vue"
+						"./src/views/somethings/kana.vue",
+						"./src/views/somethings/soduku.vue"
 					],
 					ex: ["./src/views/ex/space/index.vue"],
 					cv: ["./src/views/cv/cv.pdf.vue"]

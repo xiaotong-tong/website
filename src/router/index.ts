@@ -118,6 +118,11 @@ let routes = [
 				name: "chat",
 				component: () => import("../views/somethings/chat.vue")
 			},
+			{
+				path: "/something/soduku",
+				name: "soduku",
+				component: () => import("../views/somethings/soduku.vue")
+			},
 
 			// cv 页面
 			{
