@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section class="container web-color-default">
 		<xtt-markdown :dark="store.isDark ? '' : undefined">{{
 			i18nStore.lang === "ja" ? jaSitemapContent : sitemapContent
 		}}</xtt-markdown>

@@ -29,7 +29,8 @@ import {
 	mdiChevronDown,
 	mdiTranslate,
 	mdiCat,
-	mdiPaw
+	mdiPaw,
+	mdiMenu
 } from "@mdi/js";
 
 interface Props {
@@ -55,7 +56,8 @@ interface Props {
 		| "mdiChevronDown"
 		| "mdiTranslate"
 		| "mdiCat"
-		| "mdiPaw";
+		| "mdiPaw"
+		| "mdiMenu";
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -85,7 +87,8 @@ const reflectIcon = (icon: Props["icon"]) => {
 		mdiChevronDown,
 		mdiTranslate,
 		mdiCat,
-		mdiPaw
+		mdiPaw,
+		mdiMenu
 	};
 
 	return mdiMap[icon];

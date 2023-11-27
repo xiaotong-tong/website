@@ -29,16 +29,4 @@
 .logoImg {
 	height: 24px;
 }
-/* .logoText {
-	font-size: 18px;
-} */
-
-/* @media screen and (max-width: 1250px) {
-	.logoText {
-		display: none;
-	}
-} */
-.small-screen .logo {
-	display: none;
-}
 </style>

@@ -4,7 +4,8 @@
 		:mask="store.isDark ? '' : undefined"
 	></xtt-web-bg>
 
-	<namiHeader></namiHeader>
+	<namiHeader v-if="!store.isSmallScreen"></namiHeader>
+	<namiMHeader v-else></namiMHeader>
 
 	<main class="main">
 		<RouterView />
@@ -81,6 +82,7 @@ import { ref, onMounted } from "vue";
 import kanbanarea from "../components/live2d/kanbanarea.vue";
 import namiAplayer from "../components/aplayer/aplayer.vue";
 import namiHeader from "../components/page/header/header.vue";
+import namiMHeader from "../components/page/header/m-header.vue";
 import namiFooter from "../components/page/footer/footer.vue";
 import { verifyMasterUid } from "../api/blog/verify";
 import { useRouter } from "vue-router";
