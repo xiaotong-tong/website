@@ -45,6 +45,7 @@ export default defineConfig({
 					link: ["./src/views/links/links.vue"],
 					sitemap: ["./src/views/sitemap/index.vue"],
 					dashboard: ["./src/views/dashboard/index.vue"],
+					tools: ["./src/views/tools/tools.vue"],
 					something: [
 						"./src/views/somethings/img2base64.vue",
 						"./src/views/somethings/toWebp.vue",

@@ -12,6 +12,7 @@ export const zhMsg = {
 			about: "关于",
 			aboutMe: "关于我",
 			archives: "归档",
+			tools: "工具",
 			music: "音乐",
 			more: "更多",
 			feat: "功能",

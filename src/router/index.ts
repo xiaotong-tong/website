@@ -92,6 +92,12 @@ let routes = [
 				component: () => import("../views/dashboard/index.vue")
 			},
 
+			{
+				path: "/tools",
+				name: "tools",
+				component: () => import("../views/tools/tools.vue")
+			},
+
 			// something
 			{
 				path: "/something/img2base64",

@@ -12,6 +12,7 @@ export const jaMsg = {
 			about: "について",
 			aboutMe: "私について",
 			archives: "アーカイブ",
+			tools: "ツール",
 			music: "音楽",
 			more: "もっと",
 			feat: "機能",

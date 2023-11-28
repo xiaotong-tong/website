@@ -10,6 +10,12 @@
 			</nami-timeline-item>
 			<nami-timeline-item>
 				<template v-slot:body>
+					<span class="time">11-24</span>
+					<nami-link to="/article/22">ごはんを食べよう 歌词</nami-link>
+				</template>
+			</nami-timeline-item>
+			<nami-timeline-item>
+				<template v-slot:body>
 					<span class="time">10-13</span>
 					<nami-link to="/article/21">前端知识总结-展开运算符与解构赋值</nami-link>
 				</template>

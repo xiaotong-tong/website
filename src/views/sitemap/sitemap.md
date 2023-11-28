@@ -6,6 +6,7 @@
 -   [关于](/about)
 -   [留言板](/guestbook)
 -   [链接](/link)
+-   [工具](/tools)
 -   [仪表盘](/dashboard)
 -   [归档](/archives)
 -   [简历](/cv/pdf)
@@ -15,9 +16,9 @@
 -   [towebp](/something/towebp) - 将图片转换为 webp 格式
 -   [img2base64](/something/img2base64) - 将图片转换为 base64 格式
 -   [拼音](/something/pinyin) - 为汉字注音
--   [仮名](/something/kana) - 为日文注音
+-   [仮名](/something/kana) - 为日文汉字标注假名
 -   [数独](/something/soduku) - 数独游戏
--   [文心一言](/something/chat) - 文心一言 API 调用
+-   [chat](/something/chat) - AI 聊天，调用的是文心一言的 API
 
 ### Example
 
@@ -49,3 +50,4 @@
 -   [前端知识总结-迭代器和生成器](/article/19)
 -   [前端知识总结-函数](/article/20)
 -   [前端知识总结-展开运算符与解构赋值](/article/21)
+-   [ごはんを食べよう 歌词](/article/22)

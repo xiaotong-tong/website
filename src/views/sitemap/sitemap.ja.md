@@ -6,6 +6,7 @@
 -   [について](/ja/about)
 -   [ゲストブック](/ja/guestbook)
 -   [リンク](/ja/link)
+-   [ツール](/ja/tools)
 -   [ダッシュボード](/ja/dashboard)
 -   [アーカイブ](/ja/archives)
 
@@ -15,6 +16,8 @@
 -   [img2base64](/ja/something/img2base64) - 画像を base64 形式に変換する
 -   [拼音](/ja/something/pinyin) - 中国語の漢字を拼音に変換する
 -   [仮名](/ja/something/kana) - 漢字に仮名を振る
+-   [数独](/ja/something/soduku) - 数独ゲーム
+-   [chat](/ja/something/chat) - AI チャット、中国の「文心一言」の API を呼び出す
 
 ### Example
 
@@ -46,3 +49,4 @@
 -   [前端知识总结-迭代器和生成器](/ja/article/19)
 -   [前端知识总结-函数](/ja/article/20)
 -   [前端知识总结-展开运算符与解构赋值](/ja/article/21)
+-   [ごはんを食べよう 歌词](/ja/article/22)

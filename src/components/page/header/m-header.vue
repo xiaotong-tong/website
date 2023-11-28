@@ -98,6 +98,10 @@
 						{{ i18nStore.messages.main.nav.link }}
 					</nami-link>
 
+					<nami-link class="side-menu-item-unit" to="/tools" inline-block>
+						{{ i18nStore.messages.main.nav.tools }}
+					</nami-link>
+
 					<nami-link class="side-menu-item-unit" to="/archives" inline-block>
 						{{ i18nStore.messages.main.nav.archives }}
 					</nami-link>
