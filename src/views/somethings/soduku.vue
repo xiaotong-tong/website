@@ -21,8 +21,6 @@
 import { ref } from "vue";
 import { generateSoduku, isValidSodukuBoard, random } from "xtt-utils";
 
-document.title = "数独游戏 - 星川漣の家";
-
 const soduku = ref(
 	generateSoduku(random(20, 60)).map((row) => {
 		return row.map((col) => {

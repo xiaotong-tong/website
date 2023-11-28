@@ -31,17 +31,32 @@ let routes = [
 			{
 				path: "/article/:id",
 				name: "blogArticle",
-				component: () => import("../views/blog/article/article.vue")
+				component: () => import("../views/blog/article/article.vue"),
+				meta: {
+					title: "pageCustom"
+				}
 			},
 			{
 				path: "/about",
 				name: "about",
-				component: () => import("../views/about/index.vue")
+				component: () => import("../views/about/index.vue"),
+				meta: {
+					title: {
+						zh: "关于",
+						ja: "について"
+					}
+				}
 			},
 			{
 				path: "/lang",
 				name: "lang",
-				component: () => import("../views/blog/lang/lang.vue")
+				component: () => import("../views/blog/lang/lang.vue"),
+				meta: {
+					title: {
+						zh: "语言学习",
+						ja: "言語学ぶ"
+					}
+				}
 			},
 			{
 				path: "/lang/words",
@@ -51,83 +66,186 @@ let routes = [
 			{
 				path: "/net",
 				name: "net",
-				component: () => import("../views/blog/net/index.vue")
+				component: () => import("../views/blog/net/index.vue"),
+				meta: {
+					title: {
+						zh: "网络互联",
+						ja: "ネットワーク"
+					}
+				}
 			},
 			{
 				path: "/note",
 				name: "note",
-				component: () => import("../views/blog/note/index.vue")
+				component: () => import("../views/blog/note/index.vue"),
+				meta: {
+					title: {
+						zh: "喵随笔",
+						ja: "ノート"
+					}
+				}
 			},
 			{
 				path: "/star",
 				name: "star",
-				component: () => import("../views/blog/star/index.vue")
+				component: () => import("../views/blog/star/index.vue"),
+				meta: {
+					title: {
+						zh: "其它",
+						ja: "その他"
+					}
+				}
 			},
 			{
 				path: "/guestbook",
 				name: "guestbook",
-				component: () => import("../views/blog/guestbook/index.vue")
+				component: () => import("../views/blog/guestbook/index.vue"),
+				meta: {
+					title: {
+						zh: "留言板",
+						ja: "ゲストブック"
+					}
+				}
 			},
 			{
 				path: "/link",
 				name: "link",
-				component: () => import("../views/links/links.vue")
+				component: () => import("../views/links/links.vue"),
+				meta: {
+					title: {
+						zh: "链接",
+						ja: "リンク"
+					}
+				}
 			},
 			{
 				path: "/archives",
 				name: "archives",
-				component: () => import("../views/archives/archives.vue")
+				component: () => import("../views/archives/archives.vue"),
+				meta: {
+					title: {
+						zh: "归档",
+						ja: "アーカイブ"
+					}
+				}
 			},
 
 			// 站点地图页面
 			{
 				path: "/sitemap",
 				name: "sitemap",
-				component: () => import("../views/sitemap/index.vue")
+				component: () => import("../views/sitemap/index.vue"),
+				meta: {
+					title: {
+						zh: "站点地图",
+						ja: "サイトマップ"
+					}
+				}
 			},
 
 			{
 				path: "/dashboard",
 				name: "dashboard",
-				component: () => import("../views/dashboard/index.vue")
+				component: () => import("../views/dashboard/index.vue"),
+				meta: {
+					title: {
+						zh: "控制台",
+						ja: "ダッシュボード"
+					}
+				}
+			},
+
+			// 音乐页面
+			{
+				path: "/music",
+				name: "music",
+				component: () => import("../views/music/music.vue"),
+				meta: {
+					title: {
+						zh: "音乐",
+						ja: "音楽"
+					}
+				}
 			},
 
 			{
 				path: "/tools",
 				name: "tools",
-				component: () => import("../views/tools/tools.vue")
+				component: () => import("../views/tools/tools.vue"),
+				meta: {
+					title: {
+						zh: "常用工具",
+						ja: "ツール"
+					}
+				}
 			},
 
 			// something
 			{
 				path: "/something/img2base64",
 				name: "img2base64",
-				component: () => import("../views/somethings/img2base64.vue")
+				component: () => import("../views/somethings/img2base64.vue"),
+				meta: {
+					title: {
+						zh: "图片转base64",
+						ja: "画像をbase64に変換"
+					}
+				}
 			},
 			{
 				path: "/something/towebp",
 				name: "toWebp",
-				component: () => import("../views/somethings/toWebp.vue")
+				component: () => import("../views/somethings/toWebp.vue"),
+				meta: {
+					title: {
+						zh: "图片转webp",
+						ja: "画像をwebpに変換"
+					}
+				}
 			},
 			{
 				path: "/something/pinyin",
 				name: "pinyin",
-				component: () => import("../views/somethings/pinyin.vue")
+				component: () => import("../views/somethings/pinyin.vue"),
+				meta: {
+					title: {
+						zh: "汉字注音",
+						ja: "中国語の漢字の発音"
+					}
+				}
 			},
 			{
 				path: "/something/kana",
 				name: "kana",
-				component: () => import("../views/somethings/kana.vue")
+				component: () => import("../views/somethings/kana.vue"),
+				meta: {
+					title: {
+						zh: "漢字->かな",
+						ja: "漢字->かな"
+					}
+				}
 			},
 			{
 				path: "/something/chat",
 				name: "chat",
-				component: () => import("../views/somethings/chat.vue")
+				component: () => import("../views/somethings/chat.vue"),
+				meta: {
+					title: {
+						zh: "chat",
+						ja: "チャット"
+					}
+				}
 			},
 			{
 				path: "/something/soduku",
 				name: "soduku",
-				component: () => import("../views/somethings/soduku.vue")
+				component: () => import("../views/somethings/soduku.vue"),
+				meta: {
+					title: {
+						zh: "数独游戏",
+						ja: "数独ゲーム"
+					}
+				}
 			},
 
 			// cv 页面
@@ -137,18 +255,17 @@ let routes = [
 				component: () => import("../views/cv/cv.pdf.vue")
 			},
 
-			// 音乐页面
-			{
-				path: "/music",
-				name: "music",
-				component: () => import("../views/music/music.vue")
-			},
-
 			// 404页面
 			{
 				path: "/404",
 				name: "404",
-				component: () => import("../views/404.vue")
+				component: () => import("../views/404.vue"),
+				meta: {
+					title: {
+						zh: "404",
+						ja: "404"
+					}
+				}
 			},
 			// 未匹配到的路由，重定向到404页面
 			{
@@ -216,6 +333,14 @@ router.beforeEach((to, _from, next) => {
 	if (i18nStore.lang === "ja" && !to.path.startsWith("/ja")) {
 		next("/ja" + to.path);
 		return;
+	}
+
+	const baseTitle = i18nStore.lang === "ja" ? "星川漣の家" : "星川涟の家";
+
+	if (to.meta?.title && to.meta.title !== "pageCustom") {
+		document.title = `${to.meta.title[i18nStore.lang]} - ${baseTitle}`;
+	} else if (to.meta?.title !== "pageCustom") {
+		document.title = baseTitle;
 	}
 
 	next();

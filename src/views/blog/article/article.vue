@@ -57,7 +57,7 @@ import type { Comment } from "@/types/comment";
 import { ref, watch, provide } from "vue";
 import { getActicleById } from "@/api/blog/acticle";
 import { addComment, getCommentList } from "@/api/blog/comment";
-import { useRoute, useRouter } from "vue-router";
+import { useRoute, useRouter, onBeforeRouteUpdate } from "vue-router";
 import { useStore } from "@/stores/index";
 import { useI18nStore } from "@/stores/i18n";
 import { useStateTypeStore } from "@/stores/stateType";
@@ -80,7 +80,9 @@ const getActicle = async () => {
 		acticle.value = data;
 
 		// 修改页面标题
-		document.title = `${data.title} - 星川漣の家`;
+		document.title = `${
+			data[i18nStore.lang === "ja" ? "jaTitle" : "title"] || acticle.value?.title
+		} - 星川漣の家`;
 	} catch (error) {
 		// 如果请求文章失败，并且状态码为 404，那么就跳转到 404 页面
 		if ((error as any).response?.status === 404) {
@@ -123,18 +125,20 @@ provide("commentsChildSubmitCallback", () => {
 	getComments();
 });
 
-// 监听页面 id 的变化
-watch(
-	() => route.params,
-	(newURL) => {
-		// 如果变化后不是当前页面，就不执行
-		if (!route.path.startsWith("/article")) {
-			return;
-		}
+// 监听路由 id 的变化
+onBeforeRouteUpdate((to, _) => {
+	id.value = Number(to.params.id);
+	getActicle();
+	getComments();
+});
 
-		id.value = Number(newURL.id);
-		getActicle();
-		getComments();
+watch(
+	() => i18nStore.lang,
+	() => {
+		// 修改页面标题
+		document.title = `${
+			acticle.value?.[i18nStore.lang === "ja" ? "jaTitle" : "title"] || acticle.value?.title
+		} - 星川漣の家`;
 	}
 );
 </script>

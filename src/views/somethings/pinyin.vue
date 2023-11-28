@@ -15,8 +15,6 @@
 import { html } from "pinyin-pro";
 import { ref } from "vue";
 
-document.title = "汉字注音 - 星川漣の家";
-
 const text = ref("");
 const rubyText = ref("");
 

@@ -62,9 +62,6 @@ watchEffect(() => {
 			currentPage.value * pageSize
 		) || [];
 });
-
-// 修改页面标题
-document.title = "星川漣の家";
 </script>
 
 <style scoped>

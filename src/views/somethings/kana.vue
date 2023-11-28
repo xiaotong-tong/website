@@ -20,8 +20,6 @@
 import { ref } from "vue";
 import { toKana } from "@/api/something/kana";
 
-document.title = "漢字->かな - 星川漣の家";
-
 const text = ref("");
 const rubyText = ref("");
 

@@ -10,8 +10,6 @@
 </template>
 
 <script setup lang="ts">
-document.title = "将图片转换为webp - 星川漣の家";
-
 const fileChange = async (e: any) => {
 	const file = e.target.files[0];
 
