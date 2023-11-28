@@ -10,8 +10,15 @@ export const zhMsg = {
 			guestbook: "留言板",
 			link: "链接",
 			about: "关于",
+			aboutMe: "关于我",
 			archives: "归档",
-			music: "音乐"
+			music: "音乐",
+			more: "更多",
+			feat: "功能",
+			toLightMode: "切换模式 -> 亮色",
+			toDarkMode: "切换模式 -> 深色",
+			toJaLang: "言語切り替え -> 日本語",
+			toZhLang: "切换语言 -> 中文"
 		},
 		footer: {
 			sitemap: "站点地图"

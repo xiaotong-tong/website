@@ -10,8 +10,15 @@ export const jaMsg = {
 			guestbook: "ゲストブック",
 			link: "リンク",
 			about: "について",
+			aboutMe: "私について",
 			archives: "アーカイブ",
-			music: "音楽"
+			music: "音楽",
+			more: "もっと",
+			feat: "機能",
+			toLightMode: "ライトモード切り替え",
+			toDarkMode: "ダークモード切り替え",
+			toJaLang: "言語切り替え -> 日本語",
+			toZhLang: "切换语言 -> 中文"
 		},
 		footer: {
 			sitemap: "sitemap"

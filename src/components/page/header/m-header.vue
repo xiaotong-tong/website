@@ -13,25 +13,63 @@
 				><nami-icon icon="mdiClose"></nami-icon
 			></xtt-icon-button>
 			<div class="side-menus">
-				<div class="side-menu-item-title">功能</div>
+				<div class="side-menu-item-title">
+					{{ i18nStore.messages.main.nav.feat }}
+				</div>
 				<div class="side-menu-item">
 					<xtt-button class="side-menu-item-unit" @click="store.isDark = !store.isDark">
-						<namiIcon icon="mdiThemeLightDark"></namiIcon> 切换模式
+						<namiIcon icon="mdiThemeLightDark"></namiIcon>
+						{{
+							store.isDark
+								? i18nStore.messages.main.nav.toLightMode
+								: i18nStore.messages.main.nav.toDarkMode
+						}}
 					</xtt-button>
 
 					<xtt-button
 						class="side-menu-item-unit"
 						@click="i18nStore.lang = i18nStore.lang === 'zh' ? 'ja' : 'zh'"
 					>
-						<namiIcon icon="mdiTranslate"></namiIcon> 切换语言 ->
-						{{ i18nStore.lang === "zh" ? "日本語" : "中文" }}
+						<namiIcon icon="mdiTranslate"></namiIcon>
+						{{
+							i18nStore.lang === "zh"
+								? i18nStore.messages.main.nav.toJaLang
+								: i18nStore.messages.main.nav.toZhLang
+						}}
 					</xtt-button>
 				</div>
 
-				<div class="side-menu-item-title">关于</div>
+				<div class="side-menu-item-title">
+					{{ i18nStore.messages.main.nav.share }}
+				</div>
+				<div class="side-menu-item">
+					<nami-link class="side-menu-item-unit" to="/" inline-block>
+						{{ i18nStore.messages.main.nav.home }}
+					</nami-link>
+
+					<nami-link class="side-menu-item-unit" to="/net" inline-block>
+						{{ i18nStore.messages.main.nav.net }}
+					</nami-link>
+
+					<nami-link class="side-menu-item-unit" to="/lang" inline-block>
+						{{ i18nStore.messages.main.nav.lang }}
+					</nami-link>
+
+					<nami-link class="side-menu-item-unit" to="/note" inline-block>
+						{{ i18nStore.messages.main.nav.note }}
+					</nami-link>
+
+					<nami-link class="side-menu-item-unit" to="/star" inline-block>
+						{{ i18nStore.messages.main.nav.star }}
+					</nami-link>
+				</div>
+
+				<div class="side-menu-item-title">
+					{{ i18nStore.messages.main.nav.about }}
+				</div>
 				<div class="side-menu-item">
 					<nami-link class="side-menu-item-unit" to="/about" inline-block>
-						关于我
+						{{ i18nStore.messages.main.nav.aboutMe }}
 					</nami-link>
 
 					<nami-link
@@ -44,43 +82,24 @@
 					</nami-link>
 				</div>
 
-				<div class="side-menu-item-title">喵分享</div>
-				<div class="side-menu-item">
-					<nami-link class="side-menu-item-unit" to="/" inline-block> 首页 </nami-link>
-
-					<nami-link class="side-menu-item-unit" to="/net" inline-block>
-						网络互联
-					</nami-link>
-
-					<nami-link class="side-menu-item-unit" to="/lang" inline-block>
-						语言学习
-					</nami-link>
-
-					<nami-link class="side-menu-item-unit" to="/note" inline-block>
-						喵随笔
-					</nami-link>
-
-					<nami-link class="side-menu-item-unit" to="/star" inline-block>
-						其它
-					</nami-link>
+				<div class="side-menu-item-title">
+					{{ i18nStore.messages.main.nav.more }}
 				</div>
-
-				<div class="side-menu-item-title">更多</div>
 				<div class="side-menu-item">
 					<nami-link class="side-menu-item-unit" to="/guestbook" inline-block>
-						留言板
+						{{ i18nStore.messages.main.nav.guestbook }}
 					</nami-link>
 
 					<nami-link class="side-menu-item-unit" to="/music" inline-block>
-						音乐
+						{{ i18nStore.messages.main.nav.music }}
 					</nami-link>
 
 					<nami-link class="side-menu-item-unit" to="/link" inline-block>
-						链接
+						{{ i18nStore.messages.main.nav.link }}
 					</nami-link>
 
 					<nami-link class="side-menu-item-unit" to="/archives" inline-block>
-						归档
+						{{ i18nStore.messages.main.nav.archives }}
 					</nami-link>
 				</div>
 			</div>
