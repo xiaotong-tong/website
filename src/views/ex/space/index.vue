@@ -101,9 +101,9 @@ async function getCsv() {
 	};
 
 	const res = await Promise.all([
-		axios.get("/space/hip_constellation_line_star.csv"),
-		axios.get("/space/hip_lite_a.csv"),
-		axios.get("/space/hip_lite_b.csv")
+		axios.get("https://file.xtt.moe/files/space/hip_constellation_line_star.csv"),
+		axios.get("https://file.xtt.moe/files/space/hip_lite_a.csv"),
+		axios.get("https://file.xtt.moe/files/space/hip_lite_b.csv")
 	]);
 
 	//星座線恒星データ
@@ -269,7 +269,7 @@ onMounted(async () => {
 	const uniforms = {
 		texture: {
 			type: "t",
-			value: new Three.TextureLoader().load("/space/star.png")
+			value: new Three.TextureLoader().load("https://file.xtt.moe/files/space/star.png")
 		}
 	};
 
@@ -298,8 +298,8 @@ onMounted(async () => {
 	controls.autoRotateSpeed = 0.1;
 
 	// 设置相机位置
-	camera.position.set(0, 0, r / 2);
-	camera.lookAt(0, 0, 0);
+	camera.position.set(0, 0, -r / 2);
+	camera.lookAt(0, 0, -r);
 
 	let step = 0;
 	function animate() {
