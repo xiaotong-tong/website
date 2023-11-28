@@ -337,9 +337,9 @@ router.beforeEach((to, _from, next) => {
 
 	const baseTitle = i18nStore.lang === "ja" ? "星川漣の家" : "星川涟の家";
 
-	if (to.meta?.title && to.meta.title !== "pageCustom") {
-		document.title = `${to.meta.title[i18nStore.lang]} - ${baseTitle}`;
-	} else if (to.meta?.title !== "pageCustom") {
+	if (typeof to.meta.title === "object") {
+		document.title = `${(to.meta.title as any)?.[i18nStore.lang]} - ${baseTitle}`;
+	} else if (to.meta.title !== "pageCustom") {
 		document.title = baseTitle;
 	}
 

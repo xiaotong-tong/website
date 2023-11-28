@@ -1,6 +1,8 @@
 <template>
 	<section class="container web-color-default">
-		<h1 class="text-center">数独游戏</h1>
+		<h1 class="text-center">
+			{{ i18nStore.lang === "ja" ? "ナンプレ" : "数独游戏" }}
+		</h1>
 		<div class="soduku-box">
 			<template v-for="(row, rIndex) in soduku">
 				<div
@@ -15,14 +17,20 @@
 			</template>
 		</div>
 	</section>
+
+	<Teleport to="head">
+		<meta name="keywords" content="数独,数独游戏，ナンプレ" />
+	</Teleport>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 import { generateSoduku, isValidSodukuBoard, random } from "xtt-utils";
+import { useI18nStore } from "@/stores/i18n";
 
+const i18nStore = useI18nStore();
 const soduku = ref(
-	generateSoduku(random(20, 60)).map((row) => {
+	generateSoduku(random(20, 44)).map((row) => {
 		return row.map((col) => {
 			return {
 				editable: col === 0,
@@ -58,7 +66,7 @@ const inputEvent = (e: InputEvent) => {
 	if (isFinish) {
 		// 如果格子全部填满，判断是否符合正确结果
 		if (isValidSodukuBoard(soduku.value.map((row) => row.map((col) => col.value)))) {
-			alert("恭喜你，完成了数独游戏！");
+			alert(i18nStore.lang === "ja" ? "ゲームクリアおめでとう" : "恭喜你，完成了数独游戏！");
 		}
 	}
 };
@@ -67,27 +75,36 @@ const inputEvent = (e: InputEvent) => {
 <style scoped>
 .soduku-box {
 	display: grid;
-	width: 360px;
-	height: 360px;
+	width: min(360px, 100%);
+	aspect-ratio: 1 / 1;
 	grid-template-columns: repeat(9, 1fr);
 	grid-template-rows: repeat(9, 1fr);
 }
 
 .soduku-cell {
-	width: 40px;
-	height: 40px;
+	aspect-ratio: 1 / 1;
+	min-width: 30px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	line-height: 40px;
+	line-height: 36px;
 	box-sizing: border-box;
-	border-block-start: thin solid #000;
-	border-inline-start: thin solid #000;
+	border-block-start: thin solid #ccc;
+	border-inline-start: thin solid #ccc;
 }
-.soduku-cell:nth-child(9n) {
+
+.soduku-cell:nth-child(-n + 9) {
+	border-block-start: thin solid #000;
+}
+.soduku-cell:nth-child(3n) {
 	border-inline-end: thin solid #000;
 }
+.soduku-cell:nth-child(9n + 1) {
+	border-inline-start: thin solid #000;
+}
+.soduku-cell:nth-child(n + 19):nth-child(-n + 27),
+.soduku-cell:nth-child(n + 46):nth-child(-n + 54),
 .soduku-cell:nth-child(n + 73) {
 	border-block-end: thin solid #000;
 }

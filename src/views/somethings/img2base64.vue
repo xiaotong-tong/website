@@ -1,17 +1,25 @@
 <template>
 	<section class="container web-color-default">
-		<p class="title">选择图片</p>
+		<p class="title">
+			{{ i18nStore.lang === "ja" ? "画像を選ぶ" : "选择图片" }}
+		</p>
 		<input type="file" accept="image/*" @change="fileChange" />
 
-		<p>base64内容</p>
+		<p>base64:</p>
 		<xtt-textarea v-model="textarea" block rows="10"></xtt-textarea>
 	</section>
+
+	<Teleport to="head">
+		<meta name="keywords" content="将图片转换为base64,画像をbase64に変換する" />
+	</Teleport>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 import { toDataUrl } from "xtt-utils";
+import { useI18nStore } from "@/stores/i18n";
 
+const i18nStore = useI18nStore();
 const textarea = ref("");
 
 const fileChange = (e: any) => {

@@ -1,15 +1,21 @@
 <template>
 	<section class="container web-color-default">
-		<p class="title">选择图片</p>
+		<p class="title">
+			{{ i18nStore.lang === "ja" ? "画像を選ぶ" : "选择图片" }}
+		</p>
 		<input type="file" accept="image/*" @change="fileChange" />
 	</section>
 
 	<Teleport to="head">
-		<meta name="keywords" content="将图片转换为webp" />
+		<meta name="keywords" content="将图片转换为webp,画像をwebpに変換する" />
 	</Teleport>
 </template>
 
 <script setup lang="ts">
+import { useI18nStore } from "@/stores/i18n";
+
+const i18nStore = useI18nStore();
+
 const fileChange = async (e: any) => {
 	const file = e.target.files[0];
 

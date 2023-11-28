@@ -14,9 +14,9 @@
 
 -   [towebp](/ja/something/towebp) - 画像を webp 形式に変換する
 -   [img2base64](/ja/something/img2base64) - 画像を base64 形式に変換する
--   [拼音](/ja/something/pinyin) - 中国語の漢字を拼音に変換する
--   [仮名](/ja/something/kana) - 漢字に仮名を振る
--   [数独](/ja/something/soduku) - 数独ゲーム
+-   [拼音](/ja/something/pinyin) - 中国語の漢字の読み方
+-   [仮名](/ja/something/kana) - 漢字の読み方（仮名を振る）
+-   [ナンプレ](/ja/something/soduku) - ナンプレ
 -   [chat](/ja/something/chat) - AI チャット、中国の「文心一言」の API を呼び出す
 
 ### Example
@@ -48,5 +48,5 @@
 -   [日本語の星座について](/ja/article/17)
 -   [前端知识总结-迭代器和生成器](/ja/article/19)
 -   [前端知识总结-函数](/ja/article/20)
--   [前端知识总结-展开运算符与解构赋值](/ja/article/21)
+-   [web の知識のまとめ-スプレッド構文と分割代入](/ja/article/21)
 -   [ごはんを食べよう 歌词](/ja/article/22)

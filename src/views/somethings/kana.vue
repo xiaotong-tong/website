@@ -7,18 +7,23 @@
 			block
 			rows="10"
 		></xtt-textarea>
-		<xtt-button @click="transform" type="primary">确定</xtt-button>
+		<xtt-button @click="transform" type="primary">
+			{{ i18nStore.lang === "ja" ? "OK" : "确定" }}
+		</xtt-button>
 		<div class="ruby-text" v-html="rubyText"></div>
 	</section>
 
 	<Teleport to="head">
-		<meta name="keywords" content="かな" />
+		<meta name="keywords" content="汉字标注假名,かな,漢字の読み方" />
 	</Teleport>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 import { toKana } from "@/api/something/kana";
+import { useI18nStore } from "@/stores/i18n";
+
+const i18nStore = useI18nStore();
 
 const text = ref("");
 const rubyText = ref("");
