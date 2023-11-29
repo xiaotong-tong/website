@@ -108,12 +108,15 @@
 				</div>
 			</div>
 		</div>
+
+		<kanbanarea ref="live2d" class="m-live2d"> </kanbanarea>
 	</div>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import kanbanarea from "@/components/live2d/kanbanarea.vue";
 import { useStore } from "@/stores/index";
 import { useI18nStore } from "@/stores/i18n";
 
@@ -208,5 +211,17 @@ router.afterEach(() => {
 	font-size: 14px;
 	display: inline-flex;
 	border: thin solid hsl(0, 0%, 75%);
+}
+
+.m-live2d {
+	right: 0;
+	left: unset;
+	bottom: 8px;
+	width: 150px;
+	height: 370px;
+}
+
+.m-live2d ::v-deep(.icon-hover-wrap) {
+	display: none;
 }
 </style>
