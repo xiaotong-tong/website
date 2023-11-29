@@ -19,10 +19,11 @@ export const jaMsg = {
 			toLightMode: "ライトモード切り替え",
 			toDarkMode: "ダークモード切り替え",
 			toJaLang: "言語切り替え -> 日本語",
-			toZhLang: "切换语言 -> 中文"
+			toZhLang: "切换语言 -> 中文",
+			back: "戻る"
 		},
 		footer: {
-			sitemap: "sitemap"
+			sitemap: "サイトマップ"
 		}
 	},
 	guestbook: {

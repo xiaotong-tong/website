@@ -30,17 +30,19 @@
 		}}</xtt-markdown>
 
 		<div class="pagination">
-			<nami-link :to="'/article/' + acticle.prev.id" v-if="acticle?.prev" class="link">
-				上一篇: {{ acticle?.prev.title }}</nami-link
-			>
-			<nami-link :to="'/article/' + acticle.next.id" v-if="acticle?.next" class="link"
-				>下一篇: {{ acticle?.next.title }}</nami-link
-			>
+			<nami-link :to="'/article/' + acticle.prev.id" v-if="acticle?.prev" class="link">{{
+				(i18nStore.lang === "ja" ? "前の文章: " : "上一篇: ") + acticle?.prev.title
+			}}</nami-link>
+			<nami-link :to="'/article/' + acticle.next.id" v-if="acticle?.next" class="link">{{
+				(i18nStore.lang === "ja" ? "次の文章: " : "下一篇: ") + acticle?.next.title
+			}}</nami-link>
 		</div>
 
 		<namiCommentList class="comment-list" :comments="commentList"></namiCommentList>
 
-		<h3>发布评论：</h3>
+		<h3>
+			{{ i18nStore.lang === "ja" ? "コメントする" : "写下你的评论吧" }}
+		</h3>
 		<namiCommentPanel class="comment-panel" @submit="commentSubmitEvent"></namiCommentPanel>
 	</section>
 	<section v-else>少女祈祷中...</section>

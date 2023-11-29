@@ -4,16 +4,30 @@
 	<xtt-dialog
 		align-center
 		class="choicePicDialog"
-		title="请选择要使用的头像"
+		:title="i18nStore.lang === 'ja' ? '使うアバターを選んでください' : '请选择要使用的头像'"
 		ref="choicePicDialog"
 	>
 		<div class="active">
-			<p>当前选择的头像</p>
-			<img class="photo" :src="activePhoto" alt="当前选择的头像" />
+			<p>
+				{{ i18nStore.lang === "ja" ? "現在選ばれてるのアバター" : "当前选择的头像" }}
+			</p>
+			<img
+				class="photo"
+				:src="activePhoto"
+				:alt="i18nStore.lang === 'ja' ? '現在選ばれてるのアバター' : '当前选择的头像'"
+			/>
 		</div>
 
-		<p>选择列表</p>
-		<span class="info">自定义上传的头像会向所有人员公开，所有人都可以使用</span>
+		<p>
+			{{ i18nStore.lang === "ja" ? "選択リスト" : "选择列表" }}
+		</p>
+		<span class="info">
+			{{
+				i18nStore.lang === "ja"
+					? "アップロードされたアバターは、誰でも使うできるように公開される。注意してください。"
+					: "自定义上传的头像会向所有人员公开，所有人都可以使用"
+			}}
+		</span>
 		<div class="photoWrap">
 			<img
 				class="photo"
@@ -52,8 +66,9 @@
 				:style="{
 					'margin-block-end': '8px'
 				}"
-				>取消裁切</xtt-button
 			>
+				{{ i18nStore.lang === "ja" ? "トリミングキャンセル" : "取消裁切" }}
+			</xtt-button>
 
 			<xtt-button
 				v-if="cropperSrc"
@@ -63,8 +78,9 @@
 					'margin-block-end': '8px',
 					'margin-inline-start': '8px'
 				}"
-				>完成裁切</xtt-button
 			>
+				{{ i18nStore.lang === "ja" ? "トリミング完了" : "完成裁切" }}
+			</xtt-button>
 
 			<namiCropper
 				v-if="cropperSrc"
@@ -82,6 +98,9 @@ import { ref, reactive, onMounted } from "vue";
 import namiCropper from "@/components/cropper/cropper.vue";
 import { uploadImage } from "@/api/image/image";
 import { uploadPhoto, getPhotoList } from "@/api/blog/comment";
+import { useI18nStore } from "@/stores/i18n";
+
+const i18nStore = useI18nStore();
 
 const props = withDefaults(
 	defineProps<{
@@ -165,6 +184,9 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.choicePicDialog::part(dialog) {
+	width: min(calc(100% - 64px), 500px);
+}
 .pic {
 	width: 30px;
 	height: 30px;
@@ -178,7 +200,6 @@ onMounted(() => {
 }
 
 .photoWrap {
-	width: 500px;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 8px;

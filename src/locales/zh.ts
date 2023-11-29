@@ -19,7 +19,8 @@ export const zhMsg = {
 			toLightMode: "切换模式 -> 亮色",
 			toDarkMode: "切换模式 -> 深色",
 			toJaLang: "言語切り替え -> 日本語",
-			toZhLang: "切换语言 -> 中文"
+			toZhLang: "切换语言 -> 中文",
+			back: "上一页"
 		},
 		footer: {
 			sitemap: "站点地图"

@@ -6,7 +6,9 @@
 			@mouseenter="mouseenterHandler"
 			@mouseleave="mouseleaveHandler"
 		>
-			<nami-link to="/" block class="link">首页</nami-link>
+			<nami-link to="/" block class="link">
+				{{ i18nStore.messages.main.nav.home }}
+			</nami-link>
 		</li>
 		<li
 			class="piano-key"
@@ -14,7 +16,9 @@
 			@mouseenter="mouseenterHandler"
 			@mouseleave="mouseleaveHandler"
 		>
-			<nami-link to="/sitemap" block class="link">站点地图</nami-link>
+			<nami-link to="/sitemap" block class="link">
+				{{ i18nStore.messages.main.footer.sitemap }}
+			</nami-link>
 		</li>
 		<li
 			class="piano-key"
@@ -22,7 +26,9 @@
 			@mouseenter="mouseenterHandler"
 			@mouseleave="mouseleaveHandler"
 		>
-			<nami-link to="/guestbook" block class="link">留言板</nami-link>
+			<nami-link to="/guestbook" block class="link">
+				{{ i18nStore.messages.main.nav.guestbook }}
+			</nami-link>
 		</li>
 		<li
 			class="piano-key"
@@ -30,7 +36,9 @@
 			@mouseenter="mouseenterHandler"
 			@mouseleave="mouseleaveHandler"
 		>
-			<nami-link to="/link" block class="link">链接</nami-link>
+			<nami-link to="/link" block class="link">
+				{{ i18nStore.messages.main.nav.link }}
+			</nami-link>
 		</li>
 		<li
 			class="piano-key"
@@ -38,7 +46,9 @@
 			@mouseenter="mouseenterHandler"
 			@mouseleave="mouseleaveHandler"
 		>
-			<nami-link to="/about" block class="link">关于</nami-link>
+			<nami-link to="/tools" block class="link">
+				{{ i18nStore.messages.main.nav.tools }}
+			</nami-link>
 		</li>
 		<li
 			class="piano-key"
@@ -46,13 +56,9 @@
 			@mouseenter="mouseenterHandler"
 			@mouseleave="mouseleaveHandler"
 		>
-			<nami-link
-				block
-				to="https://github.com/xiaotong-tong/website"
-				target="_blank"
-				class="link"
-				>Github</nami-link
-			>
+			<nami-link to="/about" block class="link">
+				{{ i18nStore.messages.main.nav.about }}
+			</nami-link>
 		</li>
 		<li
 			class="piano-key"
@@ -60,7 +66,9 @@
 			@mouseenter="mouseenterHandler"
 			@mouseleave="mouseleaveHandler"
 		>
-			<nami-link block class="link" @click="router.go(-1)">上一页</nami-link>
+			<nami-link block class="link" @click="router.go(-1)">
+				{{ i18nStore.messages.main.nav.back }}
+			</nami-link>
 		</li>
 	</ul>
 
@@ -72,25 +80,14 @@
 			</div>
 		</li>
 	</ul>
-
-	<!-- 预加载 piano 音频文件 -->
-	<!-- as="audio" 目前没被 chrome 等浏览器支持， 详见 https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes/rel/preload#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7 -->
-	<!-- <Teleport to="head">
-		<link rel="preload" href="/piano/c3.mp3" as="fetch" />
-		<link rel="preload" href="/piano/d3.mp3" as="fetch" />
-		<link rel="preload" href="/piano/e3.mp3" as="fetch" />
-		<link rel="preload" href="/piano/f3.mp3" as="fetch" />
-		<link rel="preload" href="/piano/g3.mp3" as="fetch" />
-		<link rel="preload" href="/piano/a3.mp3" as="fetch" />
-		<link rel="preload" href="/piano/b3.mp3" as="fetch" />
-	</Teleport> -->
-	<!-- 但是上面的方法在控制台会有申请了资源，但是在几秒内没有使用警告，所以不使用 -->
 </template>
 
 <script setup lang="ts">
 import { onMounted, onUnmounted } from "vue";
 import { useRouter } from "vue-router";
+import { useI18nStore } from "@/stores/i18n";
 const router = useRouter();
+const i18nStore = useI18nStore();
 
 type PianoKey = "c3" | "d3" | "e3" | "f3" | "g3" | "a3" | "b3";
 
@@ -162,7 +159,7 @@ const autoPlayPiano = (score: string, speed = 75) => {
 			return;
 		}
 
-		const keyEl = document.querySelector(`.piano-key[data-key="${key}"]`);
+		const keyEl = document.querySelector(`.piano-box>.piano-key[data-key="${key}"]`);
 		keyEl?.classList.add("active");
 
 		playPianoAudio(key as PianoKey);

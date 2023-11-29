@@ -2,8 +2,8 @@
 	<div>
 		<template v-if="!props.isGuestbook">
 			<div class="count" v-if="!props.isChildren">
-				<span>{{ props.comments.length }}</span
-				>条评论
+				<span>{{ props.comments.length }}</span>
+				{{ i18nStore.lang === "ja" ? "件のコメント" : "条评论" }}
 			</div>
 		</template>
 
@@ -22,6 +22,9 @@
 
 <script setup lang="ts">
 import type { Comment } from "@/types/comment";
+import { useI18nStore } from "@/stores/i18n";
+
+const i18nStore = useI18nStore();
 interface Props {
 	comments: Comment[];
 	isChildren?: boolean;
