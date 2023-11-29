@@ -1,5 +1,5 @@
 <template>
-	<xtt-icon ref="icon" class="icon">
+	<xtt-icon class="icon">
 		<svg aria-hidden="true" viewBox="0 0 24 24">
 			<path :d="reflectIcon(props.icon)"></path>
 		</svg>

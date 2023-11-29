@@ -2,13 +2,12 @@
 	<transition name="fade">
 		<div
 			class="chatbox"
-			ref="chatbox"
 			v-show="chatBoxShowed"
 			@mouseenter="mouseenterEvent"
 			@mouseleave="mouseleaveEvent"
 		>
 			<div class="chatWrap">
-				<p class="chat" ref="chat" v-html="chatContent"></p>
+				<p class="chat" v-html="chatContent"></p>
 			</div>
 		</div>
 	</transition>

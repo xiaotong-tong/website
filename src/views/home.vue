@@ -134,8 +134,9 @@ const verifyLogin = async () => {
 <style scoped>
 .main {
 	width: min(900px, 90%);
-	min-height: calc(100vh - 112px);
-	margin: 0 auto 16px;
+	min-height: calc(100vh - 114px);
+	margin: 8px auto;
+	border: 1px solid transparent;
 }
 
 .icon {
