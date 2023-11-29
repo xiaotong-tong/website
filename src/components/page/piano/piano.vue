@@ -257,4 +257,12 @@ onUnmounted(() => {
 	flex: 0 0 50%;
 	text-align: center;
 }
+
+.small-screen .piano-key {
+	height: 48px;
+}
+.small-screen .link {
+	font-size: 12px;
+	--link-padding: 4px 8px;
+}
 </style>

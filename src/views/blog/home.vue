@@ -29,7 +29,10 @@
 import type { Acticle } from "@/types/acticle";
 import { ref, reactive, watchEffect } from "vue";
 import { getActicleList } from "@/api/blog/acticle";
+import { useRouter, useRoute } from "vue-router";
 
+const router = useRouter();
+const route = useRoute();
 const acticleList: {
 	lists: Acticle[];
 	showLists: Acticle[];
@@ -43,10 +46,23 @@ const acticleList: {
 	acticleList.lists = data;
 })();
 
-const currentPage = ref(1);
+const currentPage = ref(route.query.page ? +route.query.page : 1);
 const pageSize = 10;
 const changePage = (page: number) => {
 	currentPage.value = page;
+
+	if (page === 1) {
+		router.push({
+			query: {}
+		});
+		return;
+	}
+
+	router.push({
+		query: {
+			page
+		}
+	});
 
 	// 切换分页页面后滚动到最顶端
 	scrollTo({
