@@ -2,9 +2,6 @@
 import "xtt-ui";
 import "xtt-ui/xtt-web-bg.js";
 
-// 加载 mouse-snow 鼠标雪花特效
-import "./js/mousesnow.js";
-
 // 加载网站公共样式
 import "@/assets/css/style.css";
 import "@/assets/css/color.css";

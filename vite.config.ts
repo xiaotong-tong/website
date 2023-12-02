@@ -38,21 +38,26 @@ export default defineConfig({
 						"./src/views/blog/star/index.vue",
 						"./src/views/404.vue"
 					],
+					subindex: [
+						"./src/views/about/index.vue",
+						"./src/views/blog/guestbook/index.vue",
+						"./src/views/links/links.vue",
+						"./src/views/sitemap/index.vue",
+						"./src/views/dashboard/index.vue",
+						"./src/views/tools/tools.vue",
+						"./src/views/archives/archives.vue"
+					],
 					master: ["./src/views/blog/editor/add.vue", "./src/views/blog/editor/edit.vue"],
-					about: ["./src/views/about/index.vue"],
 					jpWord: ["./src/views/blog/lang/words/words.vue"],
-					guestbook: ["./src/views/blog/guestbook/index.vue"],
-					link: ["./src/views/links/links.vue"],
-					sitemap: ["./src/views/sitemap/index.vue"],
-					dashboard: ["./src/views/dashboard/index.vue"],
-					tools: ["./src/views/tools/tools.vue"],
 					something: [
 						"./src/views/somethings/img2base64.vue",
 						"./src/views/somethings/toWebp.vue",
 						"./src/views/somethings/pinyin.vue",
 						"./src/views/somethings/kana.vue",
-						"./src/views/somethings/soduku.vue"
+						"./src/views/somethings/soduku.vue",
+						"./src/views/somethings/chat.vue"
 					],
+					music: ["./src/views/music/music.vue"],
 					ex: ["./src/views/ex/space/index.vue"],
 					cv: ["./src/views/cv/cv.pdf.vue"]
 				}

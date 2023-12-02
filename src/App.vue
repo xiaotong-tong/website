@@ -1,4 +1,8 @@
-<script setup></script>
+<script setup>
+import MouseSnow from "mousesnow";
+
+new MouseSnow();
+</script>
 
 <template>
 	<RouterView />

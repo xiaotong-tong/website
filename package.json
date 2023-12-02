@@ -18,6 +18,7 @@
 		"axios": "^1.4.0",
 		"cropperjs": "^2.0.0-beta.3",
 		"galmuri": "^2.38.7",
+		"mousesnow": "^0.0.3",
 		"pinia": "^2.0.36",
 		"pinyin-pro": "^3.17.0",
 		"three": "^0.158.0",
