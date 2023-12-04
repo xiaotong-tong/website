@@ -10,6 +10,7 @@
 -   [仪表盘](/dashboard)
 -   [归档](/archives)
 -   [简历](/cv/pdf)
+-   [ゲームと文字な日々](/reading)
 
 ### 小工具
 

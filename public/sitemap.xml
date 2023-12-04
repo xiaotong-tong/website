@@ -55,13 +55,13 @@
   <url>
     <loc>https://xtt.moe/sitemap</loc>
     <priority>1.0</priority>
-    <lastmod>2023-11-28</lastmod>
+    <lastmod>2023-12-4</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://xtt.moe/ja/sitemap</loc>
     <priority>1.0</priority>
-    <lastmod>2023-11-28</lastmod>
+    <lastmod>2023-12-4</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -88,7 +88,7 @@
     <lastmod>2023-11-28</lastmod>
     <changefreq>weekly</changefreq>
   </url>
-    <url>
+  <url>
     <loc>https://xtt.moe/music</loc>
     <priority>0.7</priority>
     <lastmod>2023-11-24</lastmod>
@@ -98,6 +98,18 @@
     <loc>https://xtt.moe/ja/music</loc>
     <priority>0.7</priority>
     <lastmod>2023-11-28</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/reading</loc>
+    <priority>0.7</priority>
+    <lastmod>2023-12-4</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/ja/reading</loc>
+    <priority>0.7</priority>
+    <lastmod>2023-12-4</lastmod>
     <changefreq>weekly</changefreq>
   </url>
 

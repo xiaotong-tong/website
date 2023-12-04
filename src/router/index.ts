@@ -180,6 +180,18 @@ let routes = [
 				}
 			},
 
+			{
+				path: "/reading",
+				name: "reading",
+				component: () => import("../views/reading/index.vue"),
+				meta: {
+					title: {
+						zh: "ゲームと文字な日々",
+						ja: "ゲームと文字な日々"
+					}
+				}
+			},
+
 			// something
 			{
 				path: "/something/img2base64",

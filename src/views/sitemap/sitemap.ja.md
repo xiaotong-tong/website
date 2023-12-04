@@ -9,6 +9,7 @@
 -   [ツール](/ja/tools)
 -   [ダッシュボード](/ja/dashboard)
 -   [アーカイブ](/ja/archives)
+-   [ゲームと文字な日々](/reading)
 
 ### ツール
 
@@ -23,7 +24,7 @@
 
 -   [threejs 星空](/ex/space) - threejs で星空を制作する
 
-## カテゴリ
+## テーマ
 
 -   [ウェブ](/ja/net)
 -   [言語学ぶ](/ja/lang)

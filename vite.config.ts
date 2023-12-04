@@ -45,7 +45,8 @@ export default defineConfig({
 						"./src/views/sitemap/index.vue",
 						"./src/views/dashboard/index.vue",
 						"./src/views/tools/tools.vue",
-						"./src/views/archives/archives.vue"
+						"./src/views/archives/archives.vue",
+						"./src/views/reading/index.vue"
 					],
 					master: ["./src/views/blog/editor/add.vue", "./src/views/blog/editor/edit.vue"],
 					jpWord: ["./src/views/blog/lang/words/words.vue"],
