@@ -3,11 +3,11 @@
 		<h1 class="text-center">
 			{{ i18nStore.lang === "ja" ? "ナンプレ" : "数独游戏" }}
 		</h1>
-		<div class="soduku-box">
-			<template v-for="(row, rIndex) in soduku">
+		<div class="sudoku-box">
+			<template v-for="(row, rIndex) in sudoku">
 				<div
 					v-for="(col, cIndex) in row"
-					class="soduku-cell"
+					class="sudoku-cell"
 					:grid="rIndex + '-' + cIndex"
 					:contenteditable="col.editable"
 					@input="inputEvent($event as InputEvent)"
@@ -25,12 +25,12 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { generateSoduku, isValidSodukuBoard, random } from "xtt-utils";
+import { generateSudoku, isValidSudokuBoard, random } from "xtt-utils";
 import { useI18nStore } from "@/stores/i18n";
 
 const i18nStore = useI18nStore();
-const soduku = ref(
-	generateSoduku(random(20, 44)).map((row) => {
+const sudoku = ref(
+	generateSudoku(random(20, 44)).map((row) => {
 		return row.map((col) => {
 			return {
 				editable: col === 0,
@@ -50,13 +50,13 @@ const inputEvent = (e: InputEvent) => {
 
 	const [rIndex, cIndex] = target.getAttribute("grid")!.split("-");
 	target.innerText = e.data!;
-	soduku.value[Number(rIndex)][Number(cIndex)].value = Number(target.innerText) || 0;
+	sudoku.value[Number(rIndex)][Number(cIndex)].value = Number(target.innerText) || 0;
 
 	// 判断是否完成
 	let isFinish = true;
-	for (let i = 0; i < soduku.value.length; i++) {
-		for (let j = 0; j < soduku.value[i].length; j++) {
-			if (!soduku.value[i][j].value) {
+	for (let i = 0; i < sudoku.value.length; i++) {
+		for (let j = 0; j < sudoku.value[i].length; j++) {
+			if (!sudoku.value[i][j].value) {
 				isFinish = false;
 				break;
 			}
@@ -65,7 +65,7 @@ const inputEvent = (e: InputEvent) => {
 
 	if (isFinish) {
 		// 如果格子全部填满，判断是否符合正确结果
-		if (isValidSodukuBoard(soduku.value.map((row) => row.map((col) => col.value)))) {
+		if (isValidSudokuBoard(sudoku.value.map((row) => row.map((col) => col.value)))) {
 			alert(i18nStore.lang === "ja" ? "ゲームクリアおめでとう" : "恭喜你，完成了数独游戏！");
 		}
 	}
@@ -73,7 +73,7 @@ const inputEvent = (e: InputEvent) => {
 </script>
 
 <style scoped>
-.soduku-box {
+.sudoku-box {
 	display: grid;
 	width: min(360px, 100%);
 	aspect-ratio: 1 / 1;
@@ -81,7 +81,7 @@ const inputEvent = (e: InputEvent) => {
 	grid-template-rows: repeat(9, 1fr);
 }
 
-.soduku-cell {
+.sudoku-cell {
 	aspect-ratio: 1 / 1;
 	min-width: 30px;
 	display: flex;
@@ -94,26 +94,26 @@ const inputEvent = (e: InputEvent) => {
 	border-inline-start: thin solid #ccc;
 }
 
-.soduku-cell:nth-child(-n + 9) {
+.sudoku-cell:nth-child(-n + 9) {
 	border-block-start: thin solid #000;
 }
-.soduku-cell:nth-child(3n) {
+.sudoku-cell:nth-child(3n) {
 	border-inline-end: thin solid #000;
 }
-.soduku-cell:nth-child(9n + 1) {
+.sudoku-cell:nth-child(9n + 1) {
 	border-inline-start: thin solid #000;
 }
-.soduku-cell:nth-child(n + 19):nth-child(-n + 27),
-.soduku-cell:nth-child(n + 46):nth-child(-n + 54),
-.soduku-cell:nth-child(n + 73) {
+.sudoku-cell:nth-child(n + 19):nth-child(-n + 27),
+.sudoku-cell:nth-child(n + 46):nth-child(-n + 54),
+.sudoku-cell:nth-child(n + 73) {
 	border-block-end: thin solid #000;
 }
 
-.soduku-cell[contenteditable="true"] {
+.sudoku-cell[contenteditable="true"] {
 	outline: none;
 	color: rgb(51, 192, 74);
 }
-.soduku-cell[contenteditable="true"]:not(:empty) {
+.sudoku-cell[contenteditable="true"]:not(:empty) {
 	background-color: #f2f2f2;
 }
 </style>

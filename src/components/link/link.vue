@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { Ref, ref } from "vue";
+import { ref } from "vue";
 import { useRouter } from "vue-router";
 const router = useRouter();
 
@@ -16,7 +16,7 @@ const props = defineProps({
 	}
 });
 
-const link: Ref = ref(null);
+const link = ref<HTMLAnchorElement | null>(null);
 
 const linkClickEvent = (ev: MouseEvent) => {
 	// 如果 to 属性为空，则不进行任何操作

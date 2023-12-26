@@ -9,6 +9,11 @@ let routes = [
 		component: () => import("../views/ex/space/index.vue")
 	},
 	{
+		path: "/ex/pip",
+		name: "exPIP",
+		component: () => import("../views/ex/pip/index.vue")
+	},
+	{
 		path: "/",
 		name: "home",
 		component: () => import("../views/home.vue"),
@@ -249,9 +254,9 @@ let routes = [
 				}
 			},
 			{
-				path: "/something/soduku",
-				name: "soduku",
-				component: () => import("../views/somethings/soduku.vue"),
+				path: "/something/sudoku",
+				name: "sudoku",
+				component: () => import("../views/somethings/sudoku.vue"),
 				meta: {
 					title: {
 						zh: "数独游戏",

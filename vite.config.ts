@@ -55,11 +55,11 @@ export default defineConfig({
 						"./src/views/somethings/toWebp.vue",
 						"./src/views/somethings/pinyin.vue",
 						"./src/views/somethings/kana.vue",
-						"./src/views/somethings/soduku.vue",
+						"./src/views/somethings/sudoku.vue",
 						"./src/views/somethings/chat.vue"
 					],
 					music: ["./src/views/music/music.vue"],
-					ex: ["./src/views/ex/space/index.vue"],
+					ex: ["./src/views/ex/space/index.vue", "./src/views/ex/pip/index.vue"],
 					cv: ["./src/views/cv/cv.pdf.vue"]
 				}
 			}

@@ -14,7 +14,6 @@
 				class="thumbnail"
 				:src="props.info.thumbnail || 'https://image.xtt.moe/images/bg.webp'"
 				alt="缩略图"
-				loading="lazy"
 			/>
 		</div>
 		<div class="info-wrap">
@@ -197,9 +196,36 @@ onBeforeUnmount(() => {
 @media screen and (max-width: 768px) {
 	.card {
 		flex-wrap: wrap;
+		padding: 0;
 	}
 	.thumbnail-wrap {
 		flex: 0 0 100%;
+	}
+	.info-wrap {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: linear-gradient(
+			to top,
+			rgba(0, 0, 0, 0.7),
+			rgba(0, 0, 0, 0.3) 60%,
+			rgba(0, 0, 0, 0.2) 80%,
+			rgba(0, 0, 0, 0)
+		);
+		color: azure;
+		padding: 8px;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-end;
+	}
+	.info-wrap > :is(h2, p) {
+		flex: 0 0 100%;
+		padding-inline: 8px;
+	}
+	.info-wrap > p:nth-of-type(1) {
+		margin-block: -8px 4px;
+		font-size: 12px;
 	}
 }
 
