@@ -6,6 +6,9 @@ import mdPlugin from "./plugins/mdToTextPlain";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+	// server: {
+	// 	https: true
+	// },
 	plugins: [
 		mdPlugin(),
 		vue({
@@ -36,7 +39,8 @@ export default defineConfig({
 						"./src/views/blog/net/index.vue",
 						"./src/views/blog/note/index.vue",
 						"./src/views/blog/star/index.vue",
-						"./src/views/404.vue"
+						"./src/views/404.vue",
+						"./src/views/login/login.vue"
 					],
 					subindex: [
 						"./src/views/about/index.vue",

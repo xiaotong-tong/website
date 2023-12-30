@@ -20,7 +20,8 @@ export const jaMsg = {
 			toDarkMode: "ダークモード切り替え",
 			toJaLang: "言語切り替え -> 日本語",
 			toZhLang: "切换语言 -> 中文",
-			back: "戻る"
+			back: "戻る",
+			login: "ログイン"
 		},
 		footer: {
 			sitemap: "サイトマップ"

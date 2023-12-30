@@ -24,6 +24,11 @@ let routes = [
 				component: () => import("../views/blog/home.vue")
 			},
 			{
+				path: "/login",
+				name: "login",
+				component: () => import("../views/login/login.vue")
+			},
+			{
 				path: "/editor/add",
 				name: "blogEditorAdd",
 				component: () => import("../views/blog/editor/add.vue")

@@ -86,6 +86,10 @@
 					{{ i18nStore.messages.main.nav.more }}
 				</div>
 				<div class="side-menu-item">
+					<nami-link class="side-menu-item-unit" to="/login" inline-block>
+						{{ i18nStore.messages.main.nav.login }}
+					</nami-link>
+
 					<nami-link class="side-menu-item-unit" to="/guestbook" inline-block>
 						{{ i18nStore.messages.main.nav.guestbook }}
 					</nami-link>
