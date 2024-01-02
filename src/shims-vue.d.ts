@@ -13,3 +13,8 @@ declare class APlayer {
 }
 
 declare var live2dLoader: any;
+
+// 虽然 NDEFReader 是原生 window 下的支持的 api，但是 ts 的全局命令空间貌似并没有这个接口，所以需要自己声明一下
+interface Window {
+	NDEFReader: any;
+}
