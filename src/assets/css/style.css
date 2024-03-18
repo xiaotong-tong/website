@@ -34,13 +34,13 @@ ul {
 		url("https://file.xtt.moe/files/fonts/LuoLiTi-2.ttf");
 	font-display: swap;
 }
-/* 目前为了缓解请求压力，logo 使用了 base64 文字图片，当前不使用字体，也就不需要请求字体文件了 */
-/* @font-face {
-	font-family: "katong";
-	src: url("https://file.xtt.moe/files/fonts/katong.woff2") format("woff2"),
-		url("https://file.xtt.moe/files/fonts/katong.ttf");
+/* 使用字蛛瘦身后的文件 */
+@font-face {
+	font-family: "katong-s";
+	src: url("https://file.xtt.moe/files/fonts/katong-s.woff2") format("woff2"),
+		url("https://file.xtt.moe/files/fonts/katong-s.ttf") format("truetype");
 	font-display: auto;
-} */
+}
 
 /* https://www.yishuzi.cn/sucai/84277.html 可爱少女体 */
 /* @font-face {
