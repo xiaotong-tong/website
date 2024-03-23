@@ -8,7 +8,16 @@
 	<namiMHeader v-else></namiMHeader>
 
 	<main class="main">
-		<RouterView />
+		<RouterView v-slot="{ Component }">
+			<template v-if="Component">
+				<Suspense>
+					<component :is="Component" />
+					<template #fallback>
+						<namiPageLoading></namiPageLoading>
+					</template>
+				</Suspense>
+			</template>
+		</RouterView>
 	</main>
 
 	<namiFooter></namiFooter>
@@ -88,6 +97,7 @@ import { verifyMasterUid } from "../api/blog/verify";
 import { useRouter } from "vue-router";
 import { useStore } from "@/stores/index";
 import type { XttTooltipElement } from "xtt-ui/index.d.ts";
+import namiPageLoading from "../components/page/loading/loading.vue";
 
 const store = useStore();
 const router = useRouter();

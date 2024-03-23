@@ -41,10 +41,8 @@ const acticleList: {
 	showLists: []
 });
 
-(async () => {
-	const data = await getActicleList();
-	acticleList.lists = data;
-})();
+const data = await getActicleList();
+acticleList.lists = data;
 
 const currentPage = ref(route.query.page ? +route.query.page : 1);
 const pageSize = 10;

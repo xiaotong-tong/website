@@ -202,6 +202,18 @@ let routes = [
 				}
 			},
 
+			{
+				path: "/photos",
+				name: "photos",
+				component: () => import("../views/photos/index.vue"),
+				meta: {
+					title: {
+						zh: "图床",
+						ja: "画像アップロード"
+					}
+				}
+			},
+
 			// something
 			{
 				path: "/something/img2base64",
