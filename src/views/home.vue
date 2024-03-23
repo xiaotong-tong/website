@@ -98,7 +98,7 @@ import { verifyMasterUid } from "../api/blog/verify";
 import { useRouter } from "vue-router";
 import { useStore } from "@/stores/index";
 import type { XttTooltipElement } from "xtt-ui/index.d.ts";
-import namiPageLoading from "../components/page/loading/loading.vue";
+// import namiPageLoading from "../components/page/loading/loading.vue";
 
 const store = useStore();
 const router = useRouter();
