@@ -29,6 +29,8 @@ import pagination from "../components/pagination/pagination.vue";
 import timeline from "../components/timeline/timeline.vue";
 import timelineItem from "../components/timeline/timeline-item.vue";
 
+import pageLoading from "@/components/page/loading/loading.vue";
+
 const importPlugin = {
 	install(app: App) {
 		app.component("namiLink", link);
@@ -47,6 +49,8 @@ const importPlugin = {
 
 		app.component("namiTimeline", timeline);
 		app.component("namiTimelineItem", timelineItem);
+
+		app.component("namiPageLoading", pageLoading);
 	}
 };
 

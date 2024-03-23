@@ -34,7 +34,6 @@ import type { Acticle } from "@/types/acticle";
 import { ref, reactive, watchEffect } from "vue";
 import { getActicleList } from "@/api/blog/acticle";
 import { useRouter, useRoute } from "vue-router";
-import namiPageLoading from "@/components/page/loading/loading.vue";
 
 const router = useRouter();
 const route = useRoute();

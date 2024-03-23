@@ -65,7 +65,7 @@ import { useRoute, useRouter, onBeforeRouteUpdate } from "vue-router";
 import { useStore } from "@/stores/index";
 import { useI18nStore } from "@/stores/i18n";
 import { useStateTypeStore } from "@/stores/stateType";
-import namiPageLoading from "@/components/page/loading/loading.vue";
+
 const store = useStore();
 const route = useRoute();
 const router = useRouter();
