@@ -6,10 +6,10 @@
 -   [について](/ja/about)
 -   [ゲストブック](/ja/guestbook)
 -   [リンク](/ja/link)
--   [ツール](/ja/tools)
 -   [ダッシュボード](/ja/dashboard)
 -   [アーカイブ](/ja/archives)
 -   [ゲームと文字な日々](/reading)
+-   [写真](/ja/photos)
 
 ### ツール
 

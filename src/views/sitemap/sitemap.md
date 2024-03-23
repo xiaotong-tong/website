@@ -6,11 +6,11 @@
 -   [关于](/about)
 -   [留言板](/guestbook)
 -   [链接](/link)
--   [工具](/tools)
 -   [仪表盘](/dashboard)
 -   [归档](/archives)
 -   [简历](/cv/pdf)
 -   [ゲームと文字な日々](/reading)
+-   [图片](/photos)
 
 ### 小工具
 

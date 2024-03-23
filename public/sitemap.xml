@@ -3,13 +3,13 @@
   <url>
     <loc>https://xtt.moe/</loc>
     <priority>1.0</priority>
-    <lastmod>2024-01-02</lastmod>
+    <lastmod>2024-03-23</lastmod>
     <changefreq>daily</changefreq>
   </url>
     <url>
     <loc>https://xtt.moe/ja/</loc>
     <priority>1.0</priority>
-    <lastmod>2024-01-02</lastmod>
+    <lastmod>2024-03-23</lastmod>
     <changefreq>daily</changefreq>
   </url>
   <url>
@@ -77,15 +77,15 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://xtt.moe/tools</loc>
+    <loc>https://xtt.moe/photos</loc>
     <priority>0.7</priority>
-    <lastmod>2023-11-28</lastmod>
+    <lastmod>2024-03-23</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://xtt.moe/ja/tools</loc>
+    <loc>https://xtt.moe/ja/photos</loc>
     <priority>0.7</priority>
-    <lastmod>2023-11-28</lastmod>
+    <lastmod>2024-03-23</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>

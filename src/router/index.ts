@@ -179,18 +179,6 @@ let routes = [
 			},
 
 			{
-				path: "/tools",
-				name: "tools",
-				component: () => import("../views/tools/tools.vue"),
-				meta: {
-					title: {
-						zh: "常用工具",
-						ja: "ツール"
-					}
-				}
-			},
-
-			{
 				path: "/reading",
 				name: "reading",
 				component: () => import("../views/reading/index.vue"),

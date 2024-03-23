@@ -48,7 +48,7 @@ export default defineConfig({
 						"./src/views/links/links.vue",
 						"./src/views/sitemap/index.vue",
 						"./src/views/dashboard/index.vue",
-						"./src/views/tools/tools.vue",
+						"./src/views/photos/photos.vue",
 						"./src/views/archives/archives.vue",
 						"./src/views/reading/index.vue"
 					],
