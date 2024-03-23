@@ -21,7 +21,8 @@ export const zhMsg = {
 			toJaLang: "言語切り替え -> 日本語",
 			toZhLang: "切换语言 -> 中文",
 			back: "上一页",
-			login: "登录"
+			login: "登录",
+			photo: "图片"
 		},
 		footer: {
 			sitemap: "站点地图"

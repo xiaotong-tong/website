@@ -45,7 +45,9 @@
 		</h3>
 		<namiCommentPanel class="comment-panel" @submit="commentSubmitEvent"></namiCommentPanel>
 	</section>
-	<section v-else>少女祈祷中...</section>
+	<section v-else>
+		<namiPageLoading></namiPageLoading>
+	</section>
 
 	<Teleport to="head">
 		<!-- 如果文章中有 tags 属性，那么就将 tags 的内容添加到 meta 标签中的 keywords 中 -->
@@ -63,6 +65,7 @@ import { useRoute, useRouter, onBeforeRouteUpdate } from "vue-router";
 import { useStore } from "@/stores/index";
 import { useI18nStore } from "@/stores/i18n";
 import { useStateTypeStore } from "@/stores/stateType";
+import namiPageLoading from "@/components/page/loading/loading.vue";
 const store = useStore();
 const route = useRoute();
 const router = useRouter();

@@ -86,8 +86,11 @@
 					{{ i18nStore.messages.main.nav.archives }}
 				</namiLink> -->
 
-				<namiLink class="link" inline-block to="/tools">
+				<!-- <namiLink class="link" inline-block to="/tools">
 					{{ i18nStore.messages.main.nav.tools }}
+				</namiLink> -->
+				<namiLink class="link" inline-block to="/photos">
+					{{ i18nStore.messages.main.nav.photo }}
 				</namiLink>
 			</li>
 			<li

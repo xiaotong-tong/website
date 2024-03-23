@@ -1,5 +1,5 @@
 <template>
-	<section class="container">
+	<section class="container" v-if="!loading">
 		<namiMainCard
 			class="card"
 			v-for="item in acticleList.showLists"
@@ -16,6 +16,10 @@
 		></namiPagination>
 	</section>
 
+	<section v-else>
+		<namiPageLoading></namiPageLoading>
+	</section>
+
 	<Teleport to="head">
 		<meta name="keywords" content="星川漣,小恸恸,博客,前端,日语" />
 		<meta
@@ -30,6 +34,7 @@ import type { Acticle } from "@/types/acticle";
 import { ref, reactive, watchEffect } from "vue";
 import { getActicleList } from "@/api/blog/acticle";
 import { useRouter, useRoute } from "vue-router";
+import namiPageLoading from "@/components/page/loading/loading.vue";
 
 const router = useRouter();
 const route = useRoute();
@@ -41,8 +46,12 @@ const acticleList: {
 	showLists: []
 });
 
-const data = await getActicleList();
-acticleList.lists = data;
+const loading = ref(true);
+
+(async () => {
+	acticleList.lists = await getActicleList();
+	loading.value = false;
+})();
 
 const currentPage = ref(route.query.page ? +route.query.page : 1);
 const pageSize = 10;

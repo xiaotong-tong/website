@@ -8,7 +8,7 @@
 	<namiMHeader v-else></namiMHeader>
 
 	<main class="main">
-		<RouterView v-slot="{ Component }">
+		<!-- <RouterView v-slot="{ Component }">
 			<template v-if="Component">
 				<Suspense>
 					<component :is="Component" />
@@ -17,7 +17,8 @@
 					</template>
 				</Suspense>
 			</template>
-		</RouterView>
+		</RouterView> -->
+		<RouterView />
 	</main>
 
 	<namiFooter></namiFooter>

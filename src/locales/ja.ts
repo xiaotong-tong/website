@@ -21,7 +21,8 @@ export const jaMsg = {
 			toJaLang: "言語切り替え -> 日本語",
 			toZhLang: "切换语言 -> 中文",
 			back: "戻る",
-			login: "ログイン"
+			login: "ログイン",
+			photo: "写真"
 		},
 		footer: {
 			sitemap: "サイトマップ"
