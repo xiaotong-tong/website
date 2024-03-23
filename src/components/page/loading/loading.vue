@@ -19,5 +19,10 @@
 
 .img {
 	margin-block-start: -100px;
+	max-width: 100%;
+}
+
+.small-screen .img {
+	margin-block-start: 0;
 }
 </style>
