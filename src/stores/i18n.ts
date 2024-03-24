@@ -5,7 +5,7 @@ import { useRouter } from "vue-router";
 import { zhMsg } from "@/locales/zh";
 import { jaMsg } from "@/locales/ja";
 
-const getLang = () => {
+const getLang = (): "ja" | "zh" => {
 	if (location.pathname.startsWith("/ja")) {
 		return "ja";
 	}

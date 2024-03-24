@@ -47,3 +47,14 @@ ul {
 	font-family: "popuramu";
 	src: url("/fonts/popuramu.otf");
 } */
+
+@font-face {
+	font-family: "HinaMincho-Regular";
+	src: url("https://file.xtt.moe/files/fonts/HinaMincho-Regular.woff2") format("woff2"),
+		url("https://file.xtt.moe/files/fonts/HinaMincho-Regular.ttf");
+	font-display: swap;
+}
+
+html:lang(ja) {
+	font-family: "HinaMincho-Regular", sans-serif;
+}

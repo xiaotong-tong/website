@@ -8,16 +8,6 @@
 	<namiMHeader v-else></namiMHeader>
 
 	<main class="main">
-		<!-- <RouterView v-slot="{ Component }">
-			<template v-if="Component">
-				<Suspense>
-					<component :is="Component" />
-					<template #fallback>
-						<namiPageLoading></namiPageLoading>
-					</template>
-				</Suspense>
-			</template>
-		</RouterView> -->
 		<RouterView />
 	</main>
 
