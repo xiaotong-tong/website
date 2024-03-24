@@ -44,7 +44,15 @@ const images = shuffle([
 	"https://image.xtt.moe/local/images/2024/03/24/re.md.png",
 	"https://image.xtt.moe/local/images/2024/03/24/6e3813ebcdb957d8e19251d44b4a82c4.md.png",
 	"https://image.xtt.moe/local/images/2024/03/24/be41b3eacc1f6f0320450540749f1296.md.png",
-	"https://image.xtt.moe/local/images/2024/03/24/4CC31A27B0FB4E837A8ACB5D2709D2D0.md.png"
+	"https://image.xtt.moe/local/images/2024/03/24/4CC31A27B0FB4E837A8ACB5D2709D2D0.md.png",
+	"https://image.xtt.moe/local/images/2024/03/24/14.md.jpg",
+	"https://image.xtt.moe/local/images/2024/03/24/112.md.png",
+	"https://image.xtt.moe/local/images/2024/03/24/f8d91b4a82d532c31d18699949e8b9b3.md.png",
+	"https://image.xtt.moe/local/images/2024/03/24/69e9db74e50576543f69e073e8edc934.md.png",
+	"https://image.xtt.moe/local/images/2024/03/24/a574b1984e0e6fe868b166a40057555b.md.png",
+	"https://image.xtt.moe/local/images/2024/03/24/tynhz.md.png",
+	"https://image.xtt.moe/local/images/2024/03/24/33e7a0c65562868b61960a94320c68a7.md.png",
+	"https://image.xtt.moe/local/images/2024/03/24/716cd096bda96a7199376252f27640c5.md.png"
 ]);
 
 const firstTime = Date.now();
