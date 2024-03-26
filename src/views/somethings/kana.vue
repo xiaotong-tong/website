@@ -10,6 +10,16 @@
 		<xtt-button @click="transform" type="primary">
 			{{ i18nStore.lang === "ja" ? "OK" : "确定" }}
 		</xtt-button>
+		<xtt-button
+			:style="{
+				marginInlineStart: '16px'
+			}"
+			@click="copy"
+			type="primary"
+			v-if="isParsed"
+		>
+			{{ i18nStore.lang === "ja" ? "コピー" : "复制" }}
+		</xtt-button>
 		<div class="ruby-text" v-html="rubyText"></div>
 	</section>
 
@@ -22,12 +32,13 @@
 import { ref } from "vue";
 import { toKana } from "@/api/something/kana";
 import { useI18nStore } from "@/stores/i18n";
+import confetti from "canvas-confetti";
 
 const i18nStore = useI18nStore();
 
 const rubyText = ref("");
-
 const textarea = ref<HTMLTextAreaElement>();
+const isParsed = ref(false);
 
 const transform = async () => {
 	const value = textarea.value?.value;
@@ -36,6 +47,22 @@ const transform = async () => {
 		return;
 	}
 	rubyText.value = await toKana(value);
+	isParsed.value = true;
+};
+
+const copy = async () => {
+	// 将 rubyText 的内容复制到剪贴板
+	try {
+		await navigator.clipboard?.writeText(rubyText.value);
+
+		confetti({
+			particleCount: 100,
+			spread: 70,
+			origin: { y: 0.6 }
+		});
+	} catch (err) {
+		console.log("复制失败");
+	}
 };
 </script>
 

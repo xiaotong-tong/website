@@ -18,3 +18,7 @@ declare var live2dLoader: any;
 interface Window {
 	NDEFReader: any;
 }
+
+declare module "canvas-confetti" {
+	export default any;
+}

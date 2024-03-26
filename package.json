@@ -17,6 +17,7 @@
 		"@mdi/js": "^7.2.96",
 		"aplayer": "^1.10.1",
 		"axios": "^1.4.0",
+		"canvas-confetti": "^1.9.2",
 		"cropperjs": "^2.0.0-beta.3",
 		"galmuri": "^2.38.7",
 		"mousesnow": "^0.0.3",
