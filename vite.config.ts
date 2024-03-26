@@ -53,7 +53,7 @@ export default defineConfig({
 						"./src/views/reading/index.vue"
 					],
 					master: ["./src/views/blog/editor/add.vue", "./src/views/blog/editor/edit.vue"],
-					jpWord: ["./src/views/blog/lang/words/words.vue"],
+					// jpWord: ["./src/views/blog/lang/words/words.vue"],
 					something: [
 						"./src/views/somethings/img2base64.vue",
 						"./src/views/somethings/toWebp.vue",

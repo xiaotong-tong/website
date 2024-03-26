@@ -68,11 +68,11 @@ let routes = [
 					}
 				}
 			},
-			{
-				path: "/lang/words",
-				name: "jpWords",
-				component: () => import("../views/blog/lang/words/words.vue")
-			},
+			// {
+			// 	path: "/lang/words",
+			// 	name: "jpWords",
+			// 	component: () => import("../views/blog/lang/words/words.vue")
+			// },
 			{
 				path: "/net",
 				name: "net",
