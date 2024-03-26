@@ -2,7 +2,7 @@
 	<section class="container web-color-default">
 		<h1 class="text-center">漢字→仮名</h1>
 		<xtt-textarea
-			v-model="text"
+			ref="textarea"
 			placeholder="日本語を入力してください"
 			block
 			rows="10"
@@ -25,11 +25,17 @@ import { useI18nStore } from "@/stores/i18n";
 
 const i18nStore = useI18nStore();
 
-const text = ref("");
 const rubyText = ref("");
 
+const textarea = ref<HTMLTextAreaElement>();
+
 const transform = async () => {
-	rubyText.value = await toKana(text.value);
+	const value = textarea.value?.value;
+
+	if (!value) {
+		return;
+	}
+	rubyText.value = await toKana(value);
 };
 </script>
 
