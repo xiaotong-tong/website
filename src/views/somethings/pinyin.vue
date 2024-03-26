@@ -4,13 +4,23 @@
 			{{ i18nStore.lang === "ja" ? "中国語の漢字の読み方" : "拼音" }}
 		</h1>
 		<xtt-textarea
-			v-model="text"
+			ref="textarea"
 			:placeholder="i18nStore.lang === 'ja' ? '中国語を入力してください' : '请输入中文'"
 			block
 			rows="10"
 		></xtt-textarea>
 		<xtt-button @click="transform" type="primary">
 			{{ i18nStore.lang === "ja" ? "OK" : "确定" }}
+		</xtt-button>
+		<xtt-button
+			:style="{
+				marginInlineStart: '16px'
+			}"
+			@click="copy"
+			type="primary"
+			v-if="isParsed"
+		>
+			{{ i18nStore.lang === "ja" ? "コピー" : "复制" }}
 		</xtt-button>
 		<div class="ruby-text" v-html="rubyText"></div>
 	</section>
@@ -24,13 +34,35 @@
 import { html } from "pinyin-pro";
 import { ref } from "vue";
 import { useI18nStore } from "@/stores/i18n";
+import confetti from "canvas-confetti";
 
 const i18nStore = useI18nStore();
-const text = ref("");
 const rubyText = ref("");
+const textarea = ref<HTMLTextAreaElement>();
+const isParsed = ref(false);
 
 const transform = () => {
-	rubyText.value = html(text.value);
+	const value = textarea.value?.value;
+
+	if (!value) {
+		return;
+	}
+	rubyText.value = html(value);
+	isParsed.value = true;
+};
+const copy = async () => {
+	// 将 rubyText 的内容复制到剪贴板
+	try {
+		await navigator.clipboard?.writeText(rubyText.value);
+
+		confetti({
+			particleCount: 100,
+			spread: 70,
+			origin: { y: 0.6 }
+		});
+	} catch (err) {
+		console.log("复制失败");
+	}
 };
 </script>
 
