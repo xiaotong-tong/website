@@ -22,7 +22,9 @@ export const zhMsg = {
 			toZhLang: "切换语言 -> 中文",
 			back: "上一页",
 			login: "登录",
-			photo: "图片"
+			photo: "图片",
+			blog: "Blog",
+			setting: "设置"
 		},
 		footer: {
 			sitemap: "站点地图"

@@ -22,7 +22,9 @@ export const jaMsg = {
 			toZhLang: "切换语言 -> 中文",
 			back: "戻る",
 			login: "ログイン",
-			photo: "写真"
+			photo: "写真",
+			blog: "ブログ",
+			setting: "設定"
 		},
 		footer: {
 			sitemap: "サイトマップ"

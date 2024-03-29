@@ -14,6 +14,11 @@ let routes = [
 		component: () => import("../views/ex/pip/index.vue")
 	},
 	{
+		path: "/newHome",
+		name: "newHome",
+		component: () => import("../views/home/index.vue")
+	},
+	{
 		path: "/",
 		name: "home",
 		component: () => import("../views/home.vue"),
