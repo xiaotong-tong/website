@@ -184,6 +184,10 @@ onMounted(() => {
 onUnmounted(() => {
 	document.removeEventListener("keydown", keydownHandler);
 });
+
+defineExpose({
+	autoPlayPiano
+});
 </script>
 
 <style scoped>

@@ -1,16 +1,16 @@
 <template>
 	<section class="box web-color-default">
-		<h1 class="nf-404">404</h1>
-		<h2 class="nf">Not Found</h2>
+		<h1 hidden class="nf-404">404</h1>
+		<img class="img" :src="photo" alt="404 Not Found" />
 
-		<p class="return-home">迷子でもいい、迷子でも進め!</p>
-
-		<namiPiano></namiPiano>
+		<p>涟没有找到想要的内容，呜呜，涟真没用，对不起</p>
+		<p>不过有个前辈告诉我 “迷子でもいい、迷子でも進め!”</p>
+		<p>需要涟带你去<nami-link to="/" class="return-home">首页</nami-link>吗？</p>
 	</section>
 </template>
 
 <script setup lang="ts">
-import namiPiano from "@/components/page/piano/piano.vue";
+const photo = "https://image.xtt.moe/images/404.webp";
 </script>
 
 <style scoped>
@@ -20,8 +20,13 @@ import namiPiano from "@/components/page/piano/piano.vue";
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	font-family: "luoliti", Arial, Helvetica, sans-serif;
+}
 
-	perspective: 1000px;
+.img {
+	width: 100%;
+	max-width: 400px;
+	margin-top: 30px;
 }
 
 .return-home {
@@ -31,43 +36,5 @@ import namiPiano from "@/components/page/piano/piano.vue";
 	background-image: linear-gradient(310deg, #f53939, #fac60b);
 	-webkit-background-clip: text;
 	background-clip: text;
-
-	transform-style: preserve-3d;
-	transition: transform 0.5s;
-}
-
-/* 在非 hover 时做旋转动画 */
-.return-home:not(:hover) {
-	animation: flip 2s infinite;
-}
-
-@keyframes flip {
-	0% {
-		transform: rotateX(0);
-	}
-	50% {
-		transform: rotateX(180deg);
-	}
-	100% {
-		transform: rotateX(360deg);
-	}
-}
-
-.nf-404 {
-	font-size: 150px;
-	font-weight: 700;
-	color: transparent;
-	background-image: linear-gradient(310deg, #f53939, #fac60b);
-	-webkit-background-clip: text;
-	background-clip: text;
-	margin: 0;
-}
-.nf {
-	font-size: 30px;
-	color: transparent;
-	background-image: linear-gradient(310deg, #f53939, #fac60b);
-	-webkit-background-clip: text;
-	background-clip: text;
-	margin: 0;
 }
 </style>
