@@ -8,7 +8,7 @@
 			rows="10"
 		></xtt-textarea>
 		<xtt-button @click="transform" type="primary">
-			{{ i18nStore.lang === "ja" ? "OK" : "确定" }}
+			{{ i18nStore.lang === "ja" ? "変更する" : "转换" }}
 		</xtt-button>
 		<xtt-button
 			:style="{
@@ -16,9 +16,10 @@
 			}"
 			@click="copy"
 			type="primary"
-			v-if="isParsed"
+			v-if="isSupported && isParsed"
 		>
-			{{ i18nStore.lang === "ja" ? "コピー" : "复制" }}
+			<span v-if="!copied">{{ i18nStore.lang === "ja" ? "コピー" : "复制" }}</span>
+			<span v-else>{{ i18nStore.lang === "ja" ? "コピーしました" : "复制成功" }}</span>
 		</xtt-button>
 		<div class="ruby-text" v-html="rubyText"></div>
 	</section>
@@ -33,6 +34,9 @@ import { ref } from "vue";
 import { toKana } from "@/api/something/kana";
 import { useI18nStore } from "@/stores/i18n";
 import confetti from "canvas-confetti";
+import { useClipboard } from "@vueuse/core";
+
+const { copy: useCopy, isSupported, copied } = useClipboard();
 
 const i18nStore = useI18nStore();
 
@@ -53,7 +57,7 @@ const transform = async () => {
 const copy = async () => {
 	// 将 rubyText 的内容复制到剪贴板
 	try {
-		await navigator.clipboard?.writeText(rubyText.value);
+		await useCopy(rubyText.value);
 
 		confetti({
 			particleCount: 100,

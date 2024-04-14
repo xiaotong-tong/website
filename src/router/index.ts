@@ -14,18 +14,69 @@ let routes = [
 		component: () => import("../views/ex/pip/index.vue")
 	},
 	{
-		path: "/newHome",
-		name: "newHome",
-		component: () => import("../views/home/index.vue")
-	},
-	{
 		path: "/",
-		name: "home",
-		component: () => import("../views/home.vue"),
+		name: "newHome",
+		component: () => import("../views/home/index.vue"),
 		children: [
 			{
 				path: "/",
-				name: "blog",
+				name: "newHomePage",
+				component: () => import("../views/home/components/home.vue")
+			},
+			{
+				path: "/photos",
+				name: "photos",
+				component: () => import("../views/photos/index.vue"),
+				meta: {
+					title: {
+						zh: "图床",
+						ja: "画像アップロード"
+					}
+				}
+			},
+			{
+				path: "/music",
+				name: "music",
+				component: () => import("../views/music/music.vue"),
+				meta: {
+					title: {
+						zh: "音乐",
+						ja: "音楽"
+					}
+				}
+			},
+			{
+				path: "/tools",
+				name: "tools",
+				component: () => import("../views/tools/tools.vue"),
+				meta: {
+					title: {
+						zh: "音乐",
+						ja: "音楽"
+					}
+				}
+			},
+			{
+				path: "/something/kana",
+				name: "kana",
+				component: () => import("../views/somethings/kana.vue"),
+				meta: {
+					title: {
+						zh: "漢字->かな",
+						ja: "漢字->かな"
+					}
+				}
+			}
+		]
+	},
+	{
+		path: "/blog",
+		name: "blog",
+		component: () => import("../views/home.vue"),
+		children: [
+			{
+				path: "/blog",
+				name: "blogPage",
 				component: () => import("../views/blog/home.vue")
 			},
 			{
@@ -170,19 +221,6 @@ let routes = [
 				}
 			},
 
-			// 音乐页面
-			{
-				path: "/music",
-				name: "music",
-				component: () => import("../views/music/music.vue"),
-				meta: {
-					title: {
-						zh: "音乐",
-						ja: "音楽"
-					}
-				}
-			},
-
 			{
 				path: "/reading",
 				name: "reading",
@@ -191,18 +229,6 @@ let routes = [
 					title: {
 						zh: "ゲームと文字な日々",
 						ja: "ゲームと文字な日々"
-					}
-				}
-			},
-
-			{
-				path: "/photos",
-				name: "photos",
-				component: () => import("../views/photos/index.vue"),
-				meta: {
-					title: {
-						zh: "图床",
-						ja: "画像アップロード"
 					}
 				}
 			},
@@ -241,17 +267,7 @@ let routes = [
 					}
 				}
 			},
-			{
-				path: "/something/kana",
-				name: "kana",
-				component: () => import("../views/somethings/kana.vue"),
-				meta: {
-					title: {
-						zh: "漢字->かな",
-						ja: "漢字->かな"
-					}
-				}
-			},
+
 			{
 				path: "/something/chat",
 				name: "chat",

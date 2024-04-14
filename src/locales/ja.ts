@@ -1,5 +1,14 @@
 export const jaMsg = {
 	main: {
+		homeNav: {
+			home: "看板",
+			blog: "読書室",
+			music: "音楽室",
+			photo: "画像室",
+			tools: "ツール",
+			about: "情報台",
+			setting: "操作台"
+		},
 		nav: {
 			home: "ホーム",
 			share: "🐾シェア",

@@ -79,6 +79,9 @@ images.forEach((item) => {
 </script>
 
 <style scoped>
+.container {
+	margin-inline: 8px;
+}
 .img {
 	width: 100%;
 }

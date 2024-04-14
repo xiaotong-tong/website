@@ -6,8 +6,8 @@
 			@mouseenter="mouseenterHandler"
 			@mouseleave="mouseleaveHandler"
 		>
-			<nami-link to="#" block class="link">
-				{{ i18nStore.messages.main.nav.home }}
+			<nami-link to="/" block class="link">
+				{{ i18nStore.messages.main.homeNav.home }}
 			</nami-link>
 		</li>
 		<li
@@ -16,8 +16,8 @@
 			@mouseenter="mouseenterHandler"
 			@mouseleave="mouseleaveHandler"
 		>
-			<nami-link to="#blog" block class="link">
-				{{ i18nStore.messages.main.nav.blog }}
+			<nami-link to="/blog" block class="link">
+				{{ i18nStore.messages.main.homeNav.blog }}
 			</nami-link>
 		</li>
 		<li
@@ -26,8 +26,8 @@
 			@mouseenter="mouseenterHandler"
 			@mouseleave="mouseleaveHandler"
 		>
-			<nami-link to="#music" block class="link">
-				{{ i18nStore.messages.main.nav.music }}
+			<nami-link to="/music" block class="link">
+				{{ i18nStore.messages.main.homeNav.music }}
 			</nami-link>
 		</li>
 		<li
@@ -36,8 +36,8 @@
 			@mouseenter="mouseenterHandler"
 			@mouseleave="mouseleaveHandler"
 		>
-			<nami-link to="#photo" block class="link">
-				{{ i18nStore.messages.main.nav.photo }}
+			<nami-link to="/photos" block class="link">
+				{{ i18nStore.messages.main.homeNav.photo }}
 			</nami-link>
 		</li>
 		<li
@@ -46,8 +46,8 @@
 			@mouseenter="mouseenterHandler"
 			@mouseleave="mouseleaveHandler"
 		>
-			<nami-link to="#tools" block class="link">
-				{{ i18nStore.messages.main.nav.tools }}
+			<nami-link to="/tools" block class="link">
+				{{ i18nStore.messages.main.homeNav.tools }}
 			</nami-link>
 		</li>
 		<li
@@ -56,8 +56,8 @@
 			@mouseenter="mouseenterHandler"
 			@mouseleave="mouseleaveHandler"
 		>
-			<nami-link to="#about" block class="link">
-				{{ i18nStore.messages.main.nav.about }}
+			<nami-link to="/#about" block class="link">
+				{{ i18nStore.messages.main.homeNav.about }}
 			</nami-link>
 		</li>
 		<li
@@ -66,8 +66,8 @@
 			@mouseenter="mouseenterHandler"
 			@mouseleave="mouseleaveHandler"
 		>
-			<nami-link to="#setting" block class="link">
-				{{ i18nStore.messages.main.nav.setting }}
+			<nami-link to="/#setting" block class="link">
+				{{ i18nStore.messages.main.homeNav.setting }}
 			</nami-link>
 		</li>
 	</ul>
@@ -251,7 +251,7 @@ defineExpose({
 	height: 100%;
 	display: flex;
 	align-items: center;
-	font-size: 24px;
+	font-size: 28px;
 	color: transparent;
 	background-image: linear-gradient(
 		to top,

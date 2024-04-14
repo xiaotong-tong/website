@@ -8,10 +8,10 @@
 	<namiMHeader v-else></namiMHeader>
 
 	<main class="main web-color-default">
-		<section class="content"></section>
-		<section class="nav">
-			<namiNav></namiNav>
+		<section class="content">
+			<RouterView />
 		</section>
+		<section class="nav"><namiNav></namiNav></section>
 	</main>
 
 	<namiFooter></namiFooter>
@@ -133,15 +133,56 @@ const verifyLogin = async () => {
 		}
 	}
 };
+
+interface ColorMap {
+	"/": string;
+	"/blog": string;
+	"/music": string;
+	"/photos": string;
+	"/tools": string;
+	"/about": string;
+	"/setting": string;
+}
+
+const colorMap = {
+	"/": "#f1755966",
+	"/blog": "#f2b25b66",
+	"/music": "#f0dc5966",
+	"/photos": "#bbf15b66",
+	"/tools": "#59f1b766",
+	"/about": "#59e1f166",
+	"/setting": "#597ff166"
+};
+
+router.afterEach((to) => {
+	console.log(to);
+
+	let color = colorMap[to.path as keyof ColorMap];
+
+	if (to.path === "/") {
+		if (to.hash === "#setting") {
+			color = colorMap["/setting"];
+		} else if (to.hash === "#about") {
+			color = colorMap["/about"];
+		} else {
+			color = colorMap["/"];
+		}
+	}
+	if (color) {
+		document.documentElement.style.setProperty("--color-primary", color);
+	}
+});
 </script>
 
 <style scoped>
 .main {
-	width: min(900px, 90%);
+	width: min(1200px, 90%);
 	min-height: calc(100vh - 114px);
 	margin: 8px auto;
 	border: 1px solid transparent;
 	display: flex;
+	position: relative;
+	border: 3px solid var(--color-primary);
 }
 
 .content {
@@ -149,6 +190,9 @@ const verifyLogin = async () => {
 }
 .nav {
 	flex: 0 0 200px;
+	height: calc(100vh - 114px);
+	position: sticky;
+	top: 48px;
 }
 
 .icon {
