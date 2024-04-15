@@ -155,8 +155,6 @@ const colorMap = {
 };
 
 router.afterEach((to) => {
-	console.log(to);
-
 	let color = colorMap[to.path as keyof ColorMap];
 
 	if (to.path === "/") {

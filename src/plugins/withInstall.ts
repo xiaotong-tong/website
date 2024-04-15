@@ -31,7 +31,9 @@ import timelineItem from "../components/timeline/timeline-item.vue";
 
 import pageLoading from "@/components/page/loading/loading.vue";
 
-const importPlugin = {
+import roughLine from "@/packages/components/line/rough/index.vue";
+
+const withInstall = {
 	install(app: App) {
 		app.component("namiLink", link);
 		app.component("namiIcon", icon);
@@ -51,7 +53,9 @@ const importPlugin = {
 		app.component("namiTimelineItem", timelineItem);
 
 		app.component("namiPageLoading", pageLoading);
+
+		app.component("namiRoughLine", roughLine);
 	}
 };
 
-export default importPlugin;
+export default withInstall;

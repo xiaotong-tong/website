@@ -22,3 +22,7 @@ interface Window {
 declare module "canvas-confetti" {
 	export default any;
 }
+
+declare module "roughjs/bundled/rough.esm.js" {
+	export default any;
+}

@@ -32,6 +32,7 @@ export default defineConfig({
 					xttUtils: ["xtt-utils"],
 
 					index: [
+						"./src/views/home/index.vue",
 						"./src/views/home.vue",
 						"./src/views/blog/home.vue",
 						"./src/views/blog/article/article.vue",
