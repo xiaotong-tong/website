@@ -89,12 +89,13 @@ import namiMHeader from "@/components/page/header/m-header.vue";
 import namiFooter from "@/components/page/footer/footer.vue";
 import namiNav from "./components/nav.vue";
 import { verifyMasterUid } from "@/api/blog/verify";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import { useStore } from "@/stores/index";
 import type { XttTooltipElement } from "xtt-ui/index.d.ts";
 
 const store = useStore();
 const router = useRouter();
+const route = useRoute();
 
 const live2d = ref<InstanceType<typeof kanbanarea>>();
 const live2dShowed = ref(true);
@@ -134,38 +135,23 @@ const verifyLogin = async () => {
 	}
 };
 
-interface ColorMap {
-	"/": string;
-	"/blog": string;
-	"/music": string;
-	"/photos": string;
-	"/tools": string;
-	"/about": string;
-	"/setting": string;
-}
-
-const colorMap = {
-	"/": "#f1755966",
-	"/blog": "#f2b25b66",
-	"/music": "#f0dc5966",
-	"/photos": "#bbf15b66",
-	"/tools": "#59f1b766",
-	"/about": "#59e1f166",
-	"/setting": "#597ff166"
-};
+document.documentElement.style.setProperty("--color-primary", route.meta.color as string);
 
 router.afterEach((to) => {
-	let color = colorMap[to.path as keyof ColorMap];
+	let color;
+
+	if (to.meta.color) {
+		color = (to.meta.color as string) + "66";
+	}
 
 	if (to.path === "/") {
 		if (to.hash === "#setting") {
-			color = colorMap["/setting"];
+			color = "#597ff166";
 		} else if (to.hash === "#about") {
-			color = colorMap["/about"];
-		} else {
-			color = colorMap["/"];
+			color = "#59e1f166";
 		}
 	}
+
 	if (color) {
 		document.documentElement.style.setProperty("--color-primary", color);
 	}

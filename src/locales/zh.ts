@@ -5,6 +5,7 @@ export const zhMsg = {
 			blog: "阅读室",
 			music: "聆听室",
 			photo: "图像室",
+			save: "储藏室",
 			tools: "工具箱",
 			about: "信息台",
 			setting: "操纵台"

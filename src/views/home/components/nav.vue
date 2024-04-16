@@ -36,8 +36,8 @@
 			@mouseenter="mouseenterHandler"
 			@mouseleave="mouseleaveHandler"
 		>
-			<nami-link to="/photos" block class="link">
-				{{ i18nStore.messages.main.homeNav.photo }}
+			<nami-link to="/save" block class="link">
+				{{ i18nStore.messages.main.homeNav.save }}
 			</nami-link>
 		</li>
 		<li

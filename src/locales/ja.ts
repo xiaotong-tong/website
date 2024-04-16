@@ -5,6 +5,7 @@ export const jaMsg = {
 			blog: "読書室",
 			music: "音楽室",
 			photo: "画像室",
+			save: "宇宙",
 			tools: "ツール",
 			about: "情報台",
 			setting: "操作台"

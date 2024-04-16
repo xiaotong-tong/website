@@ -21,7 +21,10 @@ let routes = [
 			{
 				path: "/",
 				name: "newHomePage",
-				component: () => import("../views/home/components/home.vue")
+				component: () => import("../views/home/components/home.vue"),
+				meta: {
+					color: "#f17559"
+				}
 			},
 			{
 				path: "/photos",
@@ -31,7 +34,8 @@ let routes = [
 					title: {
 						zh: "图床",
 						ja: "画像アップロード"
-					}
+					},
+					color: "#bbf15b"
 				}
 			},
 			{
@@ -42,7 +46,32 @@ let routes = [
 					title: {
 						zh: "音乐",
 						ja: "音楽"
-					}
+					},
+					color: "#f0dc59"
+				}
+			},
+			{
+				path: "/save",
+				name: "save",
+				component: () => import("../views/save/save.vue"),
+				meta: {
+					title: {
+						zh: "储藏室",
+						ja: "宇宙"
+					},
+					color: "#bbf15b"
+				}
+			},
+			{
+				path: "/save/webLinks",
+				name: "saveWebLinks",
+				component: () => import("../views/save/children/webLinks/links.vue"),
+				meta: {
+					title: {
+						zh: "前端链接",
+						ja: "web links"
+					},
+					color: "#bbf15b"
 				}
 			},
 			{
@@ -51,9 +80,10 @@ let routes = [
 				component: () => import("../views/tools/tools.vue"),
 				meta: {
 					title: {
-						zh: "音乐",
-						ja: "音楽"
-					}
+						zh: "工具",
+						ja: "ツール"
+					},
+					color: "#59f1b7"
 				}
 			},
 			{
@@ -77,7 +107,10 @@ let routes = [
 			{
 				path: "/blog",
 				name: "blogPage",
-				component: () => import("../views/blog/home.vue")
+				component: () => import("../views/blog/home.vue"),
+				meta: {
+					color: "#f2b25b"
+				}
 			},
 			{
 				path: "/login",
