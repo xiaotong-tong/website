@@ -31,7 +31,7 @@ import timelineItem from "../components/timeline/timeline-item.vue";
 
 import pageLoading from "@/components/page/loading/loading.vue";
 
-import roughLine from "@/packages/components/line/rough/index.vue";
+import { roughLine } from "@c/index";
 
 const withInstall = {
 	install(app: App) {
