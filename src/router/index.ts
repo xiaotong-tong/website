@@ -1,8 +1,21 @@
+import type { RouteRecordRaw } from "vue-router";
 import { createRouter, createWebHistory } from "vue-router";
 import { useStore } from "@/stores/index";
 import { useI18nStore } from "@/stores/i18n";
 
-let routes = [
+interface Route {
+	path: string;
+	name: string;
+	component?: any;
+	redirect?: string;
+	meta?: {
+		title?: string | { zh: string; ja: string };
+		color?: string;
+	};
+	children?: Route[];
+}
+
+let routes: Route[] = [
 	{
 		path: "/ex/space",
 		name: "exSpace",
@@ -354,7 +367,7 @@ let routes = [
 ];
 
 // 添加 jp 的路由
-const jaRoutes: any[] = [];
+const jaRoutes: Route[] = [];
 
 routes.forEach((route) => {
 	const jpRoute = {
@@ -378,7 +391,7 @@ routes.forEach((route) => {
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
-	routes: [...routes, ...jaRoutes],
+	routes: [...routes, ...jaRoutes] as RouteRecordRaw[],
 	// 在切换页面时，滚动到顶部
 	scrollBehavior(_to, _from, savedPosition) {
 		if (savedPosition) {
