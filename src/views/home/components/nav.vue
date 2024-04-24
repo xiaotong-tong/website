@@ -7,7 +7,7 @@
 			@mouseleave="mouseleaveHandler"
 		>
 			<nami-link to="/" block class="link">
-				{{ i18nStore.messages.main.homeNav.home }}
+				{{ t("main.homeNav.home") }}
 			</nami-link>
 		</li>
 		<li
@@ -17,7 +17,7 @@
 			@mouseleave="mouseleaveHandler"
 		>
 			<nami-link to="/blog" block class="link">
-				{{ i18nStore.messages.main.homeNav.blog }}
+				{{ t("main.homeNav.blog") }}
 			</nami-link>
 		</li>
 		<li
@@ -84,8 +84,10 @@
 
 <script setup lang="ts">
 import { onMounted, onUnmounted } from "vue";
+import { useI18n } from "vue-i18n";
 import { useI18nStore } from "@/stores/i18n";
 const i18nStore = useI18nStore();
+const { t } = useI18n();
 
 type PianoKey = "c3" | "d3" | "e3" | "f3" | "g3" | "a3" | "b3";
 

@@ -161,16 +161,19 @@ router.afterEach((to) => {
 <style scoped>
 .main {
 	width: min(1200px, 90%);
-	min-height: calc(100vh - 114px);
+	height: calc(100vh - 114px);
 	margin: 8px auto;
 	border: 1px solid transparent;
 	display: flex;
 	position: relative;
 	border: 3px solid var(--color-primary);
+	box-sizing: border-box;
 }
 
 .content {
 	flex: 1;
+	overflow: auto;
+	height: 100%;
 }
 .nav {
 	flex: 0 0 200px;
@@ -184,5 +187,9 @@ router.afterEach((to) => {
 }
 .theme-dark .icon {
 	color: #fff;
+}
+
+.small-screen .nav {
+	display: none;
 }
 </style>
