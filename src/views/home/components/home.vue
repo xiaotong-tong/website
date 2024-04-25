@@ -83,6 +83,7 @@ getDaysPoetry(key).then((res) => {
 
 <style scoped>
 .card {
+	box-sizing: border-box;
 	position: relative;
 	height: 100%;
 	display: flex;
@@ -94,6 +95,7 @@ getDaysPoetry(key).then((res) => {
 .card-title {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 }
 
 .poetry-wrap {
@@ -136,5 +138,26 @@ getDaysPoetry(key).then((res) => {
 	width: 100%;
 	max-width: 400px;
 	margin-top: 30px;
+}
+
+.small-screen .card {
+	padding-inline-end: 8px;
+}
+.small-screen .card-title :is(.title, .sub) {
+	margin-block: 0.5em;
+}
+
+.small-screen .character-wrap {
+	z-index: -2;
+	opacity: 0.3;
+}
+.small-screen .poetry-wrap {
+	margin-inline: 0;
+	inline-size: 100%;
+	max-inline-size: 100%;
+}
+.small-screen .quote-wrap {
+	align-self: flex-start;
+	inline-size: 100%;
 }
 </style>

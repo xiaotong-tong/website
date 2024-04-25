@@ -10,6 +10,6 @@ import namiAplayerView from "@/components/aplayer/aplayer-view.vue";
 
 <style scoped>
 .music-wrap {
-	height: calc(100vh - 112px);
+	height: calc(100vh - 130px);
 }
 </style>

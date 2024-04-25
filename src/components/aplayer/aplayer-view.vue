@@ -98,6 +98,8 @@ onMounted(() => {
 #aplayerView {
 	width: 100%;
 	height: 100%;
+	box-sizing: border-box;
+	margin-inline: 0;
 }
 
 #aplayerView ::v-deep(.aplayer-music) {
