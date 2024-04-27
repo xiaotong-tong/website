@@ -102,6 +102,7 @@ getDaysPoetry(key).then((res) => {
 	flex: 1;
 	overflow: auto;
 	max-inline-size: 50%;
+	max-block-size: calc(100% - 300px);
 	align-self: flex-start;
 	margin-inline-start: 280px;
 	text-align: center;
@@ -155,6 +156,7 @@ getDaysPoetry(key).then((res) => {
 	margin-inline: 0;
 	inline-size: 100%;
 	max-inline-size: 100%;
+	max-block-size: none;
 }
 .small-screen .quote-wrap {
 	align-self: flex-start;

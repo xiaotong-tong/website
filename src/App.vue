@@ -1,7 +1,8 @@
-<script setup>
+<script setup lang="ts">
 import MouseSnow from "mousesnow";
+import "@/utils/joke";
 
-new MouseSnow();
+new MouseSnow({});
 </script>
 
 <template>

@@ -169,6 +169,10 @@ router.afterEach((to) => {
 	border: 3px solid var(--color-primary);
 	box-sizing: border-box;
 }
+.small-screen .main {
+	min-block-size: calc(100vh - 114px);
+	height: auto;
+}
 
 .content {
 	flex: 1;
