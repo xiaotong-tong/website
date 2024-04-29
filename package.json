@@ -23,6 +23,7 @@
 		"cropperjs": "^2.0.0-beta.3",
 		"dayjs": "^1.11.10",
 		"galmuri": "^2.38.7",
+		"gsap": "^3.12.5",
 		"mousesnow": "^0.0.3",
 		"pinia": "^2.0.36",
 		"pinyin-pro": "^3.19.6",

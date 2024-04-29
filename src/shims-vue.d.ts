@@ -23,6 +23,10 @@ declare module "canvas-confetti" {
 	export default any;
 }
 
+declare module "gsap" {
+	export const gsap: any;
+}
+
 declare module "roughjs/bundled/rough.esm.js" {
 	export default any;
 }
