@@ -88,6 +88,18 @@ let routes: Route[] = [
 				}
 			},
 			{
+				path: "/save/emoji",
+				name: "saveEmoji",
+				component: () => import("../views/save/children/emoji/emoji.vue"),
+				meta: {
+					title: {
+						zh: "emoji",
+						ja: "emoji"
+					},
+					color: "#bbf15b"
+				}
+			},
+			{
 				path: "/tools",
 				name: "tools",
 				component: () => import("../views/tools/tools.vue"),

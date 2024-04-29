@@ -14,6 +14,9 @@
 		>
 			{{ "日本语句型辞典" }}
 		</nami-link>
+		<nami-link to="/save/emoji" class="link" type="primary">
+			{{ i18nStore.lang === "ja" ? "絵文字" : "颜文字" }}
+		</nami-link>
 	</section>
 </template>
 
