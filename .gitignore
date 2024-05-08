@@ -39,3 +39,5 @@ extras/sounds/
 
 // 以 _ 开头的 md 文件不上传
 docs/**/_*.md
+
+dev-dist

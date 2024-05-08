@@ -7,6 +7,9 @@ import router from "./router/index";
 import withInstall from "./plugins/withInstall";
 import i18n from "./plugins/i18nWithInstall";
 
+// import { registerSW } from "virtual:pwa-register";
+// registerSW({ immediate: true });
+
 const app = createApp(App);
 
 app.use(i18n);

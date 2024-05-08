@@ -3,6 +3,9 @@ import { resolve } from "path";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import mdPlugin from "./plugins/mdToTextPlain";
+import type { ManifestOptions } from "vite-plugin-pwa";
+import { VitePWA } from "vite-plugin-pwa";
+import manifest from "./manifest.json" assert { type: "json" };
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -11,6 +14,21 @@ export default defineConfig({
 	// },
 	plugins: [
 		mdPlugin(),
+		VitePWA({
+			manifest: manifest as ManifestOptions,
+			devOptions: {
+				enabled: true, // 在 dev 环境下启用
+				type: "module"
+			},
+			strategies: "injectManifest",
+			filename: "sw.ts",
+			registerType: "autoUpdate",
+			workbox: {
+				globPatterns: [
+					"**/*.{js,css,html,png,jpg,jpeg,svg,webp,woff2,woff,ttf,eot,mp3,pdf}"
+				]
+			}
+		}),
 		vue({
 			template: {
 				compilerOptions: {
