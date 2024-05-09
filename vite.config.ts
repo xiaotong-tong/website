@@ -21,6 +21,7 @@ export default defineConfig({
 				type: "module"
 			},
 			strategies: "injectManifest",
+			srcDir: "src",
 			filename: "sw.ts",
 			registerType: "autoUpdate",
 			workbox: {
