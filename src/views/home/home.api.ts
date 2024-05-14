@@ -9,20 +9,29 @@ export interface IGetDaysQuotes {
 	parse: string;
 }
 
+export interface IGetDaysQuotesError {
+	message: string;
+	maxKey: number;
+}
+
 export async function getDaysQuotes(key: number): Promise<IGetDaysQuotes> {
 	if (catchMap.has("quotes-" + key)) {
 		return catchMap.get("quotes-" + key);
 	}
 
-	const data = await http.get(`/days/quotes`, {
-		params: {
-			key: key
-		}
-	});
+	try {
+		const data = await http.get(`/days/quotes`, {
+			params: {
+				key: key
+			}
+		});
 
-	catchMap.set("quotes-" + key, data.data);
+		catchMap.set("quotes-" + key, data.data);
 
-	return data.data;
+		return data.data;
+	} catch (error: any) {
+		throw error.response.data as IGetDaysQuotesError;
+	}
 }
 
 export interface IGetDaysPoetry {

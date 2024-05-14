@@ -19,7 +19,7 @@
 			</p>
 		</div>
 		<div class="quote-wrap" v-if="quote">
-			<p>每日日语一百句</p>
+			<p>每日日语一百句 <span v-if="quoteOverflow" class="quote-overflow">兼容</span></p>
 			<namiRoughLine color="#f1755966"></namiRoughLine>
 			<p v-html="quote.parse"></p>
 			<p>
@@ -59,18 +59,35 @@ const nowDay = dayjs();
 const quote = ref<IGetDaysQuotes>();
 const poetry = ref<IGetDaysPoetry>();
 const quoteLoading = ref(true);
+const quoteOverflow = ref(false);
 const poetryLoading = ref(true);
 
 const key = nowDay.diff(originDay, "day");
 
-getDaysQuotes(key).then((res) => {
-	quote.value = res;
-	quoteLoading.value = false;
+getDaysQuotes(key)
+	.then((res) => {
+		quote.value = res;
+		quoteLoading.value = false;
 
-	if (!poetryLoading.value) {
-		loaded.value = true;
-	}
-});
+		if (!poetryLoading.value) {
+			loaded.value = true;
+		}
+	})
+	.catch((error) => {
+		// 如果传出的错误是超出最大值，则进行取余后再次请求
+		if (error.maxKey) {
+			getDaysQuotes(key % error.maxKey).then((res) => {
+				quote.value = res;
+				quoteLoading.value = false;
+				quoteOverflow.value = true;
+
+				if (!poetryLoading.value) {
+					loaded.value = true;
+				}
+			});
+		}
+	});
+
 getDaysPoetry(key).then((res) => {
 	poetry.value = res;
 	poetryLoading.value = false;
@@ -119,6 +136,11 @@ getDaysPoetry(key).then((res) => {
 	inline-size: 50%;
 	align-self: flex-end;
 	margin-block-end: 2em;
+}
+
+.quote-overflow {
+	font-size: 8px;
+	color: #f00;
 }
 
 .character-wrap {
