@@ -11,6 +11,7 @@ interface Route {
 	meta?: {
 		title?: string | { zh: string; ja: string };
 		color?: string;
+		theme?: string;
 	};
 	children?: Route[];
 }
@@ -36,7 +37,8 @@ let routes: Route[] = [
 				name: "newHomePage",
 				component: () => import("../views/home/components/home.vue"),
 				meta: {
-					color: "#f17559"
+					color: "#f17559",
+					theme: "#f17559"
 				}
 			},
 			{
@@ -48,7 +50,8 @@ let routes: Route[] = [
 						zh: "图床",
 						ja: "画像アップロード"
 					},
-					color: "#bbf15b"
+					color: "#bbf15b",
+					theme: "#bbf15b"
 				}
 			},
 			{
@@ -420,6 +423,11 @@ const router = createRouter({
 router.beforeEach((to, _from, next) => {
 	const store = useStore();
 	const i18nStore = useI18nStore();
+
+	if (to.meta?.theme) {
+		store.changeTheme(to.meta.theme as string);
+	}
+
 	// 对于 /editor/add， /editor/edit/:id 等路由，需要登录才能访问
 	if (to.path.startsWith("/editor")) {
 		if (store.loginUid) {
