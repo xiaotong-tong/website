@@ -31,7 +31,7 @@ import timelineItem from "../components/timeline/timeline-item.vue";
 
 import pageLoading from "@/components/page/loading/loading.vue";
 
-import { roughLine } from "@c/index";
+import withNamiInstall from "@c/index";
 
 const withInstall = {
 	install(app: App) {
@@ -54,7 +54,7 @@ const withInstall = {
 
 		app.component("namiPageLoading", pageLoading);
 
-		app.component("namiRoughLine", roughLine);
+		withNamiInstall(app);
 	}
 };
 

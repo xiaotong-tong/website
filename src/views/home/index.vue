@@ -7,12 +7,12 @@
 	<namiHeader v-if="!store.isSmallScreen"></namiHeader>
 	<namiMHeader v-else></namiMHeader>
 
-	<main class="main web-color-default">
+	<namiRoughCard is="main" class="main web-color-default" :color="store.theme">
 		<section class="content">
 			<RouterView />
 		</section>
-		<section class="nav"><namiNav></namiNav></section>
-	</main>
+		<nav class="nav"><namiNav></namiNav></nav>
+	</namiRoughCard>
 
 	<namiFooter></namiFooter>
 
@@ -89,13 +89,12 @@ import namiMHeader from "@/components/page/header/m-header.vue";
 import namiFooter from "@/components/page/footer/footer.vue";
 import namiNav from "./components/nav.vue";
 import { verifyMasterUid } from "@/api/blog/verify";
-import { useRouter, useRoute } from "vue-router";
+import { useRouter } from "vue-router";
 import { useStore } from "@/stores/index";
 import type { XttTooltipElement } from "xtt-ui/index.d.ts";
 
 const store = useStore();
 const router = useRouter();
-const route = useRoute();
 
 const live2d = ref<InstanceType<typeof kanbanarea>>();
 const live2dShowed = ref(true);
@@ -134,28 +133,6 @@ const verifyLogin = async () => {
 		}
 	}
 };
-
-document.documentElement.style.setProperty("--color-primary", route.meta.color as string);
-
-router.afterEach((to) => {
-	let color;
-
-	if (to.meta.color) {
-		color = (to.meta.color as string) + "66";
-	}
-
-	if (to.path === "/") {
-		if (to.hash === "#setting") {
-			color = "#597ff166";
-		} else if (to.hash === "#about") {
-			color = "#59e1f166";
-		}
-	}
-
-	if (color) {
-		document.documentElement.style.setProperty("--color-primary", color);
-	}
-});
 </script>
 
 <style scoped>
@@ -165,9 +142,6 @@ router.afterEach((to) => {
 	margin: 8px auto;
 	border: 1px solid transparent;
 	display: flex;
-	position: relative;
-	border: 3px solid var(--color-primary);
-	box-sizing: border-box;
 }
 .small-screen .main {
 	min-block-size: calc(100vh - 114px);
@@ -181,7 +155,6 @@ router.afterEach((to) => {
 }
 .nav {
 	flex: 0 0 200px;
-	height: calc(100vh - 114px);
 	position: sticky;
 	top: 48px;
 }
