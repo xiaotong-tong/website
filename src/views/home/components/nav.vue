@@ -37,8 +37,10 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted } from "vue";
 import gsap from "gsap";
+import { useStore } from "@/stores";
 import { useI18n } from "vue-i18n";
 const { t } = useI18n();
+const store = useStore();
 
 type PianoKey = "c3" | "d3" | "e3" | "f3" | "g3" | "a3" | "b3";
 
@@ -54,43 +56,43 @@ const list: List[] = [
 		key: "c3",
 		url: "/",
 		content: t("main.homeNav.home"),
-		color: "#f17559"
+		color: store.theme[0]
 	},
 	{
 		key: "d3",
 		url: "/blog",
 		content: t("main.homeNav.blog"),
-		color: "#f2b25b"
+		color: store.theme[1]
 	},
 	{
 		key: "e3",
 		url: "/music",
 		content: t("main.homeNav.music"),
-		color: "#f0dc59"
+		color: store.theme[2]
 	},
 	{
 		key: "f3",
 		url: "/save",
 		content: t("main.homeNav.save"),
-		color: "#bbf15b"
+		color: store.theme[3]
 	},
 	{
 		key: "g3",
 		url: "/tools",
 		content: t("main.homeNav.tools"),
-		color: "#59f1b7"
+		color: store.theme[4]
 	},
 	{
 		key: "a3",
 		url: "/#about",
 		content: t("main.homeNav.about"),
-		color: "#59e1f1"
+		color: store.theme[5]
 	},
 	{
 		key: "b3",
 		url: "/#setting",
 		content: t("main.homeNav.setting"),
-		color: "#597ff1"
+		color: store.theme[6]
 	}
 ];
 

@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"start": "npm run dev",
-		"dev": "vite --host",
+		"dev": "vite --host --mode development",
 		"prebuild": "rimraf dist",
 		"build": "vue-tsc && vite build --mode production",
 		"preview": "vite preview",

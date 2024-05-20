@@ -4,7 +4,18 @@ import { useLocalStorage, useCssVar } from "@vueuse/core";
 
 export const useStore = defineStore("main", () => {
 	const settings = useLocalStorage("settings", {
-		theme: "#f17559",
+		theme: [
+			"#f17559",
+			"#f2b25b",
+			"#bbf15b",
+			"#8bcecb",
+			"#ca98c3",
+			"#f4b6d1",
+			"#a5a9aa",
+			"#ffe250",
+			"#686868"
+		],
+		currentThemeIndex: 0,
 		// window.matchMedia("(prefers-color-scheme: dark)").matches 用于检测系统是否开启了暗黑模式
 		// 如果用户没有设置过主题，那么就使用系统的主题
 		isDark: window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -15,8 +26,10 @@ export const useStore = defineStore("main", () => {
 	const loginUid = ref(localUid ? localUid : "");
 
 	const isDark = ref(settings.value.isDark);
-	const theme = useCssVar("--d-color");
-	theme.value = settings.value.theme;
+	const theme = ref(settings.value.theme);
+	const currentThemeIndex = ref(settings.value.currentThemeIndex);
+	const currentTheme = useCssVar("--d-color");
+	currentTheme.value = theme.value[currentThemeIndex.value];
 
 	watch(isDark, (val) => {
 		settings.value.isDark = val;
@@ -24,9 +37,10 @@ export const useStore = defineStore("main", () => {
 		document.body.classList.toggle("theme-dark", !!val);
 	});
 
-	function changeTheme(color: string) {
-		theme.value = color;
-		settings.value.theme = color;
+	function changeTheme(index: number) {
+		currentThemeIndex.value = index;
+		currentTheme.value = theme.value[currentThemeIndex.value];
+		settings.value.currentThemeIndex = currentThemeIndex.value;
 	}
 
 	const isSmallScreen = ref(window.innerWidth <= 768);
@@ -40,5 +54,5 @@ export const useStore = defineStore("main", () => {
 		document.body.classList.toggle("small-screen", !!isSmallScreen.value);
 	});
 
-	return { loginUid, isDark, isSmallScreen, changeTheme, theme };
+	return { loginUid, isDark, isSmallScreen, changeTheme, currentTheme, theme };
 });

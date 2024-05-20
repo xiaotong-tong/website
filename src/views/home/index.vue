@@ -7,7 +7,7 @@
 	<namiHeader v-if="!store.isSmallScreen"></namiHeader>
 	<namiMHeader v-else></namiMHeader>
 
-	<namiRoughCard is="main" class="main web-color-default" :color="store.theme">
+	<namiRoughCard is="main" class="main web-color-default" :color="store.currentTheme">
 		<section class="content">
 			<RouterView />
 		</section>

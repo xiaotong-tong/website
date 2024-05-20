@@ -11,7 +11,7 @@
 				<span>{{ weekNames[nowDay.day()] }}</span>
 			</p>
 		</header>
-		<namiRoughLine color="#f1755966"></namiRoughLine>
+		<namiRoughLine :color="store.currentTheme"></namiRoughLine>
 		<div class="poetry-wrap" v-if="poetry">
 			<h4>{{ poetry.title }}</h4>
 			<p v-for="item in poetry.paragraphs">
@@ -20,7 +20,7 @@
 		</div>
 		<div class="quote-wrap" v-if="quote">
 			<p>每日日语一百句 <span v-if="quoteOverflow" class="quote-overflow">兼容</span></p>
-			<namiRoughLine color="#f1755966"></namiRoughLine>
+			<namiRoughLine :color="store.currentTheme"></namiRoughLine>
 			<p v-html="quote.parse"></p>
 			<p>
 				{{ quote.chinese }}
@@ -47,6 +47,8 @@ import type { IGetDaysPoetry, IGetDaysQuotes } from "../home.api";
 import { getDaysQuotes, getDaysPoetry } from "../home.api";
 import { dayjs } from "@/utils/dateUtil";
 import { useRouteHash } from "@vueuse/router";
+import { useStore } from "@/stores";
+const store = useStore();
 
 const search = useRouteHash();
 

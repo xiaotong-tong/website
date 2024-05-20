@@ -11,7 +11,7 @@ interface Route {
 	meta?: {
 		title?: string | { zh: string; ja: string };
 		color?: string;
-		theme?: string;
+		theme?: number;
 	};
 	children?: Route[];
 }
@@ -38,7 +38,7 @@ let routes: Route[] = [
 				component: () => import("../views/home/components/home.vue"),
 				meta: {
 					color: "#f17559",
-					theme: "#f17559"
+					theme: 0
 				}
 			},
 			{
@@ -51,7 +51,7 @@ let routes: Route[] = [
 						ja: "画像アップロード"
 					},
 					color: "#bbf15b",
-					theme: "#bbf15b"
+					theme: 3
 				}
 			},
 			{
@@ -63,7 +63,8 @@ let routes: Route[] = [
 						zh: "音乐",
 						ja: "音楽"
 					},
-					color: "#f0dc59"
+					color: "#f0dc59",
+					theme: 2
 				}
 			},
 			{
@@ -75,7 +76,8 @@ let routes: Route[] = [
 						zh: "储藏室",
 						ja: "宇宙"
 					},
-					color: "#bbf15b"
+					color: "#bbf15b",
+					theme: 3
 				}
 			},
 			{
@@ -87,7 +89,8 @@ let routes: Route[] = [
 						zh: "前端链接",
 						ja: "web links"
 					},
-					color: "#bbf15b"
+					color: "#bbf15b",
+					theme: 3
 				}
 			},
 			{
@@ -99,7 +102,8 @@ let routes: Route[] = [
 						zh: "emoji",
 						ja: "emoji"
 					},
-					color: "#bbf15b"
+					color: "#bbf15b",
+					theme: 3
 				}
 			},
 			{
@@ -111,7 +115,8 @@ let routes: Route[] = [
 						zh: "工具",
 						ja: "ツール"
 					},
-					color: "#59f1b7"
+					color: "#59f1b7",
+					theme: 4
 				}
 			},
 			{
@@ -122,7 +127,8 @@ let routes: Route[] = [
 					title: {
 						zh: "漢字->かな",
 						ja: "漢字->かな"
-					}
+					},
+					theme: 4
 				}
 			}
 		]
@@ -137,7 +143,8 @@ let routes: Route[] = [
 				name: "blogPage",
 				component: () => import("../views/blog/home.vue"),
 				meta: {
-					color: "#f2b25b"
+					color: "#f2b25b",
+					theme: 1
 				}
 			},
 			{
@@ -424,8 +431,8 @@ router.beforeEach((to, _from, next) => {
 	const store = useStore();
 	const i18nStore = useI18nStore();
 
-	if (to.meta?.theme) {
-		store.changeTheme(to.meta.theme as string);
+	if (typeof to.meta?.theme === "number") {
+		store.changeTheme(to.meta.theme as number);
 	}
 
 	// 对于 /editor/add， /editor/edit/:id 等路由，需要登录才能访问
