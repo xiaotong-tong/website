@@ -130,6 +130,18 @@ let routes: Route[] = [
 					},
 					theme: 4
 				}
+			},
+			{
+				path: "/something/pinyin",
+				name: "pinyin",
+				component: () => import("../views/somethings/pinyin.vue"),
+				meta: {
+					title: {
+						zh: "汉字注音",
+						ja: "中国語の漢字の発音"
+					},
+					theme: 4
+				}
 			}
 		]
 	},
@@ -324,18 +336,6 @@ let routes: Route[] = [
 					}
 				}
 			},
-			{
-				path: "/something/pinyin",
-				name: "pinyin",
-				component: () => import("../views/somethings/pinyin.vue"),
-				meta: {
-					title: {
-						zh: "汉字注音",
-						ja: "中国語の漢字の発音"
-					}
-				}
-			},
-
 			{
 				path: "/something/chat",
 				name: "chat",

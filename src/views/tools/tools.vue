@@ -1,9 +1,7 @@
 <template>
-	<section class="container">
-		<xtt-markdown :dark="store.isDark ? '' : undefined">{{
-			i18nStore.lang === "ja" ? jaLinkContent : linkContent
-		}}</xtt-markdown>
-	</section>
+	<xtt-markdown :dark="store.isDark ? '' : undefined">{{
+		i18nStore.lang === "ja" ? jaLinkContent : linkContent
+	}}</xtt-markdown>
 </template>
 
 <script setup lang="ts">

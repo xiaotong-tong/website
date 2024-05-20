@@ -1,7 +1,8 @@
 <template>
 	<section class="container web-color-default">
 		<h1 class="text-center">
-			{{ i18nStore.lang === "ja" ? "中国語の漢字の読み方" : "拼音" }}
+			<span v-if="i18nStore.lang === 'ja'">中国語の漢字の読み方</span>
+			<ruby v-else> 拼音<rt>pīnyīn</rt> </ruby>
 		</h1>
 		<xtt-textarea
 			ref="textarea"

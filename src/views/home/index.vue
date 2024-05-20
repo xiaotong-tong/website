@@ -152,6 +152,8 @@ const verifyLogin = async () => {
 	flex: 1;
 	overflow: auto;
 	height: 100%;
+	box-sizing: border-box;
+	padding: 8px;
 }
 .nav {
 	flex: 0 0 200px;
