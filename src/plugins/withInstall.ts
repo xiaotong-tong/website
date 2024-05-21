@@ -22,8 +22,6 @@ import commentPanel from "../components/comments/panel.vue";
 import commentList from "../components/comments/list.vue";
 import commentCard from "../components/comments/card.vue";
 
-import mainCard from "../components/page/card/mainCard.vue";
-
 import pagination from "../components/pagination/pagination.vue";
 
 import timeline from "../components/timeline/timeline.vue";
@@ -44,8 +42,6 @@ const withInstall = {
 		app.component("namiCommentPanel", commentPanel);
 		app.component("namiCommentList", commentList);
 		app.component("namiCommentCard", commentCard);
-
-		app.component("namiMainCard", mainCard);
 
 		app.component("namiPagination", pagination);
 

@@ -16,24 +16,22 @@ export default defineConfig({
 	plugins: [
 		mdPlugin(),
 		// dev 时不启用 PWA
-		isDev
-			? VitePWA({
-					manifest: manifest as ManifestOptions,
-					devOptions: {
-						enabled: false, // 在 dev 环境下启用
-						type: "module"
-					},
-					strategies: "injectManifest",
-					srcDir: "src",
-					filename: "sw.ts",
-					registerType: "autoUpdate",
-					workbox: {
-						globPatterns: [
-							"**/*.{js,css,html,png,jpg,jpeg,svg,webp,woff2,woff,ttf,eot,mp3,pdf}"
-						]
-					}
-			  })
-			: undefined,
+		VitePWA({
+			manifest: manifest as ManifestOptions,
+			devOptions: {
+				enabled: false, // 在 dev 环境下启用
+				type: "module"
+			},
+			strategies: "injectManifest",
+			srcDir: "src",
+			filename: "sw.ts"
+			// registerType: "autoUpdate"
+			// workbox: {
+			// 	globPatterns: [
+			// 		"**/*.{js,css,html,png,jpg,jpeg,svg,webp,woff2,woff,ttf,eot,mp3,pdf}"
+			// 	]
+			// }
+		}),
 		vue({
 			template: {
 				compilerOptions: {

@@ -42,6 +42,15 @@ let routes: Route[] = [
 				}
 			},
 			{
+				path: "/blog",
+				name: "blogPage",
+				component: () => import("../views/blog/home.vue"),
+				meta: {
+					color: "#f2b25b",
+					theme: 1
+				}
+			},
+			{
 				path: "/photos",
 				name: "photos",
 				component: () => import("../views/photos/index.vue"),
@@ -150,15 +159,6 @@ let routes: Route[] = [
 		name: "blog",
 		component: () => import("../views/home.vue"),
 		children: [
-			{
-				path: "/blog",
-				name: "blogPage",
-				component: () => import("../views/blog/home.vue"),
-				meta: {
-					color: "#f2b25b",
-					theme: 1
-				}
-			},
 			{
 				path: "/login",
 				name: "login",

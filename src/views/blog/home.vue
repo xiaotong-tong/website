@@ -34,6 +34,7 @@ import type { Acticle } from "@/types/acticle";
 import { ref, reactive, watchEffect } from "vue";
 import { getActicleList } from "@/api/blog/acticle";
 import { useRouter, useRoute } from "vue-router";
+import namiMainCard from "./components/card/card.vue";
 
 const router = useRouter();
 const route = useRoute();

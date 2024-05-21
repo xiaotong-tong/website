@@ -18,11 +18,11 @@
 		</div>
 		<div class="info-wrap">
 			<h2>
-				<nami-link class="title-link" inline-block :to="props.info.headerLink">{{
+				{{
 					i18nStore.lang === "ja"
 						? props.info.jaTitle || props.info.title
 						: props.info.title
-				}}</nami-link>
+				}}
 			</h2>
 			<p>
 				<span>{{
@@ -51,6 +51,11 @@
 						: props.info.abstract || props.info.content
 				}}
 			</p>
+			<div class="footer">
+				<nami-link class="article-link" block :to="props.info.headerLink"
+					>阅读全文</nami-link
+				>
+			</div>
 		</div>
 	</div>
 </template>
@@ -131,6 +136,7 @@ onBeforeUnmount(() => {
 <style scoped>
 .card {
 	display: flex;
+	position: relative;
 	padding: 8px;
 	column-gap: 8px;
 	border-radius: 5px;
@@ -164,19 +170,6 @@ onBeforeUnmount(() => {
 .small-screen .info-wrap h2 {
 	font-size: 18px;
 }
-.info-wrap .title-link {
-	width: 100%;
-	--link-padding: 0;
-}
-.info-wrap .title-link::part(link) {
-	width: 100%;
-	justify-content: flex-start;
-	padding: 0;
-}
-.info-wrap .title-link::part(link):hover,
-.tag-link::part(link):hover {
-	color: #f34159;
-}
 
 .abstract {
 	font-size: 14px;
@@ -185,6 +178,18 @@ onBeforeUnmount(() => {
 	display: -webkit-box;
 	-webkit-line-clamp: 3;
 	-webkit-box-orient: vertical;
+}
+
+.footer {
+	position: absolute;
+	inset-block-end: 8px;
+	inset-inline-end: 16px;
+}
+
+.article-link {
+	color: var(--d-color);
+	--link-hover-bg-color: var(--d-color);
+	--link-font-color-hover: #fff;
 }
 
 @media screen and (max-width: 992px) {
