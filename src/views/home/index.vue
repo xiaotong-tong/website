@@ -144,7 +144,6 @@ const verifyLogin = async () => {
 	display: flex;
 }
 .small-screen .main {
-	min-block-size: calc(100vh - 114px);
 	height: auto;
 }
 
@@ -168,6 +167,9 @@ const verifyLogin = async () => {
 	color: #fff;
 }
 
+.small-screen .content {
+	min-block-size: calc(100vh - 130px);
+}
 .small-screen .nav {
 	display: none;
 }

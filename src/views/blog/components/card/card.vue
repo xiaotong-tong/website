@@ -53,8 +53,8 @@
 			</p>
 			<div class="footer">
 				<nami-link class="article-link" block :to="props.info.headerLink"
-					>阅读全文</nami-link
-				>
+					>阅读全文<namiRoughIcon icon="mdiBookOpenBlankVariantOutline"></namiRoughIcon
+				></nami-link>
 			</div>
 		</div>
 	</div>
@@ -188,8 +188,7 @@ onBeforeUnmount(() => {
 
 .article-link {
 	color: var(--d-color);
-	--link-hover-bg-color: var(--d-color);
-	--link-font-color-hover: #fff;
+	--link-hover-bg-color: transparent;
 }
 
 @media screen and (max-width: 992px) {

@@ -14,7 +14,7 @@
 		"gen:spiderFonts": "font-spider ./extras/fonts/script/*.html"
 	},
 	"dependencies": {
-		"@mdi/js": "^7.2.96",
+		"@mdi/js": "^7.4.47",
 		"@vueuse/core": "^10.9.0",
 		"@vueuse/router": "^10.9.0",
 		"aplayer": "^1.10.1",
