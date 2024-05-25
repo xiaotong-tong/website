@@ -151,6 +151,18 @@ let routes: Route[] = [
 					},
 					theme: 4
 				}
+			},
+			{
+				path: "/setting",
+				name: "kana",
+				component: () => import("../views/setting/index.vue"),
+				meta: {
+					title: {
+						zh: "操纵台",
+						ja: "設定"
+					},
+					theme: 6
+				}
 			}
 		]
 	},

@@ -1,6 +1,7 @@
 import { ref, watch, watchEffect } from "vue";
 import { defineStore } from "pinia";
 import { useLocalStorage, useCssVar } from "@vueuse/core";
+import { initWebBGUrl } from "@/utils/webBG";
 
 export const useStore = defineStore("main", () => {
 	const settings = useLocalStorage("settings", {
@@ -35,6 +36,8 @@ export const useStore = defineStore("main", () => {
 		settings.value.isDark = val;
 		// 在 isDark 发生变化时，同步改变 body 的 class
 		document.body.classList.toggle("theme-dark", !!val);
+		// 切换主题时，重新获取背景图片
+		initWebBGUrl();
 	});
 
 	function changeTheme(index: number) {

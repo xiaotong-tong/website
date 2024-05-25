@@ -90,7 +90,7 @@ const list: List[] = [
 	},
 	{
 		key: "b3",
-		url: "/#setting",
+		url: "/setting",
 		content: t("main.homeNav.setting"),
 		color: store.theme[6]
 	}

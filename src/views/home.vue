@@ -1,8 +1,5 @@
 <template>
-	<xtt-web-bg
-		src="https://image.xtt.moe/images/bg.webp"
-		:mask="store.isDark ? '' : undefined"
-	></xtt-web-bg>
+	<namiWebBG :src="bgUrl" :mask="store.isDark"></namiWebBG>
 
 	<namiHeader v-if="!store.isSmallScreen"></namiHeader>
 	<namiMHeader v-else></namiMHeader>
@@ -88,6 +85,7 @@ import { verifyMasterUid } from "../api/blog/verify";
 import { useRouter } from "vue-router";
 import { useStore } from "@/stores/index";
 import type { XttTooltipElement } from "xtt-ui/index.d.ts";
+import { bgUrl } from "@/utils/webBG";
 
 const store = useStore();
 const router = useRouter();
