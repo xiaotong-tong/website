@@ -154,7 +154,7 @@ let routes: Route[] = [
 			},
 			{
 				path: "/setting",
-				name: "kana",
+				name: "setting",
 				component: () => import("../views/setting/index.vue"),
 				meta: {
 					title: {

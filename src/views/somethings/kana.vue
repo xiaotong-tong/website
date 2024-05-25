@@ -1,12 +1,15 @@
 <template>
 	<section class="container web-color-default">
-		<h1 class="text-center">漢字→仮名</h1>
-		<xtt-textarea
-			ref="textarea"
+		<h1 class="text-center">漢字 → 仮名</h1>
+		<NInput
+			:style="{
+				marginBlockEnd: '16px'
+			}"
+			v-model:value="value"
+			:rows="5"
+			type="textarea"
 			placeholder="日本語を入力してください"
-			block
-			rows="10"
-		></xtt-textarea>
+		/>
 		<xtt-button @click="transform" type="primary">
 			{{ i18nStore.lang === "ja" ? "変更する" : "转换" }}
 		</xtt-button>
@@ -31,6 +34,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { NInput } from "naive-ui";
 import { toKana } from "@/api/something/kana";
 import { useI18nStore } from "@/stores/i18n";
 import confetti from "canvas-confetti";
@@ -41,16 +45,14 @@ const { copy: useCopy, isSupported, copied } = useClipboard();
 const i18nStore = useI18nStore();
 
 const rubyText = ref("");
-const textarea = ref<HTMLTextAreaElement>();
+const value = ref("");
 const isParsed = ref(false);
 
 const transform = async () => {
-	const value = textarea.value?.value;
-
-	if (!value) {
+	if (!value.value) {
 		return;
 	}
-	rubyText.value = await toKana(value);
+	rubyText.value = await toKana(value.value);
 	isParsed.value = true;
 };
 
