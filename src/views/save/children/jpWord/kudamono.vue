@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import kudamono from "./果物.md";
+import kudamono from "./食べること.md";
 import { useStore } from "@/stores/index";
 
 const store = useStore();

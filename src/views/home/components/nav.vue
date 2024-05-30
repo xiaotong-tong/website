@@ -12,6 +12,14 @@
 		>
 			<nami-link :to="item.url" block class="link">
 				{{ item.content }}
+				<namiIcon
+					v-if="store.currentTheme === item.color"
+					icon="cat"
+					:style="{
+						marginInlineStart: '8px'
+					}"
+					:size="28"
+				></namiIcon>
 			</nami-link>
 			<namiRoughCard
 				class="bg"
@@ -268,5 +276,8 @@ defineExpose({
 		var(--df-color) 100%
 	);
 	background-clip: text;
+}
+.link::part(link) {
+	align-items: center;
 }
 </style>
