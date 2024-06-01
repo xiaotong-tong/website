@@ -5,8 +5,9 @@
 	<namiMHeader v-else></namiMHeader>
 
 	<namiRoughCard is="main" class="main web-color-default" :color="store.currentTheme">
-		<section class="content">
+		<section ref="contentRef" class="content">
 			<RouterView />
+			<namiTextAutoScroll class="tip" />
 		</section>
 		<nav class="nav"><namiNav></namiNav></nav>
 	</namiRoughCard>
@@ -78,21 +79,27 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch, nextTick } from "vue";
 import kanbanarea from "@/components/live2d/kanbanarea.vue";
 import namiAplayer from "@/components/aplayer/aplayer.vue";
 import namiHeader from "@/components/page/header/header.vue";
 import namiMHeader from "@/components/page/header/m-header.vue";
 import namiFooter from "@/components/page/footer/footer.vue";
 import namiNav from "./components/nav.vue";
+import namiTextAutoScroll from "@/components/textAutoScroll/index.vue";
 import { verifyMasterUid } from "@/api/blog/verify";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import { useStore } from "@/stores/index";
 import type { XttTooltipElement } from "xtt-ui/index.d.ts";
 import { bgUrl } from "@/utils/webBG";
+import { useElementSize } from "@vueuse/core";
 
 const store = useStore();
 const router = useRouter();
+const route = useRoute();
+
+const contentRef = ref<HTMLElement | null>(null);
+const { height } = useElementSize(contentRef);
 
 const live2d = ref<InstanceType<typeof kanbanarea>>();
 const live2dShowed = ref(true);
@@ -115,8 +122,22 @@ const appendIcon = (icon: any) => {
 	icons.push(icon?.$el);
 };
 
+function checkOverflow() {
+	if (contentRef.value) {
+		contentRef.value.classList.remove("scroll-overflow-y");
+		// 获取第一个子元素
+		const scrollEl = contentRef.value.firstElementChild!;
+		const rect = scrollEl.getBoundingClientRect();
+
+		if (rect.height > height.value) {
+			contentRef.value.classList.add("scroll-overflow-y");
+		}
+	}
+}
+
 onMounted(() => {
 	iconTooltip.value?.initTrigger(icons);
+	checkOverflow();
 });
 
 const verifyLogin = async () => {
@@ -131,6 +152,16 @@ const verifyLogin = async () => {
 		}
 	}
 };
+
+// 监听路由变化
+watch(
+	() => route.fullPath,
+	() => {
+		nextTick(() => {
+			checkOverflow();
+		});
+	}
+);
 </script>
 
 <style scoped>
@@ -146,16 +177,31 @@ const verifyLogin = async () => {
 }
 
 .content {
+	position: relative;
 	flex: 1;
 	overflow: auto;
 	height: 100%;
 	box-sizing: border-box;
-	padding: 8px;
+	padding: 8px 8px 24px;
 }
+
 .nav {
 	flex: 0 0 200px;
 	position: sticky;
 	top: 48px;
+}
+
+.tip {
+	position: fixed;
+	inset-block-end: 0;
+	inset-inline: 0;
+	height: 24px;
+	padding-inline-start: 8px;
+	box-sizing: border-box;
+	margin-block-end: 4px;
+}
+.content.scroll-overflow-y .tip {
+	display: none;
 }
 
 .icon {

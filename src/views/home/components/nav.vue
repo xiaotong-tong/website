@@ -12,14 +12,6 @@
 		>
 			<nami-link :to="item.url" block class="link">
 				{{ item.content }}
-				<namiIcon
-					v-if="store.currentTheme === item.color"
-					icon="cat"
-					:style="{
-						marginInlineStart: '8px'
-					}"
-					:size="28"
-				></namiIcon>
 			</nami-link>
 			<namiRoughCard
 				class="bg"
@@ -29,6 +21,12 @@
 					fillWeight: 3
 				}"
 			></namiRoughCard>
+			<namiCIcon
+				class="active-icon"
+				v-if="store.currentTheme === item.color"
+				icon="cat"
+				:size="28"
+			></namiCIcon>
 		</li>
 	</ul>
 
@@ -250,6 +248,7 @@ defineExpose({
 	cursor: pointer;
 	overflow: hidden;
 	box-sizing: border-box;
+	position: relative;
 }
 
 .bg {
@@ -279,5 +278,11 @@ defineExpose({
 }
 .link::part(link) {
 	align-items: center;
+}
+
+.active-icon {
+	position: absolute;
+	inset-inline-start: 8px;
+	inset-block-end: 10%;
 }
 </style>

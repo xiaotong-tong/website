@@ -15,6 +15,7 @@
 	},
 	"dependencies": {
 		"@mdi/js": "^7.4.47",
+		"@vueuse/components": "^10.10.0",
 		"@vueuse/core": "^10.9.0",
 		"@vueuse/router": "^10.9.0",
 		"aplayer": "^1.10.1",
