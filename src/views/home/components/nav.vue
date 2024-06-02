@@ -41,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted } from "vue";
+import { onMounted, onUnmounted, watch, ref } from "vue";
 import gsap from "gsap";
 import { useStore } from "@/stores";
 import { useI18n } from "vue-i18n";
@@ -57,7 +57,7 @@ interface List {
 	color: string;
 }
 
-const list: List[] = [
+const list = ref<List[]>([
 	{
 		key: "c3",
 		url: "/",
@@ -100,7 +100,19 @@ const list: List[] = [
 		content: t("main.homeNav.setting"),
 		color: store.theme[6]
 	}
-];
+]);
+
+watch(
+	() => store.theme,
+	() => {
+		list.value.forEach((item, index) => {
+			item.color = store.theme[index];
+		});
+	},
+	{
+		deep: true
+	}
+);
 
 const playPianoAudio = (key: PianoKey) => {
 	let audio = new Audio(`/piano/${key}.mp3`);

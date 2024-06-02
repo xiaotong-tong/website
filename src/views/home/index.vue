@@ -7,7 +7,29 @@
 	<namiRoughCard is="main" class="main web-color-default" :color="store.currentTheme">
 		<section ref="contentRef" class="content">
 			<RouterView />
-			<namiTextAutoScroll class="tip" />
+			<namiTextAutoScroll v-if="store.pageConfig.showContentTip" class="tip" />
+			<namiCIcon
+				:style="{
+					position: 'absolute',
+					insetBlockStart: '80px',
+					insetInlineEnd: '64px',
+					zIndex: -1,
+					opacity: 0.6
+				}"
+				:size="64"
+				icon="heart"
+			></namiCIcon>
+			<namiCIcon
+				:style="{
+					position: 'absolute',
+					insetBlockEnd: '64px',
+					insetInlineStart: '64px',
+					zIndex: -1,
+					opacity: 0.6
+				}"
+				:size="64"
+				icon="heart"
+			></namiCIcon>
 		</section>
 		<nav class="nav"><namiNav></namiNav></nav>
 	</namiRoughCard>
