@@ -33,6 +33,9 @@
 						>
 							{{ "日本语句型辞典" }}
 						</nami-link>
+						<nami-link to="/save/daysQuote" class="link" type="primary">
+							每日日语
+						</nami-link>
 					</div>
 				</div>
 			</div>

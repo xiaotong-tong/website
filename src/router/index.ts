@@ -120,6 +120,18 @@ let routes: Route[] = [
 				}
 			},
 			{
+				path: "/save/daysQuote",
+				name: "saveDaysQuote",
+				component: () => import("../views/save/children/daysQuote/daysQuote.vue"),
+				meta: {
+					title: {
+						zh: "每日日语",
+						ja: "每日日语"
+					},
+					theme: 3
+				}
+			},
+			{
 				path: "/tools",
 				name: "tools",
 				component: () => import("../views/tools/tools.vue"),

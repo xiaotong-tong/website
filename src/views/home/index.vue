@@ -215,12 +215,13 @@ watch(
 
 .tip {
 	position: fixed;
-	inset-block-end: 0;
-	inset-inline: 0;
+	inset-block-end: 1px;
+	inset-inline: 8px;
 	height: 24px;
 	padding-inline-start: 8px;
 	box-sizing: border-box;
 	margin-block-end: 4px;
+	background-color: #ffffffdd;
 }
 .content.scroll-overflow-y .tip {
 	display: none;
