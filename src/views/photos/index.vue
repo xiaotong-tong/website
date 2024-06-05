@@ -5,13 +5,13 @@
 	</section>
 
 	<section class="container web-color-default" v-show="imgLoaded">
-		<xtt-list-masonry class="list">
+		<listMasonry :cols="cols" :columnGap="8" :rowGap="8" @resize="resize">
 			<template v-for="item in imageList" :key="item.id">
-				<xtt-list-masonry-item v-if="item.loaded">
-					<img :src="item.url" class="img" loading="lazy" @load="imgLoadEvent" />
-				</xtt-list-masonry-item>
+				<listMasonryItem v-if="item.loaded">
+					<img :src="item.url" class="img" loading="lazy" />
+				</listMasonryItem>
 			</template>
-		</xtt-list-masonry>
+		</listMasonry>
 	</section>
 </template>
 
@@ -19,8 +19,9 @@
 import { ref } from "vue";
 import { shuffle } from "xtt-utils";
 import { useFetch, useSessionStorage } from "@vueuse/core";
-import { gsap } from "gsap";
+import { listMasonry, listMasonryItem } from "@c/index";
 
+const cols = ref(4);
 interface Image {
 	id: number;
 	url: string;
@@ -69,16 +70,6 @@ const loadImageList = async () => {
 
 loadImageList();
 
-const imgLoadEvent = (e: Event) => {
-	const element = e.target as HTMLImageElement;
-	gsap.from(element, {
-		opacity: 0,
-		duration: 1,
-		y: 50,
-		ease: "power2.out"
-	});
-};
-
 function imageInitLoad() {
 	imageList.value.forEach((item) => {
 		const img = new Image();
@@ -88,14 +79,21 @@ function imageInitLoad() {
 		};
 	});
 }
+
+function resize(width: number) {
+	if (width >= 1200) {
+		cols.value = 6;
+	} else if (width >= 768) {
+		cols.value = 4;
+	} else {
+		cols.value = 2;
+	}
+}
 </script>
 
 <style scoped>
 .container {
 	margin-inline: 8px;
-}
-.list {
-	--list-border: none;
 }
 .img {
 	width: 100%;
