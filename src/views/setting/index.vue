@@ -1,6 +1,10 @@
 <template>
 	<section class="container">
 		<div class="item">
+			<MyCache></MyCache>
+		</div>
+		<namiRoughLine class="hr" :color="store.currentTheme"></namiRoughLine>
+		<div class="item">
 			<label>
 				<span><namiIcon icon="mdiThemeLightDark"></namiIcon>切换模式：</span>
 				<n-switch v-model:value="store.isDark">
@@ -28,6 +32,19 @@
 			</label>
 		</div>
 		<namiRoughLine class="hr" :color="store.currentTheme"></namiRoughLine>
+		<div class="item" v-if="!store.isSmallScreen">
+			<label>
+				<span>右侧导航栏键盘音：</span>
+				<n-switch v-model:value="store.isPiano" />
+			</label>
+		</div>
+		<div class="item" v-if="!store.isSmallScreen">
+			<label>
+				<span>自动播放右侧导航栏键盘音：</span>
+				<NButton text color="#8bcecb" @click="play">小星星</NButton>
+			</label>
+		</div>
+		<namiRoughLine class="hr" :color="store.currentTheme"></namiRoughLine>
 		<div class="item">
 			<div>
 				切换颜色
@@ -49,15 +66,24 @@
 </template>
 
 <script setup lang="ts">
+import namiNav from "@/views/home/components/nav.vue";
+import { inject } from "vue";
 import MyChangeBG from "./components/bg.vue";
 import { useStore } from "@/stores/index";
 import { useI18nStore } from "@/stores/i18n";
 import { useI18n } from "vue-i18n";
-import { NSwitch, NColorPicker } from "naive-ui";
+import { NSwitch, NColorPicker, NButton } from "naive-ui";
+import MyCache from "./components/cache.vue";
 
 const { t } = useI18n();
 const store = useStore();
 const i18nStore = useI18nStore();
+
+const namiNavRef = inject<typeof namiNav>("namiNavRef");
+
+function play() {
+	namiNavRef?.value.autoPlayPiano("1155665-4433221-5544332-5544332-1155665-4433221", 120);
+}
 </script>
 
 <style scoped>

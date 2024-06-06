@@ -20,9 +20,9 @@ const defaultSettingConfig = {
 	// 如果用户没有设置过主题，那么就使用系统的主题
 	isDark: window.matchMedia("(prefers-color-scheme: dark)").matches,
 	pageConfig: {
-		// 是否显示左下角内容提示
-		showContentTip: true
-	}
+		showContentTip: true // 是否显示左下角内容提示
+	},
+	piano: true // 是否自动播放钢琴声
 };
 
 export const useStore = defineStore("main", () => {
@@ -31,6 +31,9 @@ export const useStore = defineStore("main", () => {
 	// 刷新 localStorage 中的settings
 	if (!settings.value.pageConfig) {
 		settings.value.pageConfig = defaultSettingConfig.pageConfig;
+	}
+	if (!settings.value.piano) {
+		settings.value.piano = defaultSettingConfig.piano;
 	}
 
 	// 是否登陆，以及登陆的用户id
@@ -83,9 +86,13 @@ export const useStore = defineStore("main", () => {
 	});
 
 	const pageConfig = ref(settings.value.pageConfig);
-
 	watch(pageConfig, (val) => {
 		settings.value.pageConfig = val;
+	});
+
+	const isPiano = ref(settings.value.piano);
+	watch(isPiano, (val) => {
+		settings.value.piano = val;
 	});
 
 	return {
@@ -97,6 +104,7 @@ export const useStore = defineStore("main", () => {
 		theme,
 		changeThemeOfList,
 		resetDefaultTheme,
-		pageConfig
+		pageConfig,
+		isPiano
 	};
 });

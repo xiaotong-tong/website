@@ -31,7 +31,7 @@
 				icon="heart"
 			></namiCIcon>
 		</section>
-		<nav class="nav"><namiNav></namiNav></nav>
+		<nav class="nav"><namiNav ref="namiNavRef"></namiNav></nav>
 	</namiRoughCard>
 
 	<namiFooter></namiFooter>
@@ -101,7 +101,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch, nextTick } from "vue";
+import { ref, onMounted, watch, nextTick, provide } from "vue";
 import kanbanarea from "@/components/live2d/kanbanarea.vue";
 import namiAplayer from "@/components/aplayer/aplayer.vue";
 import namiHeader from "@/components/page/header/header.vue";
@@ -156,6 +156,10 @@ function checkOverflow() {
 		}
 	}
 }
+
+const namiNavRef = ref<typeof namiNav>();
+
+provide("namiNavRef", namiNavRef);
 
 onMounted(() => {
 	iconTooltip.value?.initTrigger(icons);

@@ -5,6 +5,7 @@
 			:key="item.key"
 			class="piano-key"
 			:data-key="item.key"
+			ref="listRef"
 			@mouseenter.stop.self="mouseenterHandler($event, item)"
 			:style="{
 				'--df-color': item.color
@@ -49,6 +50,8 @@ const { t } = useI18n();
 const store = useStore();
 
 type PianoKey = "c3" | "d3" | "e3" | "f3" | "g3" | "a3" | "b3";
+
+const listRef = ref<HTMLElement[]>([]);
 
 interface List {
 	key: PianoKey;
@@ -154,7 +157,9 @@ const mouseenterHandler = (e: MouseEvent, item: List) => {
 	tween.play();
 	colorTW.play();
 
-	playPianoAudio(item.key);
+	if (store.isPiano) {
+		playPianoAudio(item.key);
+	}
 
 	target.addEventListener(
 		"mouseleave",
@@ -213,14 +218,42 @@ const autoPlayPiano = (score: string, speed = 75) => {
 			return;
 		}
 
-		const keyEl = document.querySelector(`.piano-box>.piano-key[data-key="${key}"]`);
-		keyEl?.classList.add("active");
+		const keyEl = listRef.value[unit];
+
+		const tween = gsap.fromTo(
+			keyEl.querySelector(".bg"),
+			{
+				yPercent: 0
+			},
+			{
+				yPercent: -90,
+				duration: 0.3,
+				ease: "power2.out",
+				onComplete: function () {
+					tween.reverse(); // 在动画完成时调用 reverse 方法
+				}
+			}
+		);
+
+		const colorTW = gsap.fromTo(
+			keyEl.querySelector(".link"),
+			{
+				"--temp-start-num": "10%"
+			},
+			{
+				"--temp-start-num": "90%",
+				duration: 0.3,
+				ease: "power2.out",
+				onComplete: function () {
+					colorTW.reverse(); // 在动画完成时调用 reverse 方法
+				}
+			}
+		);
+
+		tween.play();
+		colorTW.play();
 
 		playPianoAudio(key as PianoKey);
-
-		keyEl?.addEventListener("transitionend", () => {
-			keyEl?.classList.remove("active");
-		});
 	};
 
 	const timer = setInterval(() => {
