@@ -1,84 +1,38 @@
 <template>
 	<!-- 页面加载动画 -->
-	<section v-show="!imgLoaded">
+	<section v-show="loading">
 		<namiPageLoading></namiPageLoading>
 	</section>
 
-	<section class="container web-color-default" v-show="imgLoaded">
+	<section class="container web-color-default" v-show="!loading">
 		<listMasonry :cols="cols" :columnGap="8" :rowGap="8" @resize="resize">
-			<template v-for="item in imageList" :key="item.id">
-				<listMasonryItem v-if="item.loaded">
-					<img :src="item.url" class="img" loading="lazy" />
-				</listMasonryItem>
-			</template>
+			<listMasonryItem v-for="item in loadedImageList" :key="item.id">
+				<img :src="item.url" class="img" loading="lazy" />
+			</listMasonryItem>
 		</listMasonry>
 	</section>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { shuffle } from "xtt-utils";
-import { useFetch, useSessionStorage } from "@vueuse/core";
+import { ref, watchEffect } from "vue";
 import { listMasonry, listMasonryItem } from "@c/index";
+import { useImageList } from "@/utils/photos";
 
 const cols = ref(4);
-interface Image {
-	id: number;
-	url: string;
-	loaded: boolean;
-}
 
-// 控制是否显示加载动画
-const imgLoaded = ref(false);
+const { list: imageList, loading } = useImageList(true);
 
-const imageList = ref<Image[]>([]);
-const storageRef = useSessionStorage("imageList", []);
+const loadedImageList: typeof imageList = ref([]);
 
-const loadImageList = async () => {
-	// 如果 sessionStorage 有数据，直接使用，不再请求
-	if (storageRef.value?.length) {
-		imageList.value = shuffle(storageRef.value).map((item: Image) => {
-			return {
-				id: item.id,
-				url: item.url,
-				loaded: false
-			};
-		});
-		imgLoaded.value = true;
-		imageInitLoad();
-		return;
-	}
-
-	const { data } = await useFetch<Image[]>("https://api.xtt.moe/photos/list", {
-		afterFetch(ctx) {
-			// 保存到 sessionStorage
-			storageRef.value = ctx.data;
-			return ctx;
-		}
-	}).json();
-
-	imageList.value = shuffle<Image>(data.value).map((item: Image) => {
-		return {
-			id: item.id,
-			url: item.url,
-			loaded: false
-		};
-	});
-	imgLoaded.value = true;
-	imageInitLoad();
-};
-
-loadImageList();
-
-function imageInitLoad() {
+watchEffect(() => {
 	imageList.value.forEach((item) => {
 		const img = new Image();
 		img.src = item.url;
 		img.onload = () => {
-			item.loaded = true;
+			loadedImageList.value.push(item);
 		};
 	});
-}
+});
 
 function resize(width: number) {
 	if (width >= 1200) {
