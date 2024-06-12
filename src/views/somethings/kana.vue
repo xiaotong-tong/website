@@ -1,18 +1,22 @@
 <template>
 	<section class="container web-color-default">
-		<h1 class="text-center">漢字 → 仮名</h1>
+		<hBanner wrapperTargetName="h1" class="text-center">漢字 → 仮名</hBanner>
+
 		<NInput
 			:style="{
-				marginBlockEnd: '16px'
+				marginBlockEnd: '16px',
+				'--n-border-hover': '1px solid var(--d-color)',
+				'--n-border-focus': '1px solid var(--d-color)',
+				'--n-caret-color': 'var(--d-color)'
 			}"
 			v-model:value="value"
 			:rows="5"
 			type="textarea"
 			placeholder="日本語を入力してください"
 		/>
-		<xtt-button @click="transform" type="primary">
-			{{ i18nStore.lang === "ja" ? "変更する" : "转换" }}
-		</xtt-button>
+		<NButton @click="transform" :color="store.currentTheme">{{
+			i18nStore.lang === "ja" ? "変更する" : "转换"
+		}}</NButton>
 		<xtt-button
 			:style="{
 				marginInlineStart: '16px'
@@ -34,14 +38,17 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { NInput } from "naive-ui";
+import { NInput, NButton } from "naive-ui";
 import { toKana } from "@/api/something/kana";
 import { useI18nStore } from "@/stores/i18n";
 import confetti from "canvas-confetti";
 import { useClipboard } from "@vueuse/core";
+import { useStore } from "@/stores";
+import { hBanner } from "@c/index";
 
 const { copy: useCopy, isSupported, copied } = useClipboard();
 
+const store = useStore();
 const i18nStore = useI18nStore();
 
 const rubyText = ref("");

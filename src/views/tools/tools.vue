@@ -1,4 +1,5 @@
 <template>
+	<hBanner wrapperTargetName="h1" class="text-center">Tools</hBanner>
 	<xtt-markdown :dark="store.isDark ? '' : undefined">{{
 		i18nStore.lang === "ja" ? jaLinkContent : linkContent
 	}}</xtt-markdown>
@@ -9,6 +10,7 @@ import linkContent from "./tools.md";
 import jaLinkContent from "./tools.ja.md";
 import { useStore } from "@/stores/index";
 import { useI18nStore } from "@/stores/i18n";
+import { hBanner } from "@c/index";
 
 const i18nStore = useI18nStore();
 const store = useStore();

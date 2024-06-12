@@ -1,5 +1,3 @@
-# Tools
-
 日常使用のためのいくつかのツール。
 
 -   [towebp](/ja/something/towebp) - 画像を webp 形式に変換する
