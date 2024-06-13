@@ -5,7 +5,7 @@
 	</section>
 	<section class="card" v-else-if="loaded">
 		<header class="card-title">
-			<h3 class="title">每日学习</h3>
+			<hBanner wrapperTargetName="h3">每日学习</hBanner>
 			<p class="sub">
 				{{ nowDay.format("YYYY 年") }}第 {{ nowDay.dayOfYear() }} 天
 				<span>{{ weekNames[nowDay.day()] }}</span>
@@ -46,6 +46,7 @@ import { ref } from "vue";
 import type { IGetDaysPoetry, IGetDaysQuotes } from "../home.api";
 import { getDaysQuotes, getDaysPoetry } from "../home.api";
 import { dayjs } from "@/utils/dateUtil";
+import { hBanner } from "@c/index";
 import { useRouteHash } from "@vueuse/router";
 import { useStore } from "@/stores";
 const store = useStore();

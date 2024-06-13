@@ -106,6 +106,7 @@ defineExpose({
 	height: 500px;
 	z-index: 999;
 	pointer-events: none;
+	transition: bottom 0.3s;
 }
 .live2d {
 	position: absolute;

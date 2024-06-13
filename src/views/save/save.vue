@@ -68,5 +68,7 @@ const i18nStore = useI18nStore();
 .jp-next-content {
 	padding-inline-start: 16px;
 	margin-block: 8px;
+	display: flex;
+	column-gap: 16px;
 }
 </style>

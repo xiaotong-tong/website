@@ -4,7 +4,16 @@
 	<namiHeader v-if="!store.isSmallScreen"></namiHeader>
 	<namiMHeader v-else></namiMHeader>
 
-	<namiRoughCard is="main" class="main web-color-default" :color="store.currentTheme">
+	<namiRoughCard
+		is="main"
+		class="main web-color-default"
+		:color="store.currentTheme"
+		:style="{
+			width: `min(${store.pageConfig.inlineSize.minPx}px, ${
+				store.pageConfig.inlineSize.percentage * 100
+			}%)`
+		}"
+	>
 		<section ref="contentRef" class="content">
 			<RouterView />
 			<namiTextAutoScroll v-if="store.pageConfig.showContentTip" class="tip" />
@@ -36,7 +45,13 @@
 
 	<namiFooter></namiFooter>
 
-	<kanbanarea v-if="live2dShowed && !store.isSmallScreen" ref="live2d">
+	<kanbanarea
+		v-if="store.pageConfig.showHomeLive2d && live2dShowed && !store.isSmallScreen"
+		ref="live2d"
+		:style="{
+			bottom: store.pageConfig.showHomeMusicController ? '65px' : '8px'
+		}"
+	>
 		<template #icon>
 			<namiIcon
 				:ref="appendIcon"
@@ -97,11 +112,13 @@
 		</template>
 	</kanbanarea>
 
-	<namiAplayer></namiAplayer>
+	<namiAplayer v-if="store.pageConfig.showHomeMusicController"></namiAplayer>
+
+	<myScrollTop :scrollY="y" @click="() => (y = 0)" />
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch, nextTick, provide } from "vue";
+import { ref, onMounted, watch, nextTick, provide, watchEffect } from "vue";
 import kanbanarea from "@/components/live2d/kanbanarea.vue";
 import namiAplayer from "@/components/aplayer/aplayer.vue";
 import namiHeader from "@/components/page/header/header.vue";
@@ -109,12 +126,13 @@ import namiMHeader from "@/components/page/header/m-header.vue";
 import namiFooter from "@/components/page/footer/footer.vue";
 import namiNav from "./components/nav.vue";
 import namiTextAutoScroll from "@/components/textAutoScroll/index.vue";
+import myScrollTop from "./components/scroll.vue";
 import { verifyMasterUid } from "@/api/blog/verify";
 import { useRouter, useRoute } from "vue-router";
 import { useStore } from "@/stores/index";
 import type { XttTooltipElement } from "xtt-ui/index.d.ts";
 import { bgUrl } from "@/utils/webBG";
-import { useElementSize } from "@vueuse/core";
+import { useElementSize, useScroll } from "@vueuse/core";
 
 const store = useStore();
 const router = useRouter();
@@ -122,6 +140,8 @@ const route = useRoute();
 
 const contentRef = ref<HTMLElement | null>(null);
 const { height } = useElementSize(contentRef);
+
+const { y } = useScroll(contentRef, { behavior: "smooth" });
 
 const live2d = ref<InstanceType<typeof kanbanarea>>();
 const live2dShowed = ref(true);
@@ -192,7 +212,6 @@ watch(
 
 <style scoped>
 .main {
-	width: min(1200px, 90%);
 	height: calc(100vh - 114px);
 	margin: 8px auto;
 	border: 1px solid transparent;

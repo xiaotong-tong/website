@@ -22,6 +22,25 @@
 				</n-switch>
 			</label>
 		</div>
+		<div class="item">
+			<label>
+				<span>最大宽度占浏览器的百分比：</span>
+				<NSlider
+					v-model:value="store.pageConfig.inlineSize.percentage"
+					:min="0"
+					:max="1"
+					:step="0.01"
+				/>
+			</label>
+			<label>
+				<span>最小像素宽度：</span>
+				<NInputNumber
+					v-model:value="store.pageConfig.inlineSize.minPx"
+					size="small"
+					:min="300"
+				/>
+			</label>
+		</div>
 		<namiRoughLine class="hr" :color="store.currentTheme"></namiRoughLine>
 		<MyChangeBG />
 		<namiRoughLine class="hr" :color="store.currentTheme"></namiRoughLine>
@@ -29,6 +48,18 @@
 			<label>
 				<span>是否显示左下角内容提示：</span>
 				<n-switch v-model:value="store.pageConfig.showContentTip" />
+			</label>
+		</div>
+		<div class="item">
+			<label>
+				<span>是否显示左下角 live2d：</span>
+				<n-switch v-model:value="store.pageConfig.showHomeLive2d" />
+			</label>
+		</div>
+		<div class="item">
+			<label>
+				<span>是否显示左下角音乐控制器：</span>
+				<n-switch v-model:value="store.pageConfig.showHomeMusicController" />
 			</label>
 		</div>
 		<namiRoughLine class="hr" :color="store.currentTheme"></namiRoughLine>
@@ -72,7 +103,7 @@ import MyChangeBG from "./components/bg.vue";
 import { useStore } from "@/stores/index";
 import { useI18nStore } from "@/stores/i18n";
 import { useI18n } from "vue-i18n";
-import { NSwitch, NColorPicker, NButton } from "naive-ui";
+import { NSwitch, NColorPicker, NButton, NSlider, NInputNumber } from "naive-ui";
 import MyCache from "./components/cache.vue";
 
 const { t } = useI18n();

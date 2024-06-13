@@ -1,5 +1,5 @@
 <template>
-	<hBanner wrapperTargetName="h1" class="text-center">Tools</hBanner>
+	<hBanner wrapperTargetName="h1">Tools</hBanner>
 	<xtt-markdown :dark="store.isDark ? '' : undefined">{{
 		i18nStore.lang === "ja" ? jaLinkContent : linkContent
 	}}</xtt-markdown>
