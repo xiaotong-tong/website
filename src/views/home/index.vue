@@ -118,7 +118,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch, nextTick, provide, watchEffect } from "vue";
+import { ref, onMounted, watch, nextTick, provide } from "vue";
 import kanbanarea from "@/components/live2d/kanbanarea.vue";
 import namiAplayer from "@/components/aplayer/aplayer.vue";
 import namiHeader from "@/components/page/header/header.vue";

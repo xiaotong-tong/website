@@ -10,7 +10,7 @@
 			</nami-link>
 		</div>
 		<div class="jp-section">
-			<div class="jp-title">日本語勉強</div>
+			<hBanner>日本語勉強</hBanner>
 			<div class="jp-content">
 				<div>
 					<div>単語</div>
@@ -44,6 +44,7 @@
 <script setup lang="ts">
 import { useI18nStore } from "@/stores/i18n";
 import myPhotosArea from "./components/photos.vue";
+import { hBanner } from "@c/index";
 const i18nStore = useI18nStore();
 </script>
 
@@ -59,9 +60,7 @@ const i18nStore = useI18nStore();
 	margin-inline: 8px;
 	margin-block-start: 32px;
 }
-.jp-title {
-	margin-block: 16px 8px;
-}
+
 .jp-content {
 	padding-inline-start: 8px;
 }

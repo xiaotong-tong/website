@@ -14,21 +14,42 @@
 			type="textarea"
 			placeholder="日本語を入力してください"
 		/>
-		<NButton @click="transform" :color="store.currentTheme">{{
-			i18nStore.lang === "ja" ? "変更する" : "转换"
-		}}</NButton>
-		<xtt-button
-			:style="{
-				marginInlineStart: '16px'
-			}"
-			@click="copy"
-			type="primary"
-			v-if="isSupported && isParsed"
-		>
-			<span v-if="!copied">{{ i18nStore.lang === "ja" ? "コピー" : "复制" }}</span>
-			<span v-else>{{ i18nStore.lang === "ja" ? "コピーしました" : "复制成功" }}</span>
-		</xtt-button>
+		<div style="display: flex">
+			<NButton @click="transform" :color="store.currentTheme">{{
+				i18nStore.lang === "ja" ? "変更する" : "转换"
+			}}</NButton>
+			<xtt-button
+				:style="{
+					marginInlineStart: '16px'
+				}"
+				@click="copy"
+				type="primary"
+				v-if="isSupported && isParsed"
+			>
+				<span v-if="!copied">{{ i18nStore.lang === "ja" ? "コピー" : "复制" }}</span>
+				<span v-else>{{ i18nStore.lang === "ja" ? "コピーしました" : "复制成功" }}</span>
+			</xtt-button>
+			<NButton
+				v-if="kanaHistory.size"
+				:style="{ marginInline: 'auto 8px' }"
+				:color="store.currentTheme"
+				@click="kanaHistory.clear()"
+				>清除缓存</NButton
+			>
+		</div>
 		<div class="ruby-text" v-html="rubyText"></div>
+
+		<div class="history" v-if="kanaHistory.size">
+			<hBanner wrapperTargetName="h3" class="text-center">{{
+				i18nStore.lang === "ja" ? "履歴" : "历史"
+			}}</hBanner>
+			<div class="history-content">
+				<div v-for="[key, value] in kanaHistory" :key="key" class="history-item">
+					<div>{{ formatDate(key, "yyyy-MM-DD HH:mm:ss") }}</div>
+					<div v-html="value"></div>
+				</div>
+			</div>
+		</div>
 	</section>
 
 	<Teleport to="head">
@@ -42,9 +63,10 @@ import { NInput, NButton } from "naive-ui";
 import { toKana } from "@/api/something/kana";
 import { useI18nStore } from "@/stores/i18n";
 import confetti from "canvas-confetti";
-import { useClipboard } from "@vueuse/core";
+import { useClipboard, useLocalStorage } from "@vueuse/core";
 import { useStore } from "@/stores";
 import { hBanner } from "@c/index";
+import { formatDate } from "xtt-utils";
 
 const { copy: useCopy, isSupported, copied } = useClipboard();
 
@@ -55,12 +77,16 @@ const rubyText = ref("");
 const value = ref("");
 const isParsed = ref(false);
 
+const kanaHistory = useLocalStorage("kana_history", new Map<number, string>());
+
 const transform = async () => {
 	if (!value.value) {
 		return;
 	}
 	rubyText.value = await toKana(value.value);
 	isParsed.value = true;
+
+	kanaHistory.value.set(Date.now(), rubyText.value);
 };
 
 const copy = async () => {
@@ -84,5 +110,17 @@ const copy = async () => {
 	margin-block-start: 16px;
 	line-height: 2.5;
 	letter-spacing: 2px;
+}
+.history-content {
+	display: flex;
+	flex-direction: column-reverse;
+	row-gap: 8px;
+}
+.history-item {
+	display: flex;
+}
+.history-item > div:first-child {
+	margin-inline-end: 16px;
+	margin-block-start: 4px;
 }
 </style>

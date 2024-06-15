@@ -24,8 +24,6 @@ const emits = defineEmits(["click"]);
 const scrollRef = ref<HTMLElement | null>(null);
 
 watchEffect(() => {
-	console.log(props.scrollY);
-
 	if (props.scrollY > 10) {
 		const scrollEl = scrollRef.value;
 
