@@ -1,5 +1,8 @@
+import type { Ref } from "vue";
+import { computed, unref, watch } from "vue";
 import confetti from "canvas-confetti";
 import { random } from "xtt-utils";
+import { useGamepad, mapGamepadToXbox360Controller } from "@vueuse/core";
 
 const keyCodeArr = [
 	"ArrowUp",
@@ -71,3 +74,91 @@ function joke() {
 		count = 0;
 	}
 }
+
+let cachePadInput: string[] = [];
+
+const { gamepads, resume, onDisconnected } = useGamepad();
+
+// standard 标准手柄映射
+const gamepad = computed(() => unref(gamepads).find((g) => g.mapping === "standard"));
+
+resume();
+
+const controller = mapGamepadToXbox360Controller(gamepad as Ref<Gamepad>);
+
+const pressed = () => {
+	let willSetValue: string[] = [];
+	if (controller.value?.buttons.a.pressed) {
+		if (cachePadInput.length === 9) {
+			end = Date.now() + 10 * 1000;
+			joke();
+		} else {
+			willSetValue = [];
+		}
+	} else if (controller.value?.buttons.b.pressed) {
+		if (cachePadInput.length === 8) {
+			willSetValue = [...cachePadInput, "B"];
+		} else {
+			willSetValue = [];
+		}
+	} else if (controller.value?.buttons.x.pressed) {
+		willSetValue = [];
+	} else if (controller.value?.buttons.y.pressed) {
+		willSetValue = [];
+	} else if (controller.value?.dpad.up.pressed) {
+		if (cachePadInput.length === 1) {
+			willSetValue = [...cachePadInput, "ArrowUp"];
+		} else {
+			willSetValue = ["ArrowUp"];
+		}
+	} else if (controller.value?.dpad.down.pressed) {
+		if (cachePadInput.length === 2 || cachePadInput.length === 3) {
+			willSetValue = [...cachePadInput, "ArrowDown"];
+		} else {
+			willSetValue = [];
+		}
+	} else if (controller.value?.dpad.left.pressed) {
+		if (cachePadInput.length === 4 || cachePadInput.length === 6) {
+			willSetValue = [...cachePadInput, "ArrowLeft"];
+		} else {
+			willSetValue = [];
+		}
+	} else if (controller.value?.dpad.right.pressed) {
+		if (cachePadInput.length === 5 || cachePadInput.length === 7) {
+			willSetValue = [...cachePadInput, "ArrowRight"];
+		} else {
+			willSetValue = [];
+		}
+	} else {
+		willSetValue = [];
+	}
+
+	return function () {
+		cachePadInput = willSetValue;
+	};
+};
+
+let callback = Function.prototype;
+watch(controller, () => {
+	if (
+		[
+			controller.value?.buttons.a.pressed,
+			controller.value?.buttons.b.pressed,
+			controller.value?.buttons.x.pressed,
+			controller.value?.buttons.y.pressed,
+			controller.value?.dpad.up.pressed,
+			controller.value?.dpad.down.pressed,
+			controller.value?.dpad.left.pressed,
+			controller.value?.dpad.right.pressed
+		].some((item) => item)
+	) {
+		callback = pressed();
+	} else {
+		callback?.();
+		callback = Function.prototype;
+	}
+});
+
+onDisconnected(() => {
+	cachePadInput.length = 0;
+});
