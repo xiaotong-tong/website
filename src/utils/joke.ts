@@ -1,4 +1,3 @@
-import type { Ref } from "vue";
 import { computed, unref, watch } from "vue";
 import confetti from "canvas-confetti";
 import { random } from "xtt-utils";
@@ -84,7 +83,7 @@ const gamepad = computed(() => unref(gamepads).find((g) => g.mapping === "standa
 
 resume();
 
-const controller = mapGamepadToXbox360Controller(gamepad as Ref<Gamepad>);
+const controller = mapGamepadToXbox360Controller(gamepad as unknown as any);
 
 const pressed = () => {
 	let willSetValue: string[] = [];
