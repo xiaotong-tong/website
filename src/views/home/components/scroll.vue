@@ -1,19 +1,31 @@
 <template>
 	<Teleport to="body">
-		<div class="scrollContainer" ref="scrollRef">
-			<div class="line"></div>
+		<div
+			class="scrollContainer"
+			ref="scrollRef"
+			:style="{
+				'--page-height': -1 * height + 'px'
+			}"
+			draggable="false"
+		>
+			<div class="line" aria-hidden="false"></div>
 			<img
 				@click="emits('click')"
 				class="img"
 				src="https://image.xtt.moe/local/images/2024/06/13/7cae5f3fc4342fdc.md.png"
+				draggable="false"
+				alt="scroll to top"
+				role="button"
+				aria-label="scroll to top"
 			/>
 		</div>
 	</Teleport>
 </template>
 
 <script setup lang="ts">
-import { ref, watchEffect } from "vue";
+import { ref, watch } from "vue";
 import gsap from "gsap";
+import { useWindowSize } from "@vueuse/core";
 
 const props = defineProps<{
 	scrollY: number;
@@ -22,30 +34,18 @@ const props = defineProps<{
 const emits = defineEmits(["click"]);
 
 const scrollRef = ref<HTMLElement | null>(null);
+const { height } = useWindowSize();
 
-watchEffect(() => {
-	if (props.scrollY > 10) {
-		const scrollEl = scrollRef.value;
-
-		if (scrollEl) {
-			gsap.to(scrollEl, {
-				y: 0,
-				yoyo: true,
-				ease: "power1.inOut"
-			});
-		}
-	} else {
-		const scrollEl = scrollRef.value;
-
-		if (scrollEl) {
-			gsap.to(scrollEl, {
-				y: -1000,
-				yoyo: true,
-				ease: "power1.inOut"
-			});
-		}
+watch(
+	() => props.scrollY,
+	() => {
+		gsap.to(scrollRef.value, {
+			y: props.scrollY > 10 ? 0 : -1 * height.value,
+			yoyo: true,
+			ease: "power1.inOut"
+		});
 	}
-});
+);
 </script>
 
 <style scoped>
@@ -56,7 +56,7 @@ watchEffect(() => {
 	position: fixed;
 	inset-inline-end: 8px;
 	inset-block-end: 8px;
-	transform: translateY(-1000px);
+	transform: translateY(var(--page-height, -1000px));
 }
 
 .line {

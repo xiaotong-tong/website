@@ -15,6 +15,7 @@
 				:color="store.currentTheme"
 				text
 				@click="showModal = true"
+				v-if="store.loginUid"
 				>新增</NButton
 			>
 		</div>
