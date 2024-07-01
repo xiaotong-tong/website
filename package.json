@@ -29,6 +29,8 @@
 		"mousesnow": "^0.0.3",
 		"pinia": "^2.0.36",
 		"pinyin-pro": "^3.19.6",
+		"pixi-live2d-display": "^0.4.0",
+		"pixi.js": "^6.5.10",
 		"roughjs": "^4.6.6",
 		"three": "^0.158.0",
 		"vue": "^3.4.21",

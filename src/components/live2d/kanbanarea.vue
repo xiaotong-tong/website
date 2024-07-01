@@ -40,7 +40,7 @@ const loadModel = (resourcePath: string, modelNames: string[]) => {
 onMounted(() => {
 	// live2d 相关的文件过大，在首页加载会影响首页加载速度，所以在首页加载完成后再加载 live2d 相关文件
 	const live2dCubismcoreScript = document.createElement("script");
-	live2dCubismcoreScript.src = "/live2d/js/live2dcubismcore.min.js";
+	live2dCubismcoreScript.src = "https://file.xtt.moe/local/live2dcubismcore.min.js";
 	live2dCubismcoreScript.async = true;
 
 	live2dCubismcoreScript.onload = () => {
@@ -49,7 +49,7 @@ onMounted(() => {
 		live2dScript.async = true;
 
 		live2dScript.onload = () => {
-			loadModel("/live2d/models/", ["nami"]);
+			loadModel("https://file.xtt.moe/local/", ["nami"]);
 
 			live2dLoaded.value = true;
 		};
