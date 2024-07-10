@@ -12,12 +12,17 @@
 			</p>
 		</header>
 		<namiRoughLine :color="store.currentTheme"></namiRoughLine>
-		<div class="poetry-wrap" v-if="poetry">
-			<h4>{{ poetry.title }}</h4>
-			<p v-for="item in poetry.paragraphs">
-				<span>{{ item }}</span>
-			</p>
+		<div class="poetry-wrap">
+			<div class="hefu" ref="hefuRef"></div>
+			<div v-if="curData" class="self-poetry" ref="selfPoetryRef">
+				<h4>{{ curData.title }}</h4>
+				<span>{{ curData.author }}</span>
+				<p v-for="item in curData.paragraphs">
+					<span>{{ item }}</span>
+				</p>
+			</div>
 		</div>
+
 		<div class="quote-wrap" v-if="quote">
 			<p>每日日语一百句 <span v-if="quoteOverflow" class="quote-overflow">兼容</span></p>
 			<namiRoughLine :color="store.currentTheme"></namiRoughLine>
@@ -42,10 +47,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import type { IGetDaysPoetry, IGetDaysQuotes } from "../home.api";
-import { getDaysQuotes, getDaysPoetry } from "../home.api";
+import { ref, watch, nextTick } from "vue";
+import type { IGetDaysQuotes } from "../home.api";
+import { getDaysQuotes } from "../home.api";
+import { useFetch } from "@vueuse/core";
 import { dayjs } from "@/utils/dateUtil";
+import { getOne } from "@/utils/array";
+import Typed from "typed.js";
 import { hBanner } from "@c/index";
 import { useRouteHash } from "@vueuse/router";
 import { useStore } from "@/stores";
@@ -60,20 +68,27 @@ const originDay = dayjs("2024-04-14");
 const nowDay = dayjs();
 
 const quote = ref<IGetDaysQuotes>();
-const poetry = ref<IGetDaysPoetry>();
 const quoteLoading = ref(true);
 const quoteOverflow = ref(false);
-const poetryLoading = ref(true);
 
 const key = nowDay.diff(originDay, "day");
+
+interface Item {
+	key: number;
+	title: string;
+	author: string;
+	paragraphs: string[];
+}
+const { data, isFinished } = useFetch("https://api.xtt.moe/days/poetry/self").json<Item[]>();
 
 getDaysQuotes(key)
 	.then((res) => {
 		quote.value = res;
 		quoteLoading.value = false;
 
-		if (!poetryLoading.value) {
+		if (isFinished.value) {
 			loaded.value = true;
+			hefuTyped();
 		}
 	})
 	.catch((error) => {
@@ -84,21 +99,47 @@ getDaysQuotes(key)
 				quoteLoading.value = false;
 				quoteOverflow.value = true;
 
-				if (!poetryLoading.value) {
+				if (isFinished.value) {
 					loaded.value = true;
+					hefuTyped();
 				}
 			});
 		}
 	});
 
-getDaysPoetry(key).then((res) => {
-	poetry.value = res;
-	poetryLoading.value = false;
+let curData = ref<Item | null>(getOne(data));
 
-	if (!quoteLoading.value) {
+watch(data, () => {
+	curData.value = getOne(data);
+});
+watch(isFinished, () => {
+	if (quoteLoading.value === false) {
 		loaded.value = true;
+		hefuTyped();
 	}
 });
+
+const hefuRef = ref<HTMLElement | null>(null);
+function hefuTyped() {
+	nextTick(() => {
+		if (!hefuRef.value) return;
+		new Typed(hefuRef.value, {
+			strings: [
+				`愿君之财 盈若银河之星斗 得如长江之奔流<br />
+				愿君之气运 鸿于钟山之巅 漫于北冥之边<br />
+				愿君之居所 犹如雀台金谷 又似阆苑紫府<br />
+				愿君所穿之衣 皆具绫罗霓裳 都佩流苏凤簪<br />
+				愿君堂中双亲 寿逾慧照彭祖 龄越逆流篙舟<br />
+				愿君房下儿孙 志若鸿鹄 勇压蚣蝮 慧胜白泽<br />
+				愿郎君当作 不逊绝影赤兔 可比飞电的卢<br />
+				愿佳人如是 灵韫过处 不敢言淑 茗姬若生 羞于称文<br />
+				愿君所爱之人 青丝白首俱携行 宁舍千金要尔君`
+			],
+			typeSpeed: 50,
+			showCursor: false
+		});
+	});
+}
 </script>
 
 <style scoped>
@@ -121,15 +162,27 @@ getDaysPoetry(key).then((res) => {
 .poetry-wrap {
 	flex: 1;
 	overflow: auto;
-	max-inline-size: 50%;
+	inline-size: 100%;
 	max-block-size: calc(100% - 300px);
 	align-self: flex-start;
-	margin-inline-start: 280px;
-	text-align: center;
+	padding-inline-start: 64px;
+	box-sizing: border-box;
+
+	display: flex;
+	justify-content: space-between;
 }
 
-.poetry-wrap > :is(h4, p) {
-	flex: 0 0 100%;
+.hefu {
+	margin-block-start: 16px;
+	line-height: 2;
+}
+
+/* 竖直方向书写 */
+.self-poetry {
+	writing-mode: vertical-rl;
+	text-align: center;
+	/* 增加一些字符间距 */
+	letter-spacing: 0.15em;
 }
 
 .quote-wrap {
@@ -150,6 +203,8 @@ getDaysPoetry(key).then((res) => {
 	position: absolute;
 	inset-block-start: 100px;
 	width: 264px;
+	z-index: -2;
+	opacity: 0.2;
 }
 .character {
 	display: block;
@@ -173,12 +228,7 @@ getDaysPoetry(key).then((res) => {
 	margin-block: 0.5em;
 }
 
-.small-screen .character-wrap {
-	z-index: -2;
-	opacity: 0.3;
-}
 .small-screen .poetry-wrap {
-	margin-inline: 0;
 	inline-size: 100%;
 	max-inline-size: 100%;
 	max-block-size: none;
