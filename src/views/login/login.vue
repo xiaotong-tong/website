@@ -1,20 +1,60 @@
 <template>
 	<section class="login-wrap">
-		<p>请刷 NFC 卡片登录</p>
+		<label class="text-[#e78190] flex mb-2 mt-4 w-[460px] items-center">
+			<namiCIcon :size="24" icon="heart"></namiCIcon>
+			<span class="flex-none ms-1">秘密口令</span>
 
-		<xtt-button v-if="store.loginUid" type="primary" @click="exitLogin"> 退出登录 </xtt-button>
+			<NInput
+				class="ms-4 bg-transparent"
+				v-model:value="keyInput"
+				placeholder="请输入秘密口令"
+				:clearable="true"
+				:maxlength="36"
+				autofocus
+				:style="{
+					'--n-border-focus': '#e78190',
+					'--n-border-hover': '#e78190',
+					'--n-caret-color': '#e78190',
+					'--n-box-shadow-focus': '0 0 0 2px #e7819044'
+				}"
+			/>
+
+			<NButton class="ms-4" color="#e78190" ghost @click="login"> 提交 </NButton>
+		</label>
+
+		<p v-if="nfcSupported">请刷 NFC 卡片登录</p>
+
+		<NButton v-if="store.loginUid" color="#e78190" @click="exitLogin"> 退出登录 </NButton>
 	</section>
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import { verifyMasterUid } from "@/api/blog/verify";
 import { useStore } from "@/stores/index";
 import { useRouter } from "vue-router";
+import { NButton, NInput } from "naive-ui";
 
 const store = useStore();
 const router = useRouter();
 
-if ("NDEFReader" in window) {
+const keyInput = ref("");
+
+async function login() {
+	const data = await verifyMasterUid(keyInput.value);
+
+	if (data === "验证成功") {
+		store.loginUid = keyInput.value;
+		localStorage.setItem("loginUid", keyInput.value);
+		keyInput.value = "";
+	} else {
+		alert("口令错误");
+	}
+}
+
+const nfcSupported = "NDEFReader" in window;
+
+if (nfcSupported) {
 	//  通过刷 NFC 卡片登录
 	const reader = new window.NDEFReader();
 	reader
@@ -63,7 +103,7 @@ if ("NDEFReader" in window) {
 			alert("Error reading NFC card.");
 		});
 } else {
-	alert("Web NFC is not supported.");
+	console.log("Web NFC is not supported.");
 }
 
 const exitLogin = () => {

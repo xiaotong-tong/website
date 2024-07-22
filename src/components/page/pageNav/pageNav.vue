@@ -82,12 +82,8 @@
 				@mouseenter="mouseenterHandler"
 				@mouseleave="mouseleaveHandler"
 			>
-				<!-- <namiLink class="link" inline-block to="/archives">
-					{{ i18nStore.messages.main.nav.archives }}
-				</namiLink> -->
-
-				<namiLink class="link" inline-block to="/photos">
-					{{ i18nStore.messages.main.nav.photo }}
+				<namiLink class="link" inline-block to="/login">
+					{{ i18nStore.messages.main.nav.login }}
 				</namiLink>
 			</li>
 			<li

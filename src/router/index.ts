@@ -178,6 +178,18 @@ let routes: Route[] = [
 					},
 					theme: 6
 				}
+			},
+			{
+				path: "/login",
+				name: "login",
+				component: () => import("../views/login/login.vue"),
+				meta: {
+					title: {
+						zh: "登录",
+						ja: "ログイン"
+					},
+					theme: 0
+				}
 			}
 		]
 	},
@@ -186,11 +198,6 @@ let routes: Route[] = [
 		name: "blog",
 		component: () => import("../views/home.vue"),
 		children: [
-			{
-				path: "/login",
-				name: "login",
-				component: () => import("../views/login/login.vue")
-			},
 			{
 				path: "/editor/add",
 				name: "blogEditorAdd",
