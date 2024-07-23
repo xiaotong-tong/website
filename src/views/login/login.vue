@@ -1,6 +1,6 @@
 <template>
 	<section class="login-wrap">
-		<label class="text-[#e78190] flex mb-2 mt-4 w-[460px] items-center">
+		<label v-if="!store.loginUid" class="text-[#e78190] flex mb-2 mt-4 w-[500px] items-center">
 			<namiCIcon :size="24" icon="heart"></namiCIcon>
 			<span class="flex-none ms-1">秘密口令</span>
 
@@ -22,9 +22,22 @@
 			<NButton class="ms-4" color="#e78190" ghost @click="login"> 提交 </NButton>
 		</label>
 
-		<p v-if="nfcSupported">请刷 NFC 卡片登录</p>
+		<div v-else class="text-[#e78190] flex mb-2 mt-4 items-center">
+			<namiCIcon :size="24" icon="heart"></namiCIcon>
+			<span class="flex-none ms-1">您已登录，点击此处</span>
+			<NButton class="ms-4" color="#e78190" ghost @click="exitLogin"> 退出登录 </NButton>
+		</div>
 
-		<NButton v-if="store.loginUid" color="#e78190" @click="exitLogin"> 退出登录 </NButton>
+		<div class="mt-4">
+			<hBanner wrapperTargetName="h4">秘密口令获取指南</hBanner>
+			<p>
+				1. 添加 QQ 群 <a href="https://qm.qq.com/q/HQIjivJg66" target="_blank">754923572</a>
+			</p>
+			<p>2. 在群内发送 “登录”，或私聊群内的 星川涟 发送 “登录”</p>
+			<p>3. 记录星川涟发给你的登录口令</p>
+		</div>
+
+		<p v-if="nfcSupported">请刷 NFC 卡片登录</p>
 	</section>
 </template>
 
@@ -34,6 +47,7 @@ import { verifyMasterUid } from "@/api/blog/verify";
 import { useStore } from "@/stores/index";
 import { useRouter } from "vue-router";
 import { NButton, NInput } from "naive-ui";
+import { hBanner } from "@c/index";
 
 const store = useStore();
 const router = useRouter();
