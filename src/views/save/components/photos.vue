@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<div style="position: relative">
-			<nami-link to="/photos" class="link" type="primary">
+		<div class="pos-relative">
+			<nami-link to="/photos" type="primary">
 				<hBanner>{{ i18nStore.lang === "ja" ? "写真" : "图片" }}</hBanner>
 			</nami-link>
 
@@ -19,17 +19,28 @@
 				>新增</NButton
 			>
 		</div>
-		<div class="photo-wrap">
-			<div class="img-wrap" v-for="item in imageList" :key="item.id">
-				<img class="img" :src="item.url" loading="lazy" />
+		<div class="flex h-[150px] gap-x-2 overflow-x-auto pe-1">
+			<div class="flex-none" v-for="item in imageList" :key="item.id">
+				<img class="h-full w-auto" :src="item.url" loading="lazy" />
 			</div>
 		</div>
 
 		<NModal class="web-color-default" v-model:show="showModal">
-			<NCard title="新增图片" style="width: 500px; height: 200px">
+			<NCard title="新增图片" class="w-[500px] h-[300px]">
 				<div>
 					图片 url:
 					<NInput v-model:value="url" />
+				</div>
+				<NUpload
+					class="my-4"
+					accept="image/*"
+					@change="uploadImage"
+					:show-file-list="false"
+				>
+					<NButton>上传图片</NButton>
+				</NUpload>
+				<div>
+					<NCheckbox v-model:checked="botCanUse"> bot 能否使用 </NCheckbox>
 				</div>
 				<template #footer>
 					<NButton @click="showModal = false">取消</NButton>
@@ -45,7 +56,9 @@ import { ref } from "vue";
 import { useImageList } from "@/utils/photos";
 import { useI18nStore } from "@/stores/i18n";
 import { hBanner } from "@c/index";
-import { NButton, NModal, NInput, NCard } from "naive-ui";
+import type { UploadOnChange } from "naive-ui";
+import { NButton, NModal, NInput, NCard, NCheckbox, NUpload } from "naive-ui";
+import { uploadLocalImage } from "@/api/image/image";
 import { useStore } from "@/stores";
 const i18nStore = useI18nStore();
 
@@ -55,24 +68,27 @@ const { list: imageList, addImage } = useImageList(true);
 
 const showModal = ref(false);
 const url = ref("https://image.xtt.moe/local/images/");
+const botCanUse = ref(true);
 
 function handlerSubmit() {
-	addImage(url);
+	addImage(url, botCanUse);
 	showModal.value = false;
+}
+
+async function uploadImage(option: Parameters<UploadOnChange>[0]) {
+	if (!option.file) return;
+
+	const fd = new FormData();
+	fd.append("source", option.file.file!);
+
+	const res = await uploadLocalImage(fd);
+
+	if (res.status === 200) {
+		let resUrl = res.data.image.url;
+		resUrl = resUrl.replace("https://image.xtt.moe/", "https://image.xtt.moe/local/");
+		url.value = resUrl;
+	}
 }
 </script>
 
-<style scoped>
-.photo-wrap {
-	display: flex;
-	flex-wrap: no-wrap;
-	height: 150px;
-	column-gap: 8px;
-	overflow-x: auto;
-	padding-block-end: 4px;
-}
-
-.img {
-	height: 100%;
-}
-</style>
+<style scoped></style>

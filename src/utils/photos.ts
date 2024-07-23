@@ -41,7 +41,7 @@ export const useImageList = (shuffled?: boolean) => {
 	};
 };
 
-export async function addImage(url: MaybeRef<string>) {
+export async function addImage(url: MaybeRef<string>, botUse?: MaybeRef<boolean>) {
 	url = unref(url);
 
 	if (!url) return;
@@ -51,7 +51,7 @@ export async function addImage(url: MaybeRef<string>) {
 		headers: {
 			"Content-Type": "application/json"
 		},
-		body: JSON.stringify({ url })
+		body: JSON.stringify({ url, bot: Boolean(unref(botUse)) })
 	})
 		.post()
 		.json<Image>();
