@@ -11,7 +11,7 @@
 
 <script lang="ts" setup>
 import type { MaybeRef } from "vue";
-import { watchEffect, ref, unref, watch, nextTick } from "vue";
+import { watchEffect, ref, unref, watch, nextTick, onUnmounted } from "vue";
 import { useI18nStore } from "@/stores/i18n";
 import { gsap } from "gsap";
 
@@ -79,6 +79,11 @@ watchEffect(() => {
 			);
 		});
 	}, unref(props.interval));
+});
+
+onUnmounted(() => {
+	// 卸载时清除定时器
+	if (timer) clearInterval(timer);
 });
 
 const i18nStore = useI18nStore();

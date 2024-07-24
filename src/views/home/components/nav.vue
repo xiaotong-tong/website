@@ -173,17 +173,39 @@ const mouseenterHandler = (e: MouseEvent, item: List) => {
 	);
 };
 
+const keyMap = {
+	a: {
+		unit: 0,
+		key: "c3"
+	},
+	s: {
+		unit: 1,
+		key: "d3"
+	},
+	d: {
+		unit: 2,
+		key: "e3"
+	},
+	f: {
+		unit: 3,
+		key: "f3"
+	},
+	g: {
+		unit: 4,
+		key: "g3"
+	},
+	h: {
+		unit: 5,
+		key: "a3"
+	},
+	j: {
+		unit: 6,
+		key: "b3"
+	}
+} as const;
+
 const keydownHandler = (e: KeyboardEvent) => {
 	const key = e.key;
-	const keyMap = {
-		a: "c3",
-		s: "d3",
-		d: "e3",
-		f: "f3",
-		g: "g3",
-		h: "a3",
-		j: "b3"
-	};
 
 	const keyName = keyMap[key as keyof typeof keyMap];
 
@@ -191,14 +213,41 @@ const keydownHandler = (e: KeyboardEvent) => {
 		return;
 	}
 
-	const keyEl = document.querySelector(`.piano-key[data-key="${keyName}"]`);
-	keyEl?.classList.add("active");
+	const keyEl = listRef.value[keyName.unit];
 
-	playPianoAudio(keyName as PianoKey);
+	const tween = gsap.fromTo(
+		keyEl.querySelector(".bg"),
+		{
+			yPercent: 0
+		},
+		{
+			yPercent: -90,
+			duration: 0.3,
+			ease: "power2.out",
+			onComplete: function () {
+				tween.reverse(); // 在动画完成时调用 reverse 方法
+			}
+		}
+	);
 
-	keyEl?.addEventListener("transitionend", () => {
-		keyEl?.classList.remove("active");
-	});
+	const colorTW = gsap.fromTo(
+		keyEl.querySelector(".link"),
+		{
+			"--temp-start-num": "10%"
+		},
+		{
+			"--temp-start-num": "90%",
+			duration: 0.3,
+			ease: "power2.out",
+			onComplete: function () {
+				colorTW.reverse(); // 在动画完成时调用 reverse 方法
+			}
+		}
+	);
+
+	tween.play();
+	colorTW.play();
+	playPianoAudio(keyName.key);
 };
 
 const autoPlayPiano = (score: string, speed = 75) => {
@@ -206,7 +255,7 @@ const autoPlayPiano = (score: string, speed = 75) => {
 	const scoreArr = score.split("");
 	let i = 0;
 
-	const keyMap = [undefined, "c3", "d3", "e3", "f3", "g3", "a3", "b3"];
+	const keyMap = [undefined, "c3", "d3", "e3", "f3", "g3", "a3", "b3"] as const;
 
 	const loop = (unit: number | "-") => {
 		if (unit === 0 || unit === "-") {
@@ -253,7 +302,7 @@ const autoPlayPiano = (score: string, speed = 75) => {
 		tween.play();
 		colorTW.play();
 
-		playPianoAudio(key as PianoKey);
+		playPianoAudio(key);
 	};
 
 	const timer = setInterval(() => {
