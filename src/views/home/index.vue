@@ -70,14 +70,6 @@
 				@mouseenter="live2d?.showChatBox('想聊聊天吗？', 3000)"
 			></namiIcon>
 			<namiIcon
-				:ref="appendIcon"
-				class="icon"
-				icon="mdiEmailOpenHeartOutline"
-				data-xtt-tooltip="私密服务"
-				@click="verifyLogin"
-				@mouseenter="live2d?.showChatBox('要确认身份吗？', 3000)"
-			></namiIcon>
-			<namiIcon
 				v-if="store.loginUid"
 				:ref="appendIcon"
 				class="icon"
@@ -127,7 +119,6 @@ import namiFooter from "@/components/page/footer/footer.vue";
 import namiNav from "./components/nav.vue";
 import namiTextAutoScroll from "@/components/textAutoScroll/index.vue";
 import myScrollTop from "./components/scroll.vue";
-import { verifyMasterUid } from "@/api/blog/verify";
 import { useRouter, useRoute } from "vue-router";
 import { useStore } from "@/stores/index";
 import type { XttTooltipElement } from "xtt-ui/index.d.ts";
@@ -185,19 +176,6 @@ onMounted(() => {
 	iconTooltip.value?.initTrigger(icons);
 	checkOverflow();
 });
-
-const verifyLogin = async () => {
-	const pw = window.prompt("请输入主人口令");
-	if (pw) {
-		const data = await verifyMasterUid(pw);
-		if (data === "验证成功") {
-			store.loginUid = pw;
-			localStorage.setItem("loginUid", pw);
-		} else {
-			alert("口令错误");
-		}
-	}
-};
 
 // 监听路由变化
 watch(

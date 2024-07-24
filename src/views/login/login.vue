@@ -63,6 +63,8 @@ async function login() {
 		keyInput.value = "";
 	} else {
 		alert("口令错误");
+		store.loginUid = "";
+		localStorage.removeItem("loginUid");
 	}
 }
 

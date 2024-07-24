@@ -1,14 +1,13 @@
 <template>
-	<section class="container" v-if="!loading">
+	<section class="p-2" v-if="!loading">
 		<namiMainCard
-			class="card"
+			class="mb-4"
 			v-for="item in acticleList.showLists"
 			:key="item.id"
 			:info="{ ...item, headerLink: '/article/' + item.id }"
 		/>
 
 		<namiPagination
-			class="pagination"
 			v-if="acticleList.lists?.length"
 			:total="acticleList.lists.length"
 			v-model:currentPage="currentPage"
@@ -16,9 +15,9 @@
 		></namiPagination>
 	</section>
 
-	<section v-else>
+	<template v-else>
 		<namiPageLoading></namiPageLoading>
-	</section>
+	</template>
 
 	<Teleport to="head">
 		<meta name="keywords" content="星川漣,小恸恸,博客,前端,日语" />
@@ -87,16 +86,4 @@ watchEffect(() => {
 });
 </script>
 
-<style scoped>
-.container {
-	padding: 8px;
-}
-
-.card + .card {
-	margin-top: 16px;
-}
-
-.pagination {
-	margin-top: 16px;
-}
-</style>
+<style scoped></style>

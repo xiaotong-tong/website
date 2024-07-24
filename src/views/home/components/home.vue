@@ -1,6 +1,10 @@
 <template>
-	<section v-if="search" class="no-search-content">
-		<img class="img" src="https://image.xtt.moe/images/404.webp" alt="404 Not Found" />
+	<section v-if="search" class="flex flex-col items-center">
+		<img
+			class="max-w-96 mt-8"
+			src="https://image.xtt.moe/images/404.webp"
+			alt="404 Not Found"
+		/>
 		<p>当前页面正在加工中</p>
 	</section>
 	<section class="card" v-else-if="loaded">
@@ -16,8 +20,8 @@
 			<div class="hefu" ref="hefuRef"></div>
 			<div v-if="curData" class="self-poetry" ref="selfPoetryRef">
 				<h4>{{ curData.title }}</h4>
-				<span>{{ curData.author }}</span>
-				<p v-for="item in curData.paragraphs">
+				<span class="inline-block ml-4">{{ curData.author }}</span>
+				<p v-for="item in curData.paragraphs" class="ml-1">
 					<span>{{ item }}</span>
 				</p>
 			</div>
@@ -25,7 +29,7 @@
 
 		<div class="quote-wrap" v-if="quote">
 			<p>每日日语一百句 <span v-if="quoteOverflow" class="quote-overflow">兼容</span></p>
-			<namiRoughLine :color="store.currentTheme"></namiRoughLine>
+			<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
 			<p v-html="quote.parse"></p>
 			<p>
 				{{ quote.chinese }}
@@ -165,7 +169,7 @@ function hefuTyped() {
 	inline-size: 100%;
 	max-block-size: calc(100% - 300px);
 	align-self: flex-start;
-	padding-inline-start: 64px;
+	padding-inline-start: 48px;
 	box-sizing: border-box;
 
 	display: flex;
@@ -209,16 +213,6 @@ function hefuTyped() {
 .character {
 	display: block;
 	width: 100%;
-}
-
-.no-search-content {
-	display: block;
-	text-align: center;
-}
-.img {
-	width: 100%;
-	max-width: 400px;
-	margin-top: 30px;
 }
 
 .small-screen .card {

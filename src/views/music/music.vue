@@ -1,5 +1,5 @@
 <template>
-	<section class="music-wrap">
+	<section class="h-[calc(100%-6px)]">
 		<namiAplayerView></namiAplayerView>
 	</section>
 </template>
@@ -8,9 +8,4 @@
 import namiAplayerView from "@/components/aplayer/aplayer-view.vue";
 </script>
 
-<style scoped>
-.music-wrap {
-	height: 100%;
-	box-sizing: border-box;
-}
-</style>
+<style scoped></style>
