@@ -190,6 +190,18 @@ let routes: Route[] = [
 					},
 					theme: 0
 				}
+			},
+			{
+				path: "/info",
+				name: "info",
+				component: () => import("../views/info/info.vue"),
+				meta: {
+					title: {
+						zh: "信息台",
+						ja: "操纵台"
+					},
+					theme: 5
+				}
 			}
 		]
 	},

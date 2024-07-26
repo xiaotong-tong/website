@@ -93,7 +93,7 @@ const list = ref<List[]>([
 	},
 	{
 		key: "a3",
-		url: "/#about",
+		url: "/info",
 		content: t("main.homeNav.about"),
 		color: store.theme[5]
 	},
