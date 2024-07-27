@@ -1,9 +1,9 @@
 <template>
-	<section class="container">
+	<section>
 		<div class="item">
 			<MyCache></MyCache>
 		</div>
-		<namiRoughLine class="hr" :color="store.currentTheme"></namiRoughLine>
+		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
 		<div class="item">
 			<label>
 				<span><namiIcon icon="mdiThemeLightDark"></namiIcon>切换模式：</span>
@@ -41,9 +41,9 @@
 				/>
 			</label>
 		</div>
-		<namiRoughLine class="hr" :color="store.currentTheme"></namiRoughLine>
+		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
 		<MyChangeBG />
-		<namiRoughLine class="hr" :color="store.currentTheme"></namiRoughLine>
+		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
 		<div class="item">
 			<label>
 				<span>是否显示左下角内容提示：</span>
@@ -62,7 +62,7 @@
 				<n-switch v-model:value="store.pageConfig.showHomeMusicController" />
 			</label>
 		</div>
-		<namiRoughLine class="hr" :color="store.currentTheme"></namiRoughLine>
+		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
 		<div class="item" v-if="!store.isSmallScreen">
 			<label>
 				<span>右侧导航栏键盘音：</span>
@@ -75,7 +75,7 @@
 				<NButton text color="#8bcecb" @click="play">小星星</NButton>
 			</label>
 		</div>
-		<namiRoughLine class="hr" :color="store.currentTheme"></namiRoughLine>
+		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
 		<div class="item">
 			<div>
 				切换颜色
@@ -118,13 +118,7 @@ function play() {
 </script>
 
 <style scoped>
-.container {
-	margin-inline: 8px;
-}
 .item {
 	margin-block-end: 8px;
-}
-.hr {
-	margin-block: 8px;
 }
 </style>

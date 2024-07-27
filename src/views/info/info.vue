@@ -22,7 +22,7 @@
 		<div class="flex">
 			<div class="flex-1">
 				<div class="flex flex-wrap">
-					<div class="w-[50%]"><span>生命：</span><span>85</span></div>
+					<div class="w-[50%]"><span>生命：</span><span>425</span></div>
 					<div class="w-[50%]"><span>攻击：</span><span>36</span></div>
 					<div class="w-[50%]"><span>灵力：</span><span>61</span></div>
 					<div class="w-[50%]"><span>速度：</span><span>40</span></div>
@@ -39,7 +39,7 @@
 						<div>普攻： 我会努力的！</div>
 						<div>
 							吟唱魔法书中的咒文, 对敌方全体造成 3 次 20% 灵力的灵力伤害,
-							每次造成伤害时有 10% 几率使受伤对象陷入沉睡状态, 持续到本回合结束。
+							每次造成伤害时有 10% 几率使目标对象陷入沉睡状态, 持续到本回合结束。
 						</div>
 					</div>
 					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
@@ -48,7 +48,7 @@
 						<div>
 							第 2,5,8 回合 100% 几率释放, 吟唱魔法书中的未知咒文,
 							对自己与敌方全体造成 5 次 30% 灵力的灵力伤害， 每次造成伤害时有 10%
-							几率使受伤对象陷入沉睡状态, 持续到本回合结束。并在释放完成后提升我方全体
+							几率使目标对象陷入沉睡状态, 持续到本回合结束。并在释放完成后提升我方全体
 							20% 技能释放几率, 持续一回合。
 						</div>
 					</div>

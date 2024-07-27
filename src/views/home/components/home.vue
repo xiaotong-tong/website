@@ -19,7 +19,7 @@
 		<div class="poetry-wrap">
 			<div class="hefu" ref="hefuRef"></div>
 			<div v-if="curData" class="self-poetry" ref="selfPoetryRef">
-				<h4>{{ curData.title }}</h4>
+				<h4 class="text-xl font-bold">{{ curData.title }}</h4>
 				<span class="inline-block ml-4">{{ curData.author }}</span>
 				<p v-for="item in curData.paragraphs" class="ml-1">
 					<span>{{ item }}</span>
