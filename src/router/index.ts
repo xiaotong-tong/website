@@ -27,6 +27,11 @@ let routes: Route[] = [
 		component: () => import("../views/ex/pip/index.vue")
 	},
 	{
+		path: "/bot/ruby",
+		name: "botRuby",
+		component: () => import("../views/bot/ruby.vue")
+	},
+	{
 		path: "/",
 		name: "newHome",
 		component: () => import("../views/home/index.vue"),
