@@ -7,19 +7,25 @@
 		<div class="item">
 			<label>
 				<span><namiIcon icon="mdiThemeLightDark"></namiIcon>切换模式：</span>
-				<n-switch v-model:value="store.isDark">
+				<NSwitch v-model:value="store.isDark">
 					<template #checked> {{ t("main.nav.toLightMode") }} </template>
 					<template #unchecked> {{ t("main.nav.toDarkMode") }} </template>
-				</n-switch>
+				</NSwitch>
 			</label>
 		</div>
 		<div class="item">
 			<label>
 				<span><namiIcon icon="mdiTranslate"></namiIcon>切换模式：</span>
-				<n-switch v-model:value="i18nStore.lang" checked-value="ja" unchecked-value="zh">
+				<NSwitch v-model:value="i18nStore.lang" checked-value="ja" unchecked-value="zh">
 					<template #checked> {{ t("main.nav.toZhLang") }} </template>
 					<template #unchecked> {{ t("main.nav.toJaLang") }} </template>
-				</n-switch>
+				</NSwitch>
+			</label>
+		</div>
+		<div class="item">
+			<label>
+				<span>减少动画：</span>
+				<NSwitch v-model:value="store.animeLess"> </NSwitch>
 			</label>
 		</div>
 		<div class="item">

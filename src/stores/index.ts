@@ -3,6 +3,11 @@ import { ref, watch, watchEffect } from "vue";
 import { defineStore } from "pinia";
 import { useLocalStorage, useCssVar } from "@vueuse/core";
 import { initWebBGUrl } from "@/utils/webBG";
+import { useUrlSearchParams } from "@vueuse/core";
+
+const urlSearchParams = useUrlSearchParams("history", {
+	removeNullishValues: true
+});
 
 const defaultSettingConfig = {
 	theme: [
@@ -29,19 +34,20 @@ const defaultSettingConfig = {
 			percentage: 0.9 // 最大宽度占浏览器的百分比
 		}
 	},
-	piano: true // 是否自动播放钢琴声
+	piano: true, // 是否自动播放钢琴声
+	animeLess: false // 是否减少一些不必要的动画
 };
 
 function setDefaultSettingConfig(settings: Ref<typeof defaultSettingConfig>) {
 	// 刷新 localStorage 中的settings
-	if (!settings.value.pageConfig?.inlineSize) {
+	if (settings.value.animeLess === undefined) {
 		settings.value.pageConfig = Object.assign(
 			defaultSettingConfig.pageConfig,
 			settings.value.pageConfig ?? {}
 		);
 	}
-	if (!settings.value.piano) {
-		settings.value.piano = defaultSettingConfig.piano;
+	if (!settings.value.animeLess) {
+		settings.value.animeLess = defaultSettingConfig.animeLess;
 	}
 }
 
@@ -109,6 +115,16 @@ export const useStore = defineStore("main", () => {
 		settings.value.piano = val;
 	});
 
+	// 少动画模式
+	const animeLess = ref(settings.value.animeLess);
+	if (urlSearchParams.animeLess) {
+		animeLess.value = urlSearchParams.animeLess === "true";
+	}
+	watch(animeLess, (val) => {
+		settings.value.animeLess = val;
+		urlSearchParams.animeLess = val ? "true" : (null as unknown as string);
+	});
+
 	return {
 		loginUid,
 		isDark,
@@ -119,6 +135,7 @@ export const useStore = defineStore("main", () => {
 		changeThemeOfList,
 		resetDefaultTheme,
 		pageConfig,
-		isPiano
+		isPiano,
+		animeLess
 	};
 });
