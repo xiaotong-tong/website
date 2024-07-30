@@ -52,9 +52,7 @@
 				@mouseenter="mouseenterHandler"
 				@mouseleave="mouseleaveHandler"
 			>
-				<namiLink class="link" inline-block to="/music">
-					{{ i18nStore.messages.main.nav.music }}
-				</namiLink>
+				<namiLink class="link" inline-block to="/bot"> bot </namiLink>
 			</li>
 			<li
 				class="piano-key"

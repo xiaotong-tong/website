@@ -7,8 +7,8 @@
 		/>
 		<p>当前页面正在加工中</p>
 	</section>
-	<section class="card" v-else-if="loaded">
-		<header class="card-title">
+	<section class="card font-[luoliti]" v-else-if="loaded">
+		<header class="flex justify-between items-center">
 			<hBanner wrapperTargetName="h3">每日学习</hBanner>
 			<p class="sub">
 				{{ nowDay.format("YYYY 年") }}第 {{ nowDay.dayOfYear() }} 天
@@ -17,8 +17,12 @@
 		</header>
 		<namiRoughLine :color="store.currentTheme"></namiRoughLine>
 		<div class="poetry-wrap">
-			<div id="hefu" class="hefu" ref="hefuRef"></div>
-			<div v-if="curData" class="self-poetry" ref="selfPoetryRef">
+			<div id="hefu" class="text-lg my-4 leading-8" ref="hefuRef"></div>
+			<div
+				v-if="curData"
+				class="writing-mode-v-rl text-center tracking-widest"
+				ref="selfPoetryRef"
+			>
 				<h4 class="text-xl font-bold">{{ curData.title }}</h4>
 				<span class="inline-block ml-4">{{ curData.author }}</span>
 				<p v-for="item in curData.paragraphs" class="ml-1">
@@ -28,7 +32,9 @@
 		</div>
 
 		<div class="quote-wrap" v-if="quote">
-			<p>每日日语一百句 <span v-if="quoteOverflow" class="quote-overflow">兼容</span></p>
+			<p>
+				每日日语一百句 <span v-if="quoteOverflow" class="text-[8px] text-[#f00]">兼容</span>
+			</p>
 			<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
 			<p v-html="quote.parse"></p>
 			<p>
@@ -37,7 +43,7 @@
 		</div>
 		<div class="character-wrap">
 			<img
-				class="character"
+				class="block w-full"
 				src="https://image.xtt.moe/images/lian5.webp"
 				alt="人物立绘"
 				draggable="false"
@@ -166,12 +172,6 @@ function hefuTyped() {
 	padding-inline-end: 2em;
 }
 
-.card-title {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
 .poetry-wrap {
 	flex: 1;
 	overflow: auto;
@@ -185,19 +185,6 @@ function hefuTyped() {
 	justify-content: space-between;
 }
 
-.hefu {
-	margin-block-start: 16px;
-	line-height: 2;
-}
-
-/* 竖直方向书写 */
-.self-poetry {
-	writing-mode: vertical-rl;
-	text-align: center;
-	/* 增加一些字符间距 */
-	letter-spacing: 0.15em;
-}
-
 .quote-wrap {
 	overflow: auto;
 	min-block-size: 100px;
@@ -207,21 +194,12 @@ function hefuTyped() {
 	margin-block-end: 2em;
 }
 
-.quote-overflow {
-	font-size: 8px;
-	color: #f00;
-}
-
 .character-wrap {
 	position: absolute;
 	inset-block-start: 100px;
 	width: 264px;
 	z-index: -2;
 	opacity: 0.2;
-}
-.character {
-	display: block;
-	width: 100%;
 }
 
 .small-screen .card {

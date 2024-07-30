@@ -4,5 +4,15 @@ module.exports = {
 	theme: {
 		extend: {}
 	},
-	plugins: []
+	plugins: [
+		function ({ addUtilities }) {
+			const newUtilities = {
+				".writing-mode-v-rl": {
+					writingMode: "vertical-rl"
+				}
+			};
+
+			addUtilities(newUtilities, ["responsive", "hover"]);
+		}
+	]
 };
