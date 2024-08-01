@@ -104,7 +104,7 @@
 		</template>
 	</kanbanarea>
 
-	<namiAplayer v-if="store.pageConfig.showHomeMusicController"></namiAplayer>
+	<myAplayer :rectX="contentX" :rectY="contentY"></myAplayer>
 
 	<myScrollTop :scrollY="y" @click="() => (y = 0)" />
 </template>
@@ -112,25 +112,25 @@
 <script setup lang="ts">
 import { ref, onMounted, watch, nextTick, provide } from "vue";
 import kanbanarea from "@/components/live2d/kanbanarea.vue";
-import namiAplayer from "@/components/aplayer/aplayer.vue";
 import namiHeader from "@/components/page/header/header.vue";
 import namiMHeader from "@/components/page/header/m-header.vue";
 import namiFooter from "@/components/page/footer/footer.vue";
 import namiNav from "./components/nav.vue";
 import namiTextAutoScroll from "@/components/textAutoScroll/index.vue";
 import myScrollTop from "./components/scroll.vue";
+import myAplayer from "./components/aplayer.vue";
 import { useRouter, useRoute } from "vue-router";
 import { useStore } from "@/stores/index";
 import type { XttTooltipElement } from "xtt-ui/index.d.ts";
 import { bgUrl } from "@/utils/webBG";
-import { useElementSize, useScroll } from "@vueuse/core";
+import { useElementBounding, useScroll } from "@vueuse/core";
 
 const store = useStore();
 const router = useRouter();
 const route = useRoute();
 
 const contentRef = ref<HTMLElement | null>(null);
-const { height } = useElementSize(contentRef);
+const { height, x: contentX, y: contentY } = useElementBounding(contentRef);
 
 const { y } = useScroll(contentRef, { behavior: "smooth" });
 

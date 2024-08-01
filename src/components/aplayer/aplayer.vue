@@ -8,21 +8,27 @@
 import { ref, onMounted } from "vue";
 import { audioList } from "./songs";
 
+const aplayer = ref<any>(null);
+
 const aplayerEl = ref<HTMLElement | null>(null);
 
 onMounted(() => {
 	const ap: any = new APlayer({
 		container: (aplayerEl.value as HTMLElement) || document.getElementById("aplayer"),
-		fixed: true,
+		mini: true,
 		autoplay: false,
+		loop: "all",
 		lrcType: 3,
+		listMaxHeight: 90,
 		theme: "#E7FBD2",
 		audio: audioList
 	});
 
+	aplayer.value = ap;
+
 	// 默认关闭歌词
 	// 这里不使用 ap.lrc.hide()的原因是这个方法调用后不会改变播放器中的歌词按钮的状态
-	(aplayerEl.value?.querySelector(".aplayer-icon-lrc") as HTMLElement)?.click();
+	// (aplayerEl.value?.querySelector(".aplayer-icon-lrc") as HTMLElement)?.click();
 
 	let setMediaSessionOfFirstAudio = () => {
 		if ("mediaSession" in navigator) {
@@ -94,10 +100,28 @@ onMounted(() => {
 		});
 	}
 });
+
+defineExpose({
+	aplayer,
+	aplayerEl
+});
 </script>
 
-<style scoped>
+<style>
 #aplayer {
 	z-index: 1000;
+}
+
+#aplayer.aplayer-narrow {
+	width: 90px;
+}
+
+#aplayer:not(.aplayer-narrow) {
+	width: 600px;
+}
+
+#aplayer.aplayer-narrow .aplayer-pic {
+	height: 90px;
+	width: 90px;
 }
 </style>
