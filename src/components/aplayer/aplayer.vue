@@ -19,7 +19,7 @@ onMounted(() => {
 		autoplay: false,
 		loop: "all",
 		lrcType: 3,
-		listMaxHeight: 90,
+		listMaxHeight: 150,
 		theme: "#E7FBD2",
 		audio: audioList
 	});

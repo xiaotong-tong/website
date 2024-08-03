@@ -56,7 +56,20 @@ export async function getActicleList(filters?: GetActicleListFilters): Promise<A
 }
 
 export async function getActicleById(id: number): Promise<ActicleById> {
-	return (await http.get(`/acticle/${id}`)).data;
+	// 如果缓存中有数据，直接返回缓存中的数据
+	if (catchs.has("acticleId" + id)) {
+		return catchs.get("acticleId" + id).value;
+	}
+
+	const data = (await http.get(`/acticle/${id}`)).data;
+
+	// 将数据缓存
+	catchs.set("acticleId" + id, {
+		value: data,
+		expires: Date.now() + 1000 * 60 * 10 // 设置缓存时间为10分钟，其实没有意义，因为数据不会改变
+	});
+
+	return data;
 }
 
 export async function editActicleById(id: number, body: EditActicleBody) {
