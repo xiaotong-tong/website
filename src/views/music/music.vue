@@ -43,7 +43,7 @@ getActicleById(22).then((res) => {
 
 const changing = ref(false);
 
-function changeKaShi(_, id: number) {
+function changeKaShi(_: Event, id: number) {
 	if (changing.value) return;
 
 	changing.value = true;
