@@ -15,7 +15,7 @@
 			</NButton>
 		</div>
 
-		<markdown class="mt-[140px] !font-[luoliti]" :content="content" :textLine="true"></markdown>
+		<markdown class="!font-[luoliti]" :content="content" :textLine="true"></markdown>
 	</section>
 </template>
 

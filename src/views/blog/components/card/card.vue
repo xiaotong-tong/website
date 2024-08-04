@@ -53,7 +53,7 @@
 			</p>
 			<div class="footer">
 				<nami-link class="article-link" block :to="props.info.headerLink"
-					>阅读全文<namiRoughIcon icon="mdiBookOpenBlankVariantOutline"></namiRoughIcon
+					>阅读全文<roughIcon icon="mdiBookOpenBlankVariantOutline"></roughIcon
 				></nami-link>
 			</div>
 		</div>
@@ -65,6 +65,7 @@ import { onMounted, ref, onBeforeUnmount } from "vue";
 import { useStore } from "@/stores/index";
 import { useStateTypeStore } from "@/stores/stateType";
 import { useI18nStore } from "@/stores/i18n";
+import { roughIcon } from "@c/index";
 const store = useStore();
 const useStateType = useStateTypeStore();
 const i18nStore = useI18nStore();

@@ -36,14 +36,28 @@ const emits = defineEmits(["click"]);
 const scrollRef = ref<HTMLElement | null>(null);
 const { height } = useWindowSize();
 
+const scrolledBottom = ref(false);
+
 watch(
 	() => props.scrollY,
 	() => {
-		gsap.to(scrollRef.value, {
-			y: props.scrollY > 10 ? 0 : -1 * height.value,
-			yoyo: true,
-			ease: "power1.inOut"
-		});
+		if (props.scrollY > 10 && !scrolledBottom.value) {
+			gsap.to(scrollRef.value, {
+				y: 0,
+				yoyo: true,
+				ease: "power1.inOut"
+			});
+
+			scrolledBottom.value = true;
+		} else if (props.scrollY <= 10 && scrolledBottom.value) {
+			gsap.to(scrollRef.value, {
+				y: -1 * height.value,
+				yoyo: true,
+				ease: "power1.inOut"
+			});
+
+			scrolledBottom.value = false;
+		}
 	}
 );
 </script>
