@@ -173,6 +173,18 @@ let routes: Route[] = [
 				}
 			},
 			{
+				path: "/something/qrcode",
+				name: "qrcode",
+				component: () => import("../views/somethings/qrcode.vue"),
+				meta: {
+					title: {
+						zh: "二维码",
+						ja: "QRコード"
+					},
+					theme: 4
+				}
+			},
+			{
 				path: "/setting",
 				name: "setting",
 				component: () => import("../views/setting/index.vue"),

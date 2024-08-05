@@ -4,3 +4,4 @@
 -   [img2base64](/ja/something/img2base64) - 画像を base64 形式に変換する
 -   [拼音](/ja/something/pinyin) - 中国語の漢字の読み方
 -   [仮名](/ja/something/kana) - 漢字の読み方（仮名を振る）
+-   [QRCode](/something/qrcode) - QR コードを生成する
