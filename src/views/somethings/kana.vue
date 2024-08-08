@@ -36,8 +36,15 @@
 				i18nStore.lang === "ja" ? "履歴" : "历史"
 			}}</hBanner>
 			<div class="history-content">
-				<div v-for="[key, value] in kanaHistory" :key="key" class="history-item">
+				<div
+					v-for="[key, value] in kanaHistory"
+					:key="key"
+					class="flex items-center mt-1 gap-x-4"
+				>
 					<div>{{ formatDate(key, "yyyy-MM-DD HH:mm:ss") }}</div>
+					<NButton aria-label="复制" text @click="copy($event, value)"
+						><namiIcon icon="mdiContentCopy"></namiIcon
+					></NButton>
 					<div v-html="value"></div>
 				</div>
 			</div>
@@ -81,10 +88,13 @@ const transform = async () => {
 	kanaHistory.value.set(Date.now(), rubyText.value);
 };
 
-const copy = async () => {
-	// 将 rubyText 的内容复制到剪贴板
+const copy = async (_: any, value?: string) => {
+	if (!value) {
+		value = rubyText.value;
+	}
+
 	try {
-		await useCopy(rubyText.value);
+		await useCopy(value);
 
 		confetti({
 			particleCount: 100,
@@ -107,12 +117,5 @@ const copy = async () => {
 	display: flex;
 	flex-direction: column-reverse;
 	row-gap: 8px;
-}
-.history-item {
-	display: flex;
-}
-.history-item > div:first-child {
-	margin-inline-end: 16px;
-	margin-block-start: 4px;
 }
 </style>

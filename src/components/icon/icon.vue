@@ -30,7 +30,8 @@ import {
 	mdiTranslate,
 	mdiCat,
 	mdiPaw,
-	mdiMenu
+	mdiMenu,
+	mdiContentCopy
 } from "@mdi/js";
 
 interface Props {
@@ -57,7 +58,8 @@ interface Props {
 		| "mdiTranslate"
 		| "mdiCat"
 		| "mdiPaw"
-		| "mdiMenu";
+		| "mdiMenu"
+		| "mdiContentCopy";
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -88,7 +90,8 @@ const reflectIcon = (icon: Props["icon"]) => {
 		mdiTranslate,
 		mdiCat,
 		mdiPaw,
-		mdiMenu
+		mdiMenu,
+		mdiContentCopy
 	};
 
 	return mdiMap[icon];
