@@ -11,12 +11,6 @@
 				:clearable="true"
 				:maxlength="36"
 				autofocus
-				:style="{
-					'--n-border-focus': '#e78190',
-					'--n-border-hover': '#e78190',
-					'--n-caret-color': '#e78190',
-					'--n-box-shadow-focus': '0 0 0 2px #e7819044'
-				}"
 			/>
 
 			<NButton class="ms-4" color="#e78190" ghost @click="login"> 提交 </NButton>

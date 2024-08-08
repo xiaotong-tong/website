@@ -3,35 +3,27 @@
 		<hBanner wrapperTargetName="h1" class="text-center">漢字 → 仮名</hBanner>
 
 		<NInput
-			:style="{
-				marginBlockEnd: '16px',
-				'--n-border-hover': '1px solid var(--d-color)',
-				'--n-border-focus': '1px solid var(--d-color)',
-				'--n-caret-color': 'var(--d-color)'
-			}"
 			v-model:value="value"
 			:rows="5"
 			type="textarea"
 			placeholder="日本語を入力してください"
 		/>
-		<div style="display: flex">
+		<div class="flex mt-4">
 			<NButton @click="transform" :color="store.currentTheme">{{
 				i18nStore.lang === "ja" ? "変更する" : "转换"
 			}}</NButton>
-			<xtt-button
-				:style="{
-					marginInlineStart: '16px'
-				}"
+			<NButton
+				class="ms-4"
+				:color="store.currentTheme"
 				@click="copy"
-				type="primary"
 				v-if="isSupported && isParsed"
 			>
 				<span v-if="!copied">{{ i18nStore.lang === "ja" ? "コピー" : "复制" }}</span>
 				<span v-else>{{ i18nStore.lang === "ja" ? "コピーしました" : "复制成功" }}</span>
-			</xtt-button>
+			</NButton>
 			<NButton
 				v-if="kanaHistory.size"
-				:style="{ marginInline: 'auto 8px' }"
+				class="ms-auto"
 				:color="store.currentTheme"
 				@click="kanaHistory.clear()"
 				>清除缓存</NButton

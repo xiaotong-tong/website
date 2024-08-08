@@ -2,56 +2,19 @@
 	<section>
 		<hBanner wrapperTargetName="h1" class="text-center">QRCode</hBanner>
 
-		<NInput
-			:style="{
-				marginBlockEnd: '16px',
-				'--n-border-hover': '1px solid var(--d-color)',
-				'--n-border-focus': '1px solid var(--d-color)',
-				'--n-caret-color': 'var(--d-color)'
-			}"
-			v-model:value="value"
-			:rows="5"
-			type="textarea"
-		/>
+		<NInput class="mb-4" v-model:value="value" :rows="5" type="textarea" />
 		<div class="flex gap-x-16 mb-4">
 			<label class="flex-1 flex items-center">
 				margin:
-				<NInputNumber
-					class="flex-1 ms-4"
-					:style="{
-						'--n-border-hover': '1px solid var(--d-color)',
-						'--n-border-focus': '1px solid var(--d-color)',
-						'--n-caret-color': 'var(--d-color)'
-					}"
-					v-model:value="option.margin"
-					:min="0"
-				/>
+				<NInputNumber class="flex-1 ms-4" v-model:value="option.margin" :min="0" />
 			</label>
 			<label class="flex-1 flex items-center">
 				width:
-				<NInputNumber
-					class="flex-1 ms-4"
-					:style="{
-						'--n-border-hover': '1px solid var(--d-color)',
-						'--n-border-focus': '1px solid var(--d-color)',
-						'--n-caret-color': 'var(--d-color)'
-					}"
-					v-model:value="option.width"
-					:min="0"
-				/>
+				<NInputNumber class="flex-1 ms-4" v-model:value="option.width" :min="0" />
 			</label>
 			<label class="flex-1 flex items-center">
 				scale:
-				<NInputNumber
-					class="flex-1 ms-4"
-					:style="{
-						'--n-border-hover': '1px solid var(--d-color)',
-						'--n-border-focus': '1px solid var(--d-color)',
-						'--n-caret-color': 'var(--d-color)'
-					}"
-					v-model:value="option.scale"
-					:min="0"
-				/>
+				<NInputNumber class="flex-1 ms-4" v-model:value="option.scale" :min="0" />
 			</label>
 		</div>
 		<div class="flex mb-4">

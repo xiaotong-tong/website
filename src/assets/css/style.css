@@ -2,17 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 覆盖标签默认样式 */
-body {
-	margin: 0;
-}
-
-ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
 /* 自定义页面滚动条 */
 ::-webkit-scrollbar {
 	width: 5px;
@@ -61,4 +50,14 @@ ul {
 
 html:lang(ja) {
 	font-family: "HinaMincho-Regular", sans-serif;
+}
+
+/* 重写 native ui 的一些样式 */
+.n-input-wrapper {
+	--n-caret-color: var(--d-color);
+}
+:is(.n-input__border, .n-input__state-border, #notUsedId) {
+	--n-border-hover: 1px solid var(--d-color);
+	--n-border-focus: 1px solid var(--d-color);
+	--n-box-shadow-focus: 0 0 0 2px rgb(from var(--d-color) r g b / 0.2);
 }
