@@ -121,16 +121,19 @@ import myScrollTop from "./components/scroll.vue";
 import myAplayer from "./components/aplayer.vue";
 import { useRouter, useRoute } from "vue-router";
 import { useStore } from "@/stores/index";
+import { useContentRefStore } from "@/stores/contentRef";
 import type { XttTooltipElement } from "xtt-ui/index.d.ts";
 import { bgUrl } from "@/utils/webBG";
 import { useElementBounding, useScroll } from "@vueuse/core";
 
 const store = useStore();
+const contentStore = useContentRefStore();
 const router = useRouter();
 const route = useRoute();
 
 const contentRef = ref<HTMLElement | null>(null);
-const { height, x: contentX, y: contentY } = useElementBounding(contentRef);
+const { x: contentX, y: contentY } = useElementBounding(contentRef);
+contentStore.bind(contentRef);
 
 const { y } = useScroll(contentRef, { behavior: "smooth" });
 
@@ -162,7 +165,7 @@ function checkOverflow() {
 		const scrollEl = contentRef.value.firstElementChild!;
 		const rect = scrollEl.getBoundingClientRect();
 
-		if (rect.height > height.value) {
+		if (rect.height > contentStore.height.value) {
 			contentRef.value.classList.add("scroll-overflow-y");
 		}
 	}
@@ -217,7 +220,8 @@ watch(
 .tip {
 	position: fixed;
 	inset-block-end: 1px;
-	inset-inline: 8px;
+	inset-inline-start: 8px;
+	inset-inline-end: 208px;
 	height: 24px;
 	padding-inline-start: 8px;
 	box-sizing: border-box;
@@ -226,6 +230,9 @@ watch(
 }
 .content.scroll-overflow-y .tip {
 	display: none;
+}
+.small-screen .tip {
+	inset-inline-end: 8px;
 }
 
 .icon {

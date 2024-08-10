@@ -35,7 +35,7 @@
 					:to="['/net', '/lang', '/note', '/star'][Number(props.info.category)]"
 					>#
 					{{
-						useStateType.ActicleCategoryType[
+						useStateType.ActicleCategoryType?.[
 							i18nStore.lang === "ja" ? "jaShowText" : "showText"
 						][Number(props.info.category)]
 					}}</nami-link

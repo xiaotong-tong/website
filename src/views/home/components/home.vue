@@ -1,13 +1,5 @@
 <template>
-	<section v-if="search" class="flex flex-col items-center">
-		<img
-			class="max-w-96 mt-8"
-			src="https://image.xtt.moe/images/404.webp"
-			alt="404 Not Found"
-		/>
-		<p>当前页面正在加工中</p>
-	</section>
-	<section class="card font-[luoliti]" v-else-if="loaded">
+	<section class="card font-[luoliti]" v-show="loaded">
 		<header class="flex justify-between items-center">
 			<hBanner wrapperTargetName="h3">每日学习</hBanner>
 			<p class="sub">
@@ -31,16 +23,8 @@
 			</div>
 		</div>
 
-		<div class="quote-wrap" v-if="quote">
-			<p>
-				每日日语一百句 <span v-if="quoteOverflow" class="text-[8px] text-[#f00]">兼容</span>
-			</p>
-			<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
-			<p v-html="quote.parse"></p>
-			<p>
-				{{ quote.chinese }}
-			</p>
-		</div>
+		<Quote ref="poetryRef" @onLoad="quoteLoadedFn"></Quote>
+
 		<div class="character-wrap">
 			<img
 				class="block w-full"
@@ -51,37 +35,30 @@
 		</div>
 	</section>
 
-	<section v-else>
+	<section v-show="!loaded">
 		<namiPageLoading></namiPageLoading>
 	</section>
 </template>
 
 <script setup lang="ts">
 import { ref, watch, nextTick } from "vue";
-import type { IGetDaysQuotes } from "../home.api";
-import { getDaysQuotes } from "../home.api";
 import { useFetch } from "@vueuse/core";
 import { dayjs } from "@/utils/dateUtil";
 import { getOne } from "@/utils/array";
 import Typed from "typed.js";
+import Quote from "./home/quote.vue";
 import { hBanner } from "@c/index";
-import { useRouteHash } from "@vueuse/router";
 import { useStore } from "@/stores";
+// import { useContentRefStore } from "@/stores/contentRef";
 const store = useStore();
-
-const search = useRouteHash();
+// const contentStore = useContentRefStore();
 
 const loaded = ref(false);
 
 const weekNames = ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"];
-const originDay = dayjs("2024-04-14");
 const nowDay = dayjs();
 
-const quote = ref<IGetDaysQuotes>();
-const quoteLoading = ref(true);
-const quoteOverflow = ref(false);
-
-const key = nowDay.diff(originDay, "day");
+const quoteLoaded = ref(false);
 
 interface Item {
 	key: number;
@@ -91,31 +68,16 @@ interface Item {
 }
 const { data, isFinished } = useFetch("https://api.xtt.moe/days/poetry/self").json<Item[]>();
 
-getDaysQuotes(key)
-	.then((res) => {
-		quote.value = res;
-		quoteLoading.value = false;
+function quoteLoadedFn() {
+	console.log("quote loaded");
 
-		if (isFinished.value) {
-			loaded.value = true;
-			hefuTyped();
-		}
-	})
-	.catch((error) => {
-		// 如果传出的错误是超出最大值，则进行取余后再次请求
-		if (error.maxKey) {
-			getDaysQuotes(key % error.maxKey).then((res) => {
-				quote.value = res;
-				quoteLoading.value = false;
-				quoteOverflow.value = true;
+	quoteLoaded.value = true;
 
-				if (isFinished.value) {
-					loaded.value = true;
-					hefuTyped();
-				}
-			});
-		}
-	});
+	if (isFinished.value) {
+		loaded.value = true;
+		hefuTyped();
+	}
+}
 
 let curData = ref<Item | null>(getOne(data));
 
@@ -123,7 +85,7 @@ watch(data, () => {
 	curData.value = getOne(data);
 });
 watch(isFinished, () => {
-	if (quoteLoading.value === false) {
+	if (quoteLoaded.value) {
 		loaded.value = true;
 		hefuTyped();
 	}
@@ -185,15 +147,6 @@ function hefuTyped() {
 	justify-content: space-between;
 }
 
-.quote-wrap {
-	overflow: auto;
-	min-block-size: 100px;
-	max-block-size: 300px;
-	inline-size: 50%;
-	align-self: flex-end;
-	margin-block-end: 2em;
-}
-
 .character-wrap {
 	position: absolute;
 	inset-block-start: 100px;
@@ -213,9 +166,5 @@ function hefuTyped() {
 	inline-size: 100%;
 	max-inline-size: 100%;
 	max-block-size: none;
-}
-.small-screen .quote-wrap {
-	align-self: flex-start;
-	inline-size: 100%;
 }
 </style>
