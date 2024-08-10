@@ -1,6 +1,6 @@
 <template>
 	<section class="card font-[luoliti]" v-show="loaded">
-		<header class="flex justify-between items-center">
+		<header class="title flex justify-between items-center">
 			<hBanner wrapperTargetName="h3">每日学习</hBanner>
 			<p class="sub">
 				{{ nowDay.format("YYYY 年") }}第 {{ nowDay.dayOfYear() }} 天
@@ -73,7 +73,6 @@ function poetryLoadedFn() {
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	padding: 8px;
 	padding-inline-end: 2em;
 }
 
@@ -106,7 +105,11 @@ function poetryLoadedFn() {
 .small-screen .card {
 	padding-inline-end: 8px;
 }
-.small-screen .card-title :is(.title, .sub) {
-	margin-block: 0.5em;
+.small-screen .title {
+	flex-direction: column;
+}
+.small-screen .title .sub {
+	font-size: 14px;
+	margin-block-start: -18px;
 }
 </style>
