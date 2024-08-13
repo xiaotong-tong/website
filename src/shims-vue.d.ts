@@ -22,7 +22,3 @@ interface Window {
 declare module "canvas-confetti" {
 	export default any;
 }
-
-declare module "gsap" {
-	export const gsap: any;
-}

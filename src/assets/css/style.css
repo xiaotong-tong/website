@@ -1,6 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@layer {
+	@tailwind base;
+	@tailwind components;
+	@tailwind utilities;
+}
 
 /* 自定义页面滚动条 */
 ::-webkit-scrollbar {

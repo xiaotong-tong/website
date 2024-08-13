@@ -49,8 +49,9 @@
 	"devDependencies": {
 		"@rushstack/eslint-patch": "^1.2.0",
 		"@types/node": "^20.4.5",
-		"@types/three": "^0.158.1",
 		"@types/qrcode": "^1.5.5",
+		"@types/three": "^0.158.1",
+		"@types/gsap": "^3.0.0",
 		"@types/vue": "^2.0.0",
 		"@vitejs/plugin-vue": "^4.2.1",
 		"@vue/eslint-config-prettier": "^7.1.0",
