@@ -17,7 +17,7 @@
 			/>
 		</div>
 		<div class="info-wrap">
-			<h2>
+			<h2 class="text-xl font-bold">
 				{{
 					i18nStore.lang === "ja"
 						? props.info.jaTitle || props.info.title
@@ -35,7 +35,7 @@
 					:to="['/net', '/lang', '/note', '/star'][Number(props.info.category)]"
 					>#
 					{{
-						useStateType.ActicleCategoryType?.[
+						useStateType?.ActicleCategoryType?.[
 							i18nStore.lang === "ja" ? "jaShowText" : "showText"
 						][Number(props.info.category)]
 					}}</nami-link

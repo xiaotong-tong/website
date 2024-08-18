@@ -3,7 +3,7 @@ import { ref, watch } from "vue";
 import { defineStore } from "pinia";
 import { useElementBounding } from "@vueuse/core";
 
-export const useContentRefStore = defineStore("state", () => {
+export const useContentRefStore = defineStore("contentRefState", () => {
 	const height = ref();
 	const width = ref();
 	const x = ref();

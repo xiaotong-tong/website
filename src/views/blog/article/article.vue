@@ -9,7 +9,7 @@
 		:dark="store.isDark ? '' : undefined"
 		v-if="acticle"
 	>
-		<h2>
+		<h2 class="text-xl font-bold">
 			{{ i18nStore.lang === "ja" ? acticle.jaTitle || acticle.title : acticle.title }}
 		</h2>
 		<p>
@@ -19,15 +19,20 @@
 
 			&nbsp;&nbsp;&nbsp; #
 			{{
-				useStateType.ActicleCategoryType[
+				useStateType?.ActicleCategoryType?.[
 					i18nStore.lang === "ja" ? "jaShowText" : "showText"
 				][Number(acticle.category)]
 			}}
 		</p>
 
-		<xtt-markdown class="md" :dark="store.isDark ? '' : undefined">{{
-			i18nStore.lang === "ja" ? acticle?.jaContent || acticle?.content : acticle?.content
-		}}</xtt-markdown>
+		<markdown
+			class="md"
+			:dark="store.isDark ? '' : undefined"
+			:content="
+				i18nStore.lang === 'ja' ? acticle?.jaContent || acticle?.content : acticle?.content
+			"
+			:textLine="true"
+		></markdown>
 
 		<div class="pagination">
 			<nami-link :to="'/article/' + acticle.prev.id" v-if="acticle?.prev" class="link">{{
@@ -65,6 +70,7 @@ import { useRoute, useRouter, onBeforeRouteUpdate } from "vue-router";
 import { useStore } from "@/stores/index";
 import { useI18nStore } from "@/stores/i18n";
 import { useStateTypeStore } from "@/stores/stateType";
+import { markdown } from "@c/index";
 
 const store = useStore();
 const route = useRoute();

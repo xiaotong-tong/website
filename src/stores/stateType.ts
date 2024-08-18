@@ -4,7 +4,7 @@ import { defineStore } from "pinia";
 import { zhMsg } from "@/locales/zh";
 import { jaMsg } from "@/locales/ja";
 
-export const useStateTypeStore = defineStore("state", () => {
+export const useStateTypeStore = defineStore("stateTypeStore", () => {
 	const ActicleCategoryType = ref({
 		net: "0",
 		lang: "1",
