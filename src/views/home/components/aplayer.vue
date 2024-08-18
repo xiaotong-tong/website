@@ -2,7 +2,7 @@
 	<namiAplayer
 		class="fixed top-0 left-0"
 		ref="aplayerRef"
-		v-if="store.pageConfig.showHomeMusicController"
+		v-if="store.pageConfig.showHomeMusicController || route.fullPath === '/music'"
 	></namiAplayer>
 </template>
 
@@ -36,7 +36,7 @@ function toMusicArea() {
 
 	if (!el) return;
 
-	if (firstLoad.value) {
+	if (firstLoad.value || !store.pageConfig.showHomeMusicController) {
 		ap.setMode("normal");
 		el.style.transform = `translateY(${props.rectY + 16}px) translateX(${props.rectX + 24}px)`;
 		firstLoad.value = false;
@@ -79,7 +79,7 @@ function toHomeArea() {
 watchEffect(() => {
 	if (route.fullPath === "/music") {
 		toMusicArea();
-	} else {
+	} else if (store.pageConfig.showHomeMusicController) {
 		toHomeArea();
 	}
 });

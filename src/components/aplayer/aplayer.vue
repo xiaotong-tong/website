@@ -110,6 +110,7 @@ defineExpose({
 <style>
 #aplayer {
 	z-index: 1000;
+	position: fixed;
 }
 
 #aplayer.aplayer-narrow {
