@@ -9,24 +9,24 @@
 			placeholder="日本語を入力してください"
 		/>
 		<div class="flex mt-4">
-			<NButton @click="transform" :color="store.currentTheme">{{
-				i18nStore.lang === "ja" ? "変更する" : "转换"
-			}}</NButton>
-			<NButton
+			<NamiButton @click="transform" :borderColor="store.currentTheme">
+				{{ i18nStore.lang === "ja" ? "変更する" : "转换" }}</NamiButton
+			>
+			<NamiButton
 				class="ms-4"
-				:color="store.currentTheme"
+				:borderColor="store.currentTheme"
 				@click="copy"
 				v-if="isSupported && isParsed"
 			>
 				<span v-if="!copied">{{ i18nStore.lang === "ja" ? "コピー" : "复制" }}</span>
 				<span v-else>{{ i18nStore.lang === "ja" ? "コピーしました" : "复制成功" }}</span>
-			</NButton>
-			<NButton
+			</NamiButton>
+			<NamiButton
 				v-if="kanaHistory.size"
 				class="ms-auto"
-				:color="store.currentTheme"
+				:borderColor="store.currentTheme"
 				@click="kanaHistory.clear()"
-				>清除缓存</NButton
+				>清除缓存</NamiButton
 			>
 		</div>
 		<div class="ruby-text" v-html="rubyText"></div>
@@ -64,7 +64,7 @@ import { useI18nStore } from "@/stores/i18n";
 import confetti from "canvas-confetti";
 import { useClipboard, useLocalStorage } from "@vueuse/core";
 import { useStore } from "@/stores";
-import { hBanner } from "@c/index";
+import { hBanner, NamiButton } from "@c/index";
 import { formatDate } from "xtt-utils";
 
 const { copy: useCopy, isSupported, copied } = useClipboard();

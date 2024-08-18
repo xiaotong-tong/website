@@ -1,11 +1,13 @@
 <template>
-	<!-- <NButton @click="removeCache">清除 cache 缓存</NButton> -->
-	<NamiLineButton @click="removeCache">清除 cache 缓存</NamiLineButton>
+	<NamiButton @click="removeCache" :borderColor="store.currentTheme" activeBorderColor="#8bcecb"
+		>清除 cache 缓存</NamiButton
+	>
 </template>
 
 <script setup lang="ts">
-// import { NButton } from "naive-ui";
-import { NamiLineButton } from "@c/index";
+import { NamiButton } from "@c/index";
+import { useStore } from "@/stores/index";
+const store = useStore();
 
 function removeCache() {
 	// 清除 service worker 中的 cache 缓存
