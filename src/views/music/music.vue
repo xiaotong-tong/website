@@ -1,7 +1,7 @@
 <template>
 	<section class="ps-6 relative">
 		<div
-			class="w-full h-[140px] bg-white sticky top-0 -left-10 -right-10 -translate-y-2 flex items-end pb-1"
+			class="top-title w-full h-[144px] sticky top-0 -left-10 -right-10 -translate-y-2 flex items-end pb-2"
 		>
 			<NButton
 				class="me-8"
@@ -56,4 +56,11 @@ function changeKaShi(_: Event, id: number) {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.top-title {
+	background-color: aliceblue;
+}
+.theme-dark .top-title {
+	background-color: transparent;
+}
+</style>

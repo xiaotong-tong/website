@@ -53,6 +53,15 @@ let routes: Route[] = [
 				}
 			},
 			{
+				path: "/article/:id",
+				name: "blogArticle",
+				component: () => import("../views/blog/article/article.vue"),
+				meta: {
+					title: "pageCustom",
+					theme: 1
+				}
+			},
+			{
 				path: "/photos",
 				name: "photos",
 				component: () => import("../views/photos/index.vue"),
@@ -237,7 +246,6 @@ let routes: Route[] = [
 	{
 		path: "/blog",
 		name: "blog",
-		component: () => import("../views/home.vue"),
 		children: [
 			{
 				path: "/editor/add",
@@ -248,14 +256,6 @@ let routes: Route[] = [
 				path: "/editor/edit/:id",
 				name: "blogEditorEdit",
 				component: () => import("../views/blog/editor/edit.vue")
-			},
-			{
-				path: "/article/:id",
-				name: "blogArticle",
-				component: () => import("../views/blog/article/article.vue"),
-				meta: {
-					title: "pageCustom"
-				}
 			},
 			{
 				path: "/about",

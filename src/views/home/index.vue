@@ -228,6 +228,10 @@ watch(
 	margin-block-end: 4px;
 	background-color: #ffffffdd;
 }
+.theme-dark .tip {
+	background-color: #151b1f66;
+}
+
 .content.scroll-overflow-y .tip {
 	display: none;
 }

@@ -66,6 +66,7 @@ export const useStore = defineStore("main", () => {
 	const currentTheme = useCssVar("--d-color");
 	currentTheme.value = theme.value[currentThemeIndex.value];
 
+	document.body.classList.toggle("theme-dark", !!isDark.value);
 	watch(isDark, (val) => {
 		settings.value.isDark = val;
 		// 在 isDark 发生变化时，同步改变 body 的 class

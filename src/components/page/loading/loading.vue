@@ -16,6 +16,10 @@
 	flex-direction: column;
 }
 
+.theme-dark .container {
+	background-color: #00000088;
+}
+
 .img {
 	margin-block-start: -100px;
 }
