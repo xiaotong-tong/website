@@ -9,7 +9,7 @@
 			placeholder="日本語を入力してください"
 		/>
 		<div class="flex mt-4">
-			<NamiButton @click="transform" :borderColor="store.currentTheme">
+			<NamiButton @click="transform" :borderColor="store.currentTheme" :loading="tranLoading">
 				{{ i18nStore.lang === "ja" ? "変更する" : "转换" }}</NamiButton
 			>
 			<NamiButton
@@ -39,9 +39,11 @@
 				<div
 					v-for="[key, value] in kanaHistory"
 					:key="key"
-					class="flex items-center mt-1 gap-x-4"
+					class="flex items-center mt-1 gap-x-2"
 				>
-					<div>{{ formatDate(key, "yyyy-MM-DD HH:mm:ss") }}</div>
+					<div class="w-[140px] flex-none">
+						{{ formatDate(key, "yyyy-MM-DD HH:mm:ss") }}
+					</div>
 					<NButton aria-label="复制" text @click="copy($event, value)"
 						><namiIcon icon="mdiContentCopy"></namiIcon
 					></NButton>
@@ -75,6 +77,7 @@ const i18nStore = useI18nStore();
 const rubyText = ref("");
 const value = ref("");
 const isParsed = ref(false);
+const tranLoading = ref(false);
 
 const kanaHistory = useLocalStorage("kana_history", new Map<number, string>());
 
@@ -82,8 +85,10 @@ const transform = async () => {
 	if (!value.value) {
 		return;
 	}
+	tranLoading.value = true;
 	rubyText.value = await toKana(value.value);
 	isParsed.value = true;
+	tranLoading.value = false;
 
 	kanaHistory.value.set(Date.now(), rubyText.value);
 };
