@@ -1,7 +1,7 @@
 /// <reference lib="webworker" />
 declare const self: ServiceWorkerGlobalScope;
 import { precacheAndRoute, cleanupOutdatedCaches } from "workbox-precaching";
-import { CacheFirst } from "workbox-strategies";
+import { CacheFirst, NetworkFirst } from "workbox-strategies";
 import { registerRoute } from "workbox-routing";
 import { CacheableResponsePlugin } from "workbox-cacheable-response";
 
@@ -13,8 +13,30 @@ self.addEventListener("message", (event) => {
 
 console.log("sw");
 
-precacheAndRoute(self.__WB_MANIFEST);
+precacheAndRoute(
+	// 移除 index.html 的缓存
+	self.__WB_MANIFEST.filter((entry) => {
+		if (typeof entry === "object" && entry.url === "index.html") {
+			return false;
+		}
+		return true;
+	})
+);
 cleanupOutdatedCaches();
+
+// 缓存 html 文件
+registerRoute(
+	/.*\.(html)$/,
+	new NetworkFirst({
+		cacheName: "html-cache",
+		plugins: [
+			new CacheableResponsePlugin({
+				statuses: [0, 200]
+			})
+		]
+	}),
+	"GET"
+);
 
 // 缓存字体
 // registerRoute(
