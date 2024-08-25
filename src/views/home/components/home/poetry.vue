@@ -10,7 +10,7 @@
 	>
 		<h4 class="text-xl font-bold">{{ curData.title }}</h4>
 		<span class="inline-block mse-4">{{ curData.author }}</span>
-		<p v-for="item in curData.paragraphs" class="mse-1">
+		<p v-for="item in curData.paragraphs" class="mse-1 text-balance">
 			<span>{{ item }}</span>
 		</p>
 	</div>

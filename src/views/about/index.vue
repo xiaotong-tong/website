@@ -1,6 +1,6 @@
 <template>
-	<section class="container web-color-default">
-		<p class="title">君に出会えて本当に良かった！</p>
+	<section class="container font-[luoliti]">
+		<p class="text-center text-[24px]">君に出会えて本当に良かった！</p>
 		<div class="content-section">
 			<div class="character-wrap">
 				<img
@@ -120,6 +120,11 @@ const i18nStore = useI18nStore();
 	font-size: 1.4em;
 }
 
+h2 {
+	font-size: 1.2em;
+	margin-block-end: 4px;
+}
+
 p {
 	line-height: 2;
 }
@@ -128,11 +133,5 @@ p {
 	.character-wrap {
 		display: none;
 	}
-}
-
-.title {
-	text-align: center;
-	font-size: 24px;
-	font-family: "luoliti", Arial, Helvetica, sans-serif;
 }
 </style>

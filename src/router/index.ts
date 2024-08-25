@@ -194,6 +194,30 @@ let routes: Route[] = [
 				}
 			},
 			{
+				path: "/something/img2base64",
+				name: "img2base64",
+				component: () => import("../views/somethings/img2base64.vue"),
+				meta: {
+					title: {
+						zh: "图片转base64",
+						ja: "画像をbase64に変換"
+					},
+					theme: 4
+				}
+			},
+			{
+				path: "/something/towebp",
+				name: "toWebp",
+				component: () => import("../views/somethings/toWebp.vue"),
+				meta: {
+					title: {
+						zh: "图片转webp",
+						ja: "画像をwebpに変換"
+					},
+					theme: 4
+				}
+			},
+			{
 				path: "/setting",
 				name: "setting",
 				component: () => import("../views/setting/index.vue"),
@@ -230,6 +254,18 @@ let routes: Route[] = [
 				}
 			},
 			{
+				path: "/about",
+				name: "about",
+				component: () => import("../views/about/index.vue"),
+				meta: {
+					title: {
+						zh: "关于",
+						ja: "について"
+					},
+					theme: 5
+				}
+			},
+			{
 				path: "/bot",
 				name: "bot",
 				component: () => import("../views/bot/bot.vue"),
@@ -237,6 +273,43 @@ let routes: Route[] = [
 					title: {
 						zh: "bot",
 						ja: "bot"
+					},
+					theme: 3
+				}
+			},
+			{
+				path: "/link",
+				name: "link",
+				component: () => import("../views/links/links.vue"),
+				meta: {
+					title: {
+						zh: "链接",
+						ja: "リンク"
+					},
+					theme: 5
+				}
+			},
+			{
+				path: "/guestbook",
+				name: "guestbook",
+				component: () => import("../views/blog/guestbook/index.vue"),
+				meta: {
+					title: {
+						zh: "留言板",
+						ja: "ゲストブック"
+					},
+					theme: 1
+				}
+			},
+			// 站点地图页面
+			{
+				path: "/sitemap",
+				name: "sitemap",
+				component: () => import("../views/sitemap/index.vue"),
+				meta: {
+					title: {
+						zh: "站点地图",
+						ja: "サイトマップ"
 					},
 					theme: 3
 				}
@@ -257,17 +330,7 @@ let routes: Route[] = [
 				name: "blogEditorEdit",
 				component: () => import("../views/blog/editor/edit.vue")
 			},
-			{
-				path: "/about",
-				name: "about",
-				component: () => import("../views/about/index.vue"),
-				meta: {
-					title: {
-						zh: "关于",
-						ja: "について"
-					}
-				}
-			},
+
 			{
 				path: "/lang",
 				name: "lang",
@@ -317,28 +380,7 @@ let routes: Route[] = [
 					}
 				}
 			},
-			{
-				path: "/guestbook",
-				name: "guestbook",
-				component: () => import("../views/blog/guestbook/index.vue"),
-				meta: {
-					title: {
-						zh: "留言板",
-						ja: "ゲストブック"
-					}
-				}
-			},
-			{
-				path: "/link",
-				name: "link",
-				component: () => import("../views/links/links.vue"),
-				meta: {
-					title: {
-						zh: "链接",
-						ja: "リンク"
-					}
-				}
-			},
+
 			{
 				path: "/archives",
 				name: "archives",
@@ -350,20 +392,6 @@ let routes: Route[] = [
 					}
 				}
 			},
-
-			// 站点地图页面
-			{
-				path: "/sitemap",
-				name: "sitemap",
-				component: () => import("../views/sitemap/index.vue"),
-				meta: {
-					title: {
-						zh: "站点地图",
-						ja: "サイトマップ"
-					}
-				}
-			},
-
 			{
 				path: "/dashboard",
 				name: "dashboard",
@@ -389,28 +417,6 @@ let routes: Route[] = [
 			},
 
 			// something
-			{
-				path: "/something/img2base64",
-				name: "img2base64",
-				component: () => import("../views/somethings/img2base64.vue"),
-				meta: {
-					title: {
-						zh: "图片转base64",
-						ja: "画像をbase64に変換"
-					}
-				}
-			},
-			{
-				path: "/something/towebp",
-				name: "toWebp",
-				component: () => import("../views/somethings/toWebp.vue"),
-				meta: {
-					title: {
-						zh: "图片转webp",
-						ja: "画像をwebpに変換"
-					}
-				}
-			},
 			{
 				path: "/something/chat",
 				name: "chat",

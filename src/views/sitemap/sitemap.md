@@ -3,21 +3,30 @@
 ## 页面
 
 -   [首页](/)
--   [关于](/about)
--   [留言板](/guestbook)
+-   [blog 首页](/blog)
+-   [音乐](/music)
+-   [储藏室首页](/save) - 一些文章，文件列表
+-   [工具箱首页](/tools) - 一些小工具列表
+-   [信息](/info) - 关于星川涟的一些信息
+-   [设置](/setting) - 修改网站的一些设置
+-   [登录](/login) - 登录页面
+-   [关于](/about) - 关于本网站
 -   [链接](/link)
+-   [留言板](/guestbook)
+-   [bot](/bot) - 关于 QQ 机器人页面
 -   [仪表盘](/dashboard)
 -   [归档](/archives)
 -   [简历](/cv/pdf)
 -   [ゲームと文字な日々](/reading)
 -   [图片](/photos)
 
-### 小工具
+### 工具箱
 
+-   [仮名](/something/kana) - 为日文汉字标注假名
+-   [二维码](/something/qrcode) - 生成二维码
+-   [拼音](/something/pinyin) - 为汉字注音
 -   [towebp](/something/towebp) - 将图片转换为 webp 格式
 -   [img2base64](/something/img2base64) - 将图片转换为 base64 格式
--   [拼音](/something/pinyin) - 为汉字注音
--   [仮名](/something/kana) - 为日文汉字标注假名
 -   [数独](/something/sudoku) - 数独游戏
 -   [chat](/something/chat) - AI 聊天，调用的是文心一言的 API
 
@@ -25,14 +34,7 @@
 
 -   [threejs 星空](/ex/space) - threejs 实现的星空
 
-## 分类目录
-
--   [网络互联](/net)
--   [语言学习](/lang)
--   [喵随笔](/note)
--   [其它](/star)
-
-## 文章
+## blog 相关
 
 -   [js 排序](/article/2)
 -   [js function length 属性](/article/4)

@@ -53,22 +53,50 @@ export default defineConfig({
 				manualChunks: {
 					xttUtils: ["xtt-utils"],
 
-					index: [
-						"./src/views/home/index.vue",
-						"./src/views/home.vue",
+					// 主页面
+					main: ["./src/views/home/index.vue"],
+
+					// 主页面中右侧 nav 副主页面的内容
+					subMain: [
 						"./src/views/blog/home.vue",
+						"./src/views/music/music.vue",
+						"./src/views/save/save.vue",
+						"./src/views/tools/tools.vue",
+						"./src/views/info/info.vue",
+						"./src/views/setting/index.vue"
+					],
+
+					// 非主页面右侧 nav 部分副页面的内容
+					sub: [
+						"./src/views/404.vue",
+						"./src/views/login/login.vue",
+						"./src/views/about/index.vue",
+						"./src/views/links/links.vue",
+						"./src/views/blog/guestbook/index.vue",
+						"./src/views/bot/bot.vue"
+					],
+
+					// 非网站使用页面
+					other: ["./src/views/bot/ruby.vue"],
+
+					// tools 子页面
+					tools: [
+						"./src/views/somethings/kana.vue",
+						"./src/views/somethings/qrcode.vue",
+						"./src/views/somethings/pinyin.vue",
+						"./src/views/somethings/img2base64.vue",
+						"./src/views/somethings/toWebp.vue"
+					],
+
+					index: [
+						"./src/views/home.vue",
 						"./src/views/blog/article/article.vue",
 						"./src/views/blog/lang/lang.vue",
 						"./src/views/blog/net/index.vue",
 						"./src/views/blog/note/index.vue",
-						"./src/views/blog/star/index.vue",
-						"./src/views/404.vue",
-						"./src/views/login/login.vue"
+						"./src/views/blog/star/index.vue"
 					],
 					subindex: [
-						"./src/views/about/index.vue",
-						"./src/views/blog/guestbook/index.vue",
-						"./src/views/links/links.vue",
 						"./src/views/sitemap/index.vue",
 						"./src/views/dashboard/index.vue",
 						"./src/views/photos/index.vue",
@@ -76,16 +104,10 @@ export default defineConfig({
 						"./src/views/reading/index.vue"
 					],
 					master: ["./src/views/blog/editor/add.vue", "./src/views/blog/editor/edit.vue"],
-					// jpWord: ["./src/views/blog/lang/words/words.vue"],
 					something: [
-						"./src/views/somethings/img2base64.vue",
-						"./src/views/somethings/toWebp.vue",
-						"./src/views/somethings/pinyin.vue",
-						"./src/views/somethings/kana.vue",
 						"./src/views/somethings/sudoku.vue",
 						"./src/views/somethings/chat.vue"
 					],
-					music: ["./src/views/music/music.vue"],
 					ex: ["./src/views/ex/space/index.vue", "./src/views/ex/pip/index.vue"],
 					cv: ["./src/views/cv/cv.pdf.vue"]
 				}

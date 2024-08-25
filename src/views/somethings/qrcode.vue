@@ -41,7 +41,7 @@
 	</section>
 
 	<Teleport to="head">
-		<meta name="keywords" content="二维码,QRCode" />
+		<meta name="keywords" content="二维码,QRCode,生成二维码" />
 	</Teleport>
 </template>
 
