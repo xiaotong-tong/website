@@ -259,6 +259,42 @@
     <lastmod>2024-08-26</lastmod>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://xtt.moe/photos</loc>
+    <priority>0.7</priority>
+    <lastmod>2024-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/ja/photos</loc>
+    <priority>0.7</priority>
+    <lastmod>2024-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/save/jpWord/kudamono</loc>
+    <priority>0.7</priority>
+    <lastmod>2024-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/ja/save/jpWord/kudamono</loc>
+    <priority>0.7</priority>
+    <lastmod>2024-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/save/daysQuotes</loc>
+    <priority>0.7</priority>
+    <lastmod>2024-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/ja/save/daysQuotes</loc>
+    <priority>0.7</priority>
+    <lastmod>2024-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
 <!-- save 子页面 end -->
   <url>
     <loc>https://xtt.moe/net</loc>
@@ -279,37 +315,25 @@
   <url>
     <loc>https://xtt.moe/sitemap</loc>
     <priority>1.0</priority>
-    <lastmod>2024-01-02</lastmod>
+    <lastmod>2024-08-26</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://xtt.moe/ja/sitemap</loc>
     <priority>1.0</priority>
-    <lastmod>2024-01-02</lastmod>
+    <lastmod>2024-08-26</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://xtt.moe/archives</loc>
     <priority>0.7</priority>
-    <lastmod>2023-11-28</lastmod>
+    <lastmod>2024-08-26</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://xtt.moe/ja/archives</loc>
     <priority>0.7</priority>
-    <lastmod>2023-11-28</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://xtt.moe/photos</loc>
-    <priority>0.7</priority>
-    <lastmod>2024-03-23</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://xtt.moe/ja/photos</loc>
-    <priority>0.7</priority>
-    <lastmod>2024-03-23</lastmod>
+    <lastmod>2024-08-26</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <!-- 留言板页面也不算是网站中的有效页面，因为没有内容，所以从 sitemap 文件中排除 -->
@@ -479,6 +503,18 @@
     <loc>https://xtt.moe/article/25</loc>
     <priority>0.8</priority>
     <lastmod>2024-01-02</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/article/26</loc>
+    <priority>0.8</priority>
+    <lastmod>2024-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/article/27</loc>
+    <priority>0.8</priority>
+    <lastmod>2024-08-26</lastmod>
     <changefreq>monthly</changefreq>
   </url>
 </urlset>

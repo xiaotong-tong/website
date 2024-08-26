@@ -325,6 +325,18 @@ let routes: Route[] = [
 					theme: 1
 				}
 			},
+			{
+				path: "/archives",
+				name: "archives",
+				component: () => import("../views/archives/archives.vue"),
+				meta: {
+					title: {
+						zh: "归档",
+						ja: "アーカイブ"
+					},
+					theme: 1
+				}
+			},
 			// 站点地图页面
 			{
 				path: "/sitemap",
@@ -413,18 +425,6 @@ let routes: Route[] = [
 					title: {
 						zh: "其它",
 						ja: "その他"
-					}
-				}
-			},
-
-			{
-				path: "/archives",
-				name: "archives",
-				component: () => import("../views/archives/archives.vue"),
-				meta: {
-					title: {
-						zh: "归档",
-						ja: "アーカイブ"
 					}
 				}
 			},

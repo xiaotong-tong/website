@@ -15,6 +15,16 @@
 				></namiLink>
 			</li>
 			<li
+				class="piano-key"
+				data-key="d3"
+				@mouseenter="mouseenterHandler"
+				@mouseleave="mouseleaveHandler"
+			>
+				<namiLink class="link" inline-block to="/login">
+					{{ i18nStore.messages.main.nav.login }}
+				</namiLink>
+			</li>
+			<!-- <li
 				class="piano-key share-wrap"
 				data-key="d3"
 				@mouseenter="popLiMouseenterHandler"
@@ -45,7 +55,7 @@
 						{{ i18nStore.messages.main.nav.star }}
 					</namiLink>
 				</div>
-			</li>
+			</li> -->
 			<li
 				class="piano-key"
 				data-key="e3"
@@ -80,9 +90,9 @@
 				@mouseenter="mouseenterHandler"
 				@mouseleave="mouseleaveHandler"
 			>
-				<namiLink class="link" inline-block to="/login">
-					{{ i18nStore.messages.main.nav.login }}
-				</namiLink>
+				<namiLink class="link" inline-block to="/archives">{{
+					i18nStore.messages.main.nav.archives
+				}}</namiLink>
 			</li>
 			<li
 				class="piano-key"
@@ -192,14 +202,14 @@ const mouseleaveHandler = (e: MouseEvent) => {
 	const keyEl = target.closest(".piano-key") as HTMLElement;
 	keyEl?.classList.remove("active");
 };
-const popLiMouseenterHandler = (e: MouseEvent) => {
-	tagsPopShow.value = true;
-	mouseenterHandler(e);
-};
-const popLiMouseleaveHandler = (e: MouseEvent) => {
-	tagsPopShow.value = false;
-	mouseleaveHandler(e);
-};
+// const popLiMouseenterHandler = (e: MouseEvent) => {
+// 	tagsPopShow.value = true;
+// 	mouseenterHandler(e);
+// };
+// const popLiMouseleaveHandler = (e: MouseEvent) => {
+// 	tagsPopShow.value = false;
+// 	mouseleaveHandler(e);
+// };
 
 onMounted(() => {
 	// 预加载 piano 音频文件

@@ -17,8 +17,16 @@
 -   [仪表盘](/dashboard)
 -   [归档](/archives)
 -   [简历](/cv/pdf)
--   [ゲームと文字な日々](/reading)
+
+### 储藏室
+
 -   [图片](/photos)
+-   [前端链接](/save/webLinks) - 前端相关的链接
+-   [颜文字](/save/emoji) - 一些颜文字
+-   [ゲームと文字な日々](/reading)
+-   [果物](/save/jpWord/kudamono) - 日语水果相关单词
+-   [日本语句型辞典](https://file.xtt.moe/local/%E6%97%A5%E6%9C%AC%E8%AF%AD%E5%8F%A5%E5%9E%8B%E8%BE%9E%E5%85%B8.pdf)
+-   [日语每日一句](/save/daysQuotes) - 日语每日一句
 
 ### 工具箱
 
@@ -57,3 +65,5 @@
 -   [documentPictureInPicture API 学习记录](/article/23)
 -   [使用手机调试电脑的 localhost](/article/24)
 -   [使用 Web NFC 实现手机端浏览器的登录功能](/article/25)
+-   [在 Linux 中运行 Puppeteer](/article/26)
+-   [ナミダノコエ 歌詞](/article/27)

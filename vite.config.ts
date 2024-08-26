@@ -73,7 +73,10 @@ export default defineConfig({
 						"./src/views/about/index.vue",
 						"./src/views/links/links.vue",
 						"./src/views/blog/guestbook/index.vue",
-						"./src/views/bot/bot.vue"
+						"./src/views/bot/bot.vue",
+						"./src/views/sitemap/index.vue",
+						"./src/views/dashboard/index.vue",
+						"./src/views/archives/archives.vue"
 					],
 
 					// 非网站使用页面
@@ -93,22 +96,19 @@ export default defineConfig({
 					save: [
 						"./src/views/reading/index.vue",
 						"./src/views/save/children/webLinks/links.vue",
-						"./src/views/save/children/emoji/emoji.vue"
+						"./src/views/save/children/emoji/emoji.vue",
+						"./src/views/photos/index.vue",
+						"./src/views/save/children/jpWord/kudamono.vue",
+						"./src/views/save/children/daysQuote/daysQuote.vue"
 					],
 
-					index: [
+					blog: [
 						"./src/views/home.vue",
 						"./src/views/blog/article/article.vue",
 						"./src/views/blog/lang/lang.vue",
 						"./src/views/blog/net/index.vue",
 						"./src/views/blog/note/index.vue",
 						"./src/views/blog/star/index.vue"
-					],
-					subindex: [
-						"./src/views/sitemap/index.vue",
-						"./src/views/dashboard/index.vue",
-						"./src/views/photos/index.vue",
-						"./src/views/archives/archives.vue"
 					],
 					editor: ["./src/views/blog/editor/add.vue", "./src/views/blog/editor/edit.vue"],
 					ex: ["./src/views/ex/space/index.vue", "./src/views/ex/pip/index.vue"],
