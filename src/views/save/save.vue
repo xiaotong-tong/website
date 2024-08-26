@@ -8,6 +8,9 @@
 			<nami-link to="/save/emoji" class="link" type="primary">
 				{{ i18nStore.lang === "ja" ? "絵文字" : "颜文字" }}
 			</nami-link>
+			<nami-link to="/reading" class="link" type="primary">
+				文字な日々
+			</nami-link>
 		</div>
 		<div class="jp-section">
 			<hBanner>日本語勉強</hBanner>

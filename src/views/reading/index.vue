@@ -1,5 +1,5 @@
 <template>
-	<section class="container web-color-default">
+	<section class="container">
 		<xtt-markdown :dark="store.isDark ? '' : undefined">{{ readingContent }}</xtt-markdown>
 	</section>
 </template>

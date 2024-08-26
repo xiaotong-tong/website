@@ -85,7 +85,15 @@ export default defineConfig({
 						"./src/views/somethings/qrcode.vue",
 						"./src/views/somethings/pinyin.vue",
 						"./src/views/somethings/img2base64.vue",
-						"./src/views/somethings/toWebp.vue"
+						"./src/views/somethings/toWebp.vue",
+						"./src/views/somethings/sudoku.vue",
+						"./src/views/somethings/chat.vue"
+					],
+					// save 子页面
+					save: [
+						"./src/views/reading/index.vue",
+						"./src/views/save/children/webLinks/links.vue",
+						"./src/views/save/children/emoji/emoji.vue"
 					],
 
 					index: [
@@ -100,14 +108,9 @@ export default defineConfig({
 						"./src/views/sitemap/index.vue",
 						"./src/views/dashboard/index.vue",
 						"./src/views/photos/index.vue",
-						"./src/views/archives/archives.vue",
-						"./src/views/reading/index.vue"
+						"./src/views/archives/archives.vue"
 					],
-					master: ["./src/views/blog/editor/add.vue", "./src/views/blog/editor/edit.vue"],
-					something: [
-						"./src/views/somethings/sudoku.vue",
-						"./src/views/somethings/chat.vue"
-					],
+					editor: ["./src/views/blog/editor/add.vue", "./src/views/blog/editor/edit.vue"],
 					ex: ["./src/views/ex/space/index.vue", "./src/views/ex/pip/index.vue"],
 					cv: ["./src/views/cv/cv.pdf.vue"]
 				}

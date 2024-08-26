@@ -218,6 +218,30 @@ let routes: Route[] = [
 				}
 			},
 			{
+				path: "/something/sudoku",
+				name: "sudoku",
+				component: () => import("../views/somethings/sudoku.vue"),
+				meta: {
+					title: {
+						zh: "数独游戏",
+						ja: "数独ゲーム"
+					},
+					theme: 4
+				}
+			},
+			{
+				path: "/something/chat",
+				name: "chat",
+				component: () => import("../views/somethings/chat.vue"),
+				meta: {
+					title: {
+						zh: "chat",
+						ja: "チャット"
+					},
+					theme: 4
+				}
+			},
+			{
 				path: "/setting",
 				name: "setting",
 				component: () => import("../views/setting/index.vue"),
@@ -313,6 +337,18 @@ let routes: Route[] = [
 					},
 					theme: 3
 				}
+			},
+			{
+				path: "/reading",
+				name: "reading",
+				component: () => import("../views/reading/index.vue"),
+				meta: {
+					title: {
+						zh: "ゲームと文字な日々",
+						ja: "ゲームと文字な日々"
+					},
+					theme: 3
+				}
 			}
 		]
 	},
@@ -403,43 +439,6 @@ let routes: Route[] = [
 					}
 				}
 			},
-
-			{
-				path: "/reading",
-				name: "reading",
-				component: () => import("../views/reading/index.vue"),
-				meta: {
-					title: {
-						zh: "ゲームと文字な日々",
-						ja: "ゲームと文字な日々"
-					}
-				}
-			},
-
-			// something
-			{
-				path: "/something/chat",
-				name: "chat",
-				component: () => import("../views/somethings/chat.vue"),
-				meta: {
-					title: {
-						zh: "chat",
-						ja: "チャット"
-					}
-				}
-			},
-			{
-				path: "/something/sudoku",
-				name: "sudoku",
-				component: () => import("../views/somethings/sudoku.vue"),
-				meta: {
-					title: {
-						zh: "数独游戏",
-						ja: "数独ゲーム"
-					}
-				}
-			},
-
 			// cv 页面
 			{
 				path: "/cv/pdf",

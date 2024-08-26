@@ -5,3 +5,4 @@
 -   [拼音](/ja/something/pinyin) - 中国語の漢字の読み方
 -   [仮名](/ja/something/kana) - 漢字の読み方（仮名を振る）
 -   [QRCode](/something/qrcode) - QR コードを生成する
+-   [数独](/ja/something/sudoku) - 数独

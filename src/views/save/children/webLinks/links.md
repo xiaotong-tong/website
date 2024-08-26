@@ -8,6 +8,7 @@
 -   [Day.js](https://day.js.org/docs/zh-CN/installation/installation) - day.js 中文文档。
 -   [jsdoc](https://www.jsdoc.com.cn/) - JSDoc 中文文档。
 -   [sequelize](https://www.sequelize.cn/) - Sequelize 中文文档。 一个 node.js 的 ORM
+-   [Rough.js](https://roughjs.com/) - 一个用于生成手绘风格图形的库。
 
 ## 工具
 

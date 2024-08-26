@@ -5,3 +5,5 @@
 -   [拼音](/something/pinyin) - 为汉字注音
 -   [仮名](/something/kana) - 为日文汉字标注假名
 -   [QRCode](/something/qrcode) - 生成二维码
+-   [数独](/something/sudoku) - 数独
+-   [chat](/something/chat)
