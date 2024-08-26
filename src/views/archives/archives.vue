@@ -1,6 +1,6 @@
 <template>
-	<section class="container web-color-default">
-		<h2>Archives</h2>
+	<section class="container">
+		<hBanner wrapperTargetName="h2">Archives</hBanner>
 
 		<nami-timeline>
 			<nami-timeline-item :group="true">
@@ -155,7 +155,9 @@
 	</section>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { hBanner } from "@c/index";
+</script>
 
 <style scoped>
 .time {

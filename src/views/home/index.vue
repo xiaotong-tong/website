@@ -19,9 +19,9 @@
 			<namiTextAutoScroll v-if="store.pageConfig.showContentTip" class="tip" />
 			<namiCIcon
 				:style="{
-					position: 'absolute',
+					position: 'fixed',
 					insetBlockStart: '80px',
-					insetInlineEnd: '64px',
+					insetInlineEnd: store.isSmallScreen ? '64px' : '264px',
 					zIndex: -1,
 					opacity: 0.6
 				}"
@@ -30,7 +30,7 @@
 			></namiCIcon>
 			<namiCIcon
 				:style="{
-					position: 'absolute',
+					position: 'fixed',
 					insetBlockEnd: '64px',
 					insetInlineStart: '64px',
 					zIndex: -1,

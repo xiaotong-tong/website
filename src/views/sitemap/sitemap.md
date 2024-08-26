@@ -15,7 +15,6 @@
 -   [留言板](/guestbook)
 -   [bot](/bot) - 关于 QQ 机器人页面
 -   [仪表盘](/dashboard)
--   [归档](/archives)
 -   [简历](/cv/pdf)
 
 ### 储藏室
@@ -43,6 +42,8 @@
 -   [threejs 星空](/ex/space) - threejs 实现的星空
 
 ## blog 相关
+
+-   [归档](/archives)
 
 -   [js 排序](/article/2)
 -   [js function length 属性](/article/4)
