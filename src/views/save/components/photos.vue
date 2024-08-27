@@ -5,18 +5,12 @@
 				<hBanner>{{ i18nStore.lang === "ja" ? "写真" : "图片" }}</hBanner>
 			</nami-link>
 
-			<NButton
-				:style="{
-					position: 'absolute',
-					insetInlineEnd: '8px',
-					insetBlockStart: '8px',
-					marginInlineStart: '8px'
-				}"
-				:color="store.currentTheme"
-				text
-				@click="showModal = true"
+			<NamiButton
+				class="add-photo-btn"
 				v-if="store.loginUid"
-				>新增</NButton
+				@click="showModal = true"
+				:border-color="store.currentTheme"
+				>新增</NamiButton
 			>
 		</div>
 		<div class="flex h-[150px] gap-x-2 overflow-x-auto pe-1">
@@ -26,7 +20,7 @@
 		</div>
 
 		<NModal class="web-color-default" v-model:show="showModal">
-			<NCard title="新增图片" class="w-[500px] h-[300px]">
+			<NCard title="新增图片" class="modal-card">
 				<div>
 					图片 url:
 					<NInput v-model:value="url" />
@@ -55,7 +49,7 @@
 import { ref } from "vue";
 import { useImageList } from "@/utils/photos";
 import { useI18nStore } from "@/stores/i18n";
-import { hBanner } from "@c/index";
+import { hBanner, NamiButton } from "@c/index";
 import type { UploadOnChange } from "naive-ui";
 import { NButton, NModal, NInput, NCard, NCheckbox, NUpload } from "naive-ui";
 import { uploadLocalImage } from "@/api/image/image";
@@ -91,4 +85,15 @@ async function uploadImage(option: Parameters<UploadOnChange>[0]) {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.modal-card {
+	width: 500px;
+	height: 300px;
+}
+
+.add-photo-btn {
+	position: absolute;
+	inset-inline-end: 8px;
+	inset-block-start: 8px;
+}
+</style>
