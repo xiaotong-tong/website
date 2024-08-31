@@ -1,108 +1,25 @@
 <template>
-	<nav class="nav">
+	<nav
+		class="nav"
+		:style="{
+			width: `min(${store.pageConfig.inlineSize.minPx}px, ${
+				store.pageConfig.inlineSize.percentage * 100
+			}%)`
+		}"
+	>
 		<ul class="list left">
 			<li
+				v-for="item in list"
+				:key="item.key"
 				class="piano-key"
-				data-key="c3"
+				:data-key="item.key"
+				:style="{
+					'--df-color': item.color
+				}"
 				@mouseenter="mouseenterHandler"
 				@mouseleave="mouseleaveHandler"
 			>
-				<namiLink
-					class="link"
-					inline-block
-					to="/"
-					v-text="i18nStore.messages.main.nav.home"
-				></namiLink>
-			</li>
-			<li
-				class="piano-key"
-				data-key="d3"
-				@mouseenter="mouseenterHandler"
-				@mouseleave="mouseleaveHandler"
-			>
-				<namiLink class="link" inline-block to="/login">
-					{{ i18nStore.messages.main.nav.login }}
-				</namiLink>
-			</li>
-			<!-- <li
-				class="piano-key share-wrap"
-				data-key="d3"
-				@mouseenter="popLiMouseenterHandler"
-				@mouseleave="popLiMouseleaveHandler"
-				@focusin="focusHandler('share')"
-				@focusout="blurHandler('share')"
-			>
-				<namiLink class="link share" inline-block>
-					{{ i18nStore.messages.main.nav.share }}
-					<namiIcon icon="mdiChevronDown"></namiIcon>
-				</namiLink>
-
-				<div
-					class="tags web-color-default"
-					v-show="tagsPopShow"
-					@click="tagsPopShow = false"
-				>
-					<namiLink class="link" inline-block to="/net">{{
-						i18nStore.messages.main.nav.net
-					}}</namiLink>
-					<namiLink class="link" inline-block to="/lang">
-						{{ i18nStore.messages.main.nav.lang }}
-					</namiLink>
-					<namiLink class="link" inline-block to="/note">
-						{{ i18nStore.messages.main.nav.note }}
-					</namiLink>
-					<namiLink class="link" inline-block to="/star">
-						{{ i18nStore.messages.main.nav.star }}
-					</namiLink>
-				</div>
-			</li> -->
-			<li
-				class="piano-key"
-				data-key="e3"
-				@mouseenter="mouseenterHandler"
-				@mouseleave="mouseleaveHandler"
-			>
-				<namiLink class="link" inline-block to="/bot"> bot </namiLink>
-			</li>
-			<li
-				class="piano-key"
-				data-key="f3"
-				@mouseenter="mouseenterHandler"
-				@mouseleave="mouseleaveHandler"
-			>
-				<namiLink class="link" inline-block to="/guestbook">
-					{{ i18nStore.messages.main.nav.guestbook }}
-				</namiLink>
-			</li>
-			<li
-				class="piano-key"
-				data-key="g3"
-				@mouseenter="mouseenterHandler"
-				@mouseleave="mouseleaveHandler"
-			>
-				<namiLink class="link" inline-block to="/link">
-					{{ i18nStore.messages.main.nav.link }}
-				</namiLink>
-			</li>
-			<li
-				class="piano-key"
-				data-key="a3"
-				@mouseenter="mouseenterHandler"
-				@mouseleave="mouseleaveHandler"
-			>
-				<namiLink class="link" inline-block to="/archives">{{
-					i18nStore.messages.main.nav.archives
-				}}</namiLink>
-			</li>
-			<li
-				class="piano-key"
-				data-key="b3"
-				@mouseenter="mouseenterHandler"
-				@mouseleave="mouseleaveHandler"
-			>
-				<namiLink class="link" inline-block to="/about">
-					{{ i18nStore.messages.main.nav.about }}
-				</namiLink>
+				<namiLink inline-block :to="item.url"> {{ item.content }}</namiLink>
 			</li>
 		</ul>
 
@@ -111,8 +28,8 @@
 				class="lang-translate"
 				@mouseenter="translatePopShow = true"
 				@mouseleave="translatePopShow = false"
-				@focusin="focusHandler('lang')"
-				@focusout="blurHandler('lang')"
+				@focusin="focusHandler"
+				@focusout="blurHandler"
 			>
 				<namiIcon icon="mdiTranslate" class="link"></namiIcon>
 
@@ -136,13 +53,22 @@
 			</li>
 			<li>
 				<namiLink
-					class="link github-link"
+					class="link github-link gap-x-2 px-0"
 					inline-block
 					to="https://github.com/xiaotong-tong/website"
 					target="_blank"
 				>
 					<namiIcon icon="mdiGithub" aria-label="Github 仓库"></namiIcon>
 					xtt
+				</namiLink>
+			</li>
+			<li>
+				<namiLink class="link avatar px-0" inline-block to="/login">
+					<img
+						class="w-6 rounded-full"
+						src="https://image.xtt.moe/images/mlian2.md.webp"
+						alt="favicon"
+					/>
 				</namiLink>
 			</li>
 		</ul>
@@ -156,25 +82,67 @@ import { useI18nStore } from "@/stores/i18n";
 
 const store = useStore();
 const i18nStore = useI18nStore();
-const tagsPopShow = ref(false);
-const translatePopShow = ref(false);
+
+const list = ref([
+	{
+		key: "c3",
+		url: "/",
+		content: i18nStore.messages.main.nav.home,
+		color: store.theme[0]
+	},
+	{
+		key: "d3",
+		url: "/login",
+		content: i18nStore.messages.main.nav.login,
+		color: store.theme[1]
+	},
+	{
+		key: "e3",
+		url: "/bot",
+		content: "bot",
+		color: store.theme[2]
+	},
+	{
+		key: "f3",
+		url: "/guestbook",
+		content: i18nStore.messages.main.nav.guestbook,
+		color: store.theme[3]
+	},
+	{
+		key: "g3",
+		url: "/link",
+		content: i18nStore.messages.main.nav.link,
+		color: store.theme[4]
+	},
+	{
+		key: "a3",
+		url: "/archives",
+		content: i18nStore.messages.main.nav.archives,
+		color: store.theme[5]
+	},
+	{
+		key: "b3",
+		url: "/about",
+		content: i18nStore.messages.main.nav.about,
+		color: store.theme[6]
+	}
+]);
 
 // 防止 blur 事件与 focus 事件冲突
 const blurDelay = 100;
 let blurTimer: number;
 
-const focusHandler = (target: "share" | "lang") => {
+const translatePopShow = ref(false);
+const focusHandler = () => {
 	if (blurTimer) {
 		window.clearTimeout(blurTimer);
 		blurTimer = 0;
 	}
-	const targetRef = target === "share" ? tagsPopShow : translatePopShow;
-	targetRef.value = true;
+	translatePopShow.value = true;
 };
-const blurHandler = (target: "share" | "lang") => {
+const blurHandler = () => {
 	blurTimer = window.setTimeout(() => {
-		const targetRef = target === "share" ? tagsPopShow : translatePopShow;
-		targetRef.value = false;
+		translatePopShow.value = false;
 	}, blurDelay);
 };
 
@@ -202,14 +170,6 @@ const mouseleaveHandler = (e: MouseEvent) => {
 	const keyEl = target.closest(".piano-key") as HTMLElement;
 	keyEl?.classList.remove("active");
 };
-// const popLiMouseenterHandler = (e: MouseEvent) => {
-// 	tagsPopShow.value = true;
-// 	mouseenterHandler(e);
-// };
-// const popLiMouseleaveHandler = (e: MouseEvent) => {
-// 	tagsPopShow.value = false;
-// 	mouseleaveHandler(e);
-// };
 
 onMounted(() => {
 	// 预加载 piano 音频文件
@@ -237,7 +197,6 @@ onMounted(() => {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: min(1000px, 100%);
 	padding: 0 8px;
 	font-family: "luoliti", Arial, Helvetica, sans-serif;
 }
@@ -252,38 +211,18 @@ onMounted(() => {
 .right {
 	justify-content: flex-end;
 	column-gap: 8px;
+
+	& > li {
+		display: flex;
+		align-items: center;
+	}
 }
 
-.small-screen .right {
-	display: none;
-}
-
-.github-link::part(link) {
-	align-items: center;
-	column-gap: 8px;
-}
-
-.small-screen .link {
-	--link-padding: 2px 4px;
-}
-
-.share::part(link) {
-	align-items: center;
-}
-
-.tags,
 .langs {
 	position: absolute;
 	border-radius: 4px;
 	box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
 		0 1px 5px 0 rgb(0 0 0 / 12%);
-}
-.tags .link {
-	display: flex;
-	color: #000;
-}
-
-.langs {
 	top: 24px;
 	left: -16px;
 }
@@ -299,42 +238,26 @@ onMounted(() => {
 	position: relative;
 }
 
+.avatar {
+	transition: transform 0.5s;
+}
 /* 移动设备在点击后元素元素会一直保持 hover 状态，使用 @media (hover: hover) 包裹后，移动设备就不会加载 hover 样式了。 */
 @media (hover: hover) {
 	.right .link:hover,
-	.tags .link:hover,
 	.lang-item:hover {
-		color: #f34159;
+		color: #f17559;
+	}
+
+	.avatar:hover {
+		transform: rotate(360deg);
 	}
 }
 
 .piano-key {
-	--df-color: #f17559;
 	overflow: hidden;
 }
 .piano-key.active {
 	color: #fff;
-}
-.piano-key:nth-child(1) {
-	--df-color: #f17559;
-}
-.piano-key:nth-child(2) {
-	--df-color: #f2b25b;
-}
-.piano-key:nth-child(3) {
-	--df-color: #f0dc59;
-}
-.piano-key:nth-child(4) {
-	--df-color: #bbf15b;
-}
-.piano-key:nth-child(5) {
-	--df-color: #59f1b7;
-}
-.piano-key:nth-child(6) {
-	--df-color: #59e1f1;
-}
-.piano-key:nth-child(7) {
-	--df-color: #597ff1;
 }
 
 .piano-key::after {

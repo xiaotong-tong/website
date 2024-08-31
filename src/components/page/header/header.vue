@@ -1,6 +1,11 @@
 <template>
 	<header class="header web-color-default">
-		<pageLogo class="logo"></pageLogo>
+		<pageLogo
+			class="logo"
+			:style="{
+				width: `calc((100% - ${store.pageConfig.inlineSize.minPx}px) / 2)`
+			}"
+		></pageLogo>
 		<pageNav :dark="store.isDark ? '' : undefined"></pageNav>
 	</header>
 </template>
@@ -26,7 +31,6 @@ const store = useStore();
 }
 
 .logo {
-	width: calc((100% - 1000px) / 2);
 	min-width: 80px;
 }
 </style>

@@ -12,7 +12,6 @@ import "@/assets/css/color.css";
 import { App } from "vue";
 
 // 加载自定义组件
-import link from "../components/link/link.vue";
 import icon from "../components/icon/icon.vue";
 
 import table from "../components/table/table.vue";
@@ -33,7 +32,6 @@ import withNamiInstall from "@c/index";
 
 const withInstall = {
 	install(app: App) {
-		app.component("namiLink", link);
 		app.component("namiIcon", icon);
 
 		app.component("namiTable", table);

@@ -361,6 +361,18 @@ let routes: Route[] = [
 					},
 					theme: 3
 				}
+			},
+			{
+				path: "/live",
+				name: "live",
+				component: () => import("../views/live/live.vue"),
+				meta: {
+					title: {
+						zh: "动态",
+						ja: "ライブ"
+					},
+					theme: 1
+				}
 			}
 		]
 	},

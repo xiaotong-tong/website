@@ -1,8 +1,9 @@
 @layer theme {
 	@tailwind base;
 	@tailwind components;
-	@tailwind utilities;
 }
+
+@tailwind utilities;
 
 /* 自定义页面滚动条 */
 ::-webkit-scrollbar {

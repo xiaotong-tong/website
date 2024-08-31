@@ -34,7 +34,8 @@ export const zhMsg = {
 			login: "登录",
 			photo: "图片",
 			blog: "Blog",
-			setting: "设置"
+			setting: "设置",
+			live: "动态"
 		},
 		footer: {
 			sitemap: "站点地图"

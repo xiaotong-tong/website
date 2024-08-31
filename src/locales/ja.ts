@@ -34,7 +34,8 @@ export const jaMsg = {
 			login: "ログイン",
 			photo: "写真",
 			blog: "ブログ",
-			setting: "設定"
+			setting: "設定",
+			live: "ライブ"
 		},
 		footer: {
 			sitemap: "サイトマップ"
