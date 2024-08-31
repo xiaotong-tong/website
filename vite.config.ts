@@ -103,7 +103,6 @@ export default defineConfig({
 					],
 
 					blog: [
-						"./src/views/home.vue",
 						"./src/views/blog/article/article.vue",
 						"./src/views/blog/lang/lang.vue",
 						"./src/views/blog/net/index.vue",

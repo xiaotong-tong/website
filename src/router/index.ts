@@ -34,7 +34,7 @@ let routes: Route[] = [
 	{
 		path: "/",
 		name: "newHome",
-		component: () => import("../views/home/index.vue"),
+		component: () => import("../views/home.vue"),
 		children: [
 			{
 				path: "/",

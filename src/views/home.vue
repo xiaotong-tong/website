@@ -4,13 +4,54 @@
 	<namiHeader v-if="!store.isSmallScreen"></namiHeader>
 	<namiMHeader v-else></namiMHeader>
 
-	<main class="main">
-		<RouterView />
-	</main>
+	<namiRoughCard
+		is="main"
+		class="main web-color-default"
+		:color="store.currentTheme"
+		:style="{
+			width: `min(${store.pageConfig.inlineSize.minPx}px, ${
+				store.pageConfig.inlineSize.percentage * 100
+			}%)`
+		}"
+	>
+		<section ref="contentRef" class="content">
+			<RouterView />
+			<namiTextAutoScroll v-if="store.pageConfig.showContentTip" class="tip" />
+			<namiCIcon
+				:style="{
+					position: 'fixed',
+					insetBlockStart: '80px',
+					insetInlineEnd: store.isSmallScreen ? '64px' : '264px',
+					zIndex: -1,
+					opacity: 0.6
+				}"
+				:size="64"
+				icon="heart"
+			></namiCIcon>
+			<namiCIcon
+				:style="{
+					position: 'fixed',
+					insetBlockEnd: '64px',
+					insetInlineStart: '64px',
+					zIndex: -1,
+					opacity: 0.6
+				}"
+				:size="64"
+				icon="heart"
+			></namiCIcon>
+		</section>
+		<nav class="nav"><namiNav ref="namiNavRef"></namiNav></nav>
+	</namiRoughCard>
 
 	<namiFooter></namiFooter>
 
-	<kanbanarea v-if="live2dShowed && !store.isSmallScreen" ref="live2d">
+	<kanbanarea
+		v-if="store.pageConfig.showHomeLive2d && live2dShowed && !store.isSmallScreen"
+		ref="live2d"
+		:style="{
+			bottom: store.pageConfig.showHomeMusicController ? '65px' : '8px'
+		}"
+	>
 		<template #icon>
 			<namiIcon
 				:ref="appendIcon"
@@ -27,14 +68,6 @@
 				:data-xtt-tooltip="chatInputBoxShowed ? '关闭聊天框' : '打开聊天框'"
 				@click="chatInputBoxClickEvent"
 				@mouseenter="live2d?.showChatBox('想聊聊天吗？', 3000)"
-			></namiIcon>
-			<namiIcon
-				:ref="appendIcon"
-				class="icon"
-				icon="mdiEmailOpenHeartOutline"
-				data-xtt-tooltip="私密服务"
-				@click="verifyLogin"
-				@mouseenter="live2d?.showChatBox('要确认身份吗？', 3000)"
 			></namiIcon>
 			<namiIcon
 				v-if="store.loginUid"
@@ -71,24 +104,38 @@
 		</template>
 	</kanbanarea>
 
-	<namiAplayer></namiAplayer>
+	<myAplayer :rectX="contentX" :rectY="contentY"></myAplayer>
+
+	<myScrollTop :scrollY="y" @click="() => (y = 0)" />
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
-import kanbanarea from "../components/live2d/kanbanarea.vue";
-import namiAplayer from "../components/aplayer/aplayer.vue";
-import namiHeader from "../components/page/header/header.vue";
-import namiMHeader from "../components/page/header/m-header.vue";
-import namiFooter from "../components/page/footer/footer.vue";
-import { verifyMasterUid } from "../api/blog/verify";
-import { useRouter } from "vue-router";
+import { ref, onMounted, watch, nextTick, provide } from "vue";
+import kanbanarea from "@/components/live2d/kanbanarea.vue";
+import namiHeader from "@/components/page/header/header.vue";
+import namiMHeader from "@/components/page/header/m-header.vue";
+import namiFooter from "@/components/page/footer/footer.vue";
+import namiNav from "./home/components/nav.vue";
+import namiTextAutoScroll from "@/components/textAutoScroll/index.vue";
+import myScrollTop from "./home/components/scroll.vue";
+import myAplayer from "./home/components/aplayer.vue";
+import { useRouter, useRoute } from "vue-router";
 import { useStore } from "@/stores/index";
+import { useContentRefStore } from "@/stores/contentRef";
 import type { XttTooltipElement } from "xtt-ui/index.d.ts";
 import { bgUrl } from "@/utils/webBG";
+import { useElementBounding, useScroll } from "@vueuse/core";
 
 const store = useStore();
+const contentStore = useContentRefStore();
 const router = useRouter();
+const route = useRoute();
+
+const contentRef = ref<HTMLElement | null>(null);
+const { x: contentX, y: contentY } = useElementBounding(contentRef);
+contentStore.bind(contentRef);
+
+const { y } = useScroll(contentRef, { behavior: "smooth" });
 
 const live2d = ref<InstanceType<typeof kanbanarea>>();
 const live2dShowed = ref(true);
@@ -111,30 +158,85 @@ const appendIcon = (icon: any) => {
 	icons.push(icon?.$el);
 };
 
-onMounted(() => {
-	iconTooltip.value?.initTrigger(icons);
-});
+function checkOverflow() {
+	if (contentRef.value) {
+		contentRef.value.classList.remove("scroll-overflow-y");
+		// 获取第一个子元素
+		const scrollEl = contentRef.value.firstElementChild!;
+		const rect = scrollEl.getBoundingClientRect();
 
-const verifyLogin = async () => {
-	const pw = window.prompt("请输入主人口令");
-	if (pw) {
-		const data = await verifyMasterUid(pw);
-		if (data === "验证成功") {
-			store.loginUid = pw;
-			localStorage.setItem("loginUid", pw);
-		} else {
-			alert("口令错误");
+		if (rect.height > contentStore.height.value) {
+			contentRef.value.classList.add("scroll-overflow-y");
 		}
 	}
-};
+}
+
+const namiNavRef = ref<typeof namiNav>();
+
+provide("namiNavRef", namiNavRef);
+
+onMounted(() => {
+	iconTooltip.value?.initTrigger(icons);
+	checkOverflow();
+});
+
+// 监听路由变化
+watch(
+	() => route.fullPath,
+	() => {
+		nextTick(() => {
+			checkOverflow();
+		});
+	}
+);
 </script>
 
 <style scoped>
 .main {
-	width: min(900px, 90%);
-	min-height: calc(100vh - 114px);
+	height: calc(100vh - 114px);
 	margin: 8px auto;
 	border: 1px solid transparent;
+	display: flex;
+}
+.small-screen .main {
+	height: auto;
+}
+
+.content {
+	position: relative;
+	flex: 1;
+	overflow: auto;
+	height: 100%;
+	box-sizing: border-box;
+	padding: 8px 8px 24px;
+}
+
+.nav {
+	flex: 0 0 200px;
+	position: sticky;
+	top: 48px;
+}
+
+.tip {
+	position: fixed;
+	inset-block-end: 1px;
+	inset-inline-start: 8px;
+	inset-inline-end: 208px;
+	height: 24px;
+	padding-inline-start: 8px;
+	box-sizing: border-box;
+	margin-block-end: 4px;
+	background-color: #ffffffdd;
+}
+.theme-dark .tip {
+	background-color: #151b1f66;
+}
+
+.content.scroll-overflow-y .tip {
+	display: none;
+}
+.small-screen .tip {
+	inset-inline-end: 8px;
 }
 
 .icon {
@@ -142,5 +244,12 @@ const verifyLogin = async () => {
 }
 .theme-dark .icon {
 	color: #fff;
+}
+
+.small-screen .content {
+	min-block-size: calc(100vh - 130px);
+}
+.small-screen .nav {
+	display: none;
 }
 </style>
