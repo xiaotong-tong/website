@@ -373,72 +373,6 @@ let routes: Route[] = [
 					},
 					theme: 1
 				}
-			}
-		]
-	},
-	{
-		path: "/blog",
-		name: "blog",
-		children: [
-			{
-				path: "/editor/add",
-				name: "blogEditorAdd",
-				component: () => import("../views/blog/editor/add.vue")
-			},
-			{
-				path: "/editor/edit/:id",
-				name: "blogEditorEdit",
-				component: () => import("../views/blog/editor/edit.vue")
-			},
-
-			{
-				path: "/lang",
-				name: "lang",
-				component: () => import("../views/blog/lang/lang.vue"),
-				meta: {
-					title: {
-						zh: "语言学习",
-						ja: "言語学ぶ"
-					}
-				}
-			},
-			// {
-			// 	path: "/lang/words",
-			// 	name: "jpWords",
-			// 	component: () => import("../views/blog/lang/words/words.vue")
-			// },
-			{
-				path: "/net",
-				name: "net",
-				component: () => import("../views/blog/net/index.vue"),
-				meta: {
-					title: {
-						zh: "网络互联",
-						ja: "ネットワーク"
-					}
-				}
-			},
-			{
-				path: "/note",
-				name: "note",
-				component: () => import("../views/blog/note/index.vue"),
-				meta: {
-					title: {
-						zh: "喵随笔",
-						ja: "ノート"
-					}
-				}
-			},
-			{
-				path: "/star",
-				name: "star",
-				component: () => import("../views/blog/star/index.vue"),
-				meta: {
-					title: {
-						zh: "其它",
-						ja: "その他"
-					}
-				}
 			},
 			{
 				path: "/dashboard",
@@ -448,16 +382,10 @@ let routes: Route[] = [
 					title: {
 						zh: "控制台",
 						ja: "ダッシュボード"
-					}
+					},
+					theme: 5
 				}
 			},
-			// cv 页面
-			{
-				path: "/cv/pdf",
-				name: "cvpdf",
-				component: () => import("../views/cv/cv.pdf.vue")
-			},
-
 			// 404页面
 			{
 				path: "/404",
@@ -467,7 +395,8 @@ let routes: Route[] = [
 					title: {
 						zh: "404",
 						ja: "404"
-					}
+					},
+					theme: 1
 				}
 			},
 			// 未匹配到的路由，重定向到404页面
@@ -477,6 +406,68 @@ let routes: Route[] = [
 				redirect: "/404"
 			}
 		]
+	},
+	{
+		path: "/editor/add",
+		name: "blogEditorAdd",
+		component: () => import("../views/blog/editor/add.vue")
+	},
+	{
+		path: "/editor/edit/:id",
+		name: "blogEditorEdit",
+		component: () => import("../views/blog/editor/edit.vue")
+	},
+
+	// tag 标签页面，待删除。使用 ?tag=xxx 形式优化
+	{
+		path: "/lang",
+		name: "lang",
+		component: () => import("../views/blog/lang/lang.vue"),
+		meta: {
+			title: {
+				zh: "语言学习",
+				ja: "言語学ぶ"
+			}
+		}
+	},
+	{
+		path: "/net",
+		name: "net",
+		component: () => import("../views/blog/net/index.vue"),
+		meta: {
+			title: {
+				zh: "网络互联",
+				ja: "ネットワーク"
+			}
+		}
+	},
+	{
+		path: "/note",
+		name: "note",
+		component: () => import("../views/blog/note/index.vue"),
+		meta: {
+			title: {
+				zh: "喵随笔",
+				ja: "ノート"
+			}
+		}
+	},
+	{
+		path: "/star",
+		name: "star",
+		component: () => import("../views/blog/star/index.vue"),
+		meta: {
+			title: {
+				zh: "其它",
+				ja: "その他"
+			}
+		}
+	},
+	// cv 页面
+	{
+		path: "/cv/pdf",
+		name: "cvpdf",
+		component: () => import("../views/cv/cv.pdf.vue")
 	}
 ];
 
