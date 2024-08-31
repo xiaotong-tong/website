@@ -11,6 +11,12 @@
 		<span>(。-ω-)zzz</span>
 		<span>ヾ(´〇｀)ﾉ♪♪♪</span>
 		<span>(˶╹ꇴ╹メ)</span>
+		<span>ฅ( ̳• ◡ • ̳)ฅ</span>
+		<span>ฅ●ω●ฅ</span>
+		<span>ฅ(´-ω-`)ฅ</span>
+		<span>ฅ(´・ω・｀)ฅ</span>
+		<span>(ฅ>ω<*ฅ)</span>
+		<span>ฅ'ω'ฅ</span>
 	</section>
 </template>
 
