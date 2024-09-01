@@ -63,7 +63,7 @@
 				</namiLink>
 			</li>
 			<li>
-				<namiLink class="link avatar px-0" inline-block to="/login">
+				<namiLink class="link avatar px-0" inline-block to="/user">
 					<img
 						class="w-6 rounded-full"
 						src="https://image.xtt.moe/images/mlian2.md.webp"

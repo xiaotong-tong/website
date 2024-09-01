@@ -1,14 +1,13 @@
 <template>
 	<div class="title-operate-area">
-		<xtt-button v-if="store.loginUid" type="primary" @click="router.push('/editor/edit/' + id)"
+		<xtt-button
+			v-if="userInfoStore.userInfo.id"
+			type="primary"
+			@click="router.push('/editor/edit/' + id)"
 			>编辑</xtt-button
 		>
 	</div>
-	<section
-		class="container web-color-default"
-		:dark="store.isDark ? '' : undefined"
-		v-if="acticle"
-	>
+	<section class="container web-color-default" v-if="acticle">
 		<h2 class="text-xl font-bold">
 			{{ i18nStore.lang === "ja" ? acticle.jaTitle || acticle.title : acticle.title }}
 		</h2>
@@ -27,7 +26,6 @@
 
 		<markdown
 			class="md"
-			:dark="store.isDark ? '' : undefined"
 			:content="
 				i18nStore.lang === 'ja' ? acticle?.jaContent || acticle?.content : acticle?.content
 			"
@@ -67,16 +65,16 @@ import { ref, watch, provide } from "vue";
 import { getActicleById } from "@/api/blog/acticle";
 import { addComment, getCommentList } from "@/api/blog/comment";
 import { useRoute, useRouter, onBeforeRouteUpdate } from "vue-router";
-import { useStore } from "@/stores/index";
+import { useUserInfoStore } from "@/stores/user";
 import { useI18nStore } from "@/stores/i18n";
 import { useStateTypeStore } from "@/stores/stateType";
 import { markdown } from "@c/index";
 
-const store = useStore();
 const route = useRoute();
 const router = useRouter();
 const useStateType = useStateTypeStore();
 const i18nStore = useI18nStore();
+const userInfoStore = useUserInfoStore();
 
 const id = ref(Number(route.params.id));
 

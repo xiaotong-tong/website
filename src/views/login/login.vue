@@ -1,6 +1,9 @@
 <template>
 	<section class="login-wrap">
-		<label v-if="!store.loginUid" class="text-[#e78190] flex mb-2 mt-4 w-[500px] items-center">
+		<label
+			v-if="!userInfoStore.userInfo?.id"
+			class="text-[#e78190] flex mb-2 mt-4 w-[500px] items-center"
+		>
 			<namiCIcon :size="24" icon="heart"></namiCIcon>
 			<span class="flex-none ms-1">秘密口令</span>
 
@@ -38,12 +41,12 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { verifyMasterUid } from "@/api/blog/verify";
-import { useStore } from "@/stores/index";
 import { useRouter } from "vue-router";
 import { NButton, NInput } from "naive-ui";
 import { hBanner } from "@c/index";
+import { useUserInfoStore } from "@/stores/user";
 
-const store = useStore();
+const userInfoStore = useUserInfoStore();
 const router = useRouter();
 
 const keyInput = ref("");
@@ -51,14 +54,12 @@ const keyInput = ref("");
 async function login() {
 	const data = await verifyMasterUid(keyInput.value);
 
-	if (data === "验证成功") {
-		store.loginUid = keyInput.value;
-		localStorage.setItem("loginUid", keyInput.value);
+	if (data.code === 0) {
+		userInfoStore.userInfo = data.data;
 		keyInput.value = "";
 	} else {
 		alert("口令错误");
-		store.loginUid = "";
-		localStorage.removeItem("loginUid");
+		// userInfoStore.userInfo = {};
 	}
 }
 
@@ -76,14 +77,10 @@ if (nfcSupported) {
 					if (pw) {
 						const data = await verifyMasterUid(pw);
 
-						if (data === "验证成功") {
+						if (data.code === 0) {
 							reader.write(pw);
-
-							store.loginUid = pw;
-							localStorage.setItem("loginUid", pw);
-
+							userInfoStore.userInfo = data.data;
 							alert("写入成功");
-
 							router.push("/");
 						} else {
 							alert("口令错误");
@@ -97,9 +94,8 @@ if (nfcSupported) {
 
 					const data = await verifyMasterUid(pw);
 
-					if (data === "验证成功") {
-						store.loginUid = pw;
-						localStorage.setItem("loginUid", pw);
+					if (data.code === 0) {
+						userInfoStore.userInfo = data.data;
 
 						router.push("/");
 					} else {
@@ -117,8 +113,7 @@ if (nfcSupported) {
 }
 
 const exitLogin = () => {
-	store.loginUid = "";
-	localStorage.removeItem("loginUid");
+	userInfoStore.userInfo = {};
 };
 </script>
 

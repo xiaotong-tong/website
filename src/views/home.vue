@@ -70,7 +70,7 @@
 				@mouseenter="live2d?.showChatBox('想聊聊天吗？', 3000)"
 			></namiIcon>
 			<namiIcon
-				v-if="store.loginUid"
+				v-if="userInfoStore.userInfo.id"
 				:ref="appendIcon"
 				class="icon"
 				icon="mdiBookEditOutline"
@@ -121,6 +121,7 @@ import myScrollTop from "./home/components/scroll.vue";
 import myAplayer from "./home/components/aplayer.vue";
 import { useRouter, useRoute } from "vue-router";
 import { useStore } from "@/stores/index";
+import { useUserInfoStore } from "@/stores/user";
 import { useContentRefStore } from "@/stores/contentRef";
 import type { XttTooltipElement } from "xtt-ui/index.d.ts";
 import { bgUrl } from "@/utils/webBG";
@@ -128,6 +129,7 @@ import { useElementBounding, useScroll } from "@vueuse/core";
 
 const store = useStore();
 const contentStore = useContentRefStore();
+const userInfoStore = useUserInfoStore();
 const router = useRouter();
 const route = useRoute();
 

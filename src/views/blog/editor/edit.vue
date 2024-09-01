@@ -1,7 +1,11 @@
 <template>
 	<div class="title-operate-area">
-		<xtt-button v-if="store.loginUid" type="primary" @click="submitEvent">更新</xtt-button>
-		<xtt-button v-if="store.loginUid" type="danger" @click="deleteEvent">删除</xtt-button>
+		<xtt-button v-if="userInfoStore.userInfo.id" type="primary" @click="submitEvent"
+			>更新</xtt-button
+		>
+		<xtt-button v-if="userInfoStore.userInfo.id" type="danger" @click="deleteEvent"
+			>删除</xtt-button
+		>
 	</div>
 
 	<div>标题： <xtt-textarea autosize v-model="title" class="title"></xtt-textarea></div>
@@ -36,10 +40,11 @@ import { ref, watch } from "vue";
 import { getActicleById, editActicleById, deleteActicleById } from "@/api/blog/acticle";
 import { uploadImage } from "@/api/image/image";
 import { useRoute, useRouter } from "vue-router";
-import { useStore } from "@/stores/index";
-const store = useStore();
+import { useUserInfoStore } from "@/stores/user";
+
 const route = useRoute();
 const router = useRouter();
+const userInfoStore = useUserInfoStore();
 
 const id = ref(Number(route.params.id));
 

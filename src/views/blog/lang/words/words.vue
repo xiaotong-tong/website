@@ -1,5 +1,5 @@
 <template>
-	<div class="title-operate-area" v-if="store.loginUid">
+	<div class="title-operate-area" v-if="userInfoStore.userInfo.id">
 		<xtt-button type="primary" @click="addWordEvent">添加</xtt-button>
 	</div>
 
@@ -14,7 +14,7 @@
 				<xtt-sound :src="scope.row.read" v-if="scope.row.read"></xtt-sound>
 			</template>
 		</namiTableColumn>
-		<namiTableColumn label="操作" width="100px" v-if="store.loginUid">
+		<namiTableColumn label="操作" width="100px" v-if="userInfoStore.userInfo.id">
 			<template #default="scope">
 				<xtt-button text type="primary" @click="editWordEvent(scope.row)">修改</xtt-button>
 			</template>
@@ -40,9 +40,9 @@ import type { XttDialogElement } from "xtt-ui";
 import type { JPWord } from "@/types/word";
 import { ref, onMounted } from "vue";
 import { getWordList, addWord, editWordById } from "@/api/blog/word";
-import { useStore } from "@/stores/index";
+import { useUserInfoStore } from "@/stores/user";
 
-const store = useStore();
+const userInfoStore = useUserInfoStore();
 
 const wordList = ref<JPWord[]>([]);
 

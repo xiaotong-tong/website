@@ -2,6 +2,7 @@ import type { RouteRecordRaw } from "vue-router";
 import { createRouter, createWebHistory } from "vue-router";
 import { useStore } from "@/stores/index";
 import { useI18nStore } from "@/stores/i18n";
+import { useUserInfoStore } from "@/stores/user";
 
 interface Route {
 	path: string;
@@ -266,6 +267,18 @@ let routes: Route[] = [
 				}
 			},
 			{
+				path: "/user",
+				name: "user",
+				component: () => import("../views/user/user.vue"),
+				meta: {
+					title: {
+						zh: "用户",
+						ja: "ユーザー"
+					},
+					theme: 0
+				}
+			},
+			{
 				path: "/info",
 				name: "info",
 				component: () => import("../views/info/info.vue"),
@@ -513,6 +526,7 @@ const router = createRouter({
 router.beforeEach((to, _from, next) => {
 	const store = useStore();
 	const i18nStore = useI18nStore();
+	const userInfoStore = useUserInfoStore();
 
 	if (typeof to.meta?.theme === "number") {
 		store.changeTheme(to.meta.theme as number);
@@ -520,11 +534,17 @@ router.beforeEach((to, _from, next) => {
 
 	// 对于 /editor/add， /editor/edit/:id 等路由，需要登录才能访问
 	if (to.path.startsWith("/editor")) {
-		if (store.loginUid) {
+		if (userInfoStore.userInfo.id) {
 			next();
 		} else {
 			next("/");
 		}
+		return;
+	}
+
+	// 如果访问 /user 页面，但是没有登录，则重定向到 /login
+	if (to.path === "/user" && !userInfoStore.userInfo.id) {
+		next("/login");
 		return;
 	}
 

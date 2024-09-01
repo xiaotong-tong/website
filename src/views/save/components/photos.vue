@@ -7,7 +7,7 @@
 
 			<NamiButton
 				class="add-photo-btn"
-				v-if="store.loginUid"
+				v-if="userInfoStore.userInfo.id"
 				@click="showModal = true"
 				:border-color="store.currentTheme"
 				>新增</NamiButton
@@ -54,8 +54,10 @@ import type { UploadOnChange } from "naive-ui";
 import { NButton, NModal, NInput, NCard, NCheckbox, NUpload } from "naive-ui";
 import { uploadLocalImage } from "@/api/image/image";
 import { useStore } from "@/stores";
-const i18nStore = useI18nStore();
+import { useUserInfoStore } from "@/stores/user";
 
+const i18nStore = useI18nStore();
+const userInfoStore = useUserInfoStore();
 const store = useStore();
 
 const { list: imageList, addImage } = useImageList(true);

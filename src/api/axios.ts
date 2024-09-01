@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useStore } from "@/stores/index";
+import { useUserInfoStore } from "@/stores/user";
 
 const http = axios.create({
 	baseURL: import.meta.env.VITE_API_URL
@@ -7,9 +7,9 @@ const http = axios.create({
 
 http.interceptors.request.use(
 	(config) => {
-		const store = useStore();
-		if (store.loginUid) {
-			config.headers.authorization = "Bearer " + store.loginUid;
+		const userInfoStore = useUserInfoStore();
+		if (userInfoStore.userInfo.id) {
+			config.headers.authorization = userInfoStore.userInfo.password;
 		}
 		return config;
 	},

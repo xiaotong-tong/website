@@ -1,9 +1,8 @@
 import type { Ref } from "vue";
 import { ref, watch, watchEffect } from "vue";
 import { defineStore } from "pinia";
-import { useLocalStorage, useCssVar } from "@vueuse/core";
+import { useLocalStorage, useUrlSearchParams, useCssVar } from "@vueuse/core";
 import { initWebBGUrl } from "@/utils/webBG";
-import { useUrlSearchParams } from "@vueuse/core";
 
 const urlSearchParams = useUrlSearchParams("history", {
 	removeNullishValues: true
@@ -55,10 +54,6 @@ export const useStore = defineStore("main", () => {
 	const settings = useLocalStorage("settings", defaultSettingConfig);
 
 	setDefaultSettingConfig(settings);
-
-	// 是否登陆，以及登陆的用户id
-	const localUid = localStorage.getItem("loginUid");
-	const loginUid = ref(localUid ? localUid : "");
 
 	const isDark = ref(settings.value.isDark);
 	const theme = ref(settings.value.theme);
@@ -127,7 +122,6 @@ export const useStore = defineStore("main", () => {
 	});
 
 	return {
-		loginUid,
 		isDark,
 		isSmallScreen,
 		changeTheme,

@@ -21,8 +21,8 @@
 				>
 			</div>
 			<div class="right">
-				<xtt-button
-					v-if="store.loginUid"
+				<!-- <xtt-button
+					v-if="userInfoStore.userInfo.id"
 					class="deleteBtn"
 					text
 					type="danger"
@@ -30,7 +30,7 @@
 					@click="deleteBtnClick"
 				>
 					删除
-				</xtt-button>
+				</xtt-button> -->
 
 				<xtt-button
 					class="replyBtn"
@@ -61,11 +61,13 @@
 <script setup lang="ts">
 import type { Comment } from "@/types/comment";
 import { ref, provide, inject } from "vue";
-import { delectComment, addComment } from "@/api/blog/comment";
+import { addComment } from "@/api/blog/comment";
 import { useStore } from "@/stores/index";
+// import { useUserInfoStore } from "@/stores/user";
 import { useRoute } from "vue-router";
 const store = useStore();
 const route = useRoute();
+// const userInfoStore = useUserInfoStore();
 
 interface Props {
 	comment: Comment;
@@ -79,13 +81,13 @@ const props = withDefaults(defineProps<Props>(), {
 
 const delected = ref(false);
 
-const deleteBtnClick = () => {
-	if (confirm("确定删除该条评论吗？")) {
-		delectComment(props.comment.id).then(() => {
-			delected.value = true;
-		});
-	}
-};
+// const deleteBtnClick = () => {
+// 	if (confirm("确定删除该条评论吗？")) {
+// 		delectComment(props.comment.id).then(() => {
+// 			delected.value = true;
+// 		});
+// 	}
+// };
 
 const parentCommentId = inject("commentId", null);
 const childSubmitCallback = inject("commentsChildSubmitCallback", Function.prototype);

@@ -4,13 +4,13 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { useStore } from "@/stores/index";
+import { useUserInfoStore } from "@/stores/user";
 
-const store = useStore();
+const userInfoStore = useUserInfoStore();
 
 const pdfUrl = ref("https://file.xtt.moe/files/cv/noPhoneCV.pdf");
 
-if (store.loginUid) {
+if (userInfoStore.userInfo.id) {
 	pdfUrl.value = "https://file.xtt.moe/files/cv/cv.pdf";
 }
 </script>
