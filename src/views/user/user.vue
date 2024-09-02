@@ -19,38 +19,32 @@
 		</div>
 	</section>
 
-	<NModal v-model:show="showModal">
-		<NCard title="修改用户信息" class="modal-card">
-			<div class="item">
-				<span class="label">昵称: </span>
-				<NInput v-model:value="nickName" />
-			</div>
-			<div class="item">
-				<span class="label">头像: </span>
-				<NButton @click="uploadImageEvent">上传头像</NButton>
-			</div>
+	<Modal v-model:show="showModal" :color="store.currentTheme" @ok="editSubmit" okText="提交">
+		<h3>修改用户信息</h3>
+		<div class="item">
+			<span class="label">昵称: </span>
+			<NInput v-model:value="nickName" />
+		</div>
+		<div class="item">
+			<span class="label">头像: </span>
+			<NButton @click="uploadImageEvent">上传头像</NButton>
+		</div>
 
-			<namiCropper
-				v-if="cropperSrc"
-				:src="cropperSrc"
-				class="choicePicCropper"
-				ref="cropper"
-			></namiCropper>
-
-			<template #footer>
-				<NButton class="me-2" @click="showModal = false">取消</NButton>
-				<NButton type="primary" @click="editSubmit">提交</NButton>
-			</template>
-		</NCard>
-	</NModal>
+		<namiCropper
+			v-if="cropperSrc"
+			:src="cropperSrc"
+			class="choicePicCropper"
+			ref="cropper"
+		></namiCropper>
+	</Modal>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 import { editUserInfo } from "@/api/blog/verify";
-import { hBanner, NamiButton } from "@c/index";
+import { hBanner, NamiButton, Modal } from "@c/index";
 import type { UploadOnChange } from "naive-ui";
-import { NButton, NModal, NInput, NCard } from "naive-ui";
+import { NButton, NInput } from "naive-ui";
 import { useUserInfoStore } from "@/stores/user";
 import { useStore } from "@/stores/index";
 import { uploadLocalImage } from "@/api/image/image";
@@ -105,6 +99,8 @@ async function uploadImage(option: Parameters<UploadOnChange>[0]) {
 }
 
 async function editSubmit() {
+	if (!url.value && !nickName.value) return;
+
 	const res = await editUserInfo(
 		Object.assign({}, userInfoStore.userInfo, { avatar: url.value, name: nickName.value })
 	);
@@ -132,10 +128,5 @@ async function editSubmit() {
 		text-align: end;
 		padding-inline-end: 16px;
 	}
-}
-
-.modal-card {
-	width: 500px;
-	height: 300px;
 }
 </style>
