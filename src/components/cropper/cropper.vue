@@ -66,10 +66,6 @@ defineExpose({
 </script>
 
 <style scoped>
-#aplayer {
-	z-index: 1000;
-}
-
 .cropper {
 	min-height: 300px;
 }

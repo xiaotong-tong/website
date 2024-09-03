@@ -1,10 +1,16 @@
+import type { AxiosResponse } from "axios";
 import axios from "axios";
 
 const http = axios.create({
 	baseURL: import.meta.env.VITE_API_URL
 });
 
-export async function uploadImage(file: FormData | string) {
+export async function uploadImage(file: FormData | string): Promise<
+	AxiosResponse<{
+		message: string;
+		url: string;
+	}>
+> {
 	// base64
 	if (typeof file === "string") {
 		// 传递的 base64 不需要 data:image/png;base64, 等前缀格式说明字符串。
