@@ -1,10 +1,17 @@
 <template>
 	<footer class="footer web-color-default">
 		<div class="content">
-			CopyRight © 2024 <nami-link class="link" to="/">星川漣の家</nami-link> |
-			<nami-link class="link" to="/sitemap">
-				{{ i18nStore.messages.main.footer.sitemap }}
-			</nami-link>
+			<div>
+				CopyRight © 2024 <nami-link class="link" to="/">星川漣の家</nami-link> |
+				<nami-link class="link" to="/sitemap">
+					{{ i18nStore.messages.main.footer.sitemap }}
+				</nami-link>
+			</div>
+			<div class="text-center">
+				<nami-link class="link" to="https://icp.gov.moe/?keyword=20249550" target="_blank">
+					萌ICP备20249550号
+				</nami-link>
+			</div>
 		</div>
 	</footer>
 </template>
