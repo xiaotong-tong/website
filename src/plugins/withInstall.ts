@@ -28,6 +28,8 @@ import timelineItem from "../components/timeline/timeline-item.vue";
 
 import pageLoading from "@/components/page/loading/loading.vue";
 
+import { myLogin } from "@/directive/login";
+
 import withNamiInstall from "@c/index";
 
 const withInstall = {
@@ -49,6 +51,8 @@ const withInstall = {
 		app.component("namiPageLoading", pageLoading);
 
 		withNamiInstall(app);
+
+		app.directive("login", myLogin);
 	}
 };
 
