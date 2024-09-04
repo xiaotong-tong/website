@@ -66,7 +66,10 @@
 				<namiLink class="link avatar px-0" inline-block to="/user">
 					<img
 						class="w-6 rounded-full"
-						src="https://image.xtt.moe/images/mlian2.md.webp"
+						:src="
+							userInfoStore.userInfo.avatar ||
+							'https://image.xtt.moe/images/mlian2.md.webp'
+						"
 						alt="favicon"
 					/>
 				</namiLink>
@@ -79,9 +82,11 @@
 import { ref, onMounted } from "vue";
 import { useStore } from "@/stores/index";
 import { useI18nStore } from "@/stores/i18n";
+import { useUserInfoStore } from "@/stores/user";
 
 const store = useStore();
 const i18nStore = useI18nStore();
+const userInfoStore = useUserInfoStore();
 
 const list = ref([
 	{

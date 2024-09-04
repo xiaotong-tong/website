@@ -36,8 +36,14 @@
 		</div>
 		<div class="item">
 			<span class="label">头像: </span>
-			<img v-if="url" class="w-[64px] rounded-full" :src="url" alt="要设置的头像" />
-			<Cropper v-else :color="store.currentTheme" @submit="avatarSubmit"></Cropper>
+			<img class="w-[64px] rounded-full" :src="url" alt="要设置的头像" />
+			<Cropper
+				class="ms-4"
+				:color="store.currentTheme"
+				@submit="avatarSubmit"
+				:asyncOkCallback="true"
+				:buttonText="url ? '更改' : '上传图片'"
+			></Cropper>
 		</div>
 	</Modal>
 </template>
@@ -79,8 +85,9 @@ async function editSubmit() {
 }
 
 // 提交裁切的图片
-async function avatarSubmit(canvas: any) {
+async function avatarSubmit(canvas: any, callback?: Function) {
 	if (!canvas) {
+		callback?.();
 		return;
 	}
 
@@ -95,6 +102,8 @@ async function avatarSubmit(canvas: any) {
 			resUrl = resUrl.replace("https://image.xtt.moe/", "https://image.xtt.moe/local/");
 			url.value = resUrl;
 		}
+
+		callback?.();
 	});
 }
 </script>
