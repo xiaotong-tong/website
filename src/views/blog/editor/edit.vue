@@ -38,7 +38,7 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
 import { getActicleById, editActicleById, deleteActicleById } from "@/api/blog/acticle";
-import { uploadImage } from "@/api/image/image";
+import { uploadLocalImage } from "@/api/image/image";
 import { useRoute, useRouter } from "vue-router";
 import { useUserInfoStore } from "@/stores/user";
 
@@ -97,8 +97,8 @@ const uploadImageEvent = async () => {
 		const fd = new FormData();
 		fd.append("source", file.files[0]);
 
-		const { data } = await uploadImage(fd);
-		// console.log(data);
+		// todo 暂时无效
+		const { data } = await uploadLocalImage(fd);
 
 		// 优先使用 display_url 的图片地址，display_url 地址为压缩后的图片地址，url 为原图地址
 		thumbnail.value = data.image.display_url || data.image.url;

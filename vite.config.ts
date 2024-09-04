@@ -54,7 +54,7 @@ export default defineConfig({
 					xttUtils: ["xtt-utils"],
 
 					// 主页面
-					main: ["./src/views/home/index.vue"],
+					main: ["./src/views/home.vue"],
 
 					// 主页面中右侧 nav 副主页面的内容
 					subMain: [
