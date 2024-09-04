@@ -2,9 +2,6 @@
 	<section class="user-wrap">
 		<div class="title">
 			<hBanner wrapperTargetName="h2">用户</hBanner>
-			<NamiButton :borderColor="store.currentTheme" @click="openEditModal"
-				>修改用户信息</NamiButton
-			>
 		</div>
 		<div class="item">
 			<span class="label">标识: </span><span>{{ userInfoStore.userInfo.password }}</span>
@@ -25,6 +22,12 @@
 					alt="头像"
 				/>
 			</div>
+		</div>
+		<div class="item">
+			<span class="label"></span>
+			<NamiButton :borderColor="store.currentTheme" @click="openEditModal"
+				>修改用户信息</NamiButton
+			>
 		</div>
 	</section>
 
@@ -109,11 +112,6 @@ async function avatarSubmit(canvas: any, callback?: Function) {
 </script>
 
 <style scoped>
-.title {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
 .item {
 	display: flex;
 	margin: 10px 0;
