@@ -3,7 +3,7 @@
 		<h3>{{ i18nStore.lang === "ja" ? "背景画像" : "背景图片" }}</h3>
 		<div>
 			{{ i18nStore.lang === "ja" ? "今の背景" : "当前背景" }}:
-			<img class="bg" :src="bgUrl" alt="background image" />
+			<img class="bg select-none" draggable="false" :src="bgUrl" alt="background image" />
 		</div>
 		<div class="action">
 			<xtt-button @click="open">{{

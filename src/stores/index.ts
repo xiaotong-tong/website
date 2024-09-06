@@ -31,7 +31,8 @@ const defaultSettingConfig = {
 		inlineSize: {
 			minPx: 1200, // 最小像素宽度
 			percentage: 0.9 // 最大宽度占浏览器的百分比
-		}
+		},
+		mouseSnow: true // 是否开启鼠标移动雪花特效
 	},
 	piano: true, // 是否自动播放钢琴声
 	animeLess: false // 是否减少一些不必要的动画
@@ -39,14 +40,14 @@ const defaultSettingConfig = {
 
 function setDefaultSettingConfig(settings: Ref<typeof defaultSettingConfig>) {
 	// 刷新 localStorage 中的settings
-	if (settings.value.animeLess === undefined) {
+	if (settings.value.pageConfig === undefined) {
 		settings.value.pageConfig = Object.assign(
 			defaultSettingConfig.pageConfig,
 			settings.value.pageConfig ?? {}
 		);
 	}
-	if (!settings.value.animeLess) {
-		settings.value.animeLess = defaultSettingConfig.animeLess;
+	if (!settings.value.pageConfig.mouseSnow) {
+		settings.value.pageConfig.mouseSnow = defaultSettingConfig.pageConfig.mouseSnow;
 	}
 }
 

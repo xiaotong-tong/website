@@ -83,6 +83,13 @@
 		</div>
 		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
 		<div class="item">
+			<label>
+				<span>是否显示鼠标移动雪花：</span>
+				<n-switch v-model:value="store.pageConfig.mouseSnow" />
+			</label>
+		</div>
+		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
+		<div class="item">
 			<div>
 				切换颜色
 				<xtt-button style="margin-inline-start: 32px" @click="store.resetDefaultTheme"
