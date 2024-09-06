@@ -1,5 +1,9 @@
 <template>
-	<NamiButton @click="removeCache" :borderColor="store.currentTheme" activeBorderColor="#8bcecb"
+	<NamiButton
+		@click="removeCache"
+		:borderColor="store.currentTheme"
+		activeBorderColor="#8bcecb"
+		:animeLess="store.animeLess"
 		>清除 cache 缓存</NamiButton
 	>
 </template>

@@ -24,7 +24,7 @@
 		</div>
 		<div class="item">
 			<label>
-				<span>减少动画：</span>
+				<span><namiIcon icon="mdiAnimationPlayOutline"></namiIcon>减少动画：</span>
 				<NSwitch v-model:value="store.animeLess"> </NSwitch>
 			</label>
 		</div>

@@ -31,7 +31,8 @@ import {
 	mdiCat,
 	mdiPaw,
 	mdiMenu,
-	mdiContentCopy
+	mdiContentCopy,
+	mdiAnimationPlayOutline
 } from "@mdi/js";
 
 interface Props {
@@ -59,7 +60,8 @@ interface Props {
 		| "mdiCat"
 		| "mdiPaw"
 		| "mdiMenu"
-		| "mdiContentCopy";
+		| "mdiContentCopy"
+		| "mdiAnimationPlayOutline";
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -91,7 +93,8 @@ const reflectIcon = (icon: Props["icon"]) => {
 		mdiCat,
 		mdiPaw,
 		mdiMenu,
-		mdiContentCopy
+		mdiContentCopy,
+		mdiAnimationPlayOutline
 	};
 
 	return mdiMap[icon];
