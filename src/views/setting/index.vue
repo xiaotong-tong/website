@@ -6,26 +6,38 @@
 		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
 		<div class="item">
 			<label>
-				<span><namiIcon icon="mdiThemeLightDark"></namiIcon>切换模式：</span>
+				<span class="me-2"
+					><namiIcon icon="mdiThemeLightDark"></namiIcon
+					>{{ t("pages.setting.toggleTheme") }}</span
+				>
 				<NSwitch v-model:value="store.isDark">
-					<template #checked> {{ t("main.nav.toLightMode") }} </template>
-					<template #unchecked> {{ t("main.nav.toDarkMode") }} </template>
+					<template #checked> {{ t("pages.setting.darkTheme") }} </template>
+					<template #unchecked> {{ t("pages.setting.lightTheme") }} </template>
 				</NSwitch>
 			</label>
 		</div>
 		<div class="item">
 			<label>
-				<span><namiIcon icon="mdiTranslate"></namiIcon>切换模式：</span>
+				<span class="me-2"
+					><namiIcon icon="mdiTranslate"></namiIcon
+					>{{ t("pages.setting.langTranslate") }}</span
+				>
 				<NSwitch v-model:value="i18nStore.lang" checked-value="ja" unchecked-value="zh">
-					<template #checked> {{ t("main.nav.toZhLang") }} </template>
-					<template #unchecked> {{ t("main.nav.toJaLang") }} </template>
+					<template #checked> {{ t("pages.setting.langJa") }} </template>
+					<template #unchecked> {{ t("pages.setting.langZh") }} </template>
 				</NSwitch>
 			</label>
 		</div>
 		<div class="item">
 			<label>
-				<span><namiIcon icon="mdiAnimationPlayOutline"></namiIcon>减少动画：</span>
-				<NSwitch v-model:value="store.animeLess"> </NSwitch>
+				<span class="me-2"
+					><namiIcon icon="mdiAnimationPlayOutline"></namiIcon
+					>{{ t("pages.setting.animeLess") }}</span
+				>
+				<NSwitch v-model:value="store.animeLess">
+					<template #checked> {{ t("pages.setting.animeLessChecked") }} </template>
+					<template #unchecked> {{ t("pages.setting.animeLessUnchecked") }} </template>
+				</NSwitch>
 			</label>
 		</div>
 		<div class="item">

@@ -4,14 +4,16 @@
 		:borderColor="store.currentTheme"
 		activeBorderColor="#8bcecb"
 		:animeLess="store.animeLess"
-		>清除 cache 缓存</NamiButton
+		>{{ t("pages.setting.clearCache") }}</NamiButton
 	>
 </template>
 
 <script setup lang="ts">
 import { NamiButton } from "@c/index";
 import { useStore } from "@/stores/index";
+import { useI18n } from "vue-i18n";
 const store = useStore();
+const { t } = useI18n();
 
 function removeCache() {
 	// 清除 service worker 中的 cache 缓存

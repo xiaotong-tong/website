@@ -63,6 +63,18 @@ export const jaMsg = {
 				title: "今日の一言",
 				overflowTip: "回る"
 			}
+		},
+		setting: {
+			clearCache: "キャッシュをクリア",
+			toggleTheme: "モードを切り替え",
+			lightTheme: "明るいモード",
+			darkTheme: "暗いモード",
+			langTranslate: "言語を切り替え",
+			langJa: "日本語",
+			langZh: "中国語",
+			animeLess: "アニメーション",
+			animeLessChecked: "弱化",
+			animeLessUnchecked: "開く"
 		}
 	}
 };

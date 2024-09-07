@@ -62,6 +62,18 @@ export const zhMsg = {
 				title: "每日日语",
 				overflowTip: "兼容"
 			}
+		},
+		setting: {
+			clearCache: "清除缓存",
+			toggleTheme: "切换模式",
+			lightTheme: "亮色",
+			darkTheme: "深色",
+			langTranslate: "切换语言",
+			langJa: "日文",
+			langZh: "中文",
+			animeLess: "动画效果",
+			animeLessChecked: "弱化",
+			animeLessUnchecked: "开启"
 		}
 	}
 };
