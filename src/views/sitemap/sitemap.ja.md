@@ -54,3 +54,6 @@
 -   [documentPictureInPicture API 学习记录](/article/23)
 -   [使用手机调试电脑的 localhost](/article/24)
 -   [使用 Web NFC 实现手机端浏览器的登录功能](/article/25)
+-   [在 Linux 中运行 Puppeteer](/article/26)
+-   [ナミダノコエ 歌詞](/article/27)
+-   [QQ 机器人开发(1) - 注册与权限认证](/article/28)
