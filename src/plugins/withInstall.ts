@@ -28,8 +28,11 @@ import timelineItem from "../components/timeline/timeline-item.vue";
 
 import pageLoading from "@/components/page/loading/loading.vue";
 
+// 导入全局自定义指令
 import { myLogin } from "@/directive/login";
+import { myLang } from "@/directive/lang";
 
+// 导入 package 目录下的组件
 import withNamiInstall from "@c/index";
 
 const withInstall = {
@@ -53,6 +56,7 @@ const withInstall = {
 		withNamiInstall(app);
 
 		app.directive("login", myLogin);
+		app.directive("lang", myLang);
 	}
 };
 

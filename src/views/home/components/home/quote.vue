@@ -1,9 +1,14 @@
 <template>
 	<div class="quote-wrap" v-if="quote">
-		<p>每日日语 <span v-if="quoteOverflow" class="text-[8px] text-[#f00]">兼容</span></p>
-		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
-		<p v-html="quote.parse"></p>
 		<p>
+			{{ t("pages.home.quote.title") }}
+			<span v-if="quoteOverflow" class="text-[8px] text-[#f00]">{{
+				t("pages.home.quote.overflowTip")
+			}}</span>
+		</p>
+		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
+		<p lang="ja-JP" class="custom-font" v-html="quote.parse"></p>
+		<p lang="zh-CN" class="custom-font">
 			{{ quote.chinese }}
 		</p>
 	</div>
@@ -15,7 +20,10 @@ import type { IGetDaysQuotes } from "../../home.api";
 import { getDaysQuotes } from "../../home.api";
 import { dayjs } from "@/utils/dateUtil";
 import { useStore } from "@/stores";
+import { useI18n } from "vue-i18n";
+
 const store = useStore();
+const { t } = useI18n();
 
 const emits = defineEmits(["onLoad"]);
 

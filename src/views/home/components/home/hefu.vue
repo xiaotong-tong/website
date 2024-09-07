@@ -1,7 +1,7 @@
 <template>
 	<div
 		id="hefu"
-		class="text-lg my-4 leading-8 flex-[380px] flex-grow-0 flex-shrink-0 h-[288px]"
+		class="custom-font text-lg my-4 leading-8 flex-[380px] flex-grow-0 flex-shrink-0 h-[288px]"
 		ref="hefuRef"
 	></div>
 </template>

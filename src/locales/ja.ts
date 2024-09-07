@@ -55,5 +55,14 @@ export const jaMsg = {
 		previewTitle: "プレビュー：",
 		previewTipOpen: "プレビューを表示",
 		previewTipClose: "プレビューを隠す"
+	},
+	pages: {
+		home: {
+			header: "星川漣の文字の世界",
+			quote: {
+				title: "今日の一言",
+				overflowTip: "回る"
+			}
+		}
 	}
 };

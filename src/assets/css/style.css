@@ -44,15 +44,29 @@
 	src: url("/fonts/popuramu.otf");
 } */
 
-@font-face {
+/* @font-face {
 	font-family: "HinaMincho-Regular";
 	src: url("https://file.xtt.moe/files/fonts/HinaMincho-Regular.woff2") format("woff2"),
 		url("https://file.xtt.moe/files/fonts/HinaMincho-Regular.ttf");
 	font-display: swap;
+} */
+
+@font-face {
+	font-family: "teguse";
+	src: url("https://file.xtt.moe/files/fonts/073%20TEGUSE%20-%20Kanaka%20Font_240705.woff2")
+			format("woff2"),
+		url("https://file.xtt.moe/files/fonts/073%20TEGUSE%20-%20Kanaka%20Font_240705.ttf");
+	font-display: swap;
 }
 
-html:lang(ja) {
-	font-family: "HinaMincho-Regular", sans-serif;
+:is(body, .custom-font, #notUsedId) {
+	font-family: "luoliti", v-sans, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+		sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+:is(body:lang(ja), .custom-font:lang(ja), #notUsedId) {
+	font-family: "teguse", "luoliti", v-sans, system-ui, -apple-system, BlinkMacSystemFont,
+		"Segoe UI", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 /* 重写 native ui 的一些样式 */

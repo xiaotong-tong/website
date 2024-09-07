@@ -1,14 +1,21 @@
 <template>
-	<section class="card font-[luoliti]" v-show="loaded">
+	<section class="card" v-show="loaded">
 		<header class="title flex justify-between items-center">
-			<hBanner wrapperTargetName="h3">每日学习</hBanner>
+			<hBanner wrapperTargetName="h3">
+				{{ t("pages.home.header") }}
+			</hBanner>
 			<p class="sub">
-				{{ nowDay.format("YYYY 年") }}第 {{ nowDay.dayOfYear() }} 天
+				<span v-lang="'zh'"
+					>{{ nowDay.format("YYYY 年") }}第 {{ nowDay.dayOfYear() }} 天</span
+				>
+				<span v-lang="'ja'"
+					>{{ nowDay.format("YYYY 年") }} {{ nowDay.dayOfYear() }} 日目
+				</span>
 				<span>{{ weekNames[nowDay.day()] }}</span>
 			</p>
 		</header>
 		<namiRoughLine :color="store.currentTheme"></namiRoughLine>
-		<div class="poetry-wrap mb-2">
+		<div class="poetry-wrap mb-2" lang="zh-CN">
 			<Hefu v-if="loaded"></Hefu>
 			<Poetry @onLoad="poetryLoadedFn"></Poetry>
 		</div>
@@ -16,7 +23,7 @@
 		<namiRoughLine :color="store.currentTheme"></namiRoughLine>
 		<Quote ref="poetryRef" @onLoad="quoteLoadedFn"></Quote>
 
-		<div class="character-wrap">
+		<div class="character-wrap" aria-hidden="true">
 			<img
 				class="block w-full"
 				src="https://image.xtt.moe/images/lian5.webp"
@@ -39,7 +46,10 @@ import Hefu from "./home/hefu.vue";
 import Poetry from "./home/poetry.vue";
 import { hBanner } from "@c/index";
 import { useStore } from "@/stores";
+import { useI18n } from "vue-i18n";
+
 const store = useStore();
+const { t } = useI18n();
 
 const loaded = ref(false);
 
@@ -104,12 +114,13 @@ function poetryLoadedFn() {
 
 .small-screen .card {
 	padding-inline-end: 8px;
-}
-.small-screen .title {
-	flex-direction: column;
-}
-.small-screen .title .sub {
-	font-size: 14px;
-	margin-block-start: -18px;
+
+	& .title {
+		flex-direction: column;
+	}
+	& .title .sub {
+		font-size: 14px;
+		margin-block-start: -18px;
+	}
 }
 </style>

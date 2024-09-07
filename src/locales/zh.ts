@@ -54,5 +54,14 @@ export const zhMsg = {
 		previewTitle: "预览：",
 		previewTipOpen: "显示预览",
 		previewTipClose: "隐藏预览"
+	},
+	pages: {
+		home: {
+			header: "星川涟的幻想图书馆",
+			quote: {
+				title: "每日日语",
+				overflowTip: "兼容"
+			}
+		}
 	}
 };

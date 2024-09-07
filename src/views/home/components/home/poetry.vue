@@ -1,7 +1,7 @@
 <template>
 	<div
 		v-if="curData"
-		class="text-center tracking-widest"
+		class="custom-font text-center tracking-widest"
 		ref="selfPoetryRef"
 		:class="{
 			'poetry-overflow': overflow,

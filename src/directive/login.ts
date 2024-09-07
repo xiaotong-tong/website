@@ -5,11 +5,13 @@ export const myLogin = {
 		const userInfoStore = useUserInfoStore();
 
 		if (binding.value === false) {
+			// 登录后隐藏元素
 			if (userInfoStore.userInfo.id) {
-				el.style.display = "none";
+				el.parentNode?.removeChild(el);
 			}
 		} else if (!userInfoStore.userInfo.id) {
-			el.style.display = "none";
+			// 未登录时隐藏元素
+			el.parentNode?.removeChild(el);
 		}
 	}
 };

@@ -215,7 +215,7 @@ onMounted(() => {
 
 .right {
 	justify-content: flex-end;
-	column-gap: 8px;
+	column-gap: 12px;
 
 	& > li {
 		display: flex;

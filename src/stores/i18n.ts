@@ -32,6 +32,9 @@ export const useI18nStore = defineStore("i18n", () => {
 
 	const messages = ref(lang.value === "zh" ? zhMsg : jaMsg);
 
+	// 切换 i18n 实例的 locale 属性
+	i18n.global.locale.value = lang.value;
+
 	watch(lang, (val) => {
 		messages.value = val === "zh" ? zhMsg : jaMsg;
 
