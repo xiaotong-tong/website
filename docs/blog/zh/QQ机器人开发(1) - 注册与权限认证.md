@@ -1,0 +1,202 @@
+---
+title: QQ机器人开发(1) - 注册与权限认证
+author: 小恸恸
+createDate: 2024-09-07
+updateDate: 2024-09-07
+tags: nodejs,QQ机器人,QQ官方机器人
+abstract: QQ官方机器人开发教程，本文主要介绍如何注册一个QQ机器人，并获取权限认证
+---
+
+> 因为本人是个菜鸡，只熟悉 Node.js 开发，所以本文只介绍如何使用 Node.js 开发 QQ 机器人。
+
+## 1. 注册 QQ 机器人
+
+1.1 访问[QQ 开放平台](https://q.qq.com/)，进行注册与登录。(tip: 每次登录时，都需要使用管理员 QQ 号码进行扫码验证，所以请确保你的 QQ 号码是管理员 QQ 号码。)
+
+1.2 注册成功后，进入应用管理页面，点击创建机器人。(每人最多只能创建 5 个机器人, 且无法删除)
+
+1.3 创建后进入 QQ 机器人管理页面。
+
+![ QQ 机器人管理页面](https://image.xtt.moe/local/images/2024/09/07/image.th.png)
+
+1.4 填写完资料后，点击开发设置页面，获取 `AppID` 和 `AppSecret`, 供开发使用。
+
+1.5 在沙箱配置中，配置谁能在沙箱中触发机器人，QQ 群必须是你为群主或管理员的群，否则无法触发机器人回复。私聊人员也必须在消息列表中配置，否则无法触发机器人回复。
+
+![](https://image.xtt.moe/local/images/2024/09/07/image7fa1f5f20f8ab83c.th.png)
+
+## 2. 权限认证
+
+QQ openapi 接口地址分为两种，沙箱环境和正式环境，沙箱环境用于开发测试，正式环境用于上线。
+
+沙箱环境接口地址：`https://sandbox.api.sgroup.qq.com`
+
+正式环境接口地址：`https://api.sgroup.qq.com`
+
+> 注： 发送审核测试时，虽然不是正式上线，但是审核时也需要使用正式环境的接口地址，否则审核不会通过。
+
+2.1 获取 `access_token`
+
+> QQ 官方文档地址 https://bot.q.qq.com/wiki/develop/api-v2/dev-prepare/interface-framework/api-use.html#%E8%8E%B7%E5%8F%96%E8%B0%83%E7%94%A8%E5%87%AD%E8%AF%81
+
+通过 https://bots.qq.com/app/getAppAccessToken 链接获取用户 token 和 生命周期，在生命周期结束后需要再次请求刷新 token。
+
+```js
+// 保存 token 变量
+let accessToken;
+
+async function getAppAccessToken() {
+	// 请求接口地址
+	const qqUrl = "https://bots.qq.com/app/getAppAccessToken";
+	const response = await fetch(qqUrl, {
+		method: "POST",
+		// 参数必传，在 QQ 开放平台获取到的 AppID 和 AppSecret
+		body: JSON.stringify({
+			appId: process.env.QQ_BOT_ID,
+			clientSecret: process.env.QQ_BOT_SECRET
+		}),
+		headers: {
+			"Content-Type": "application/json"
+		}
+	});
+	const data = await response.json();
+
+	/*
+	 * 返回数据格式
+	 * {
+	 *	"access_token": "ACCESS_TOKEN", // token
+	 *	"expires_in": "7200" // 生命周期，过期的话需要重新获取, 单位秒
+	 * }
+	 */
+	accessToken = data.access_token;
+
+	// 生命周期结束后重新获取(必需)
+	setTimeout(getAppAccessToken, data.expires_in * 1000);
+}
+```
+
+2.2 获取 WebSocket 连接地址
+
+WebSocket 链接有两种
+
+[通用 wss 连接:](https://bot.q.qq.com/wiki/develop/api-v2/openapi/wss/url_get.html) `/gateway`
+
+[分片 wss 连接:](https://bot.q.qq.com/wiki/develop/api-v2/openapi/wss/shard_url_get.html) `/gateway/bot`
+
+```js
+// 这里使用沙箱环境
+const domain = "https://sandbox.api.sgroup.qq.com";
+
+async function getWsUrl() {
+	// 获取通用 ws 连接地址的接口地址
+	const qqUrl = domain + "/gateway";
+	const response = await fetch(qqUrl, {
+		method: "GET",
+		// 请求头必传，使用 token 认证, QQBot 后面有一个空格
+		headers: {
+			Authorization: `QQBot ${accessToken}`
+		}
+	});
+
+	if (response.status === 200) {
+		const data = await response.json();
+
+		/*
+		 * 返回数据格式
+		 * {
+		 *	url: "" // WebSocket 连接地址
+		 * }
+		 */
+		connectWS(data.url);
+	}
+}
+```
+
+2.3 WebSocket 连接与鉴权
+
+QQ 官方文档地址 https://bot.q.qq.com/wiki/develop/api-v2/dev-prepare/interface-framework/event-emit.html#websocket-%E6%96%B9%E5%BC%8F
+
+ws 连接用需要注意鉴权和心跳包的发送，代码如下
+
+```js
+// 使用 ws 库处理 WebSocket 连接
+const WebSocket = require("ws");
+let ws;
+let seq; // 信息序列号
+let heartbeatInterval; // 心跳周期
+
+function connectWS(url) {
+	// 创建 WebSocket 连接
+	ws = new WebSocket(url);
+
+	ws.on("open", function open() {
+		console.log("connected");
+	});
+
+	ws.on("close", function close() {
+		console.log("disconnected");
+		// 断开连接后尝试重新连接
+		connectWS(url);
+	});
+
+	ws.on("message", async function incoming(data) {
+		if (Buffer.isBuffer(data)) {
+			// 获取 ws 连接获取的数据
+			const str = data.toString("utf-8");
+			const parsedJson = JSON.parse(str);
+
+			// 成功创建连接后，会立刻收到 op 为 10 的消息
+			if (parsedJson.op === 10) {
+				// 获取心跳周期
+				heartbeatInterval = parsedJson.d.heartbeat_interval;
+
+				// 连接后需要鉴权，发送鉴权信息，格式必需如下，否则会报错
+				const response = {
+					op: 2,
+					d: {
+						token: `QQBot ${AccessToken}`, // 使用 token 认证, QQBot 后面有一个空格
+						intents: (1 << 30) | (1 << 0) | (1 << 1) | (1 << 25), // 订阅权限
+						// !!! 注意,订阅权限时，不能胡乱添加权限，必须订阅当前机器人支持的权限的事件，否则 ws 连接会直接报错并关闭连接！！！
+						// 1 << 25 是群聊相关的事件，不添加的话，无法接收群聊消息
+						shard: [0, 1], // 分片信息，因为我上面 2.2 获取的不是分片信息的 ws 地址，所以这里需要写死 [0, 1]
+						properties: {
+							// 机器人环境信息，虽然官网提示可以留空，但是这里必需填写 properties 参数，参数可以随意填写，不填会报错
+							os: "linux",
+							browser: "my_library",
+							device: "my_library"
+						}
+					}
+				};
+
+				// 发送鉴权信息
+				ws.send(JSON.stringify(response));
+			} else if (parsedJson.op === 0 && parsedJson.t === "READY") {
+				// op 值为 0, t 值为 READY 时，表示鉴权成功
+				// 鉴权成功后，就需要按照周期发送心跳包，保证连接不断开
+				seq = parsedJson.s; // 当前信息的序列号，用于心跳包
+				sessionID = parsedJson.d.session_id;
+
+				// 发送心跳包， op 为 1, d 为最新信息的序列号
+				const response = {
+					op: 1,
+					d: seq
+				};
+				ws.send(JSON.stringify(response));
+			} else if (parsedJson.op === 11) {
+				// op 值为 11 时，表示收到心跳回应，需要在心跳周期后再次发送心跳包
+				setTimeout(() => {
+					const response = {
+						op: 1,
+						d: seq
+					};
+					ws.send(JSON.stringify(response));
+				}, heartbeatInterval);
+			}
+		}
+	});
+
+	ws.on("error", function error(err) {
+		console.error("WebSocket error:", err);
+	});
+}
+```
