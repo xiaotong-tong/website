@@ -1,4 +1,4 @@
-import { watch, nextTick } from "vue";
+import { watch } from "vue";
 import { useI18nStore } from "@/stores/i18n";
 
 export const myLang = {
