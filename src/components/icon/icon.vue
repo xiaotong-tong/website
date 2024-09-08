@@ -32,7 +32,8 @@ import {
 	mdiPaw,
 	mdiMenu,
 	mdiContentCopy,
-	mdiAnimationPlayOutline
+	mdiAnimationPlayOutline,
+	mdiBookOpenBlankVariantOutline
 } from "@mdi/js";
 
 interface Props {
@@ -61,7 +62,8 @@ interface Props {
 		| "mdiPaw"
 		| "mdiMenu"
 		| "mdiContentCopy"
-		| "mdiAnimationPlayOutline";
+		| "mdiAnimationPlayOutline"
+		| "mdiBookOpenBlankVariantOutline";
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -94,7 +96,8 @@ const reflectIcon = (icon: Props["icon"]) => {
 		mdiPaw,
 		mdiMenu,
 		mdiContentCopy,
-		mdiAnimationPlayOutline
+		mdiAnimationPlayOutline,
+		mdiBookOpenBlankVariantOutline
 	};
 
 	return mdiMap[icon];

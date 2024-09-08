@@ -1,10 +1,26 @@
 <template>
 	<section class="p-2" v-if="!loading">
+		<div>
+			<div class="flex">
+				<span>类别：</span>
+				<div class="flex gap-x-1">
+					<Tag
+						v-for="item in categories"
+						:key="item"
+						:color="store.currentTheme"
+						@click="changeCategory(item)"
+					>
+						{{ item }}
+					</Tag>
+				</div>
+			</div>
+		</div>
 		<namiMainCard
 			class="mb-4"
 			v-for="item in acticleList.showLists"
 			:key="item.id"
 			:info="{ ...item, headerLink: '/article/' + item.id }"
+			@changeCategory="changeCategory"
 		/>
 
 		<namiPagination
@@ -30,13 +46,19 @@
 
 <script setup lang="ts">
 import type { Acticle } from "@/types/acticle";
-import { ref, reactive, watchEffect } from "vue";
-import { getActicleList } from "@/api/blog/acticle";
-import { useRouter, useRoute } from "vue-router";
+import { ref, reactive } from "vue";
+import { getActicleList, getCategories } from "@/api/blog/acticle";
+import { useStore } from "@/stores/index";
 import namiMainCard from "./components/card/card.vue";
+import { Tag } from "@c/index";
+import { useUrlSearchParams } from "@vueuse/core";
 
-const router = useRouter();
-const route = useRoute();
+const store = useStore();
+
+const urlSearchParams = useUrlSearchParams("history", {
+	removeNullishValues: true
+});
+
 const acticleList: {
 	lists: Acticle[];
 	showLists: Acticle[];
@@ -47,28 +69,37 @@ const acticleList: {
 
 const loading = ref(true);
 
-(async () => {
-	acticleList.lists = await getActicleList();
-	loading.value = false;
-})();
+async function getActicleListFn() {
+	loading.value = true;
+	acticleList.lists = await getActicleList({
+		category: urlSearchParams.category as string
+	});
 
-const currentPage = ref(route.query.page ? +route.query.page : 1);
+	acticleList.showLists =
+		acticleList.lists?.slice(
+			(currentPage.value - 1) * pageSize,
+			currentPage.value * pageSize
+		) || [];
+	loading.value = false;
+}
+
+const currentPage = ref(Number(urlSearchParams.page) || 1);
 const pageSize = 10;
 const changePage = (page: number) => {
 	currentPage.value = page;
 
+	acticleList.showLists =
+		acticleList.lists?.slice(
+			(currentPage.value - 1) * pageSize,
+			currentPage.value * pageSize
+		) || [];
+
 	if (page === 1) {
-		router.push({
-			query: {}
-		});
+		urlSearchParams.page = null as unknown as string;
 		return;
 	}
 
-	router.push({
-		query: {
-			page
-		}
-	});
+	urlSearchParams.page = page + "";
 
 	// 切换分页页面后滚动到最顶端
 	scrollTo({
@@ -77,13 +108,20 @@ const changePage = (page: number) => {
 	});
 };
 
-watchEffect(() => {
-	acticleList.showLists =
-		acticleList.lists?.slice(
-			(currentPage.value - 1) * pageSize,
-			currentPage.value * pageSize
-		) || [];
-});
+getActicleListFn();
+
+// 获取分类列表
+const categories = ref<string[]>([]);
+async function getCategoriesFn() {
+	categories.value = await getCategories();
+}
+getCategoriesFn();
+function changeCategory(category: string) {
+	urlSearchParams.category = category;
+	currentPage.value = 1;
+	urlSearchParams.page = null as unknown as string;
+	getActicleListFn();
+}
 </script>
 
 <style scoped></style>

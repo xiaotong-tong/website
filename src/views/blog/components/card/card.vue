@@ -32,13 +32,11 @@
 				&nbsp;&nbsp;&nbsp;
 				<nami-link
 					class="tag-link"
-					:to="['/net', '/lang', '/note', '/star'][Number(props.info.category)]"
-					>#
-					{{
-						useStateType?.ActicleCategoryType?.[
-							i18nStore.lang === "ja" ? "jaShowText" : "showText"
-						][Number(props.info.category)]
-					}}</nami-link
+					:isQuery="true"
+					to="category"
+					:queryValue="props.info.category"
+					@click="() => emits('changeCategory', props.info.category)"
+					># {{ props.info.category }}</nami-link
 				>
 			</p>
 			<p class="abstract">
@@ -53,8 +51,8 @@
 			</p>
 			<div class="footer">
 				<nami-link class="article-link" block :to="props.info.headerLink"
-					>阅读全文<roughIcon icon="mdiBookOpenBlankVariantOutline"></roughIcon
-				></nami-link>
+					>阅读全文<namiIcon icon="mdiBookOpenBlankVariantOutline" />
+				</nami-link>
 			</div>
 		</div>
 	</div>
@@ -63,11 +61,8 @@
 <script setup lang="ts">
 import { onMounted, ref, onBeforeUnmount } from "vue";
 import { useStore } from "@/stores/index";
-import { useStateTypeStore } from "@/stores/stateType";
 import { useI18nStore } from "@/stores/i18n";
-import { roughIcon } from "@c/index";
 const store = useStore();
-const useStateType = useStateTypeStore();
 const i18nStore = useI18nStore();
 
 interface Props {
@@ -102,6 +97,8 @@ const props = withDefaults(defineProps<Props>(), {
 		jaTags: ""
 	})
 });
+
+const emits = defineEmits(["changeCategory"]);
 
 const card = ref<HTMLElement | null>(null);
 const visibled = ref(false);

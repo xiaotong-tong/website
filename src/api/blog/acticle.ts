@@ -25,32 +25,24 @@ export interface GetActicleListFilters {
 	category?: string;
 }
 
-export async function getActicleList(filters?: GetActicleListFilters): Promise<Acticle[]> {
-	const filterCategory = filters?.category || "";
-
+export async function getActicleList(params?: GetActicleListFilters): Promise<Acticle[]> {
 	// 如果缓存中有数据，直接返回缓存中的数据
-	if (catchs.has("acticle" + filterCategory)) {
-		return catchs.get("acticle" + filterCategory).value.data;
+	if (params?.category && catchs.has("acticle")) {
+		const res = catchs.get("acticle").value.data;
+		return res.filter((item: Acticle) => item.category === params.category);
 	}
 
-	const data: AxiosResponse<Acticle[]> = await http.get(
-		"/acticle/list",
-		filterCategory
-			? {
-					params: {
-						filters: {
-							category: filterCategory
-						}
-					}
-			  }
-			: undefined
-	);
-
-	// 将数据缓存
-	catchs.set("acticle" + filterCategory, {
-		value: data,
-		expires: Date.now() + 1000 * 60 * 10 // 设置缓存时间为10分钟，其实没有意义，因为数据不会改变
+	const data: AxiosResponse<Acticle[]> = await http.get("/acticle/list", {
+		params
 	});
+
+	// 将数据缓存, 如果有筛选条件，就不缓存
+	if (!params?.category) {
+		catchs.set("acticle", {
+			value: data,
+			expires: Date.now() + 1000 * 60 * 10 // 设置缓存时间为10分钟，其实没有意义，因为数据不会改变
+		});
+	}
 
 	return data.data;
 }
@@ -84,4 +76,18 @@ export async function deleteActicleById(id: number) {
 	catchs.clear();
 
 	return await http.delete(`/acticle/delete/${id}`);
+}
+
+export async function getCategories(): Promise<string[]> {
+	if (catchs.has("categories")) {
+		return catchs.get("categories").value;
+	}
+	const res = await http.get("/acticle/category/list");
+
+	catchs.set("categories", {
+		value: res.data,
+		expires: Date.now() + 1000 * 60 * 10 // 设置缓存时间为10分钟，其实没有意义，因为数据不会改变
+	});
+
+	return res.data;
 }
