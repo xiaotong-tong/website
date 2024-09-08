@@ -35,7 +35,8 @@ export const zhMsg = {
 			photo: "图片",
 			blog: "Blog",
 			setting: "设置",
-			live: "动态"
+			live: "动态",
+			bot: "bot"
 		},
 		footer: {
 			sitemap: "站点地图"
@@ -79,7 +80,20 @@ export const zhMsg = {
 			bgTitle: "背景图片",
 			curBg: "当前背景",
 			customBg: "自定义图片",
-			defaultBg: "默认图片"
+			defaultBg: "默认图片",
+			contentTip: "是否显示下方滚动内容：",
+			live2d: "是否显示页面左下角 live2d (小屏幕默认不展示):  ",
+			homeMusicController: "是否显示页面左下角音乐控制器：",
+			rightPiano: "右侧导航栏键盘音：",
+			rightPianoChecked: "开启",
+			rightPianoUnchecked: "关闭",
+			topPiano: "顶部导航栏键盘音：",
+			topPianoChecked: "开启",
+			topPianoUnchecked: "关闭",
+			autoPlayPiano: "自动播放钢琴声：",
+			mouseSnow: "是否开启鼠标移动雪花特效：",
+			toggleColor: "切换颜色",
+			toDefaultColor: "恢复默认颜色"
 		}
 	}
 };

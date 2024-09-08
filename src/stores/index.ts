@@ -32,9 +32,10 @@ const defaultSettingConfig = {
 			minPx: 1200, // 最小像素宽度
 			percentage: 0.9 // 最大宽度占浏览器的百分比
 		},
-		mouseSnow: true // 是否开启鼠标移动雪花特效
+		mouseSnow: true, // 是否开启鼠标移动雪花特效
+		rightPiano: true, // 是否开启右侧导航栏的钢琴声
+		topPiano: true // 是否开启顶部导航栏的钢琴声
 	},
-	piano: true, // 是否自动播放钢琴声
 	animeLess: false // 是否减少一些不必要的动画
 };
 
@@ -46,8 +47,8 @@ function setDefaultSettingConfig(settings: Ref<typeof defaultSettingConfig>) {
 			settings.value.pageConfig ?? {}
 		);
 	}
-	if (!settings.value.pageConfig.mouseSnow) {
-		settings.value.pageConfig.mouseSnow = defaultSettingConfig.pageConfig.mouseSnow;
+	if (!settings.value.pageConfig.topPiano) {
+		settings.value.pageConfig.topPiano = defaultSettingConfig.pageConfig.topPiano;
 	}
 }
 
@@ -107,11 +108,6 @@ export const useStore = defineStore("main", () => {
 		settings.value.pageConfig = val;
 	});
 
-	const isPiano = ref(settings.value.piano);
-	watch(isPiano, (val) => {
-		settings.value.piano = val;
-	});
-
 	// 少动画模式
 	const animeLess = ref(settings.value.animeLess);
 	if (urlSearchParams.animeLess) {
@@ -131,7 +127,6 @@ export const useStore = defineStore("main", () => {
 		changeThemeOfList,
 		resetDefaultTheme,
 		pageConfig,
-		isPiano,
 		animeLess
 	};
 });

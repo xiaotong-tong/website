@@ -64,49 +64,61 @@
 		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
 		<div class="item">
 			<label>
-				<span>是否显示左下角内容提示：</span>
+				<span class="me-2">{{ t("pages.setting.contentTip") }}</span>
 				<n-switch v-model:value="store.pageConfig.showContentTip" />
 			</label>
 		</div>
 		<div class="item">
 			<label>
-				<span>是否显示左下角 live2d：</span>
+				<span class="me-2">{{ t("pages.setting.live2d") }}</span>
 				<n-switch v-model:value="store.pageConfig.showHomeLive2d" />
 			</label>
 		</div>
 		<div class="item">
 			<label>
-				<span>是否显示左下角音乐控制器：</span>
+				<span class="me-2">{{ t("pages.setting.homeMusicController") }}</span>
 				<n-switch v-model:value="store.pageConfig.showHomeMusicController" />
 			</label>
 		</div>
 		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
 		<div class="item" v-if="!store.isSmallScreen">
 			<label>
-				<span>右侧导航栏键盘音：</span>
-				<n-switch v-model:value="store.isPiano" />
+				<span class="me-2">{{ t("pages.setting.rightPiano") }}</span>
+				<n-switch v-model:value="store.pageConfig.rightPiano">
+					<template #checked> {{ t("pages.setting.rightPianoChecked") }} </template>
+					<template #unchecked> {{ t("pages.setting.rightPianoUnchecked") }} </template>
+				</n-switch>
 			</label>
 		</div>
 		<div class="item" v-if="!store.isSmallScreen">
 			<label>
-				<span>自动播放右侧导航栏键盘音：</span>
+				<span class="me-2">{{ t("pages.setting.topPiano") }}</span>
+				<n-switch v-model:value="store.pageConfig.topPiano">
+					<template #checked> {{ t("pages.setting.topPianoChecked") }} </template>
+					<template #unchecked> {{ t("pages.setting.topPianoUnchecked") }} </template>
+				</n-switch>
+			</label>
+		</div>
+		<div class="item" v-if="!store.isSmallScreen">
+			<label>
+				<span class="me-2">{{ t("pages.setting.autoPlayPiano") }}</span>
 				<NButton text color="#8bcecb" @click="play">小星星</NButton>
 			</label>
 		</div>
 		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
 		<div class="item">
 			<label>
-				<span>是否显示鼠标移动雪花：</span>
+				<span class="me-2">{{ t("pages.setting.mouseSnow") }}</span>
 				<n-switch v-model:value="store.pageConfig.mouseSnow" />
 			</label>
 		</div>
 		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
 		<div class="item">
 			<div>
-				切换颜色
-				<xtt-button style="margin-inline-start: 32px" @click="store.resetDefaultTheme"
-					>恢复默认颜色</xtt-button
-				>
+				<span class="me-2">{{ t("pages.setting.toggleColor") }}</span>
+				<NButton class="ms-8" text color="#8bcecb" @click="store.resetDefaultTheme">{{
+					t("pages.setting.toDefaultColor")
+				}}</NButton>
 			</div>
 			<div>
 				<NColorPicker

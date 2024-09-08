@@ -12,7 +12,7 @@
 			}"
 		>
 			<nami-link :to="item.url" block class="link">
-				{{ item.content }}
+				{{ t(item.content) }}
 			</nami-link>
 			<namiRoughCard
 				class="bg"
@@ -30,15 +30,6 @@
 			></namiCIcon>
 		</li>
 	</ul>
-
-	<!-- <ul class="score-box">
-		<li>
-			<div @click="autoPlayPiano('1155665-4433221-5544332-5544332-1155665-4433221', 120)">
-				<nami-icon icon="mdiMusicNote"></nami-icon>
-				小星星
-			</div>
-		</li>
-	</ul> -->
 </template>
 
 <script setup lang="ts">
@@ -64,43 +55,43 @@ const list = ref<List[]>([
 	{
 		key: "c3",
 		url: "/",
-		content: t("main.homeNav.home"),
+		content: "main.homeNav.home",
 		color: store.theme[0]
 	},
 	{
 		key: "d3",
 		url: "/blog",
-		content: t("main.homeNav.blog"),
+		content: "main.homeNav.blog",
 		color: store.theme[1]
 	},
 	{
 		key: "e3",
 		url: "/music",
-		content: t("main.homeNav.music"),
+		content: "main.homeNav.music",
 		color: store.theme[2]
 	},
 	{
 		key: "f3",
 		url: "/save",
-		content: t("main.homeNav.save"),
+		content: "main.homeNav.save",
 		color: store.theme[3]
 	},
 	{
 		key: "g3",
 		url: "/tools",
-		content: t("main.homeNav.tools"),
+		content: "main.homeNav.tools",
 		color: store.theme[4]
 	},
 	{
 		key: "a3",
 		url: "/info",
-		content: t("main.homeNav.about"),
+		content: "main.homeNav.about",
 		color: store.theme[5]
 	},
 	{
 		key: "b3",
 		url: "/setting",
-		content: t("main.homeNav.setting"),
+		content: "main.homeNav.setting",
 		color: store.theme[6]
 	}
 ]);
@@ -157,7 +148,7 @@ const mouseenterHandler = (e: MouseEvent, item: List) => {
 	tween.play();
 	colorTW.play();
 
-	if (store.isPiano) {
+	if (store.pageConfig.rightPiano) {
 		playPianoAudio(item.key);
 	}
 

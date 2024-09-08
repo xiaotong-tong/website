@@ -19,7 +19,7 @@
 				@mouseenter="mouseenterHandler"
 				@mouseleave="mouseleaveHandler"
 			>
-				<namiLink inline-block :to="item.url"> {{ item.content }}</namiLink>
+				<namiLink inline-block :to="item.url"> {{ t(item.content) }}</namiLink>
 			</li>
 		</ul>
 
@@ -83,52 +83,54 @@ import { ref, onMounted } from "vue";
 import { useStore } from "@/stores/index";
 import { useI18nStore } from "@/stores/i18n";
 import { useUserInfoStore } from "@/stores/user";
+import { useI18n } from "vue-i18n";
 
 const store = useStore();
 const i18nStore = useI18nStore();
 const userInfoStore = useUserInfoStore();
+const { t } = useI18n();
 
 const list = ref([
 	{
 		key: "c3",
 		url: "/",
-		content: i18nStore.messages.main.nav.home,
+		content: "main.nav.home",
 		color: store.theme[0]
 	},
 	{
 		key: "d3",
 		url: "/login",
-		content: i18nStore.messages.main.nav.login,
+		content: "main.nav.login",
 		color: store.theme[1]
 	},
 	{
 		key: "e3",
 		url: "/bot",
-		content: "bot",
+		content: "main.nav.bot",
 		color: store.theme[2]
 	},
 	{
 		key: "f3",
 		url: "/guestbook",
-		content: i18nStore.messages.main.nav.guestbook,
+		content: "main.nav.guestbook",
 		color: store.theme[3]
 	},
 	{
 		key: "g3",
 		url: "/link",
-		content: i18nStore.messages.main.nav.link,
+		content: "main.nav.link",
 		color: store.theme[4]
 	},
 	{
 		key: "a3",
 		url: "/archives",
-		content: i18nStore.messages.main.nav.archives,
+		content: "main.nav.archives",
 		color: store.theme[5]
 	},
 	{
 		key: "b3",
 		url: "/about",
-		content: i18nStore.messages.main.nav.about,
+		content: "main.nav.about",
 		color: store.theme[6]
 	}
 ]);
@@ -168,7 +170,10 @@ const mouseenterHandler = (e: MouseEvent) => {
 	const keyEl = target.closest(".piano-key") as HTMLElement;
 	const key = keyEl.dataset.key;
 	keyEl?.classList.add("active");
-	playPianoAudio(key as PianoKey);
+
+	if (store.pageConfig.topPiano) {
+		playPianoAudio(key as PianoKey);
+	}
 };
 const mouseleaveHandler = (e: MouseEvent) => {
 	const target = e.target as HTMLElement;
