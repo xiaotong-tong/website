@@ -1,55 +1,73 @@
 <template>
-	<div class="contaniner">
-		<h3>{{ i18nStore.lang === "ja" ? "背景画像" : "背景图片" }}</h3>
-		<div>
-			{{ i18nStore.lang === "ja" ? "今の背景" : "当前背景" }}:
-			<img class="bg select-none" draggable="false" :src="bgUrl" alt="background image" />
-		</div>
-		<div class="action">
-			<xtt-button @click="open">{{
-				i18nStore.lang === "ja" ? "カスタム" : "自定义图片"
-			}}</xtt-button>
-			<xtt-button style="margin-inline-start: 8px" @click="resetBG">{{
-				i18nStore.lang === "ja" ? "デフォルト" : "默认图片"
-			}}</xtt-button>
+	<div>
+		<h3>{{ t("pages.setting.bgTitle") }}</h3>
+		<div>{{ t("pages.setting.curBg") }}:</div>
+		<div class="flex justify-around">
+			<div class="flex flex-col items-center">
+				<div>{{ t("pages.setting.lightTheme") }}</div>
+				<img
+					class="h-[100px] select-none"
+					draggable="false"
+					:src="lightBgUrl"
+					alt="background image"
+				/>
+				<div class="mt-2">
+					<NamiButton @click="open">{{ t("pages.setting.customBg") }}</NamiButton>
+					<NamiButton style="margin-inline-start: 8px" @click="resetBG('light')">{{
+						t("pages.setting.defaultBg")
+					}}</NamiButton>
+				</div>
+			</div>
+			<div class="flex flex-col items-center">
+				<div>{{ t("pages.setting.darkTheme") }}</div>
+				<img
+					class="h-[100px] select-none"
+					draggable="false"
+					:src="darkBgUrl"
+					alt="background image"
+				/>
+				<div class="mt-2">
+					<NamiButton @click="openDark">{{ t("pages.setting.customBg") }}</NamiButton>
+					<NamiButton style="margin-inline-start: 8px" @click="resetBG('dark')">{{
+						t("pages.setting.defaultBg")
+					}}</NamiButton>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
 import { watch } from "vue";
-import { setWebBGUrl, bgUrl } from "@/utils/webBG";
+import { setWebBGUrl, lightBgUrl, darkBgUrl } from "@/utils/webBG";
 import { useFileDialog } from "@vueuse/core";
-import { useI18nStore } from "@/stores/i18n";
+import { useI18n } from "vue-i18n";
+import { NamiButton } from "@c/index";
 
-const i18nStore = useI18nStore();
+const { t } = useI18n();
 
 const { files, open, reset } = useFileDialog();
+const { files: darkFiles, open: openDark, reset: resetDark } = useFileDialog();
 
 watch(files, (val) => {
 	if (val?.length) {
-		setWebBGUrl(val[0]);
+		setWebBGUrl(val[0], "light");
+	}
+});
+watch(darkFiles, (val) => {
+	if (val?.length) {
+		setWebBGUrl(val[0], "dark");
 	}
 });
 
-const resetBG = () => {
-	setWebBGUrl(undefined);
-	reset();
+const resetBG = async (mode: "light" | "dark") => {
+	await setWebBGUrl(null, mode);
+	if (mode === "light") {
+		reset();
+	} else {
+		resetDark();
+	}
 };
 </script>
 
-<style scoped>
-.contaniner {
-	padding: 8px;
-}
-
-.action {
-	margin-block-start: 8px;
-	padding-inline-start: 90px;
-}
-
-.bg {
-	margin-inline-start: 2em;
-	height: 100px;
-}
-</style>
+<style scoped></style>

@@ -66,14 +66,20 @@ export const zhMsg = {
 		setting: {
 			clearCache: "清除缓存",
 			toggleTheme: "切换模式",
-			lightTheme: "亮色",
-			darkTheme: "深色",
+			lightTheme: "白天模式",
+			darkTheme: "黑夜模式",
 			langTranslate: "切换语言",
 			langJa: "日文",
 			langZh: "中文",
 			animeLess: "动画效果",
 			animeLessChecked: "弱化",
-			animeLessUnchecked: "开启"
+			animeLessUnchecked: "开启",
+			inlineSizePercentage: "主内容区宽度最大占浏览器百分比：",
+			inlineSizeMinPx: "主内容区最小像素宽度：",
+			bgTitle: "背景图片",
+			curBg: "当前背景",
+			customBg: "自定义图片",
+			defaultBg: "默认图片"
 		}
 	}
 };

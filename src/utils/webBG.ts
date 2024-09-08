@@ -14,31 +14,42 @@ const dbPromise = openDB("xtt-web-bg-table", 1, {
 });
 
 export const bgUrl = ref<string>();
+export const lightBgUrl = ref<string>(bgMap.light);
+export const darkBgUrl = ref<string>(bgMap.dark);
 
-export const initWebBGUrl = async (defaultUrl?: string, key?: string) => {
+export const initWebBGUrl = async (defaultUrl?: string, key?: "dark" | "light") => {
 	const store = useStore();
 
 	if (!key) {
 		key = store.isDark ? "dark" : "light";
 	}
 
-	const db = await dbPromise;
-	const content = await db.get("bg", key);
+	lightBgUrl.value = bgMap.light;
+	darkBgUrl.value = bgMap.dark;
+	bgUrl.value = defaultUrl || store.isDark ? darkBgUrl.value : lightBgUrl.value;
 
-	if (typeof content === "string") {
-		bgUrl.value = content;
-	} else if (content instanceof Blob || content instanceof File) {
-		bgUrl.value = URL.createObjectURL(content);
-	} else {
-		bgUrl.value = defaultUrl || bgMap[store.isDark ? "dark" : "light"];
-	}
+	const db = await dbPromise;
+	const lightContent = await db.get("bg", "light");
+	const darkContent = await db.get("bg", "dark");
+	const content = key === "dark" ? darkContent : lightContent;
+
+	typeof content === "string" && (bgUrl.value = content);
+	typeof lightContent === "string" && (lightBgUrl.value = lightContent);
+	typeof darkContent === "string" && (darkBgUrl.value = darkContent);
+
+	(content instanceof Blob || content instanceof File) &&
+		(bgUrl.value = URL.createObjectURL(content));
+	(lightContent instanceof Blob || lightContent instanceof File) &&
+		(lightBgUrl.value = URL.createObjectURL(lightContent));
+	(darkContent instanceof Blob || darkContent instanceof File) &&
+		(darkBgUrl.value = URL.createObjectURL(darkContent));
 
 	return bgUrl;
 };
 
 export const setWebBGUrl = async (
 	content: string | Blob | File | undefined | null,
-	key?: string
+	key?: "dark" | "light"
 ) => {
 	const store = useStore();
 
@@ -50,10 +61,9 @@ export const setWebBGUrl = async (
 
 	if (!content) {
 		db.delete("bg", key);
-		bgUrl.value = "https://image.xtt.moe/images/bg.webp";
-		return;
+	} else {
+		await db.put("bg", content, key);
 	}
 
-	await db.put("bg", content, key);
 	initWebBGUrl();
 };

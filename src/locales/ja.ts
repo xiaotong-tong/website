@@ -74,7 +74,13 @@ export const jaMsg = {
 			langZh: "中国語",
 			animeLess: "アニメーション",
 			animeLessChecked: "弱化",
-			animeLessUnchecked: "開く"
+			animeLessUnchecked: "開く",
+			inlineSizePercentage: "メインコンテンツエリアの最大ブラウザ幅の割合：",
+			inlineSizeMinPx: "メインコンテンツエリアの最小ピクセル幅：",
+			bgTitle: "背景画像",
+			curBg: "今の背景",
+			customBg: "カスタム",
+			defaultBg: "デフォルト"
 		}
 	}
 };

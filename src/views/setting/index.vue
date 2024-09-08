@@ -42,7 +42,7 @@
 		</div>
 		<div class="item">
 			<label>
-				<span>最大宽度占浏览器的百分比：</span>
+				<span>{{ t("pages.setting.inlineSizePercentage") }}</span>
 				<NSlider
 					v-model:value="store.pageConfig.inlineSize.percentage"
 					:min="0"
@@ -51,7 +51,7 @@
 				/>
 			</label>
 			<label>
-				<span>最小像素宽度：</span>
+				<span>{{ t("pages.setting.inlineSizeMinPx") }}</span>
 				<NInputNumber
 					v-model:value="store.pageConfig.inlineSize.minPx"
 					size="small"
