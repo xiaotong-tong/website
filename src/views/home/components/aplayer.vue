@@ -2,7 +2,11 @@
 	<namiAplayer
 		class="fixed top-0 left-0"
 		ref="aplayerRef"
-		v-if="store.pageConfig.showHomeMusicController || route.fullPath === '/music'"
+		v-if="
+			store.pageConfig.showHomeMusicController ||
+			route.fullPath === '/music' ||
+			route.fullPath === '/ja/music'
+		"
 	></namiAplayer>
 </template>
 
@@ -77,7 +81,7 @@ function toHomeArea() {
 
 // 监听路由变化
 watchEffect(() => {
-	if (route.fullPath === "/music") {
+	if (route.fullPath === "/music" || route.fullPath === "/ja/music") {
 		toMusicArea();
 	} else if (store.pageConfig.showHomeMusicController) {
 		toHomeArea();
