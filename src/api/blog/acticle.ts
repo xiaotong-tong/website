@@ -27,24 +27,38 @@ export interface GetActicleListFilters {
 
 export async function getActicleList(params?: GetActicleListFilters): Promise<Acticle[]> {
 	// 如果缓存中有数据，直接返回缓存中的数据
-	if (params?.category && catchs.has("acticle")) {
+	if (catchs.has("acticle")) {
 		const res = catchs.get("acticle").value.data;
-		return res.filter((item: Acticle) => item.category === params.category);
-	}
 
-	const data: AxiosResponse<Acticle[]> = await http.get("/acticle/list", {
-		params
-	});
-
-	// 将数据缓存, 如果有筛选条件，就不缓存
-	if (!params?.category) {
-		catchs.set("acticle", {
-			value: data,
-			expires: Date.now() + 1000 * 60 * 10 // 设置缓存时间为10分钟，其实没有意义，因为数据不会改变
+		if (!params?.category) {
+			return res;
+		}
+		return res.filter((item: Acticle) => {
+			if (params.category?.includes(",")) {
+				return params.category.split(",").includes(item.category);
+			}
+			return item.category === params.category;
 		});
 	}
 
-	return data.data;
+	const data: AxiosResponse<Acticle[]> = await http.get("/acticle/list");
+
+	// 将数据缓存
+	catchs.set("acticle", {
+		value: data,
+		expires: Date.now() + 1000 * 60 * 10 // 设置缓存时间为10分钟，其实没有意义，因为数据不会改变
+	});
+
+	if (!params?.category) {
+		return data.data;
+	}
+
+	return data.data.filter((item: Acticle) => {
+		if (params.category?.includes(",")) {
+			return params.category.split(",").includes(item.category);
+		}
+		return item.category === params.category;
+	});
 }
 
 export async function getActicleById(id: number): Promise<ActicleById> {

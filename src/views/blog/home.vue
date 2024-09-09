@@ -8,7 +8,12 @@
 						v-for="item in categories"
 						:key="item"
 						:color="store.currentTheme"
-						@click="changeCategory(item)"
+						@click="changeCategory(item, true)"
+						:checked="
+							item === urlSearchParams.category ||
+							(Array.isArray(urlSearchParams.category) &&
+								urlSearchParams.category.includes(item))
+						"
 					>
 						{{ item }}
 					</Tag>
@@ -72,7 +77,10 @@ const loading = ref(true);
 async function getActicleListFn() {
 	loading.value = true;
 	acticleList.lists = await getActicleList({
-		category: urlSearchParams.category as string
+		category:
+			(Array.isArray(urlSearchParams.category)
+				? urlSearchParams.category.join(",")
+				: urlSearchParams.category) || undefined
 	});
 
 	acticleList.showLists =
@@ -116,8 +124,28 @@ async function getCategoriesFn() {
 	categories.value = await getCategories();
 }
 getCategoriesFn();
-function changeCategory(category: string) {
-	urlSearchParams.category = category;
+function changeCategory(category: string, byTag = false) {
+	if (byTag) {
+		if (typeof urlSearchParams.category === "string") {
+			if (urlSearchParams.category === category) {
+				urlSearchParams.category = null as unknown as string;
+			} else {
+				urlSearchParams.category = [urlSearchParams.category, category];
+			}
+		} else if (Array.isArray(urlSearchParams.category)) {
+			if (urlSearchParams.category.includes(category)) {
+				urlSearchParams.category = urlSearchParams.category.filter(
+					(item) => item !== category
+				);
+			} else {
+				urlSearchParams.category.push(category);
+			}
+		} else {
+			urlSearchParams.category = category;
+		}
+	} else {
+		urlSearchParams.category = category;
+	}
 	currentPage.value = 1;
 	urlSearchParams.page = null as unknown as string;
 	getActicleListFn();
