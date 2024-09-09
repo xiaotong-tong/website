@@ -1,6 +1,6 @@
 <template>
 	<section class="p-2" v-if="!loading">
-		<div>
+		<div class="flex justify-between">
 			<div class="flex">
 				<span>类别：</span>
 				<div class="flex gap-x-1">
@@ -18,6 +18,9 @@
 						{{ item }}
 					</Tag>
 				</div>
+			</div>
+			<div>
+				<Link to="/editor/add">新增</Link>
 			</div>
 		</div>
 		<namiMainCard
@@ -55,7 +58,7 @@ import { ref, reactive } from "vue";
 import { getActicleList, getCategories } from "@/api/blog/acticle";
 import { useStore } from "@/stores/index";
 import namiMainCard from "./components/card/card.vue";
-import { Tag } from "@c/index";
+import { Tag, Link } from "@c/index";
 import { useUrlSearchParams } from "@vueuse/core";
 
 const store = useStore();

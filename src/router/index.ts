@@ -63,6 +63,15 @@ let routes: Route[] = [
 				}
 			},
 			{
+				path: "/editor/add",
+				name: "blogEditorAdd",
+				component: () => import("../views/blog/editor/add.vue"),
+				meta: {
+					title: "新增",
+					theme: 1
+				}
+			},
+			{
 				path: "/photos",
 				name: "photos",
 				component: () => import("../views/photos/index.vue"),
@@ -419,11 +428,6 @@ let routes: Route[] = [
 				redirect: "/404"
 			}
 		]
-	},
-	{
-		path: "/editor/add",
-		name: "blogEditorAdd",
-		component: () => import("../views/blog/editor/add.vue")
 	},
 	{
 		path: "/editor/edit/:id",

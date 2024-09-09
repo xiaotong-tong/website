@@ -5,7 +5,7 @@ module.exports = {
 		extend: {}
 	},
 	plugins: [
-		function ({ addUtilities, matchUtilities, theme }) {
+		function ({ addUtilities, matchUtilities, theme, addVariant, e }) {
 			const newUtilities = {
 				".writing-mode-v-rl": {
 					writingMode: "vertical-rl"
@@ -30,6 +30,13 @@ module.exports = {
 
 			matchUtilities(newMatchUtilities, {
 				values: theme("spacing")
+			});
+
+			// 自定义一个升级CSS选择器优先级的变体
+			addVariant("up", ({ modifySelectors, separator }) => {
+				modifySelectors(({ className }) => {
+					return `.${e(`up${separator}${className}`)}:is(&, #notUsedSelector)`;
+				});
 			});
 		}
 	]
