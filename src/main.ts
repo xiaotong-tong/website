@@ -18,3 +18,24 @@ app.use(router);
 app.use(withInstall);
 
 app.mount("#app");
+
+// @ts-ignore
+// 定义 MonacoEnvironment
+// self.MonacoEnvironment = {
+// 	// @ts-ignore
+// 	getWorkerUrl: function (moduleId, label) {
+// 		if (label === "json") {
+// 			return "./json.worker.bundle.js";
+// 		}
+// 		if (label === "css" || label === "scss" || label === "less") {
+// 			return "./css.worker.bundle.js";
+// 		}
+// 		if (label === "html" || label === "handlebars" || label === "razor") {
+// 			return "./html.worker.bundle.js";
+// 		}
+// 		if (label === "typescript" || label === "javascript") {
+// 			return "./ts.worker.bundle.js";
+// 		}
+// 		return "./editor.worker.bundle.js";
+// 	}
+// };

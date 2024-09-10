@@ -5,6 +5,7 @@ import mdPlugin from "./plugins/mdToTextPlain";
 import type { ManifestOptions } from "vite-plugin-pwa";
 import { VitePWA } from "vite-plugin-pwa";
 import manifest from "./manifest.json" assert { type: "json" };
+import monacoEditorPlugin from "vite-plugin-monaco-editor";
 
 const isDev = process.env.NODE_ENV === "development";
 
@@ -15,6 +16,7 @@ export default defineConfig({
 	// },
 	plugins: [
 		mdPlugin(),
+		monacoEditorPlugin({}),
 		// dev 时不启用 PWA
 		VitePWA({
 			manifest: manifest as ManifestOptions,

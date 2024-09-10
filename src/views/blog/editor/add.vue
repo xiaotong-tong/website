@@ -34,25 +34,26 @@
 		</div>
 	</div>
 
-	<p>正文：</p>
-	<xtt-editor-md v-model="content"></xtt-editor-md>
+	<div class="item"><span>摘要：</span> <NInput type="textarea" v-model:value="abstract" /></div>
 
-	<div>
-		摘要： <xtt-textarea block autosize v-model="abstract" class="abstract"></xtt-textarea>
+	<div class="item editor-wrapper">
+		<span>正文：</span>
+		<div ref="contentRef" class="content-editor"></div>
 	</div>
 
 	<div class="flex justify-end">
-		<xtt-button type="primary" @click="submitEvent">发布</xtt-button>
+		<NamiButton @click="submitEvent" :borderColor="store.currentTheme">发布</NamiButton>
 	</div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import type { UploadOnChange } from "naive-ui";
 import { NInput, NSelect, NUpload } from "naive-ui";
 import { NamiButton } from "@c/index";
 import { addActicle, getCategories } from "@/api/blog/acticle";
 import { uploadLocalImage } from "@/api/image/image";
+import * as monaco from "monaco-editor";
 import { useStore } from "@/stores/index";
 import { useRouter } from "vue-router";
 const router = useRouter();
@@ -84,13 +85,37 @@ async function getCategoriesFn() {
 }
 getCategoriesFn();
 
+const contentRef = ref<HTMLElement | null>(null);
+const contentValue = "";
+const editorEl = ref<monaco.editor.IStandaloneCodeEditor>();
+onMounted(() => {
+	if (contentRef.value) {
+		editorEl.value = monaco.editor.create(contentRef.value, {
+			value: contentValue,
+			language: "markdown",
+			automaticLayout: false,
+			minimap: {
+				enabled: false
+			}
+		});
+
+		// editorEl.value.onDidChangeModelContent(() => {
+		// 	content.value = editorEl.value?.getValue() || "";
+		// });
+	}
+});
+// onUnmounted(() => {
+// 	editorEl.value?.dispose();
+// });
+
 const submitEvent = async () => {
 	if (!title.value) return alert("标题不能为空");
-	if (!content.value) return alert("内容不能为空");
-
+	const content = editorEl.value?.getValue();
+	if (!content) return alert("内容不能为空");
+	debugger;
 	const res = await addActicle({
 		title: title.value,
-		content: content.value,
+		content: content,
 		author: author.value,
 		category: category.value,
 		tags: tags.value,
@@ -141,5 +166,15 @@ async function uploadImageEvent(option: Parameters<UploadOnChange>[0]) {
 
 .thumbnail {
 	height: 100px;
+}
+
+.editor-wrapper {
+	align-items: start;
+}
+
+.content-editor {
+	height: 500px;
+	flex: 1;
+	border: thin solid var(--d-color);
 }
 </style>
