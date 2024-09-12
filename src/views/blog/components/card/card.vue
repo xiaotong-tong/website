@@ -17,13 +17,15 @@
 			/>
 		</div>
 		<div class="info-wrap">
-			<h2 class="text-xl font-bold">
-				{{
-					i18nStore.lang === "ja"
-						? props.info.jaTitle || props.info.title
-						: props.info.title
-				}}
-			</h2>
+			<Link :to="props.info.headerLink" block class="header-link justify-start ps-0">
+				<h2 class="text-xl font-bold">
+					{{
+						i18nStore.lang === "ja"
+							? props.info.jaTitle || props.info.title
+							: props.info.title
+					}}
+				</h2>
+			</Link>
 			<p>
 				<span>{{
 					(i18nStore.lang === "ja" ? "post on " : "发布于 ") + props.info.createDate
@@ -50,9 +52,10 @@
 				}}
 			</p>
 			<div class="footer">
-				<nami-link class="article-link" block :to="props.info.headerLink"
-					>阅读全文<namiIcon icon="mdiBookOpenBlankVariantOutline" />
-				</nami-link>
+				<Link class="article-link" block :to="props.info.headerLink"
+					>{{ t("pages.blog.readMore")
+					}}<namiIcon class="ms-1" icon="mdiBookOpenBlankVariantOutline" />
+				</Link>
 			</div>
 		</div>
 	</div>
@@ -61,8 +64,12 @@
 <script setup lang="ts">
 import { onMounted, ref, onBeforeUnmount } from "vue";
 import { useStore } from "@/stores/index";
+import { useI18n } from "vue-i18n";
 import { useI18nStore } from "@/stores/i18n";
+import { Link } from "@c/index";
+
 const store = useStore();
+const { t } = useI18n();
 const i18nStore = useI18nStore();
 
 interface Props {
@@ -186,7 +193,11 @@ onBeforeUnmount(() => {
 
 .article-link {
 	color: var(--d-color);
-	--link-hover-bg-color: transparent;
+}
+
+.header-link:hover,
+.article-link:hover {
+	text-decoration: underline;
 }
 
 @media screen and (max-width: 992px) {

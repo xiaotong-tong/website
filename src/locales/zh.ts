@@ -64,6 +64,9 @@ export const zhMsg = {
 				overflowTip: "兼容"
 			}
 		},
+		blog: {
+			readMore: "阅读全文"
+		},
 		setting: {
 			clearCache: "清除缓存",
 			toggleTheme: "切换模式",

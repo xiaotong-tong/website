@@ -65,6 +65,9 @@ export const jaMsg = {
 				overflowTip: "回る"
 			}
 		},
+		blog: {
+			readMore: "続きを読む"
+		},
 		setting: {
 			clearCache: "キャッシュをクリア",
 			toggleTheme: "モードを切り替え",
