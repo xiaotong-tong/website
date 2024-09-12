@@ -24,13 +24,6 @@
 
 -   [threejs 星空](/ex/space) - threejs で星空を制作する
 
-## テーマ
-
--   [ウェブ](/ja/net)
--   [言語学ぶ](/ja/lang)
--   [エッセイ](/ja/note)
--   [ほか](/ja/star)
-
 ## 文章
 
 -   [js 排序](/ja/article/2)

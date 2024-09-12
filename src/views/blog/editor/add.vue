@@ -41,16 +41,23 @@
 		<div ref="contentRef" class="content-editor"></div>
 	</div>
 
-	<div class="flex justify-end">
+	<div class="item editor-preview">
+		<span>预览：</span>
+		<markdown :content="content"></markdown>
+	</div>
+
+	<namiRoughLine :color="store.currentTheme"></namiRoughLine>
+
+	<div class="mt-4 mb-4 flex justify-end">
 		<NamiButton @click="submitEvent" :borderColor="store.currentTheme">发布</NamiButton>
 	</div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, toRaw, onUnmounted } from "vue";
 import type { UploadOnChange } from "naive-ui";
 import { NInput, NSelect, NUpload } from "naive-ui";
-import { NamiButton } from "@c/index";
+import { NamiButton, markdown } from "@c/index";
 import { addActicle, getCategories } from "@/api/blog/acticle";
 import { uploadLocalImage } from "@/api/image/image";
 import * as monaco from "monaco-editor";
@@ -87,33 +94,36 @@ getCategoriesFn();
 
 const contentRef = ref<HTMLElement | null>(null);
 const contentValue = "";
-const editorEl = ref<monaco.editor.IStandaloneCodeEditor>();
+const editor = ref<monaco.editor.IStandaloneCodeEditor>();
+
 onMounted(() => {
 	if (contentRef.value) {
-		editorEl.value = monaco.editor.create(contentRef.value, {
+		editor.value = monaco.editor.create(contentRef.value, {
 			value: contentValue,
 			language: "markdown",
-			automaticLayout: false,
+			// automaticLayout: false,
 			minimap: {
 				enabled: false
 			}
+			// selectOnLineNumbers: false
 		});
 
-		// editorEl.value.onDidChangeModelContent(() => {
-		// 	content.value = editorEl.value?.getValue() || "";
-		// });
+		editor.value.onDidChangeModelContent(() => {
+			content.value = toRaw(editor.value!).getValue() || "";
+		});
 	}
 });
-// onUnmounted(() => {
-// 	editorEl.value?.dispose();
-// });
+onUnmounted(() => {
+	// editorEl.value 必须使用 toRaw 包裹，否则会卡死页面
+	toRaw(editor.value)?.dispose();
+});
 
 const submitEvent = async () => {
 	if (!title.value) return alert("标题不能为空");
-	const content = editorEl.value?.getValue();
+	const content = toRaw(editor.value)?.getValue();
 	if (!content) return alert("内容不能为空");
-	debugger;
-	const res = await addActicle({
+
+	await addActicle({
 		title: title.value,
 		content: content,
 		author: author.value,
@@ -123,8 +133,7 @@ const submitEvent = async () => {
 		thumbnail: thumbnail.value
 	});
 
-	console.log(res);
-	router.push("/");
+	router.push("/blog");
 };
 
 const imgLoading = ref(false);

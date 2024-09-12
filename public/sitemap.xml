@@ -296,7 +296,8 @@
     <changefreq>monthly</changefreq>
   </url>
 <!-- save 子页面 end -->
-  <url>
+<!-- 下面四个页面已被删除 -->
+  <!-- <url>
     <loc>https://xtt.moe/net</loc>
     <priority>0.7</priority>
   </url>
@@ -311,7 +312,8 @@
   <url>
     <loc>https://xtt.moe/star</loc>
     <priority>0.7</priority>
-  </url>
+  </url> -->
+<!-- 上面四个页面已被删除 -->
   <url>
     <loc>https://xtt.moe/sitemap</loc>
     <priority>1.0</priority>

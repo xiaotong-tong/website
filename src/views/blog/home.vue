@@ -20,7 +20,7 @@
 				</div>
 			</div>
 			<div>
-				<Link to="/editor/add">新增</Link>
+				<Link type="primary" to="/editor/add">新增</Link>
 			</div>
 		</div>
 		<namiMainCard

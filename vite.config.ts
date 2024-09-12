@@ -106,12 +106,9 @@ export default defineConfig({
 
 					blog: [
 						"./src/views/blog/article/article.vue",
-						"./src/views/blog/lang/lang.vue",
-						"./src/views/blog/net/index.vue",
-						"./src/views/blog/note/index.vue",
-						"./src/views/blog/star/index.vue"
+						"./src/views/blog/editor/add.vue",
+						"./src/views/blog/editor/edit.vue"
 					],
-					editor: ["./src/views/blog/editor/add.vue", "./src/views/blog/editor/edit.vue"],
 					ex: ["./src/views/ex/space/index.vue", "./src/views/ex/pip/index.vue"],
 					cv: ["./src/views/cv/cv.pdf.vue"]
 				}

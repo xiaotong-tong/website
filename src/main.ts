@@ -7,6 +7,12 @@ import router from "./router/index";
 import withInstall from "./plugins/withInstall";
 import i18n from "./plugins/i18nWithInstall";
 
+import jsonWorker from "monaco-editor/esm/vs/language/json/json.worker?worker";
+import cssWorker from "monaco-editor/esm/vs/language/css/css.worker?worker";
+import htmlWorker from "monaco-editor/esm/vs/language/html/html.worker?worker";
+import tsWorker from "monaco-editor/esm/vs/language/typescript/ts.worker?worker";
+import EditorWorker from "monaco-editor/esm/vs/editor/editor.worker?worker";
+
 // import { registerSW } from "virtual:pwa-register";
 // registerSW({ immediate: true });
 
@@ -21,21 +27,22 @@ app.mount("#app");
 
 // @ts-ignore
 // 定义 MonacoEnvironment
-// self.MonacoEnvironment = {
-// 	// @ts-ignore
-// 	getWorkerUrl: function (moduleId, label) {
-// 		if (label === "json") {
-// 			return "./json.worker.bundle.js";
-// 		}
-// 		if (label === "css" || label === "scss" || label === "less") {
-// 			return "./css.worker.bundle.js";
-// 		}
-// 		if (label === "html" || label === "handlebars" || label === "razor") {
-// 			return "./html.worker.bundle.js";
-// 		}
-// 		if (label === "typescript" || label === "javascript") {
-// 			return "./ts.worker.bundle.js";
-// 		}
-// 		return "./editor.worker.bundle.js";
-// 	}
-// };
+self.MonacoEnvironment = {
+	// @ts-ignore
+	getWorker: function (_, label) {
+		if (label === "json") {
+			return new jsonWorker();
+		}
+		if (label === "css" || label === "scss" || label === "less") {
+			return new cssWorker();
+		}
+		if (label === "html" || label === "handlebars" || label === "razor") {
+			return new htmlWorker();
+		}
+		if (["typescript", "javascript"].includes(label)) {
+			return new tsWorker();
+		}
+
+		return new EditorWorker();
+	}
+};

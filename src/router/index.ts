@@ -72,6 +72,15 @@ let routes: Route[] = [
 				}
 			},
 			{
+				path: "/editor/edit/:id",
+				name: "blogEditorEdit",
+				component: () => import("../views/blog/editor/edit.vue"),
+				meta: {
+					title: "修改",
+					theme: 1
+				}
+			},
+			{
 				path: "/photos",
 				name: "photos",
 				component: () => import("../views/photos/index.vue"),
@@ -428,57 +437,6 @@ let routes: Route[] = [
 				redirect: "/404"
 			}
 		]
-	},
-	{
-		path: "/editor/edit/:id",
-		name: "blogEditorEdit",
-		component: () => import("../views/blog/editor/edit.vue")
-	},
-
-	// tag 标签页面，待删除。使用 ?tag=xxx 形式优化
-	{
-		path: "/lang",
-		name: "lang",
-		component: () => import("../views/blog/lang/lang.vue"),
-		meta: {
-			title: {
-				zh: "语言学习",
-				ja: "言語学ぶ"
-			}
-		}
-	},
-	{
-		path: "/net",
-		name: "net",
-		component: () => import("../views/blog/net/index.vue"),
-		meta: {
-			title: {
-				zh: "网络互联",
-				ja: "ネットワーク"
-			}
-		}
-	},
-	{
-		path: "/note",
-		name: "note",
-		component: () => import("../views/blog/note/index.vue"),
-		meta: {
-			title: {
-				zh: "喵随笔",
-				ja: "ノート"
-			}
-		}
-	},
-	{
-		path: "/star",
-		name: "star",
-		component: () => import("../views/blog/star/index.vue"),
-		meta: {
-			title: {
-				zh: "其它",
-				ja: "その他"
-			}
-		}
 	},
 	// cv 页面
 	{

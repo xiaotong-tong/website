@@ -1,11 +1,6 @@
 <template>
-	<div class="title-operate-area">
-		<xtt-button
-			v-if="userInfoStore.userInfo.id"
-			type="primary"
-			@click="router.push('/editor/edit/' + id)"
-			>编辑</xtt-button
-		>
+	<div class="flex justify-end mb-2">
+		<Link type="primary" :to="'/editor/edit/' + id">编辑</Link>
 	</div>
 	<section class="container web-color-default" v-if="acticle">
 		<h2 class="text-xl font-bold">
@@ -25,7 +20,6 @@
 		</p>
 
 		<markdown
-			class="md"
 			:content="
 				i18nStore.lang === 'ja' ? acticle?.jaContent || acticle?.content : acticle?.content
 			"
@@ -65,16 +59,14 @@ import { ref, watch, provide } from "vue";
 import { getActicleById } from "@/api/blog/acticle";
 import { addComment, getCommentList } from "@/api/blog/comment";
 import { useRoute, useRouter, onBeforeRouteUpdate } from "vue-router";
-import { useUserInfoStore } from "@/stores/user";
 import { useI18nStore } from "@/stores/i18n";
 import { useStateTypeStore } from "@/stores/stateType";
-import { markdown } from "@c/index";
+import { markdown, Link } from "@c/index";
 
 const route = useRoute();
 const router = useRouter();
 const useStateType = useStateTypeStore();
 const i18nStore = useI18nStore();
-const userInfoStore = useUserInfoStore();
 
 const id = ref(Number(route.params.id));
 
@@ -155,14 +147,6 @@ watch(
 <style scoped>
 .container {
 	padding: 8px;
-}
-
-.md {
-	--md-bg-color: transparent;
-}
-.title-operate-area {
-	display: flex;
-	justify-content: flex-end;
 }
 
 .comment-list {
