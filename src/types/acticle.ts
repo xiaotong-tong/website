@@ -16,6 +16,7 @@ export interface Acticle {
 	jaAuthor: string;
 	jaAbstract: string;
 	jaTags: string;
+	jaCategory: string;
 }
 
 export interface ActicleById extends Acticle {
@@ -39,6 +40,12 @@ export interface AddActicleBody {
 	tags?: string;
 	abstract?: string;
 	thumbnail?: string;
+	jaTitle: string;
+	jaContent: string;
+	jaAuthor: string;
+	jaAbstract: string;
+	jaTags: string;
+	jaCategory: string;
 }
 
 export interface EditActicleBody {
@@ -49,4 +56,10 @@ export interface EditActicleBody {
 	tags?: string;
 	abstract?: string;
 	thumbnail?: string;
+	jaTitle: string;
+	jaContent: string;
+	jaAuthor: string;
+	jaAbstract: string;
+	jaTags: string;
+	jaCategory: string;
 }

@@ -38,7 +38,10 @@
 					to="category"
 					:queryValue="props.info.category"
 					@click="() => emits('changeCategory', props.info.category)"
-					># {{ props.info.category }}</nami-link
+					>#
+					{{
+						i18nStore.lang === "ja" ? props.info.jaCategory : props.info.category
+					}}</nami-link
 				>
 			</p>
 			<p class="abstract">
@@ -86,6 +89,7 @@ interface Props {
 		jaAuthor: string;
 		jaAbstract: string;
 		jaTags: string;
+		jaCategory: string;
 	};
 }
 const props = withDefaults(defineProps<Props>(), {
@@ -101,7 +105,8 @@ const props = withDefaults(defineProps<Props>(), {
 		jaContent: "",
 		jaAuthor: "",
 		jaAbstract: "",
-		jaTags: ""
+		jaTags: "",
+		jaCategory: ""
 	})
 });
 

@@ -26,7 +26,7 @@
 
 ## 文章
 
--   [js 排序](/ja/article/2)
+-   [js でのソート](/ja/article/2)
 -   [js function length 属性](/ja/article/4)
 -   [数据库基础学习](/ja/article/6)
 -   [基于迭代器实现一个循环方法](/ja/article/7)
@@ -50,3 +50,5 @@
 -   [在 Linux 中运行 Puppeteer](/article/26)
 -   [ナミダノコエ 歌詞](/article/27)
 -   [QQ 机器人开发(1) - 注册与权限认证](/article/28)
+-   [monaco 编辑器使用](/article/30)
+-

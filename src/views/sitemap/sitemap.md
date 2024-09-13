@@ -69,3 +69,4 @@
 -   [在 Linux 中运行 Puppeteer](/article/26)
 -   [ナミダノコエ 歌詞](/article/27)
 -   [QQ 机器人开发(1) - 注册与权限认证](/article/28)
+-   [monaco 编辑器使用](/article/30)

@@ -366,7 +366,13 @@
   <url>
     <loc>https://xtt.moe/article/2</loc>
     <priority>0.8</priority>
-    <lastmod>2023-07-18</lastmod>
+    <lastmod>2024-09-13</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/ja/article/2</loc>
+    <priority>0.8</priority>
+    <lastmod>2024-09-13</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -523,6 +529,12 @@
     <loc>https://xtt.moe/article/28</loc>
     <priority>0.8</priority>
     <lastmod>2024-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/article/30</loc>
+    <priority>0.8</priority>
+    <lastmod>2024-09-13</lastmod>
     <changefreq>monthly</changefreq>
   </url>
 </urlset>

@@ -23,21 +23,26 @@ export async function addActicle(body: AddActicleBody): Promise<any> {
 
 export interface GetActicleListFilters {
 	category?: string;
+	lang?: string;
 }
 
 export async function getActicleList(params?: GetActicleListFilters): Promise<Acticle[]> {
+	const { category, lang } = params || {};
+
 	// 如果缓存中有数据，直接返回缓存中的数据
 	if (catchs.has("acticle")) {
 		const res = catchs.get("acticle").value.data;
 
-		if (!params?.category) {
+		if (!category) {
 			return res;
 		}
 		return res.filter((item: Acticle) => {
-			if (params.category?.includes(",")) {
-				return params.category.split(",").includes(item.category);
+			if (category?.includes(",")) {
+				return category
+					.split(",")
+					.includes(lang === "ja" ? item.jaCategory : item.category);
 			}
-			return item.category === params.category;
+			return (lang === "ja" ? item.jaCategory : item.category) === category;
 		});
 	}
 
@@ -49,15 +54,15 @@ export async function getActicleList(params?: GetActicleListFilters): Promise<Ac
 		expires: Date.now() + 1000 * 60 * 10 // 设置缓存时间为10分钟，其实没有意义，因为数据不会改变
 	});
 
-	if (!params?.category) {
+	if (!category) {
 		return data.data;
 	}
 
 	return data.data.filter((item: Acticle) => {
-		if (params.category?.includes(",")) {
-			return params.category.split(",").includes(item.category);
+		if (category?.includes(",")) {
+			return category.split(",").includes(lang === "ja" ? item.jaCategory : item.category);
 		}
-		return item.category === params.category;
+		return (lang === "ja" ? item.jaCategory : item.category) === category;
 	});
 }
 
@@ -92,6 +97,7 @@ export async function deleteActicleById(id: number) {
 	return await http.delete(`/acticle/delete/${id}`);
 }
 
+// 获取文章分类
 export async function getCategories(): Promise<string[]> {
 	if (catchs.has("categories")) {
 		return catchs.get("categories").value;
@@ -99,6 +105,21 @@ export async function getCategories(): Promise<string[]> {
 	const res = await http.get("/acticle/category/list");
 
 	catchs.set("categories", {
+		value: res.data,
+		expires: Date.now() + 1000 * 60 * 10 // 设置缓存时间为10分钟，其实没有意义，因为数据不会改变
+	});
+
+	return res.data;
+}
+
+// 获取日文文章分类
+export async function getCategoriesJP(): Promise<string[]> {
+	if (catchs.has("categoriesJP")) {
+		return catchs.get("categoriesJP").value;
+	}
+	const res = await http.get("/acticle/category/jaList");
+
+	catchs.set("categoriesJP", {
 		value: res.data,
 		expires: Date.now() + 1000 * 60 * 10 // 设置缓存时间为10分钟，其实没有意义，因为数据不会改变
 	});

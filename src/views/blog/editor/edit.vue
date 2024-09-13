@@ -48,6 +48,41 @@
 
 	<namiRoughLine :color="store.currentTheme"></namiRoughLine>
 
+	<div class="item mt-2">
+		<span>日文标题：</span> <NInput type="text" v-model:value="jaTitle" />
+	</div>
+
+	<div class="item">
+		<span>日文作者名：</span>
+		<NInput type="text" v-model:value="jaAuthor" class="up:w-[200px]" />
+	</div>
+
+	<div class="item">
+		<span>日文分类：</span>
+		<NSelect v-model:value="jaCategory" filterable tag :options="jaCategories" />
+	</div>
+
+	<div class="item">
+		<span>日文标签：</span>
+		<NInput type="text" v-model:value="jaTags" class="up:w-[200px]" />
+	</div>
+
+	<div class="item">
+		<span>日文摘要：</span> <NInput type="textarea" v-model:value="jaAbstract" />
+	</div>
+
+	<div class="item editor-wrapper">
+		<span>正文：</span>
+		<div ref="jaContentRef" class="content-editor"></div>
+	</div>
+
+	<div class="item editor-preview">
+		<span>预览：</span>
+		<markdown :content="jaContent"></markdown>
+	</div>
+
+	<namiRoughLine :color="store.currentTheme"></namiRoughLine>
+
 	<div class="mt-4 mb-4 flex justify-end gap-x-4">
 		<NamiButton @click="deleteEvent" :borderColor="store.currentTheme">删除</NamiButton>
 		<NamiButton @click="submitEvent" :borderColor="store.currentTheme">更新</NamiButton>
@@ -62,6 +97,7 @@ import { NamiButton, markdown } from "@c/index";
 import {
 	editActicleById,
 	getCategories,
+	getCategoriesJP,
 	getActicleById,
 	deleteActicleById
 } from "@/api/blog/acticle";
@@ -75,11 +111,17 @@ const router = useRouter();
 const store = useStore();
 
 const title = ref("");
+const jaTitle = ref("");
 const content = ref("");
+const jaContent = ref("");
 const author = ref("");
+const jaAuthor = ref("");
 const category = ref("");
+const jaCategory = ref("");
 const tags = ref("");
+const jaTags = ref("");
 const abstract = ref("");
+const jaAbstract = ref("");
 
 const thumbnail = ref("");
 
@@ -100,6 +142,23 @@ async function getCategoriesFn() {
 }
 getCategoriesFn();
 
+// 获取日文分类列表
+const jaCategories = ref<
+	{
+		label: string;
+		value: string;
+	}[]
+>([]);
+async function getJaCategoriesFn() {
+	const res = await getCategoriesJP();
+
+	jaCategories.value = res.map((item) => ({
+		label: item,
+		value: item
+	}));
+}
+getJaCategoriesFn();
+
 const id = ref(Number(route.params.id));
 
 // 获取文章内容
@@ -108,15 +167,23 @@ const getActicle = async () => {
 
 	const data = await getActicleById(id.value);
 	title.value = data.title;
+	jaTitle.value = data.jaTitle;
 	content.value = data.content;
+	jaContent.value = data.jaContent;
 	contentValue = data.content;
+	jaContentValue = data.jaContent;
 	author.value = data.author;
+	jaAuthor.value = data.jaAuthor;
 	category.value = data.category;
+	jaCategory.value = data.jaCategory;
 	tags.value = data.tags;
+	jaTags.value = data.jaTags;
 	abstract.value = data.abstract;
+	jaAbstract.value = data.jaAbstract;
 	thumbnail.value = data.thumbnail;
 
 	renderMonacoEditor();
+	renderJaMonacoEditor();
 };
 getActicle();
 
@@ -142,9 +209,32 @@ function renderMonacoEditor() {
 	}
 }
 
+const jaContentRef = ref<HTMLElement | null>(null);
+let jaContentValue = "";
+const jaEditor = ref<monaco.editor.IStandaloneCodeEditor>();
+
+function renderJaMonacoEditor() {
+	if (jaContentRef.value) {
+		jaEditor.value = monaco.editor.create(jaContentRef.value, {
+			value: jaContentValue,
+			language: "markdown",
+			// automaticLayout: false,
+			minimap: {
+				enabled: false
+			}
+			// selectOnLineNumbers: false
+		});
+
+		jaEditor.value.onDidChangeModelContent(() => {
+			jaContent.value = toRaw(jaEditor.value!).getValue() || "";
+		});
+	}
+}
+
 onUnmounted(() => {
 	// editorEl.value 必须使用 toRaw 包裹，否则会卡死页面
 	toRaw(editor.value)?.dispose();
+	toRaw(jaEditor.value)?.dispose();
 });
 
 const submitEvent = async () => {
@@ -159,7 +249,13 @@ const submitEvent = async () => {
 		category: category.value,
 		tags: tags.value,
 		abstract: abstract.value,
-		thumbnail: thumbnail.value
+		thumbnail: thumbnail.value,
+		jaTitle: jaTitle.value,
+		jaContent: jaContent.value,
+		jaAuthor: jaAuthor.value,
+		jaCategory: jaCategory.value,
+		jaTags: jaTags.value,
+		jaAbstract: jaAbstract.value
 	});
 
 	router.push("/article/" + id.value);
@@ -205,7 +301,7 @@ async function uploadImageEvent(option: Parameters<UploadOnChange>[0]) {
 	margin-bottom: 16px;
 
 	& > span {
-		flex: 0 0 80px;
+		flex: 0 0 100px;
 		text-align: right;
 	}
 }
@@ -214,7 +310,8 @@ async function uploadImageEvent(option: Parameters<UploadOnChange>[0]) {
 	height: 100px;
 }
 
-.editor-wrapper {
+.editor-wrapper,
+.editor-preview {
 	align-items: start;
 }
 

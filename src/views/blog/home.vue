@@ -3,7 +3,7 @@
 		<div class="flex justify-between">
 			<div class="flex">
 				<span>类别：</span>
-				<div class="flex gap-x-1">
+				<div class="ms-2 flex gap-x-1">
 					<Tag
 						v-for="item in categories"
 						:key="item"
@@ -54,14 +54,16 @@
 
 <script setup lang="ts">
 import type { Acticle } from "@/types/acticle";
-import { ref, reactive } from "vue";
-import { getActicleList, getCategories } from "@/api/blog/acticle";
+import { ref, reactive, watch } from "vue";
+import { getActicleList, getCategories, getCategoriesJP } from "@/api/blog/acticle";
 import { useStore } from "@/stores/index";
 import namiMainCard from "./components/card/card.vue";
 import { Tag, Link } from "@c/index";
 import { useUrlSearchParams } from "@vueuse/core";
+import { useI18nStore } from "@/stores/i18n";
 
 const store = useStore();
+const i18nStore = useI18nStore();
 
 const urlSearchParams = useUrlSearchParams("history", {
 	removeNullishValues: true
@@ -83,7 +85,8 @@ async function getActicleListFn() {
 		category:
 			(Array.isArray(urlSearchParams.category)
 				? urlSearchParams.category.join(",")
-				: urlSearchParams.category) || undefined
+				: urlSearchParams.category) || undefined,
+		lang: i18nStore.lang
 	});
 
 	acticleList.showLists =
@@ -127,6 +130,12 @@ async function getCategoriesFn() {
 	categories.value = await getCategories();
 }
 getCategoriesFn();
+// 获取日文分类列表
+async function getJaCategoriesFn() {
+	const res = await getCategoriesJP();
+	categories.value = res.filter((item) => item !== null);
+}
+getJaCategoriesFn();
 function changeCategory(category: string, byTag = false) {
 	if (byTag) {
 		if (typeof urlSearchParams.category === "string") {
@@ -153,6 +162,21 @@ function changeCategory(category: string, byTag = false) {
 	urlSearchParams.page = null as unknown as string;
 	getActicleListFn();
 }
+
+watch(
+	() => i18nStore.lang,
+	() => {
+		if (i18nStore.lang === "ja") {
+			getJaCategoriesFn();
+		} else {
+			getCategoriesFn();
+		}
+		urlSearchParams.page = null as unknown as string;
+	},
+	{
+		immediate: true
+	}
+);
 </script>
 
 <style scoped></style>
