@@ -27,8 +27,8 @@
 ## 文章
 
 -   [js でのソート](/ja/article/2)
--   [js function length 属性](/ja/article/4)
--   [数据库基础学习](/ja/article/6)
+-   [js function length プロパティ](/ja/article/4)
+-   [データベース基礎の学ぶ](/ja/article/6)
 -   [基于迭代器实现一个循环方法](/ja/article/7)
 -   [两数相加](/ja/article/8)
 -   [npm 打包小记](/ja/article/9)
