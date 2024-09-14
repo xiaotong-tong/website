@@ -13,9 +13,7 @@
 
 			&nbsp;&nbsp;&nbsp; #
 			{{
-				useStateType?.ActicleCategoryType?.[
-					i18nStore.lang === "ja" ? "jaShowText" : "showText"
-				][Number(acticle.category)]
+				i18nStore.lang === "ja" ? acticle.jaCategory || acticle.category : acticle.category
 			}}
 		</p>
 
@@ -28,7 +26,10 @@
 
 		<div class="pagination">
 			<nami-link :to="'/article/' + acticle.prev.id" v-if="acticle?.prev" class="link">{{
-				(i18nStore.lang === "ja" ? "前の文章: " : "上一篇: ") + acticle?.prev.title
+				(i18nStore.lang === "ja" ? "前の文章: " : "上一篇: ") +
+				(i18nStore.lang === "ja"
+					? acticle?.prev.jaTitle || acticle?.prev.title
+					: acticle?.prev.title)
 			}}</nami-link>
 			<nami-link :to="'/article/' + acticle.next.id" v-if="acticle?.next" class="link">{{
 				(i18nStore.lang === "ja" ? "次の文章: " : "下一篇: ") + acticle?.next.title
@@ -60,12 +61,10 @@ import { getActicleById } from "@/api/blog/acticle";
 import { addComment, getCommentList } from "@/api/blog/comment";
 import { useRoute, useRouter, onBeforeRouteUpdate } from "vue-router";
 import { useI18nStore } from "@/stores/i18n";
-import { useStateTypeStore } from "@/stores/stateType";
 import { markdown, Link } from "@c/index";
 
 const route = useRoute();
 const router = useRouter();
-const useStateType = useStateTypeStore();
 const i18nStore = useI18nStore();
 
 const id = ref(Number(route.params.id));

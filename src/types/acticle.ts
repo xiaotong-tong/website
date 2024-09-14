@@ -24,11 +24,13 @@ export interface ActicleById extends Acticle {
 		id: number;
 		uid: UUID;
 		title: string;
+		jaTitle: string;
 	};
 	prev: {
 		id: number;
 		uid: UUID;
 		title: string;
+		jaTitle: string;
 	};
 }
 
