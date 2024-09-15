@@ -30,7 +30,7 @@
 -   [js function length プロパティ](/ja/article/4)
 -   [データベース基礎の学ぶ](/ja/article/6)
 -   [イテレーターでループを実装する](/ja/article/7)
--   [两数相加](/ja/article/8)
+-   [ふたつの数の足し算](/ja/article/8)
 -   [npm 打包小记](/ja/article/9)
 -   [ウェブサイトの背景の変更ガイド](/ja/article/10)
 -   [css highlights 学习之括号内文本高亮](/ja/article/11)
