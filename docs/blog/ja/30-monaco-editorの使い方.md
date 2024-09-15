@@ -1,24 +1,24 @@
 ---
-title: monaco编辑器使用
-author: 小恸恸
-createDate: 2024-09-13
-updateDate: 2024-09-13
-tags: nonaco, editor
-abstract: monaco编辑器使用与vue中使用卡死问题的记录
+title: monaco-editorの使い方
+author: 星川漣
+createDate: 2024-09-15
+updateDate: 2024-09-15
+tags: monaco, editor
+abstract: monaco-editorの使い方とVueでの使用時のフリーズ問題の記録
 ---
 
-# monaco 编辑器使用
+# monaco-editor の使い方
 
-官网地址：[monaco-editor](https://microsoft.github.io/monaco-editor/)
+公式サイト：[monaco-editor](https://microsoft.github.io/monaco-editor/)
 
-## 安装与基础使用
+## インストールと基本的な使い方
 
 ```bash
-# 安装 monaco-editor
+# インストール monaco-editor
 npm install monaco-editor
 ```
 
-使用时如果想要获取编辑器的内容，可以通过 `editor.getValue()` 获取，如果是在 vue 中使用，必需通过 `toRaw(editor.value)?.getValue()` 获取，否则会卡死页面。
+> 使用時にエディタの内容を取得したい場合は、`editor.getValue()` で取る。Vue で使用する場合は、`toRaw(editor.value)?.getValue()` で取得する必要があります。そうしないとページがフリーズします。
 
 ```vue
 <template>
@@ -42,21 +42,21 @@ onMounted(() => {
 		});
 
 		editor.value.onDidChangeModelContent(() => {
-			// editorEl.value 必须使用 toRaw 包裹，否则会卡死页面
+			// editorEl.value 必ず toRaw で包む、そうしないとページがフリーズします
 			content.value = toRaw(editor.value!).getValue() || "";
 		});
 	}
 });
 onUnmounted(() => {
-	// 销毁编辑器
+	// エディタを破棄
 	toRaw(editor.value)?.dispose();
 });
 </script>
 ```
 
-## 安装 Worker 与 Vite 打包配置
+## Worker のインストールと Vite のパッケージ設定
 
-1. 安装 `vite-plugin-monaco-editor` 插件
+1. `vite-plugin-monaco-editor` プラグインをインストール
 
 ```bash
 npm install -D vite-plugin-monaco-editor
@@ -68,7 +68,7 @@ import monacoEditorPlugin from "vite-plugin-monaco-editor";
 plugins: [monacoEditorPlugin({})];
 ```
 
-2. 浏览器加载 Worker
+1. browser で Worker を読み込む
 
 ```ts
 // main.ts
@@ -79,7 +79,7 @@ import tsWorker from "monaco-editor/esm/vs/language/typescript/ts.worker?worker"
 import EditorWorker from "monaco-editor/esm/vs/editor/editor.worker?worker";
 
 // @ts-ignore
-// 定义 MonacoEnvironment
+// MonacoEnvironment を定義
 self.MonacoEnvironment = {
 	// @ts-ignore
 	getWorker: function (_, label) {
