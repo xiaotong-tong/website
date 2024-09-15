@@ -22,6 +22,7 @@
 			<img v-if="thumbnail" class="thumbnail" :src="thumbnail" alt="缩略图" />
 
 			<NUpload
+				class="up:w-[100px]"
 				accept="image/*"
 				@change="uploadImageEvent"
 				:show-file-list="false"
@@ -31,6 +32,13 @@
 					thumbnail ? "切换图片" : "上传图片"
 				}}</NamiButton>
 			</NUpload>
+
+			<NInput
+				type="text"
+				v-model:value="thumbnail"
+				class="up:w-[400px]"
+				placeholder="输入图片URL"
+			/>
 		</div>
 	</div>
 
