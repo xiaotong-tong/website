@@ -418,6 +418,12 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://xtt.moe/ja/article/10</loc>
+    <priority>0.8</priority>
+    <lastmod>2024-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://xtt.moe/article/10</loc>
     <priority>0.8</priority>
     <lastmod>2023-08-03</lastmod>

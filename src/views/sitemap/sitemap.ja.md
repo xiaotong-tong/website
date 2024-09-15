@@ -32,7 +32,7 @@
 -   [基于迭代器实现一个循环方法](/ja/article/7)
 -   [两数相加](/ja/article/8)
 -   [npm 打包小记](/ja/article/9)
--   [关于网站背景的更换指南](/ja/article/10)
+-   [ウェブサイトの背景の変更ガイド](/ja/article/10)
 -   [css highlights 学习之括号内文本高亮](/ja/article/11)
 -   [关于 ts 中 setTimeout 类型的记录](/ja/article/12)
 -   [Chevereto 上传功能的使用记录](/ja/article/13)
