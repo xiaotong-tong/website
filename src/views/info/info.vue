@@ -76,7 +76,7 @@
 					<div class="w-[50%]"><span>生命：</span><span>435</span></div>
 					<div class="w-[50%]"><span>攻击：</span><span>36</span></div>
 					<div class="w-[50%]"><span>灵力：</span><span>67</span></div>
-					<div class="w-[50%]"><span>速度：</span><span>56</span></div>
+					<div class="w-[50%]"><span>速度：</span><span>76</span></div>
 					<div class="w-[50%]"><span>防御：</span><span>41</span></div>
 					<div class="w-[50%]"><span>格挡：</span><span>18</span></div>
 					<div class="w-[50%]"><span>命中：</span><span>82</span></div>
@@ -115,6 +115,51 @@
 			</div>
 			<div class="w-[26%] me-4">
 				<div class="text-center">星川涟 - 骰子天使见习生</div>
+				<img src="https://image.xtt.moe/images/lian5.webp" alt="" />
+			</div>
+		</div>
+		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
+		<div class="flex">
+			<div class="flex-1">
+				<div class="flex flex-wrap">
+					<div class="w-[50%]"><span>生命：</span><span>512</span></div>
+					<div class="w-[50%]"><span>攻击：</span><span>46</span></div>
+					<div class="w-[50%]"><span>灵力：</span><span>7</span></div>
+					<div class="w-[50%]"><span>速度：</span><span>58</span></div>
+					<div class="w-[50%]"><span>防御：</span><span>85</span></div>
+					<div class="w-[50%]"><span>格挡：</span><span>72</span></div>
+					<div class="w-[50%]"><span>命中：</span><span>86</span></div>
+					<div class="w-[50%]"><span>闪避：</span><span>17</span></div>
+					<div class="w-[50%]"><span>暴击：</span><span>58</span></div>
+					<div class="w-[50%]"><span>幸运：</span><span>49</span></div>
+				</div>
+				<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+				<div>
+					<div>
+						<div>普攻： 火箭飞拳</div>
+						<div>对 1 名敌人造成 120% 攻击的物理伤害</div>
+					</div>
+					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<div>
+						<div>技能： 人を守るため！</div>
+						<div>
+							偶数回合 100% 几率释放, 为我方全体施加 170% 防御的护盾, 持续 2 回合。
+						</div>
+					</div>
+					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<div>
+						<div>队长技： 责任的光环</div>
+						<div>我方全体收到的最终伤害减少 10 点。</div>
+					</div>
+					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<div>
+						<div>支援技： 支援指令，启动！</div>
+						<div>提升我方全体 7 点防御。</div>
+					</div>
+				</div>
+			</div>
+			<div class="w-[26%] me-4">
+				<div class="text-center">萝卜 - DL01</div>
 				<img src="https://image.xtt.moe/images/lian5.webp" alt="" />
 			</div>
 		</div>
