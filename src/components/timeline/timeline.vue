@@ -41,9 +41,9 @@ const props = withDefaults(
 }
 
 .time-line.left::before {
-	/* 36px - 1px */
-	/* 36px 是 timeline-item-divider 的宽 */
-	left: 35px;
+	/* 24px - 1px */
+	/* 24px 是 timeline-item-divider 的宽 */
+	left: 23px;
 }
 .time-line.left :deep(.timeline-item-divider) {
 	order: 1;
@@ -73,20 +73,29 @@ const props = withDefaults(
 .time-line.center::before {
 	left: calc(50% - 1px);
 }
+.time-line.center :deep(.timeline-item-opposite) {
+	order: 1;
+}
+.time-line.center :deep(.timeline-item-divider) {
+	order: 2;
+}
+.time-line.center :deep(.timeline-item-body) {
+	order: 3;
+}
 .time-line.center :deep(.arrow) {
 	left: unset;
 	right: -16px;
 	clip-path: polygon(100% 100%, 100% 0, 0 0);
 }
-.time-line.center :deep(.timeline-item):nth-of-type(2n) {
+/* .time-line.center :deep(.timeline-item):nth-of-type(2n) {
 	flex-direction: row-reverse;
 }
 .time-line.center :deep(.timeline-item):nth-of-type(2n) .arrow {
 	left: 0;
 	right: unset;
 	clip-path: polygon(100% 100%, 0 100%, 0 0);
-}
-.time-line.center :deep(.timeline-item):nth-of-type(2n) .timeline-item-opposite {
+} */
+/* .time-line.center :deep(.timeline-item):nth-of-type(2n) .timeline-item-opposite {
 	justify-content: end;
-}
+} */
 </style>

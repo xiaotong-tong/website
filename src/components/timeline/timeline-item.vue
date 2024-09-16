@@ -55,26 +55,26 @@ const props = withDefaults(
 	display: flex;
 	position: relative;
 	padding-block-end: 24px;
+	align-items: center;
 }
 .timeline-item-divider {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-width: 72px;
+	min-width: 48px;
 }
 .timeline-item-body {
 	position: relative;
-	max-width: calc(100% - 72px);
+	max-width: calc(100% - 48px);
 	flex: 1;
 	border-radius: 4px;
+	align-content: center;
 }
 .timeline-item:not(.simple) .timeline-item-body {
 	box-shadow: var(--itemline-item-box-shadow);
 }
 .timeline-item-opposite {
 	flex: 1;
-	display: flex;
-	align-items: center;
 }
 .arrow {
 	position: absolute;

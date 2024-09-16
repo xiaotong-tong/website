@@ -132,6 +132,12 @@ const list = ref([
 		url: "/about",
 		content: "main.nav.about",
 		color: store.theme[6]
+	},
+	{
+		key: "c4",
+		url: "/live",
+		content: "main.nav.live",
+		color: store.theme[7]
 	}
 ]);
 
@@ -153,7 +159,7 @@ const blurHandler = () => {
 	}, blurDelay);
 };
 
-type PianoKey = "c3" | "d3" | "e3" | "f3" | "g3" | "a3" | "b3";
+type PianoKey = "c3" | "d3" | "e3" | "f3" | "g3" | "a3" | "b3" | "c4";
 
 const playPianoAudio = (key: PianoKey) => {
 	let audio = new Audio(`/piano/${key}.mp3`);
@@ -197,7 +203,8 @@ onMounted(() => {
 		"/piano/f3.mp3",
 		"/piano/g3.mp3",
 		"/piano/a3.mp3",
-		"/piano/b3.mp3"
+		"/piano/b3.mp3",
+		"/piano/c4.mp3"
 	]);
 });
 </script>

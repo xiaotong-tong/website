@@ -122,7 +122,7 @@
 			</div>
 			<div>
 				<NColorPicker
-					v-for="(_, i) in 7"
+					v-for="(_, i) in 8"
 					:key="i"
 					:modes="['hex']"
 					v-model:value="store.theme[i]"
