@@ -13,6 +13,7 @@
 -   [关于](/about) - 关于本网站
 -   [链接](/link)
 -   [留言板](/guestbook)
+-   [动态](/live)
 -   [bot](/bot) - 关于 QQ 机器人页面
 -   [仪表盘](/dashboard)
 -   [简历](/cv/pdf)

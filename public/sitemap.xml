@@ -140,6 +140,12 @@
     <lastmod>2024-08-25</lastmod>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://xtt.moe/live</loc>
+    <priority>0.9</priority>
+    <lastmod>2024-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
 <!-- 非 nav 栏副主页内容 end -->
 
 <!-- tools 子页面 start -->
