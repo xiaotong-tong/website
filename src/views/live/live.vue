@@ -1,7 +1,9 @@
 <template>
 	<section class="flex justify-between items-center">
 		<hBanner wrapperTargetName="h2">动态</hBanner>
-		<MyAdd @submit="getList" />
+		<template v-login>
+			<MyAdd @submit="getList" />
+		</template>
 	</section>
 
 	<nami-timeline class="content" contentAlign="center">
@@ -17,7 +19,7 @@
 			<template v-slot:opposite>
 				<div>{{ dayjs(item.createTime).format("YYYY-MM-DD hh:mm:ss") }}</div>
 				<div>@{{ item.verify.name }}</div>
-				<div>
+				<div v-login>
 					<NPopconfirm
 						positive-text="确认"
 						negative-text="取消"
