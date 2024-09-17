@@ -11,6 +11,10 @@
 		okText="提交"
 	>
 		<h3>发布动态</h3>
+		<NRadioGroup v-model:value="type" class="mt-4">
+			<NRadioButton value="text">text</NRadioButton>
+			<NRadioButton value="markdown">markdown</NRadioButton>
+		</NRadioGroup>
 		<div ref="contentRef" class="content-editor mt-4"></div>
 	</Modal>
 </template>
@@ -22,11 +26,14 @@ import { useStore } from "@/stores/index";
 import { useUserInfoStore } from "@/stores/user";
 import * as monaco from "monaco-editor";
 import { addLive } from "@/api/live/live";
+import { NRadioGroup, NRadioButton } from "naive-ui";
 
 const store = useStore();
 const userInfoStore = useUserInfoStore();
 
 const emits = defineEmits(["submit"]);
+
+const type = ref<"text" | "markdown">("text");
 
 const contentRef = ref<HTMLElement | null>(null);
 const editor = ref<monaco.editor.IStandaloneCodeEditor>();
@@ -68,9 +75,11 @@ async function submit() {
 
 	await addLive({
 		content,
-		userId: userInfoStore.userInfo.id
+		userId: userInfoStore.userInfo.id,
+		contentType: type.value
 	});
 	toRaw(editor.value!)?.setValue("");
+	type.value = "text";
 	emits("submit");
 }
 

@@ -17,6 +17,20 @@
 			<template v-slot:opposite>
 				<div>{{ dayjs(item.createTime).format("YYYY-MM-DD hh:mm:ss") }}</div>
 				<div>@{{ item.verify.name }}</div>
+				<div>
+					<NPopconfirm
+						positive-text="确认"
+						negative-text="取消"
+						@positive-click="handlePositiveClick(item.id)"
+					>
+						<template #trigger>
+							<NButton text><nami-icon icon="mdiDeleteOutline" /></NButton>
+						</template>
+						<template #default>
+							<div>确认删除？</div>
+						</template>
+					</NPopconfirm>
+				</div>
 			</template>
 		</nami-timeline-item>
 	</nami-timeline>
@@ -27,8 +41,9 @@ import type { LiveInfo } from "@/types/live";
 import { ref } from "vue";
 import { hBanner, markdown } from "@c/index";
 import MyAdd from "./components/add.vue";
-import { getLives } from "@/api/live/live";
+import { getLives, deleteLive } from "@/api/live/live";
 import { dayjs } from "@/utils/dateUtil";
+import { NButton, NPopconfirm } from "naive-ui";
 
 const list = ref<LiveInfo[]>([]);
 
@@ -37,6 +52,12 @@ async function getList() {
 	list.value = res.data;
 }
 getList();
+
+function handlePositiveClick(id: number) {
+	deleteLive(id).then(() => {
+		getList();
+	});
+}
 </script>
 
 <style scoped>
