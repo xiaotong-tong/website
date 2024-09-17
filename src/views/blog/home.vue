@@ -20,7 +20,7 @@
 				</div>
 			</div>
 			<div>
-				<Link type="primary" to="/editor/add">新增</Link>
+				<Link v-login type="primary" to="/editor/add">新增</Link>
 			</div>
 		</div>
 		<namiMainCard
