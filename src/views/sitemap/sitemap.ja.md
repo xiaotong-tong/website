@@ -49,6 +49,6 @@
 -   [使用 Web NFC 实现手机端浏览器的登录功能](/article/25)
 -   [在 Linux 中运行 Puppeteer](/article/26)
 -   [ナミダノコエ 歌詞](/article/27)
--   [QQ 机器人开发(1) - 注册与权限认证](/article/28)
+-   [QQ bot 開発(1) - 登録と権限認証](/article/28)
 -   [monaco 编辑器使用](/article/30)
 -

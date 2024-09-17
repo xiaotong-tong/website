@@ -5,7 +5,7 @@ import mdPlugin from "./plugins/mdToTextPlain";
 import type { ManifestOptions } from "vite-plugin-pwa";
 import { VitePWA } from "vite-plugin-pwa";
 import manifest from "./manifest.json" assert { type: "json" };
-import monacoEditorPlugin from "vite-plugin-monaco-editor";
+// import monacoEditorPlugin from "vite-plugin-monaco-editor";
 
 const isDev = process.env.NODE_ENV === "development";
 
@@ -16,7 +16,7 @@ export default defineConfig({
 	// },
 	plugins: [
 		mdPlugin(),
-		monacoEditorPlugin({}),
+		// monacoEditorPlugin({}),
 		// dev 时不启用 PWA
 		VitePWA({
 			manifest: manifest as ManifestOptions,
@@ -105,11 +105,8 @@ export default defineConfig({
 						"./src/views/save/children/daysQuote/daysQuote.vue"
 					],
 
-					blog: [
-						"./src/views/blog/article/article.vue",
-						"./src/views/blog/editor/add.vue",
-						"./src/views/blog/editor/edit.vue"
-					],
+					blog: ["./src/views/blog/article/article.vue"],
+					editor: ["./src/views/blog/editor/add.vue", "./src/views/blog/editor/edit.vue"],
 					ex: ["./src/views/ex/space/index.vue", "./src/views/ex/pip/index.vue"],
 					cv: ["./src/views/cv/cv.pdf.vue"]
 				}

@@ -48,9 +48,26 @@
 	</section>
 
 	<Teleport to="head">
-		<!-- 如果文章中有 tags 属性，那么就将 tags 的内容添加到 meta 标签中的 keywords 中 -->
-		<meta v-if="acticle?.tags" name="keywords" :content="acticle?.tags" />
+		<link rel="alternate" hreflang="ja" :href="'https://xtt.moe/ja/article/' + id" />
+		<link rel="alternate" hreflang="zh" :href="'https://xtt.moe/article/' + id" />
+		<link rel="alternate" hreflang="x-default" :href="'https://xtt.moe/article/' + id" />
+		<link ref="canonical" :href="'https://xtt.moe/article/' + id" />
 	</Teleport>
+
+	<template v-if="i18nStore.lang === 'ja'">
+		<Teleport to="head">
+			<!-- 如果文章中有 tags 属性，那么就将 tags 的内容添加到 meta 标签中的 keywords 中 -->
+			<meta v-if="acticle?.jaTags" name="keywords" :content="acticle?.jaTags" />
+			<meta v-if="acticle?.jaAbstract" name="description" :content="acticle?.jaAbstract" />
+		</Teleport>
+	</template>
+	<template v-else>
+		<Teleport to="head">
+			<!-- 如果文章中有 tags 属性，那么就将 tags 的内容添加到 meta 标签中的 keywords 中 -->
+			<meta v-if="acticle?.tags" name="keywords" :content="acticle?.tags" />
+			<meta v-if="acticle?.abstract" name="description" :content="acticle?.abstract" />
+		</Teleport>
+	</template>
 </template>
 
 <script setup lang="ts">
