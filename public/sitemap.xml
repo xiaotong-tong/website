@@ -559,6 +559,16 @@
   </url>
   <url>
     <loc>https://xtt.moe/article/26</loc>
+	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/article/26" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/article/26" />
+    <priority>0.8</priority>
+    <lastmod>2024-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/ja/article/26</loc>
+	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/article/26" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/article/26" />
     <priority>0.8</priority>
     <lastmod>2024-08-26</lastmod>
     <changefreq>monthly</changefreq>
