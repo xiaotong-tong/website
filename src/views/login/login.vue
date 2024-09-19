@@ -86,6 +86,7 @@ if (nfcSupported) {
 							alert("口令错误");
 						}
 					}
+					return;
 				}
 
 				const decoder = new TextDecoder();
