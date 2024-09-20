@@ -23,11 +23,6 @@ let routes: Route[] = [
 		component: () => import("../views/ex/space/index.vue")
 	},
 	{
-		path: "/ex/pip",
-		name: "exPIP",
-		component: () => import("../views/ex/pip/index.vue")
-	},
-	{
 		path: "/bot/ruby",
 		name: "botRuby",
 		component: () => import("../views/bot/ruby.vue")
@@ -415,6 +410,18 @@ let routes: Route[] = [
 						ja: "ダッシュボード"
 					},
 					theme: 5
+				}
+			},
+			{
+				path: "/ex/pip",
+				name: "exPIP",
+				component: () => import("../views/ex/pip/index.vue"),
+				meta: {
+					title: {
+						zh: "画中画",
+						ja: "画中画"
+					},
+					theme: 6
 				}
 			},
 			// 404页面

@@ -44,7 +44,7 @@
 -   [web の知識のまとめ-関数](/ja/article/20)
 -   [web の知識のまとめ-スプレッド構文と分割代入](/ja/article/21)
 -   [ごはんを食べよう 歌詞](/ja/article/22)
--   [documentPictureInPicture API 学习记录](/article/23)
+-   [documentPictureInPicture API 勉強記録](/article/23)
 -   [android と pc のデバッグ](/article/24)
 -   [Web NFC を使用して、スマホのブラウザでログイン機能を実装する](/article/25)
 -   [Linux で Puppeteer を実行する](/article/26)

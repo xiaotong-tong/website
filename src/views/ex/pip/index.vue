@@ -1,13 +1,11 @@
 <template>
-	<section class="container web-color-default">
-		<h2>Picture-in-Picture</h2>
-
+	<section>
 		<xtt-button ref="btn" @click="togglePIP"> Toggle Picture-in-Picture </xtt-button>
 
 		<iframe
 			ref="content"
 			hidden
-			src="https://xtt.moe"
+			src="https://xtt.moe/ex/pip"
 			frameborder="0"
 			allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 			allowfullscreen

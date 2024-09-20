@@ -541,14 +541,34 @@
   </url>
   <url>
     <loc>https://xtt.moe/article/23</loc>
+	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/article/23" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/article/23" />
     <priority>0.8</priority>
-    <lastmod>2023-12-26</lastmod>
+    <lastmod>2024-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/ja/article/23</loc>
+	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/article/23" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/article/23" />
+    <priority>0.8</priority>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://xtt.moe/article/24</loc>
+	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/article/24" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/article/24" />
     <priority>0.8</priority>
-    <lastmod>2024-01-02</lastmod>
+    <lastmod>2024-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/ja/article/24</loc>
+	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/article/24" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/article/24" />
+    <priority>0.8</priority>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -564,7 +584,7 @@
 	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/article/25" />
     <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/article/25" />
     <priority>0.8</priority>
-    <lastmod>2024-01-02</lastmod>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -580,7 +600,7 @@
 	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/article/26" />
     <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/article/26" />
     <priority>0.8</priority>
-    <lastmod>2024-08-26</lastmod>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
