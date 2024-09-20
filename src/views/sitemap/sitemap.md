@@ -65,7 +65,7 @@
 -   [前端知识总结-展开运算符与解构赋值](/article/21)
 -   [ごはんを食べよう 歌词](/article/22)
 -   [documentPictureInPicture API 学习记录](/article/23)
--   [使用手机调试电脑的 localhost](/article/24)
+-   [android 和 pc 的调试](/article/24)
 -   [使用 Web NFC 实现手机端浏览器的登录功能](/article/25)
 -   [在 Linux 中运行 Puppeteer](/article/26)
 -   [ナミダノコエ 歌詞](/article/27)

@@ -45,7 +45,7 @@
 -   [web の知識のまとめ-スプレッド構文と分割代入](/ja/article/21)
 -   [ごはんを食べよう 歌詞](/ja/article/22)
 -   [documentPictureInPicture API 学习记录](/article/23)
--   [使用手机调试电脑的 localhost](/article/24)
+-   [android と pc のデバッグ](/article/24)
 -   [Web NFC を使用して、スマホのブラウザでログイン機能を実装する](/article/25)
 -   [Linux で Puppeteer を実行する](/article/26)
 -   [ナミダノコエ 歌詞](/article/27)

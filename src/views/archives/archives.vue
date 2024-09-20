@@ -41,7 +41,7 @@
 			<nami-timeline-item>
 				<template v-slot:body>
 					<span class="time">01-02</span>
-					<nami-link to="/article/24">使用手机调试电脑的 localhost</nami-link>
+					<nami-link to="/article/24">android 和 pc 的调试</nami-link>
 				</template>
 			</nami-timeline-item>
 			<nami-timeline-item :group="true">
