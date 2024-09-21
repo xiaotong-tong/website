@@ -479,12 +479,12 @@
     <lastmod>2023-08-25</lastmod>
     <changefreq>monthly</changefreq>
   </url>
-  <url>
+  <!-- <url>
     <loc>https://xtt.moe/article/15</loc>
     <priority>0.8</priority>
     <lastmod>2023-08-30</lastmod>
     <changefreq>monthly</changefreq>
-  </url>
+  </url> -->
   <url>
     <loc>https://xtt.moe/article/16</loc>
 	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/article/16" />

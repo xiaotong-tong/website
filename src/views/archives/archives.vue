@@ -93,12 +93,6 @@
 			</nami-timeline-item>
 			<nami-timeline-item>
 				<template v-slot:body>
-					<span class="time">08-30</span>
-					<nami-link to="/article/15">关于本网站的架构</nami-link>
-				</template>
-			</nami-timeline-item>
-			<nami-timeline-item>
-				<template v-slot:body>
 					<span class="time">08-25</span>
 					<nami-link to="/article/14">js 中的数字字面量</nami-link>
 				</template>

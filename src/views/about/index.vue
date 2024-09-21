@@ -59,9 +59,6 @@
 				本站的代码全部开源，您可以在 Github 上找到本站的源代码：<br />
 				前端: https://github.com/xiaotong-tong/website <br />
 				后端: https://github.com/xiaotong-tong/website-server <br />
-				更详细信息请访问这篇文章：<nami-link to="/article/15" style="color: #f34159"
-					>关于本站</nami-link
-				>
 			</p>
 		</template>
 		<template v-else>
@@ -71,11 +68,6 @@
 				サイトのコードはすべてオープンソースで、Githubでこのサイトのソースコードを見つけることができます：<br />
 				フロントエンド: https://github.com/xiaotong-tong/website <br />
 				バックエンド: https://github.com/xiaotong-tong/website-server <br />
-				詳細については、この記事をご覧ください：<nami-link
-					to="/article/15"
-					style="color: #f34159"
-					>サイトについて</nami-link
-				>
 			</p>
 		</template>
 	</section>

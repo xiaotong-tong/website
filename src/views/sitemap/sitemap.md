@@ -57,7 +57,6 @@
 -   [关于 ts 中 setTimeout 类型的记录](/article/12)
 -   [Chevereto 上传功能的使用记录](/article/13)
 -   [js 中的数字字面量](/article/14)
--   [关于本网站的架构](/article/15)
 -   [二和两的区别](/article/16)
 -   [日本語の星座について](/article/17)
 -   [前端知识总结-迭代器和生成器](/article/19)
