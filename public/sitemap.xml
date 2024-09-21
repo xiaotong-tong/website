@@ -499,42 +499,64 @@
   </url>
   <url>
     <loc>https://xtt.moe/article/19</loc>
+	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/article/19" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/article/19" />
     <priority>0.8</priority>
     <lastmod>2023-10-13</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://xtt.moe/ja/article/19</loc>
+	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/article/19" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/article/19" />
+    <priority>0.8</priority>
+    <lastmod>2024-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://xtt.moe/article/20</loc>
+	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/article/20" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/article/20" />
     <priority>0.8</priority>
     <lastmod>2023-10-13</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://xtt.moe/ja/article/20</loc>
+	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/article/20" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/article/20" />
     <priority>0.8</priority>
     <lastmod>2023-11-29</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://xtt.moe/article/21</loc>
+	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/article/21" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/article/21" />
     <priority>0.8</priority>
     <lastmod>2023-10-13</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://xtt.moe/ja/article/21</loc>
+	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/article/21" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/article/21" />
     <priority>0.8</priority>
     <lastmod>2023-10-13</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://xtt.moe/article/22</loc>
+	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/article/22" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/article/22" />
     <priority>0.8</priority>
     <lastmod>2023-11-24</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://xtt.moe/ja/article/22</loc>
+	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/article/22" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/article/22" />
     <priority>0.8</priority>
     <lastmod>2023-11-29</lastmod>
     <changefreq>monthly</changefreq>
