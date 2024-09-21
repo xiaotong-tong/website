@@ -140,7 +140,11 @@ contentStore.bind(contentRef);
 const { y } = useScroll(contentRef, { behavior: "smooth" });
 
 const live2d = ref<InstanceType<typeof kanbanarea>>();
-const live2dShowed = ref(true);
+const live2dShowed = ref(false);
+// live2d 相关的文件过大，在首页加载会影响首页加载速度，所以在首页加载完成 10 秒后再加载 live2d 相关文件
+setTimeout(() => {
+	live2dShowed.value = true;
+}, 1000 * 10);
 
 const iconTooltip = ref<XttTooltipElement | null>(null);
 const icons: HTMLElement[] = [];

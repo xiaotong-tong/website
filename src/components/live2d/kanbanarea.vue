@@ -4,8 +4,10 @@
 		当前模型在鼠标较远时转向角度过大，所以作此调整。如果模型在外屏范围内转向角度设置正常的话，可以不用这个包裹
 		没钱优化模型，只能这样了
 	-->
-	<section class="live2d-wrapper" v-show="live2dLoaded">
-		<canvas id="live2d" width="170" height="370" class="live2d"></canvas>
+	<section ref="live2dRef" class="live2d-wrapper" v-show="live2dStore.live2dLoaded">
+		<template v-once v-if="!live2dStore.live2dLoaded">
+			<canvas id="live2d" width="170" height="370" class="live2d"></canvas>
+		</template>
 
 		<div class="icon-hover-wrap">
 			<div class="icon-wrap">
@@ -25,11 +27,12 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, ref, onBeforeUnmount } from "vue";
 import namiChatBox from "@/components/live2d/chatbox.vue";
 import { chatWithBot } from "@/api/chat/chat";
+import { useLive2dStore } from "@/stores/live2d";
 
-const live2dLoaded = ref(false);
+const live2dStore = useLive2dStore();
 
 const loadModel = (resourcePath: string, modelNames: string[]) => {
 	live2dLoader.resourcesConfig.setResourcesPath(resourcePath);
@@ -37,7 +40,19 @@ const loadModel = (resourcePath: string, modelNames: string[]) => {
 	live2dLoader.start();
 };
 
+const live2dRef = ref<HTMLElement | null>(null);
+
 onMounted(() => {
+	if (live2dStore.live2dLoaded) {
+		// 将 live2d 元素从body下移动到当前DOM
+		const live2dEl = document.getElementById("live2d");
+		if (live2dEl) {
+			live2dRef.value?.appendChild(live2dEl);
+			live2dEl.style.display = "block";
+		}
+		return;
+	}
+
 	// live2d 相关的文件过大，在首页加载会影响首页加载速度，所以在首页加载完成后再加载 live2d 相关文件
 	const live2dCubismcoreScript = document.createElement("script");
 	live2dCubismcoreScript.src = "https://file.xtt.moe/local/live2dcubismcore.min.js";
@@ -50,14 +65,21 @@ onMounted(() => {
 
 		live2dScript.onload = () => {
 			loadModel("https://file.xtt.moe/local/", ["nami"]);
-
-			live2dLoaded.value = true;
+			live2dStore.live2dLoaded = true;
 		};
 
 		document.body.appendChild(live2dScript);
 	};
 
 	document.body.appendChild(live2dCubismcoreScript);
+});
+onBeforeUnmount(() => {
+	// 将 live2d 元素从当前DOM移动到body下并隐藏，防止页面切换时，live2d 元素被销毁
+	const live2dEl = document.getElementById("live2d");
+	if (live2dEl) {
+		document.body.appendChild(live2dEl);
+		live2dEl.style.display = "none";
+	}
 });
 
 const chatBox = ref<InstanceType<typeof namiChatBox>>();
