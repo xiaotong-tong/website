@@ -38,7 +38,7 @@
 -   [Chevereto 上传功能的使用记录](/ja/article/13)
 -   [js 中的数字字面量](/ja/article/14)
 -   [关于本网站的架构](/ja/article/15)
--   [二和两的区别](/ja/article/16)
+-   [中国語の「二」と「两」の違い方](/ja/article/16)
 -   [日本語の星座について](/ja/article/17)
 -   [web の知識のまとめ - イテレーターとジェネレーター関数](/ja/article/19)
 -   [web の知識のまとめ-関数](/ja/article/20)

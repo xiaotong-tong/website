@@ -487,6 +487,16 @@
   </url>
   <url>
     <loc>https://xtt.moe/article/16</loc>
+	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/article/16" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/article/16" />
+    <priority>0.8</priority>
+    <lastmod>2023-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/ja/article/16</loc>
+	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/article/16" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/article/16" />
     <priority>0.8</priority>
     <lastmod>2023-09-10</lastmod>
     <changefreq>monthly</changefreq>
