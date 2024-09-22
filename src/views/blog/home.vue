@@ -1,9 +1,9 @@
 <template>
 	<section class="p-2" v-if="!loading">
-		<div class="flex justify-between">
+		<div class="flex justify-between mb-2">
 			<div class="flex">
-				<span>类别：</span>
-				<div class="ms-2 flex gap-x-1">
+				<span class="flex-none">类别：</span>
+				<div class="ms-2 flex flex-wrap gap-1">
 					<Tag
 						v-for="item in categories"
 						:key="item"
@@ -19,7 +19,7 @@
 					</Tag>
 				</div>
 			</div>
-			<div>
+			<div class="flex-none">
 				<Link v-login type="primary" to="/editor/add">新增</Link>
 			</div>
 		</div>

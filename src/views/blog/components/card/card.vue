@@ -153,9 +153,10 @@ onBeforeUnmount(() => {
 }
 
 .thumbnail-wrap {
-	flex: 0 0 380px;
+	flex: 0 0 min(380px, 40%);
 	aspect-ratio: 16 / 9;
 	overflow: hidden;
+	align-content: center;
 }
 .thumbnail {
 	width: 100%;
@@ -207,7 +208,7 @@ onBeforeUnmount(() => {
 
 @media screen and (max-width: 992px) {
 	.thumbnail-wrap {
-		flex: 0 0 312px;
+		flex: 0 0 min(312px, 40%);
 	}
 }
 

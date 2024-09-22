@@ -14,7 +14,14 @@
 			<nami-link :to="item.url" block class="link">
 				{{ t(item.content) }}
 			</nami-link>
-			<roughFullCard class="bg" :color="item.color"></roughFullCard>
+			<roughCard
+				class="bg"
+				:color="item.color"
+				:roughOptions="{
+					fillWeight: 3,
+					fill: item.color
+				}"
+			></roughCard>
 			<namiCIcon
 				class="active-icon"
 				v-if="store.currentTheme === item.color"
@@ -28,7 +35,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, watch, ref } from "vue";
 import gsap from "gsap";
-import { roughFullCard } from "@c/index";
+import { roughCard } from "@c/index";
 import { useStore } from "@/stores";
 import { useI18n } from "vue-i18n";
 const { t } = useI18n();

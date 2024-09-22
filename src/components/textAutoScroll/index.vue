@@ -118,6 +118,13 @@ watch(
 	background-color: #151b1f66;
 }
 
+@media (max-width: 1024px) {
+	.tip {
+		inset-inline-end: 12px;
+		font-size: 16px;
+	}
+}
+
 .small-screen .tip {
 	inset-inline-end: 8px;
 	font-size: 14px;

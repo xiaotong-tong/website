@@ -46,7 +46,9 @@
 				icon="heart"
 			></namiCIcon>
 		</section>
-		<nav class="nav"><namiNav ref="namiNavRef"></namiNav></nav>
+		<nav class="nav">
+			<namiNav ref="namiNavRef"></namiNav>
+		</nav>
 	</namiRoughCard>
 
 	<namiFooter></namiFooter>
@@ -212,6 +214,11 @@ const tipIsShow = computed(() => {
 	flex: 0 0 200px;
 	position: sticky;
 	top: 48px;
+}
+@media (max-width: 1024px) {
+	.nav {
+		flex: 0 0 120px;
+	}
 }
 
 .icon {
