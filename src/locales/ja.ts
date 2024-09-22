@@ -86,6 +86,7 @@ export const jaMsg = {
 			customBg: "カスタム",
 			defaultBg: "デフォルト",
 			contentTip: "メインコンテンツエリアの下のスクロールコンテンツを表示：",
+			smallPageContentTip: "小さい画面の下のスクロールコンテンツを表示：",
 			live2d: "ページの左下に live2d を表示するかどうか (小さい画面では非表示):",
 			homeMusicController: "ページの左下に音楽コントローラを表示するかどうか：",
 			rightPiano: "右側ナビゲーションバーのキーボード音：",

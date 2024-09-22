@@ -1,9 +1,9 @@
 <template>
-	<div>
-		<div class="text-[--d-color]" ref="oldRef">
+	<div class="tip">
+		<div class="item text-[--d-color]" ref="oldRef">
 			{{ content }}
 		</div>
-		<div class="text-[--d-color]" ref="newRef">
+		<div class="item text-[--d-color]" ref="newRef">
 			{{ newContent }}
 		</div>
 	</div>
@@ -96,4 +96,30 @@ watch(
 );
 </script>
 
-<style scoped></style>
+<style scoped>
+.tip {
+	position: fixed;
+	inset-block-end: 1px;
+	inset-inline-start: 8px;
+	inset-inline-end: 208px;
+	height: 24px;
+	padding-inline-start: 8px;
+	box-sizing: border-box;
+	margin-block-end: 4px;
+	background-color: #ffffffdd;
+
+	& > .item {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+}
+.theme-dark .tip {
+	background-color: #151b1f66;
+}
+
+.small-screen .tip {
+	inset-inline-end: 8px;
+	font-size: 14px;
+}
+</style>

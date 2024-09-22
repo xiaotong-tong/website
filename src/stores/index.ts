@@ -26,6 +26,7 @@ const defaultSettingConfig = {
 	isDark: window.matchMedia("(prefers-color-scheme: dark)").matches,
 	pageConfig: {
 		showContentTip: true, // 是否显示左下角内容提示
+		showContentTipOfSmallScreen: false, // 是否在小屏幕下显示左下角内容提示
 		showHomeLive2d: true, // 是否显示首页的live2d
 		showHomeMusicController: true, // 是否显示首页的音乐控制器
 		inlineSize: {
@@ -41,14 +42,14 @@ const defaultSettingConfig = {
 
 function setDefaultSettingConfig(settings: Ref<typeof defaultSettingConfig>) {
 	// 刷新 localStorage 中的settings
-	if (settings.value.pageConfig === undefined) {
+	if (settings.value.pageConfig?.showContentTipOfSmallScreen) {
 		settings.value.pageConfig = Object.assign(
 			defaultSettingConfig.pageConfig,
 			settings.value.pageConfig ?? {}
 		);
 	}
-	if (!settings.value.pageConfig.topPiano) {
-		settings.value.pageConfig.topPiano = defaultSettingConfig.pageConfig.topPiano;
+	if (!settings.value.animeLess) {
+		settings.value.animeLess = defaultSettingConfig.animeLess;
 	}
 }
 

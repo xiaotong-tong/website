@@ -14,9 +14,15 @@
 			}%)`
 		}"
 	>
-		<section ref="contentRef" class="content">
+		<section
+			ref="contentRef"
+			class="content"
+			:class="{
+				'tip-hidden': !tipIsShow
+			}"
+		>
 			<RouterView />
-			<namiTextAutoScroll v-if="store.pageConfig.showContentTip" class="tip" />
+			<namiTextAutoScroll v-if="tipIsShow" />
 			<namiCIcon
 				:style="{
 					position: 'fixed',
@@ -110,7 +116,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch, nextTick, provide } from "vue";
+import { ref, onMounted, provide, computed } from "vue";
 import kanbanarea from "@/components/live2d/kanbanarea.vue";
 import namiHeader from "@/components/page/header/header.vue";
 import namiMHeader from "@/components/page/header/m-header.vue";
@@ -119,7 +125,7 @@ import namiNav from "./home/components/nav.vue";
 import namiTextAutoScroll from "@/components/textAutoScroll/index.vue";
 import myScrollTop from "./home/components/scroll.vue";
 import myAplayer from "./home/components/aplayer.vue";
-import { useRouter, useRoute } from "vue-router";
+import { useRouter } from "vue-router";
 import { useStore } from "@/stores/index";
 import { useUserInfoStore } from "@/stores/user";
 import { useContentRefStore } from "@/stores/contentRef";
@@ -131,7 +137,6 @@ const store = useStore();
 const contentStore = useContentRefStore();
 const userInfoStore = useUserInfoStore();
 const router = useRouter();
-const route = useRoute();
 
 const contentRef = ref<HTMLElement | null>(null);
 const { x: contentX, y: contentY } = useElementBounding(contentRef);
@@ -164,37 +169,19 @@ const appendIcon = (icon: any) => {
 	icons.push(icon?.$el);
 };
 
-function checkOverflow() {
-	if (contentRef.value) {
-		contentRef.value.classList.remove("scroll-overflow-y");
-		// 获取第一个子元素
-		const scrollEl = contentRef.value.firstElementChild!;
-		const rect = scrollEl.getBoundingClientRect();
-
-		if (rect.height > contentStore.height.value) {
-			contentRef.value.classList.add("scroll-overflow-y");
-		}
-	}
-}
-
 const namiNavRef = ref<typeof namiNav>();
 
 provide("namiNavRef", namiNavRef);
 
 onMounted(() => {
 	iconTooltip.value?.initTrigger(icons);
-	checkOverflow();
 });
 
-// 监听路由变化
-watch(
-	() => route.fullPath,
-	() => {
-		nextTick(() => {
-			checkOverflow();
-		});
-	}
-);
+const tipIsShow = computed(() => {
+	return store.isSmallScreen
+		? store.pageConfig.showContentTip && store.pageConfig.showContentTipOfSmallScreen
+		: store.pageConfig.showContentTip;
+});
 </script>
 
 <style scoped>
@@ -215,34 +202,16 @@ watch(
 	height: 100%;
 	box-sizing: border-box;
 	padding: 8px 8px 24px;
+
+	&.tip-hidden {
+		padding-block-end: 8px;
+	}
 }
 
 .nav {
 	flex: 0 0 200px;
 	position: sticky;
 	top: 48px;
-}
-
-.tip {
-	position: fixed;
-	inset-block-end: 1px;
-	inset-inline-start: 8px;
-	inset-inline-end: 208px;
-	height: 24px;
-	padding-inline-start: 8px;
-	box-sizing: border-box;
-	margin-block-end: 4px;
-	background-color: #ffffffdd;
-}
-.theme-dark .tip {
-	background-color: #151b1f66;
-}
-
-.content.scroll-overflow-y .tip {
-	display: none;
-}
-.small-screen .tip {
-	inset-inline-end: 8px;
 }
 
 .icon {

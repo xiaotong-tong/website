@@ -70,6 +70,12 @@
 		</div>
 		<div class="item">
 			<label>
+				<span class="me-2">{{ t("pages.setting.smallPageContentTip") }}</span>
+				<n-switch v-model:value="store.pageConfig.showContentTipOfSmallScreen" />
+			</label>
+		</div>
+		<div class="item">
+			<label>
 				<span class="me-2">{{ t("pages.setting.live2d") }}</span>
 				<n-switch v-model:value="store.pageConfig.showHomeLive2d" />
 			</label>

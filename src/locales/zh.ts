@@ -85,6 +85,7 @@ export const zhMsg = {
 			customBg: "自定义图片",
 			defaultBg: "默认图片",
 			contentTip: "是否显示下方滚动内容：",
+			smallPageContentTip: "小屏幕是否显示下方滚动内容：",
 			live2d: "是否显示页面左下角 live2d (小屏幕默认不展示):  ",
 			homeMusicController: "是否显示页面左下角音乐控制器：",
 			rightPiano: "右侧导航栏键盘音：",

@@ -1,5 +1,11 @@
 <template>
-	<section class="card" v-show="loaded">
+	<section
+		class="card"
+		:class="{
+			isSmall: isSmall
+		}"
+		v-show="loaded"
+	>
 		<header class="title flex justify-between items-center">
 			<hBanner wrapperTargetName="h3">
 				{{ t("pages.home.header") }}
@@ -39,7 +45,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { dayjs } from "@/utils/dateUtil";
 import Quote from "./home/quote.vue";
 import Hefu from "./home/hefu.vue";
@@ -47,9 +53,11 @@ import Poetry from "./home/poetry.vue";
 import { hBanner } from "@c/index";
 import { useStore } from "@/stores";
 import { useI18n } from "vue-i18n";
+import { useContentRefStore } from "@/stores/contentRef";
 
 const store = useStore();
 const { t } = useI18n();
+const contentRefStore = useContentRefStore();
 
 const loaded = ref(false);
 
@@ -74,6 +82,17 @@ function poetryLoadedFn() {
 		loaded.value = true;
 	}
 }
+
+const isSmall = ref(false);
+watch(
+	() => contentRefStore.width,
+	() => {
+		isSmall.value = contentRefStore.width < 600;
+	},
+	{
+		immediate: true
+	}
+);
 </script>
 
 <style scoped>
@@ -112,7 +131,7 @@ function poetryLoadedFn() {
 	opacity: 0.2;
 }
 
-.small-screen .card {
+.card.isSmall {
 	padding-inline-end: 8px;
 
 	& .title {

@@ -1,4 +1,4 @@
-import { ref, h } from "vue";
+import { ref } from "vue";
 import { defineStore } from "pinia";
 
 export const useLive2dStore = defineStore("live2dStore", () => {
