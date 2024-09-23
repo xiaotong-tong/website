@@ -22,6 +22,7 @@
 				i18nStore.lang === 'ja' ? acticle?.jaContent || acticle?.content : acticle?.content
 			"
 			:textLine="true"
+			:isDark="store.isDark"
 		></markdown>
 
 		<div class="pagination">
@@ -79,7 +80,9 @@ import { addComment, getCommentList } from "@/api/blog/comment";
 import { useRoute, useRouter, onBeforeRouteUpdate } from "vue-router";
 import { useI18nStore } from "@/stores/i18n";
 import { markdown, Link } from "@c/index";
+import { useStore } from "@/stores";
 
+const store = useStore();
 const route = useRoute();
 const router = useRouter();
 const i18nStore = useI18nStore();
