@@ -14,16 +14,12 @@
 			></xtt-icon-button>
 			<div class="side-menus">
 				<div class="side-menu-item-title">
-					{{ i18nStore.messages.main.nav.feat }}
+					{{ t("main.nav.quickFeat") }}
 				</div>
 				<div class="side-menu-item">
 					<xtt-button class="side-menu-item-unit" @click="store.isDark = !store.isDark">
 						<namiIcon icon="mdiThemeLightDark"></namiIcon>
-						{{
-							store.isDark
-								? i18nStore.messages.main.nav.toLightMode
-								: i18nStore.messages.main.nav.toDarkMode
-						}}
+						{{ store.isDark ? t("main.nav.toLightMode") : t("main.nav.toDarkMode") }}
 					</xtt-button>
 
 					<xtt-button
@@ -33,43 +29,70 @@
 						<namiIcon icon="mdiTranslate"></namiIcon>
 						{{
 							i18nStore.lang === "zh"
-								? i18nStore.messages.main.nav.toJaLang
-								: i18nStore.messages.main.nav.toZhLang
+								? t("main.nav.toJaLang")
+								: t("main.nav.toZhLang")
+						}}
+					</xtt-button>
+
+					<xtt-button
+						class="side-menu-item-unit"
+						@click="store.animeLess = !store.animeLess"
+					>
+						<namiIcon icon="mdiAnimationPlayOutline"></namiIcon>
+						{{
+							store.animeLess ? t("main.nav.toAnimeLess") : t("main.nav.toAnimeMore")
 						}}
 					</xtt-button>
 				</div>
 
 				<div class="side-menu-item-title">
-					{{ i18nStore.messages.main.nav.share }}
+					{{ t("main.nav.mainPage") }}
 				</div>
 				<div class="side-menu-item">
 					<nami-link class="side-menu-item-unit" to="/" inline-block>
-						{{ i18nStore.messages.main.nav.home }}
+						{{ t("main.homeNav.home") }}
 					</nami-link>
-
-					<nami-link class="side-menu-item-unit" to="/net" inline-block>
-						{{ i18nStore.messages.main.nav.net }}
+					<nami-link class="side-menu-item-unit" to="/blog" inline-block>
+						{{ t("main.homeNav.blog") }}
 					</nami-link>
-
-					<nami-link class="side-menu-item-unit" to="/lang" inline-block>
-						{{ i18nStore.messages.main.nav.lang }}
+					<nami-link class="side-menu-item-unit" to="/music" inline-block>
+						{{ t("main.homeNav.music") }}
 					</nami-link>
-
-					<nami-link class="side-menu-item-unit" to="/note" inline-block>
-						{{ i18nStore.messages.main.nav.note }}
+					<nami-link class="side-menu-item-unit" to="/save" inline-block>
+						{{ t("main.homeNav.save") }}
 					</nami-link>
-
-					<nami-link class="side-menu-item-unit" to="/star" inline-block>
-						{{ i18nStore.messages.main.nav.star }}
+					<nami-link class="side-menu-item-unit" to="/tools" inline-block>
+						{{ t("main.homeNav.tools") }}
+					</nami-link>
+					<nami-link class="side-menu-item-unit" to="/info" inline-block>
+						{{ t("main.homeNav.about") }}
+					</nami-link>
+					<nami-link class="side-menu-item-unit" to="/setting" inline-block>
+						{{ t("main.homeNav.setting") }}
 					</nami-link>
 				</div>
 
 				<div class="side-menu-item-title">
-					{{ i18nStore.messages.main.nav.about }}
+					{{ i18nStore.messages.main.nav.blogPage }}
 				</div>
 				<div class="side-menu-item">
-					<nami-link class="side-menu-item-unit" to="/about" inline-block>
-						{{ i18nStore.messages.main.nav.aboutMe }}
+					<nami-link class="side-menu-item-unit" to="/login" inline-block>
+						{{ t("main.nav.login") }}
+					</nami-link>
+					<nami-link class="side-menu-item-unit" to="/bot" inline-block>
+						{{ t("main.nav.bot") }}
+					</nami-link>
+					<nami-link class="side-menu-item-unit" to="/guestbook" inline-block>
+						{{ t("main.nav.guestbook") }}
+					</nami-link>
+					<nami-link class="side-menu-item-unit" to="/link" inline-block>
+						{{ t("main.nav.link") }}
+					</nami-link>
+					<nami-link class="side-menu-item-unit" to="/archives" inline-block>
+						{{ t("main.nav.archives") }}
+					</nami-link>
+					<nami-link class="side-menu-item-unit" to="/live" inline-block>
+						{{ t("main.nav.live") }}
 					</nami-link>
 
 					<nami-link
@@ -86,28 +109,8 @@
 					{{ i18nStore.messages.main.nav.more }}
 				</div>
 				<div class="side-menu-item">
-					<nami-link class="side-menu-item-unit" to="/login" inline-block>
-						{{ i18nStore.messages.main.nav.login }}
-					</nami-link>
-
-					<nami-link class="side-menu-item-unit" to="/guestbook" inline-block>
-						{{ i18nStore.messages.main.nav.guestbook }}
-					</nami-link>
-
-					<nami-link class="side-menu-item-unit" to="/music" inline-block>
-						{{ i18nStore.messages.main.nav.music }}
-					</nami-link>
-
-					<nami-link class="side-menu-item-unit" to="/link" inline-block>
-						{{ i18nStore.messages.main.nav.link }}
-					</nami-link>
-
 					<nami-link class="side-menu-item-unit" to="/photos" inline-block>
 						{{ i18nStore.messages.main.nav.photo }}
-					</nami-link>
-
-					<nami-link class="side-menu-item-unit" to="/archives" inline-block>
-						{{ i18nStore.messages.main.nav.archives }}
 					</nami-link>
 				</div>
 			</div>
@@ -123,10 +126,12 @@ import { useRouter } from "vue-router";
 import kanbanarea from "@/components/live2d/kanbanarea.vue";
 import { useStore } from "@/stores/index";
 import { useI18nStore } from "@/stores/i18n";
+import { useI18n } from "vue-i18n";
 
 const store = useStore();
 const i18nStore = useI18nStore();
 const router = useRouter();
+const { t } = useI18n();
 
 const sidebarShowed = ref(false);
 
