@@ -7,6 +7,7 @@
 		"dev": "vite --host --mode development",
 		"prebuild": "rimraf dist dev-dist",
 		"build": "vue-tsc && vite build --mode production",
+		"build:cloud": "vite build --mode production",
 		"preview": "vite preview",
 		"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
 		"format": "prettier --write src/",
