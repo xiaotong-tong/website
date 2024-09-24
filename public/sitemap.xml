@@ -763,4 +763,20 @@
     <lastmod>2024-09-17</lastmod>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://xtt.moe/article/31</loc>
+	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/article/31" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/article/31" />
+    <priority>0.8</priority>
+    <lastmod>2024-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/ja/article/31</loc>
+	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/article/31" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/article/31" />
+    <priority>0.8</priority>
+    <lastmod>2024-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>

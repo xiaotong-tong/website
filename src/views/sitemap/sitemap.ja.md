@@ -49,4 +49,5 @@
 -   [Linux で Puppeteer を実行する](/article/26)
 -   [ナミダノコエ 歌詞](/article/27)
 -   [QQ bot 開発(1) - 登録と権限認証](/article/28)
--   [monaco 编辑器使用](/article/30)
+-   [30-monaco-editor の使い方](/article/30)
+-   [QQ bot 開発(2) - プライベートメッセージの受信と返信](/article/31)
