@@ -27,7 +27,7 @@ coverage
 *.sln
 *.sw?
 
-package-lock.json
+# package-lock.json
 pnpm-lock.yaml
 
 .env.development

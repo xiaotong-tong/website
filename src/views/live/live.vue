@@ -1,9 +1,7 @@
 <template>
 	<section class="flex justify-between items-center">
 		<hBanner wrapperTargetName="h2">动态</hBanner>
-		<template v-login>
-			<MyAdd @submit="getList" />
-		</template>
+		<MyAdd @submit="getList" />
 	</section>
 
 	<nami-timeline class="content" contentAlign="center">

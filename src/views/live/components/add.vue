@@ -1,5 +1,5 @@
 <template>
-	<NamiButton class="flex-none" :borderColor="store.currentTheme" @click="openModal"
+	<NamiButton v-login class="flex-none" :borderColor="store.currentTheme" @click="openModal"
 		>新增动态</NamiButton
 	>
 
