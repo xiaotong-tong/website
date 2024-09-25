@@ -26,14 +26,14 @@
 @font-face {
 	font-family: "luoliti";
 	/* 优先读取 woff2 格式的字体文件，如果不支持或者读取失败，就读取 ttf 格式的备用文件 */
-	src: url("https://file.xtt.moe/files/fonts/LuoLiTi-2.woff2") format("woff2"),
+	src: url("/fonts/LuoLiTi-2.woff2") format("woff2"),
 		url("https://file.xtt.moe/files/fonts/LuoLiTi-2.ttf");
 	font-display: swap;
 }
 /* 使用字蛛瘦身后的文件 */
 @font-face {
 	font-family: "katong-s";
-	src: url("https://file.xtt.moe/files/fonts/katong-s.woff2") format("woff2"),
+	src: url("/fonts/katong-s.woff2") format("woff2"),
 		url("https://file.xtt.moe/files/fonts/katong-s.ttf") format("truetype");
 	font-display: auto;
 }
@@ -44,17 +44,9 @@
 	src: url("/fonts/popuramu.otf");
 } */
 
-/* @font-face {
-	font-family: "HinaMincho-Regular";
-	src: url("https://file.xtt.moe/files/fonts/HinaMincho-Regular.woff2") format("woff2"),
-		url("https://file.xtt.moe/files/fonts/HinaMincho-Regular.ttf");
-	font-display: swap;
-} */
-
 @font-face {
 	font-family: "teguse";
-	src: url("https://file.xtt.moe/files/fonts/073%20TEGUSE%20-%20Kanaka%20Font_240705.woff2")
-			format("woff2"),
+	src: url("/fonts/073%20TEGUSE%20-%20Kanaka%20Font_240705.woff2") format("woff2"),
 		url("https://file.xtt.moe/files/fonts/073%20TEGUSE%20-%20Kanaka%20Font_240705.ttf");
 	font-display: swap;
 }
