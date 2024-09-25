@@ -149,7 +149,7 @@
 					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
 					<div>
 						<div>队长技： 责任的光环</div>
-						<div>我方全体收到的最终伤害减少 10 点。</div>
+						<div>我方全体受到的最终伤害减少 10 点。</div>
 					</div>
 					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
 					<div>
@@ -160,6 +160,57 @@
 			</div>
 			<div class="w-[26%] me-4">
 				<div class="text-center">萝卜 - DL01</div>
+				<img src="https://image.xtt.moe/images/lian5.webp" alt="" />
+			</div>
+		</div>
+		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
+		<div class="flex">
+			<div class="flex-1">
+				<div class="flex flex-wrap">
+					<div class="w-[50%]"><span>生命：</span><span>370</span></div>
+					<div class="w-[50%]"><span>攻击：</span><span>77</span></div>
+					<div class="w-[50%]"><span>灵力：</span><span>57</span></div>
+					<div class="w-[50%]"><span>速度：</span><span>67</span></div>
+					<div class="w-[50%]"><span>防御：</span><span>37</span></div>
+					<div class="w-[50%]"><span>格挡：</span><span>47</span></div>
+					<div class="w-[50%]"><span>命中：</span><span>87</span></div>
+					<div class="w-[50%]"><span>闪避：</span><span>57</span></div>
+					<div class="w-[50%]"><span>暴击：</span><span>27</span></div>
+					<div class="w-[50%]"><span>幸运：</span><span>97</span></div>
+				</div>
+				<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+				<div>
+					<div>
+						<div>潮汐</div>
+						<div>
+							以月亮的力量引动潮汐，对敌方全体造成 20%
+							的灵力伤害，并在命中敌方后，对目标造成 50% 的物理伤害。
+						</div>
+					</div>
+					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<div>
+						<div>技能：月光</div>
+						<div>
+							被动技能，奇数回合开始时 200% 几率释放，为我方全体回复 60% 灵力的生命。
+						</div>
+					</div>
+					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<div>
+						<div>队长技： 幸运7</div>
+						<div>
+							自身在受到伤害时，最终伤害有 0.7% 的几率减少 777 点， 7% 的几率减少 77
+							点， 77% 的几率减少 7 点。
+						</div>
+					</div>
+					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<div>
+						<div>支援技： 月影</div>
+						<div>提升我方全体 10 点闪避。</div>
+					</div>
+				</div>
+			</div>
+			<div class="w-[26%] me-4">
+				<div class="text-center">因幡汐（いなばうしお）</div>
 				<img src="https://image.xtt.moe/images/lian5.webp" alt="" />
 			</div>
 		</div>
