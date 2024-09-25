@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { watch } from "vue";
 import MouseSnow from "mousesnow";
-import "@/utils/joke";
+import "@/function/joke";
+import "@/function/visibility";
 import { initWebBGUrl } from "@/utils/webBG";
 import { useStore } from "@/stores/index";
 
