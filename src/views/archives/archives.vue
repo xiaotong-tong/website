@@ -10,6 +10,12 @@
 			</nami-timeline-item>
 			<nami-timeline-item>
 				<template v-slot:body>
+					<span class="time">10-06</span>
+					<nami-link to="/article/32"> ヨルシカ - 憂、燦々 歌詞</nami-link>
+				</template>
+			</nami-timeline-item>
+			<nami-timeline-item>
+				<template v-slot:body>
 					<span class="time">09-24</span>
 					<nami-link to="/article/31"> QQ 机器人开发(2)-私聊信息的接收与回复</nami-link>
 				</template>

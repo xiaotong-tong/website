@@ -33,10 +33,14 @@ const musicList = [
 	{
 		id: 27,
 		title: "ナミダノコエ"
+	},
+	{
+		id: 32,
+		title: "憂、燦々"
 	}
 ];
 
-const content = ref<string>();
+const content = ref<string>("");
 getActicleById(22).then((res) => {
 	content.value = res.content;
 });

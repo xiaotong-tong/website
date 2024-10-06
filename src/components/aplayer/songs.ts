@@ -67,5 +67,12 @@ export const audioList = [
 		url: "https://file.xtt.moe/files/musics/初音ミク,SireN - 告白.mp3",
 		cover: "https://file.xtt.moe/files/musics/初音ミク,SireN - 告白.webp",
 		lrc: "https://file.xtt.moe/files/musics/初音ミク,SireN - 告白.lrc"
+	},
+	{
+		name: "ヨルシカ - 憂、燦々",
+		artist: "ヨルシカ",
+		url: "/musics/ヨルシカ - 憂、燦々/ヨルシカ - 憂、燦々.mp3",
+		cover: "/musics/ヨルシカ - 憂、燦々/ヨルシカ - 憂、燦々.jpg",
+		lrc: "/musics/ヨルシカ - 憂、燦々/ヨルシカ - 憂、燦々.lrc"
 	}
 ];
