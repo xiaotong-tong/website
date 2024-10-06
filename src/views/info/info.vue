@@ -36,10 +36,11 @@
 				<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
 				<div>
 					<div>
-						<div>普攻： 我会努力的！</div>
+						<div>魔法元素的共鸣</div>
 						<div>
-							吟唱魔法书中的咒文, 对敌方全体造成 3 次 20% 灵力的灵力伤害,
-							每次造成伤害时有 10% 几率使目标对象陷入沉睡状态, 持续到本回合结束。
+							吟唱魔法书中的咒文, 沟通周围的魔法元素，对敌方全体造成 3 次 20%
+							灵力的灵力伤害, 且在伤害判定时有 10% 的几率使目标陷入沉睡状态,
+							持续到本回合结束。
 						</div>
 					</div>
 					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
@@ -183,34 +184,84 @@
 					<div>
 						<div>潮汐</div>
 						<div>
-							以月亮的力量引动潮汐，对敌方全体造成 20%
-							的灵力伤害，并在命中敌方后，对目标造成 50% 的物理伤害。
+							以月亮的力量引动潮汐，对敌方全体造成自身灵力 20%
+							的灵力伤害，并在命中敌方时，对目标额外造成 50% 的物理伤害。
 						</div>
 					</div>
 					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
 					<div>
-						<div>技能：月光</div>
+						<div>月光</div>
 						<div>
-							被动技能，奇数回合开始时 200% 几率释放，为我方全体回复 60% 灵力的生命。
+							被动技：奇数回合行动开始时 200% 几率释放，为我方全体恢复 60%
+							灵力的生命。
 						</div>
 					</div>
 					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
 					<div>
-						<div>队长技： 幸运7</div>
+						<div>幸运7</div>
 						<div>
-							自身在受到伤害时，最终伤害有 0.7% 的几率减少 777 点， 7% 的几率减少 77
-							点， 77% 的几率减少 7 点。
+							队长技：自身在受到伤害时，最终伤害有 0.7% 的几率减少 777 点， 7%
+							的几率减少 77 点， 77% 的几率减少 7 点。
 						</div>
 					</div>
 					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
 					<div>
-						<div>支援技： 月影</div>
-						<div>提升我方全体 10 点闪避。</div>
+						<div>月影</div>
+						<div>支援技：提升我方全体 10 点闪避。</div>
 					</div>
 				</div>
 			</div>
 			<div class="w-[26%] me-4">
 				<div class="text-center">因幡汐（いなばうしお）</div>
+				<img src="https://image.xtt.moe/images/lian5.webp" alt="" />
+			</div>
+		</div>
+		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
+		<div class="flex">
+			<div class="flex-1">
+				<div class="flex flex-wrap">
+					<div class="w-[50%]"><span>生命：</span><span>440</span></div>
+					<div class="w-[50%]"><span>攻击：</span><span>101</span></div>
+					<div class="w-[50%]"><span>灵力：</span><span>37</span></div>
+					<div class="w-[50%]"><span>速度：</span><span>42</span></div>
+					<div class="w-[50%]"><span>防御：</span><span>28</span></div>
+					<div class="w-[50%]"><span>格挡：</span><span>76</span></div>
+					<div class="w-[50%]"><span>命中：</span><span>100</span></div>
+					<div class="w-[50%]"><span>闪避：</span><span>8</span></div>
+					<div class="w-[50%]"><span>暴击：</span><span>55</span></div>
+					<div class="w-[50%]"><span>幸运：</span><span>11</span></div>
+				</div>
+				<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+				<div>
+					<div>
+						<div>流逝</div>
+						<div>对血量最低的敌方角色造成自身攻击 100% + 10 * 回合数的物理伤害</div>
+					</div>
+					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<div>
+						<div>裁决</div>
+						<div>
+							行动回合有 25% 的几率对敌方血量最低的角色造成 300%
+							攻击的物理伤害，如果目标死亡则恢复自身 50% 生命。
+						</div>
+					</div>
+					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<div>
+						<div>黄泉</div>
+						<div>队长技：第一回合“裁决”释放几率提示至 100%。</div>
+					</div>
+					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<div>
+						<div>爱与幻想</div>
+						<div>
+							支援技：我方任一角色进入濒死状态时，消除该角色的濒死状态，并恢复 10%
+							最大生命值的血量。一场战斗只能触发一次。
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="w-[26%] me-4">
+				<div class="text-center">朝露</div>
 				<img src="https://image.xtt.moe/images/lian5.webp" alt="" />
 			</div>
 		</div>
