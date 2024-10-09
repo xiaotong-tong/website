@@ -3,7 +3,7 @@
 		<div class="flex">
 			<img class="w-[26%] me-4" src="https://image.xtt.moe/images/mlian5.webp" alt="" />
 			<div class="flex-1">
-				<div><span>姓名：</span> <span>星川涟</span></div>
+				<div><span>姓名：</span> <span>星川涟（ほしかわさざなみ）</span></div>
 				<div><span>真实名称：</span> <span>凌涟漪</span></div>
 				<div><span>性别：</span> <span>女</span></div>
 				<div><span>年龄：</span> <span>15</span></div>
@@ -15,6 +15,28 @@
 				<div>
 					<span>性格：</span>
 					<span>沉静缄默、内心敏感，珍视身边的亲人和朋友，同时又怯懦怕生</span>
+				</div>
+			</div>
+		</div>
+		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
+		<div class="flex">
+			<img class="w-[26%] me-4" alt="" />
+			<div class="flex-1">
+				<div><span>姓名：</span> <span>星川陽凪乃（ほしかわひなの）</span></div>
+				<div><span>真实名称：</span> <span>凌昕夕</span></div>
+				<div><span>性别：</span> <span>女</span></div>
+				<div><span>年龄：</span> <span>18</span></div>
+				<div><span>身高：</span> <span>164cm</span></div>
+				<div><span>职业：</span> <span>学生</span></div>
+				<div><span>喜欢的东西：</span> <span>妹妹</span></div>
+				<div><span>爱好：</span> <span>读书，听歌，画画</span></div>
+				<div>
+					<span>性格：</span>
+					<span class="inline-flex flex-col"
+						><span
+							>身为姐姐，疼爱妹妹；身为学生，努力学习；身为人类，温柔的对待他人；</span
+						><span>总是全力扮演着自己的角色，并无个性鲜明的性格</span></span
+					>
 				</div>
 			</div>
 		</div>
