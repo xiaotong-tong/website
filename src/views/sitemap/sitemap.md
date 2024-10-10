@@ -44,6 +44,7 @@
 
 ## blog 相关
 
+-   [首页](/blog)
 -   [归档](/archives)
 
 -   [js 排序](/article/2)

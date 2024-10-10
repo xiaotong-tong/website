@@ -327,26 +327,34 @@
 <!-- 上面四个页面已被删除 -->
   <url>
     <loc>https://xtt.moe/sitemap</loc>
+	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/sitemap" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/sitemap" />
     <priority>1.0</priority>
     <lastmod>2024-08-26</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://xtt.moe/ja/sitemap</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/sitemap" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/sitemap" />
     <priority>1.0</priority>
-    <lastmod>2024-08-26</lastmod>
+    <lastmod>2024-10-10</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://xtt.moe/archives</loc>
+   <xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/archives" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/archives" />
     <priority>0.7</priority>
     <lastmod>2024-09-07</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://xtt.moe/ja/archives</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/archives" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/archives" />
     <priority>0.7</priority>
-    <lastmod>2024-09-07</lastmod>
+    <lastmod>2024-10-10</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <!-- 留言板页面也不算是网站中的有效页面，因为没有内容，所以从 sitemap 文件中排除 -->
