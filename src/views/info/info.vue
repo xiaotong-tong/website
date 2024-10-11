@@ -33,8 +33,7 @@
 				<div>
 					<span>性格：</span>
 					<span class="inline-flex flex-col"
-						><span
-							>身为姐姐，疼爱妹妹；身为学生，努力学习；身为人类，温柔的对待他人；</span
+						><span>身为姐姐，疼爱妹妹；身为学生，努力学习；身为人类，温柔的对待他人；</span
 						><span>总是全力扮演着自己的角色，并无个性鲜明的性格</span></span
 					>
 				</div>
@@ -60,30 +59,25 @@
 					<div>
 						<div>元素共鸣</div>
 						<div>
-							吟唱魔法书中的咒文, 沟通周围的魔法元素，对敌方全体角色连续造成 3
-							次自身灵力 20% 的灵力伤害, 且在每次伤害判定时有 10%
-							的几率使目标陷入沉睡状态,持续到本回合结束。
+							吟唱魔法书中的咒文, 沟通周围的魔法元素，对敌方全体角色连续造成 3 次自身灵力 20% 的灵力伤害,
+							且在每次伤害判定时有 10% 的几率使目标陷入沉睡状态,持续到本回合结束。
 						</div>
 					</div>
 					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
 					<div>
 						<div>魔法~魔法~呼呼</div>
 						<div>
-							第 2,5,8 行动回合 100% 几率释放, 吟唱魔法书中的未知咒文,
-							对自己与敌方全体角色连续造成 5 次自身灵力 30% 的灵力伤害，
-							且在每次伤害判定时有 10% 的 几率使目标陷入沉睡状态, 持续到本回合结束。
-							技能释放完成后提升我方全体 20%
-							技能释放几率,持续到下回合结束。技能释放中断时，为自己施加 1
-							层灵力护盾，下次受到的伤害减少 50%。
+							第 2,5,8 行动回合 100% 几率释放, 吟唱魔法书中的未知咒文, 对自己与敌方全体角色连续造成 5
+							次自身灵力 30% 的灵力伤害， 且在每次伤害判定时有 10% 的 几率使目标陷入沉睡状态,
+							持续到本回合结束。 技能释放完成后提升我方全体 20%
+							技能释放几率,持续到下回合结束。技能释放中断时，为自己施加 1 层灵力护盾，下次受到的伤害减少
+							50%。
 						</div>
 					</div>
 					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
 					<div>
 						<div>我不会让大家失望的！</div>
-						<div>
-							队长技：我方全体提升 10 点速度, 并在技能释放判定时, 提升 10%
-							的技能释放几率。
-						</div>
+						<div>队长技：我方全体提升 10 点速度, 并在技能释放判定时, 提升 10% 的技能释放几率。</div>
 					</div>
 					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
 					<div>
@@ -93,8 +87,7 @@
 				</div>
 			</div>
 			<div class="w-[26%] me-4">
-				<div class="text-center">星川涟 - 魔法见习生</div>
-				<img src="https://image.xtt.moe/images/lian5.webp" alt="" />
+				<Image src="https://image.xtt.moe/images/lian5.webp" description="星川涟 - 魔法见习生" />
 			</div>
 		</div>
 		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
@@ -130,8 +123,7 @@
 					<div>
 						<div>队长技： 一切都交给骰娘吧</div>
 						<div>
-							我方进行伤害判定时，伤害值额外进行一次 .d11+94
-							的骰子判定，即最终伤害会在 95%-105% 间波动。
+							我方进行伤害判定时，伤害值额外进行一次 .d11+94 的骰子判定，即最终伤害会在 95%-105% 间波动。
 						</div>
 					</div>
 					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
@@ -170,9 +162,7 @@
 					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
 					<div>
 						<div>技能： 人を守るため！</div>
-						<div>
-							偶数回合 100% 几率释放, 为我方全体施加 170% 防御的护盾, 持续 2 回合。
-						</div>
+						<div>偶数回合 100% 几率释放, 为我方全体施加 170% 防御的护盾, 持续 2 回合。</div>
 					</div>
 					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
 					<div>
@@ -211,24 +201,21 @@
 					<div>
 						<div>潮汐</div>
 						<div>
-							以月亮的力量引动潮汐，对敌方全体造成自身灵力 20%
-							的灵力伤害，并在命中敌方时，对目标额外造成 50% 的物理伤害。
+							以月亮的力量引动潮汐，对敌方全体造成自身灵力 20% 的灵力伤害，并在命中敌方时，对目标额外造成
+							50% 的物理伤害。
 						</div>
 					</div>
 					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
 					<div>
 						<div>月光</div>
-						<div>
-							被动技：奇数回合行动开始时 200% 几率释放，为我方全体恢复 60%
-							灵力的生命。
-						</div>
+						<div>被动技：奇数回合行动开始时 200% 几率释放，为我方全体恢复 60% 灵力的生命。</div>
 					</div>
 					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
 					<div>
 						<div>幸运7</div>
 						<div>
-							队长技：自身在受到伤害时，最终伤害有 0.7% 的几率减少 777 点， 7%
-							的几率减少 77 点， 77% 的几率减少 7 点。
+							队长技：自身在受到伤害时，最终伤害有 0.7% 的几率减少 777 点， 7% 的几率减少 77 点， 77%
+							的几率减少 7 点。
 						</div>
 					</div>
 					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
@@ -268,8 +255,8 @@
 					<div>
 						<div>裁决</div>
 						<div>
-							行动回合有 25% 的几率对敌方血量最低的角色造成 300%
-							攻击的物理伤害，如果目标死亡则恢复自身 50% 生命。
+							行动回合有 25% 的几率对敌方血量最低的角色造成 300% 攻击的物理伤害，如果目标死亡则恢复自身
+							50% 生命。
 						</div>
 					</div>
 					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
@@ -296,6 +283,7 @@
 </template>
 
 <script setup lang="ts">
+import { Image } from "@c/index";
 import { useStore } from "@/stores";
 const store = useStore();
 </script>
