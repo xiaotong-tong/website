@@ -87,7 +87,7 @@
 				</div>
 			</div>
 			<div class="w-[26%] me-4">
-				<Image src="https://image.xtt.moe/images/lian5.webp" description="星川涟 - 魔法见习生" />
+				<Image src="https://image.xtt.moe/images/lian5.webp" description="星川涟 - 魔法见习生" fullView />
 			</div>
 		</div>
 		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
@@ -135,7 +135,7 @@
 			</div>
 			<div class="w-[26%] me-4">
 				<div class="text-center">星川涟 - 骰子天使见习生</div>
-				<img src="https://image.xtt.moe/images/lian5.webp" alt="" />
+				<Image src="https://image.xtt.moe/images/lian5.webp" description="星川涟 - 骰子天使见习生" fullView />
 			</div>
 		</div>
 		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
