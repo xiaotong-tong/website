@@ -804,4 +804,20 @@
     <lastmod>2024-10-06</lastmod>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://xtt.moe/article/33</loc>
+	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/article/33" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/article/33" />
+    <priority>0.8</priority>
+    <lastmod>2024-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/ja/article/33</loc>
+	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/article/33" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/article/33" />
+    <priority>0.8</priority>
+    <lastmod>2024-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>

@@ -10,6 +10,13 @@
 			</nami-timeline-item>
 			<nami-timeline-item>
 				<template v-slot:body>
+					<span class="time">10-13</span>
+					<nami-link v-lang="'zh'" to="/article/33">tailwind 自定义提升选择器优先级修饰符</nami-link>
+					<nami-link v-lang="'ja'" to="/ja/article/33"> tailwind カスタムセレクタ優先度修飾子</nami-link>
+				</template>
+			</nami-timeline-item>
+			<nami-timeline-item>
+				<template v-slot:body>
 					<span class="time">10-06</span>
 					<nami-link v-lang="'zh'" to="/article/32"> ヨルシカ - 憂、燦々 歌詞</nami-link>
 					<nami-link v-lang="'ja'" to="/ja/article/32"> ヨルシカ - 憂、燦々 歌詞</nami-link>

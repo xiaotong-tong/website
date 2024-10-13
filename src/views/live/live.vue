@@ -8,11 +8,7 @@
 		<nami-timeline-item v-for="item in list" :key="item.id">
 			<template v-slot:body>
 				<pre v-if="item.contentType === 'text'" class="box">{{ item.content }}</pre>
-				<markdown
-					v-if="item.contentType === 'markdown'"
-					class="up:pt-0 box"
-					:content="item.content"
-				></markdown>
+				<markdown v-if="item.contentType === 'markdown'" class="up:pt-0 box" :content="item.content"></markdown>
 			</template>
 			<template v-slot:opposite>
 				<div>{{ dayjs(item.createTime).format("YYYY-MM-DD hh:mm:ss") }}</div>
