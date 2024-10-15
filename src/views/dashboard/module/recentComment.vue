@@ -11,16 +11,12 @@
 					</div>
 					<div>
 						在
-						<nami-link
-							class="link"
-							:to="item.articleId ? '/article/' + item.articleId : '/guestbook'"
-							>{{ item.articleTitle || "留言板" }}</nami-link
-						>
+						<nami-link class="link" :to="item.articleId ? '/article/' + item.articleId : '/guestbook'">{{
+							item.articleTitle || "留言板"
+						}}</nami-link>
 						中评论:
 					</div>
-					<xtt-markdown :dark="store.isDark ? '' : undefined">{{
-						item.content
-					}}</xtt-markdown>
+					<markdown :content="item.content"></markdown>
 				</div>
 			</li>
 		</ul>
@@ -31,8 +27,7 @@
 import type { recentCommentBody } from "@/types/comment";
 import { ref } from "vue";
 import { getRecentCommentList } from "@/api/blog/comment";
-import { useStore } from "@/stores/index";
-const store = useStore();
+import { markdown } from "@c/index";
 
 const recentCommentList = ref<recentCommentBody[]>([]);
 

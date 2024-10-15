@@ -7,13 +7,7 @@
 			</label>
 			<label class="label">
 				{{ i18nStore.messages.comment.nickname }}
-				<xtt-input
-					type="text"
-					class="input"
-					maxlength="32"
-					v-model="nickname"
-					placeholder="匿名"
-				/>
+				<xtt-input type="text" class="input" maxlength="32" v-model="nickname" placeholder="匿名" />
 			</label>
 			<label class="label">
 				{{ i18nStore.messages.comment.email }}
@@ -21,21 +15,14 @@
 			</label>
 		</div>
 		<div class="content">
-			<xtt-textarea
-				class="textarea"
-				block
-				auto-size
-				v-model="commentText"
-				@input="textInputEvent"
-				@change="textInputEvent"
-			/>
+			<xtt-textarea class="textarea" block auto-size v-model="commentText" />
 
 			<div class="preview" v-if="previewShowed">
 				<div>
 					{{ i18nStore.messages.comment.previewTitle }}
 				</div>
 				<div class="preview-content">
-					<xtt-markdown class="md" ref="previewMd"></xtt-markdown>
+					<markdown :content="commentText" />
 				</div>
 			</div>
 		</div>
@@ -56,16 +43,6 @@
 				>
 					<namiIcon icon="mdiMapSearchOutline" />
 				</xtt-button>
-				<!-- <xtt-button
-					class="previewBtn"
-					text
-					data-xtt-tooltip="选择字体"
-					:style="{
-						color: previewShowed ? '#f34159' : undefined
-					}"
-				>
-					<namiIcon icon="mdiFormatFont" />
-				</xtt-button> -->
 			</div>
 			<div class="end">
 				<xtt-button type="primary" @click="submitEvent" @keydown.enter="submitEvent">
@@ -77,41 +54,27 @@
 </template>
 
 <script setup lang="ts">
-import { ref, nextTick } from "vue";
+import { ref } from "vue";
 import namiCommentsPhoto from "./photo.vue";
+import { markdown } from "@c/index";
 import { useI18nStore } from "@/stores/i18n";
 
 const i18nStore = useI18nStore();
 
 const emits = defineEmits<{
-	(
-		e: "submit",
-		data: { commentText: string; nickname: string; email: string; photoUrl: string }
-	): void;
+	(e: "submit", data: { commentText: string; nickname: string; email: string; photoUrl: string }): void;
 }>();
 
 const previewShowed = ref(false);
-const previewMd = ref<HTMLElement | null>(null);
 
 const photoSrc = ref("https://image.xtt.moe/images/mlian2.md.webp");
 
 const commentText = ref("");
 const nickname = ref("");
 const email = ref("");
-const textInputEvent = () => {
-	if (previewShowed.value && previewMd.value) {
-		previewMd.value.textContent = commentText.value;
-	}
-};
 
 const previewBtnClick = () => {
 	previewShowed.value = !previewShowed.value;
-
-	nextTick(() => {
-		if (previewShowed.value && previewMd.value) {
-			previewMd.value.textContent = commentText.value;
-		}
-	});
 };
 
 const submitEvent = () => {

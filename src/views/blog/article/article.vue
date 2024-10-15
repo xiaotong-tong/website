@@ -7,20 +7,15 @@
 			{{ i18nStore.lang === "ja" ? acticle.jaTitle || acticle.title : acticle.title }}
 		</h2>
 		<p>
-			<span>{{
-				(i18nStore.lang === "ja" ? "post on " : "发布于 ") + acticle?.createDate
-			}}</span>
+			<span>{{ (i18nStore.lang === "ja" ? "post on " : "发布于 ") + acticle?.createDate }}</span>
 
 			&nbsp;&nbsp;&nbsp; #
-			{{
-				i18nStore.lang === "ja" ? acticle.jaCategory || acticle.category : acticle.category
-			}}
+			{{ i18nStore.lang === "ja" ? acticle.jaCategory || acticle.category : acticle.category }}
 		</p>
 
 		<markdown
-			:content="
-				i18nStore.lang === 'ja' ? acticle?.jaContent || acticle?.content : acticle?.content
-			"
+			class="up:mt-4"
+			:content="i18nStore.lang === 'ja' ? acticle?.jaContent || acticle?.content : acticle?.content"
 			:textLine="true"
 			:isDark="store.isDark"
 		></markdown>
@@ -28,9 +23,7 @@
 		<div class="pagination">
 			<nami-link :to="'/article/' + acticle.prev.id" v-if="acticle?.prev" class="link">{{
 				(i18nStore.lang === "ja" ? "前の文章: " : "上一篇: ") +
-				(i18nStore.lang === "ja"
-					? acticle?.prev.jaTitle || acticle?.prev.title
-					: acticle?.prev.title)
+				(i18nStore.lang === "ja" ? acticle?.prev.jaTitle || acticle?.prev.title : acticle?.prev.title)
 			}}</nami-link>
 			<nami-link :to="'/article/' + acticle.next.id" v-if="acticle?.next" class="link">{{
 				(i18nStore.lang === "ja" ? "次の文章: " : "下一篇: ") + acticle?.next.title
@@ -100,9 +93,7 @@ const getActicle = async () => {
 		acticle.value = data;
 
 		// 修改页面标题
-		document.title = `${
-			data[i18nStore.lang === "ja" ? "jaTitle" : "title"] || acticle.value?.title
-		} - 星川漣の家`;
+		document.title = `${data[i18nStore.lang === "ja" ? "jaTitle" : "title"] || acticle.value?.title} - 星川漣の家`;
 	} catch (error) {
 		// 如果请求文章失败，并且状态码为 404，那么就跳转到 404 页面
 		if ((error as any).response?.status === 404) {
@@ -112,12 +103,7 @@ const getActicle = async () => {
 		}
 	}
 };
-const commentSubmitEvent = (data: {
-	commentText: string;
-	nickname: string;
-	email: string;
-	photoUrl: string;
-}) => {
+const commentSubmitEvent = (data: { commentText: string; nickname: string; email: string; photoUrl: string }) => {
 	addComment({
 		nickname: data.nickname,
 		photoUrl: data.photoUrl,

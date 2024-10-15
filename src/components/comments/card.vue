@@ -13,12 +13,7 @@
 					<span class="nickname">{{ props.comment.nickname || "匿名" }}</span>
 					<span class="date">{{ props.comment.createDate }}</span>
 				</div>
-				<xtt-markdown
-					class="content"
-					ref="previewMd"
-					:dark="store.isDark ? '' : undefined"
-					>{{ props.comment.content }}</xtt-markdown
-				>
+				<markdown class="content" :content="props.comment.content"></markdown>
 			</div>
 			<div class="right">
 				<!-- <xtt-button
@@ -62,10 +57,9 @@
 import type { Comment } from "@/types/comment";
 import { ref, provide, inject } from "vue";
 import { addComment } from "@/api/blog/comment";
-import { useStore } from "@/stores/index";
+import { markdown } from "@c/index";
 // import { useUserInfoStore } from "@/stores/user";
 import { useRoute } from "vue-router";
-const store = useStore();
 const route = useRoute();
 // const userInfoStore = useUserInfoStore();
 
@@ -94,12 +88,7 @@ const childSubmitCallback = inject("commentsChildSubmitCallback", Function.proto
 
 const replyCommentShowed = ref(false);
 
-const replyCommentSubmitEvent = (data: {
-	commentText: string;
-	nickname: string;
-	email: string;
-	photoUrl: string;
-}) => {
+const replyCommentSubmitEvent = (data: { commentText: string; nickname: string; email: string; photoUrl: string }) => {
 	const articleId = Number(route.params.id);
 
 	if (!articleId && !props.isGuestbook) return;
