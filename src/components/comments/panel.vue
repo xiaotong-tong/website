@@ -1,7 +1,7 @@
 <template>
 	<div class="comment-panel">
 		<div class="header">
-			<label class="label">
+			<label class="label w-[86px]">
 				{{ i18nStore.messages.comment.avatar }}
 				<namiCommentsPhoto v-model:src="photoSrc" />
 			</label>
@@ -9,10 +9,10 @@
 				{{ i18nStore.messages.comment.nickname }}
 				<xtt-input type="text" class="input" maxlength="32" v-model="nickname" placeholder="匿名" />
 			</label>
-			<label class="label">
+			<!-- <label class="label">
 				{{ i18nStore.messages.comment.email }}
 				<xtt-input type="text" class="input" v-model="email" placeholder="example@a.com" />
-			</label>
+			</label> -->
 		</div>
 		<div class="content">
 			<xtt-textarea class="textarea" block auto-size v-model="commentText" />
@@ -109,6 +109,9 @@ const submitEvent = () => {
 
 .label {
 	padding-inline-start: 16px;
+	display: flex;
+	align-items: center;
+	column-gap: 4px;
 }
 .input::part(input) {
 	border: none;
