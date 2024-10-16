@@ -1,6 +1,6 @@
 <template>
 	<hBanner wrapperTargetName="h1">Tools</hBanner>
-	<markdown :content="i18nStore.lang === 'ja' ? jaLinkContent : linkContent"></markdown>
+	<markdown class="custom-font" :content="i18nStore.lang === 'ja' ? jaLinkContent : linkContent"></markdown>
 </template>
 
 <script setup lang="ts">
