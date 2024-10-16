@@ -1,10 +1,11 @@
 <template>
-	<div class="flex justify-end mb-2">
+	<div class="flex justify-end mb-2 gap-x-4 pe-4">
+		<TextButton v-if="content" type="primary" @click="downloadMd">下载</TextButton>
 		<Link v-login type="primary" :to="'/editor/edit/' + id">编辑</Link>
 	</div>
 	<section class="container web-color-default" v-if="acticle">
 		<h2 class="text-xl font-bold">
-			{{ i18nStore.lang === "ja" ? acticle.jaTitle || acticle.title : acticle.title }}
+			{{ title }}
 		</h2>
 		<p>
 			<span>{{ (i18nStore.lang === "ja" ? "post on " : "发布于 ") + acticle?.createDate }}</span>
@@ -13,21 +14,16 @@
 			{{ i18nStore.lang === "ja" ? acticle.jaCategory || acticle.category : acticle.category }}
 		</p>
 
-		<markdown
-			class="up:mt-4"
-			:content="i18nStore.lang === 'ja' ? acticle?.jaContent || acticle?.content : acticle?.content"
-			:textLine="true"
-			:isDark="store.isDark"
-		></markdown>
+		<markdown class="up:mt-4" :content="content" :textLine="true" :isDark="store.isDark"></markdown>
 
 		<div class="pagination">
-			<nami-link :to="'/article/' + acticle.prev.id" v-if="acticle?.prev" class="link">{{
+			<Link :to="'/article/' + acticle.prev.id" v-if="acticle?.prev" class="link">{{
 				(i18nStore.lang === "ja" ? "前の文章: " : "上一篇: ") +
 				(i18nStore.lang === "ja" ? acticle?.prev.jaTitle || acticle?.prev.title : acticle?.prev.title)
-			}}</nami-link>
-			<nami-link :to="'/article/' + acticle.next.id" v-if="acticle?.next" class="link">{{
+			}}</Link>
+			<Link :to="'/article/' + acticle.next.id" v-if="acticle?.next" class="link">{{
 				(i18nStore.lang === "ja" ? "次の文章: " : "下一篇: ") + acticle?.next.title
-			}}</nami-link>
+			}}</Link>
 		</div>
 
 		<namiCommentList class="comment-list" :comments="commentList"></namiCommentList>
@@ -72,7 +68,7 @@ import { getActicleById } from "@/api/blog/acticle";
 import { addComment, getCommentList } from "@/api/blog/comment";
 import { useRoute, useRouter, onBeforeRouteUpdate } from "vue-router";
 import { useI18nStore } from "@/stores/i18n";
-import { markdown, Link } from "@c/index";
+import { markdown, Link, TextButton } from "@c/index";
 import { useStore } from "@/stores";
 
 const store = useStore();
@@ -83,6 +79,8 @@ const i18nStore = useI18nStore();
 const id = ref(Number(route.params.id));
 
 const acticle = ref<ActicleById | null>(null);
+const content = ref("");
+const title = ref("");
 
 // 获取文章内容
 const getActicle = async () => {
@@ -92,8 +90,10 @@ const getActicle = async () => {
 		const data = await getActicleById(id.value);
 		acticle.value = data;
 
+		content.value = data[i18nStore.lang === "ja" ? "jaContent" : "content"];
+		title.value = data[i18nStore.lang === "ja" ? "jaTitle" : "title"];
 		// 修改页面标题
-		document.title = `${data[i18nStore.lang === "ja" ? "jaTitle" : "title"] || acticle.value?.title} - 星川漣の家`;
+		document.title = title.value + " - 星川漣の家";
 	} catch (error) {
 		// 如果请求文章失败，并且状态码为 404，那么就跳转到 404 页面
 		if ((error as any).response?.status === 404) {
@@ -141,12 +141,26 @@ onBeforeRouteUpdate((to, _) => {
 watch(
 	() => i18nStore.lang,
 	() => {
-		// 修改页面标题
-		document.title = `${
-			acticle.value?.[i18nStore.lang === "ja" ? "jaTitle" : "title"] || acticle.value?.title
-		} - 星川漣の家`;
+		if (acticle.value) {
+			content.value = acticle.value[i18nStore.lang === "ja" ? "jaContent" : "content"];
+			title.value = acticle.value[i18nStore.lang === "ja" ? "jaTitle" : "title"];
+			// 修改页面标题
+			document.title = title.value + " - 星川漣の家";
+		}
 	}
 );
+
+// 下载文章为 md 文件
+const downloadMd = () => {
+	const mdText = `# ${title.value}\n\n${content.value}`;
+	const blob = new Blob([mdText], { type: "text/plain" });
+	const url = URL.createObjectURL(blob);
+	const a = document.createElement("a");
+	a.href = url;
+	a.download = `${title.value}.md`;
+	a.click();
+	URL.revokeObjectURL(url);
+};
 </script>
 
 <style scoped>
