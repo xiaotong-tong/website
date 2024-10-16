@@ -2,11 +2,7 @@
 	<namiAplayer
 		class="fixed top-0 left-0"
 		ref="aplayerRef"
-		v-if="
-			store.pageConfig.showHomeMusicController ||
-			route.fullPath === '/music' ||
-			route.fullPath === '/ja/music'
-		"
+		v-if="store.pageConfig.showHomeMusicController || route.fullPath === '/music' || route.fullPath === '/ja/music'"
 	></namiAplayer>
 </template>
 
@@ -38,7 +34,7 @@ function toMusicArea() {
 	const el = aplayerRef.value?.aplayerEl;
 	const ap = aplayerRef.value?.aplayer;
 
-	if (!el) return;
+	if (!el || !ap) return;
 
 	if (firstLoad.value || !store.pageConfig.showHomeMusicController) {
 		ap.setMode("normal");
