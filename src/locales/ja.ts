@@ -48,8 +48,7 @@ export const jaMsg = {
 	},
 	guestbook: {
 		title: "ゲストブック",
-		subContent:
-			"ようこそ、メッセージをご自由にどうぞ！できるだけ返信しますので、みなさん、お気軽にどうぞ！",
+		subContent: "ようこそ、メッセージをご自由にどうぞ！できるだけ返信しますので、みなさん、お気軽にどうぞ！",
 		commentTitle: "コメントする:"
 	},
 	comment: {
@@ -70,7 +69,7 @@ export const jaMsg = {
 			}
 		},
 		blog: {
-			readMore: "続きを読む"
+			readMore: "私の全部を見る"
 		},
 		setting: {
 			clearCache: "キャッシュをクリア",
