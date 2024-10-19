@@ -40,7 +40,8 @@ export const zhMsg = {
 			blog: "Blog",
 			setting: "设置",
 			live: "动态",
-			bot: "bot"
+			bot: "bot",
+			character: "角色"
 		},
 		footer: {
 			sitemap: "站点地图"

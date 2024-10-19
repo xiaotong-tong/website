@@ -2,9 +2,7 @@
 	<nav
 		class="nav"
 		:style="{
-			width: `min(${store.pageConfig.inlineSize.minPx}px, ${
-				store.pageConfig.inlineSize.percentage * 100
-			}%)`
+			width: `min(${store.pageConfig.inlineSize.minPx}px, ${store.pageConfig.inlineSize.percentage * 100}%)`
 		}"
 	>
 		<ul class="list left">
@@ -33,18 +31,8 @@
 			>
 				<namiIcon icon="mdiTranslate" class="link"></namiIcon>
 
-				<div
-					class="langs web-color-default"
-					v-show="translatePopShow"
-					@click="translatePopShow = false"
-				>
-					<div
-						class="lang-item"
-						v-if="i18nStore.lang === 'zh'"
-						@click="i18nStore.lang = 'ja'"
-					>
-						日本語
-					</div>
+				<div class="langs web-color-default" v-show="translatePopShow" @click="translatePopShow = false">
+					<div class="lang-item" v-if="i18nStore.lang === 'zh'" @click="i18nStore.lang = 'ja'">日本語</div>
 					<div class="lang-item" v-else @click="i18nStore.lang = 'zh'">中文</div>
 				</div>
 			</li>
@@ -66,10 +54,7 @@
 				<namiLink class="link avatar px-0" inline-block to="/user">
 					<img
 						class="w-6 rounded-full"
-						:src="
-							userInfoStore.userInfo.avatar ||
-							'https://image.xtt.moe/images/mlian2.md.webp'
-						"
+						:src="userInfoStore.userInfo.avatar || 'https://image.xtt.moe/images/mlian2.md.webp'"
 						alt="favicon"
 					/>
 				</namiLink>
@@ -129,8 +114,8 @@ const list = ref([
 	},
 	{
 		key: "b3",
-		url: "/about",
-		content: "main.nav.about",
+		url: "/character",
+		content: "main.nav.character",
 		color: store.theme[6]
 	},
 	{
@@ -238,8 +223,7 @@ onMounted(() => {
 .langs {
 	position: absolute;
 	border-radius: 4px;
-	box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
-		0 1px 5px 0 rgb(0 0 0 / 12%);
+	box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
 	top: 24px;
 	left: -16px;
 }

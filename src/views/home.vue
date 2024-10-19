@@ -9,9 +9,7 @@
 		class="main web-color-default"
 		:color="store.currentTheme"
 		:style="{
-			width: `min(${store.pageConfig.inlineSize.minPx}px, ${
-				store.pageConfig.inlineSize.percentage * 100
-			}%)`
+			width: `min(${store.pageConfig.inlineSize.minPx}px, ${store.pageConfig.inlineSize.percentage * 100}%)`
 		}"
 	>
 		<section
@@ -84,13 +82,6 @@
 				icon="mdiBookEditOutline"
 				data-xtt-tooltip="新增 blog"
 				@click="router.push('/editor/add')"
-			></namiIcon>
-			<namiIcon
-				:ref="appendIcon"
-				class="icon"
-				icon="mdiRobotConfusedOutline"
-				data-xtt-tooltip="关于"
-				@click="router.push('/about')"
 			></namiIcon>
 			<namiIcon
 				:ref="appendIcon"

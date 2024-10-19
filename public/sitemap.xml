@@ -70,14 +70,18 @@
   </url>
   <url>
     <loc>https://xtt.moe/info</loc>
+	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/info" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/info" />
     <priority>0.7</priority>
-    <lastmod>2024-08-25</lastmod>
+    <lastmod>2024-10-19</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://xtt.moe/ja/info</loc>
+	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/info" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/info" />
     <priority>0.7</priority>
-    <lastmod>2024-08-25</lastmod>
+    <lastmod>2024-10-19</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <!-- setting 页面没有内容，暂时从 sitemap 文件中排除 -->
@@ -110,15 +114,15 @@
     <changefreq>weekly</changefreq>
   </url> -->
   <url>
-    <loc>https://xtt.moe/about</loc>
+    <loc>https://xtt.moe/character</loc>
     <priority>0.6</priority>
-    <lastmod>2024-08-25</lastmod>
+    <lastmod>2024-10-19</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://xtt.moe/ja/about</loc>
+    <loc>https://xtt.moe/ja/character</loc>
     <priority>0.6</priority>
-    <lastmod>2024-08-25</lastmod>
+    <lastmod>2024-10-19</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>

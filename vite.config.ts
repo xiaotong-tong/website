@@ -73,7 +73,7 @@ export default defineConfig({
 					sub: [
 						"./src/views/404.vue",
 						"./src/views/login/login.vue",
-						"./src/views/about/index.vue",
+						"./src/views/character/character.vue",
 						"./src/views/links/links.vue",
 						"./src/views/blog/guestbook/index.vue",
 						"./src/views/bot/bot.vue",

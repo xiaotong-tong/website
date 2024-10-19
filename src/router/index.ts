@@ -304,13 +304,13 @@ let routes: Route[] = [
 				}
 			},
 			{
-				path: "/about",
-				name: "about",
-				component: () => import("../views/about/index.vue"),
+				path: "/character",
+				name: "character",
+				component: () => import("../views/character/character.vue"),
 				meta: {
 					title: {
-						zh: "关于",
-						ja: "について"
+						zh: "角色",
+						ja: "キャラクター"
 					},
 					theme: 5
 				}

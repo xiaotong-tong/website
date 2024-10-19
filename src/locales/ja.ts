@@ -40,7 +40,8 @@ export const jaMsg = {
 			blog: "ブログ",
 			setting: "設定",
 			live: "ライブ",
-			bot: "bot"
+			bot: "bot",
+			character: "キャラクター"
 		},
 		footer: {
 			sitemap: "サイトマップ"

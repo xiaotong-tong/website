@@ -1,71 +1,36 @@
 <template>
 	<ul class="piano-box">
-		<li
-			class="piano-key"
-			data-key="c3"
-			@mouseenter="mouseenterHandler"
-			@mouseleave="mouseleaveHandler"
-		>
+		<li class="piano-key" data-key="c3" @mouseenter="mouseenterHandler" @mouseleave="mouseleaveHandler">
 			<nami-link to="/" block class="link">
 				{{ i18nStore.messages.main.nav.home }}
 			</nami-link>
 		</li>
-		<li
-			class="piano-key"
-			data-key="d3"
-			@mouseenter="mouseenterHandler"
-			@mouseleave="mouseleaveHandler"
-		>
+		<li class="piano-key" data-key="d3" @mouseenter="mouseenterHandler" @mouseleave="mouseleaveHandler">
 			<nami-link to="/sitemap" block class="link">
 				{{ i18nStore.messages.main.footer.sitemap }}
 			</nami-link>
 		</li>
-		<li
-			class="piano-key"
-			data-key="e3"
-			@mouseenter="mouseenterHandler"
-			@mouseleave="mouseleaveHandler"
-		>
+		<li class="piano-key" data-key="e3" @mouseenter="mouseenterHandler" @mouseleave="mouseleaveHandler">
 			<nami-link to="/guestbook" block class="link">
 				{{ i18nStore.messages.main.nav.guestbook }}
 			</nami-link>
 		</li>
-		<li
-			class="piano-key"
-			data-key="f3"
-			@mouseenter="mouseenterHandler"
-			@mouseleave="mouseleaveHandler"
-		>
+		<li class="piano-key" data-key="f3" @mouseenter="mouseenterHandler" @mouseleave="mouseleaveHandler">
 			<nami-link to="/link" block class="link">
 				{{ i18nStore.messages.main.nav.link }}
 			</nami-link>
 		</li>
-		<li
-			class="piano-key"
-			data-key="g3"
-			@mouseenter="mouseenterHandler"
-			@mouseleave="mouseleaveHandler"
-		>
+		<li class="piano-key" data-key="g3" @mouseenter="mouseenterHandler" @mouseleave="mouseleaveHandler">
 			<nami-link to="/photos" block class="link">
 				{{ i18nStore.messages.main.nav.photo }}
 			</nami-link>
 		</li>
-		<li
-			class="piano-key"
-			data-key="a3"
-			@mouseenter="mouseenterHandler"
-			@mouseleave="mouseleaveHandler"
-		>
-			<nami-link to="/about" block class="link">
-				{{ i18nStore.messages.main.nav.about }}
+		<li class="piano-key" data-key="a3" @mouseenter="mouseenterHandler" @mouseleave="mouseleaveHandler">
+			<nami-link to="/character" block class="link">
+				{{ i18nStore.messages.main.nav.character }}
 			</nami-link>
 		</li>
-		<li
-			class="piano-key"
-			data-key="b3"
-			@mouseenter="mouseenterHandler"
-			@mouseleave="mouseleaveHandler"
-		>
+		<li class="piano-key" data-key="b3" @mouseenter="mouseenterHandler" @mouseleave="mouseleaveHandler">
 			<nami-link block class="link" @click="router.go(-1)">
 				{{ i18nStore.messages.main.nav.back }}
 			</nami-link>
