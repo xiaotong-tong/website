@@ -15,4 +15,4 @@ setTimeout の戻り値は間違いなく number 型です、仕様は　 MDN �
 
 以上、NodeJS.Timeout 型を書ければエラーが発生しなくなります。`const timer: NodeJS.Timeout = setTimeout(() => {}, 0);` とします。
 
-しかし、これは Node.js 環境の話です。ブラウザでちょうど似合わないです。ブラウザ環境では、setTimeout の戻り値は timeoutID であり、number 型の正の整数です。「window.」を省略しないで　`window.setTimeout` を使用すると、number 型に正しく指定できます。`const timer: number = window.setTimeout(() => {}, 0);` という書き方もエーラーがなくす。
+しかし、これは Node.js 環境の話です。ブラウザにはいまいちです。ブラウザ環境では、setTimeout の戻り値は timeoutID であり、number 型の正の整数です。「window.」を省略しないで　`window.setTimeout` を使用すると、number 型に正しく指定できます。`const timer: number = window.setTimeout(() => {}, 0);` という書き方もエーラーがなくす。

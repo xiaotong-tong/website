@@ -3,7 +3,7 @@
 		<p class="text-center text-[24px]">君に出会えて本当に良かった！</p>
 
 		<FieldsetCard title="小恸恸" :borderColor="store.currentTheme">
-			<div class="flex">
+			<div class="character flex">
 				<img class="w-[26%] me-4" src="https://data.xtt.moe/q.jpg" alt="" />
 				<div class="flex-1" v-lang="'zh'">
 					<div><span>姓名：</span> <span>小恸恸</span></div>
@@ -28,7 +28,7 @@
 		</FieldsetCard>
 
 		<FieldsetCard title="星川涟" :borderColor="store.currentTheme">
-			<div class="flex">
+			<div class="character flex">
 				<img class="w-[26%] me-4" src="https://data.xtt.moe/mlian5.webp" alt="" />
 				<div class="flex-1" v-lang="'zh'">
 					<div><span>姓名：</span> <span>星川涟（ほしかわさざなみ）</span></div>
@@ -67,7 +67,7 @@
 		</FieldsetCard>
 
 		<FieldsetCard title="星川陽凪乃" :borderColor="store.currentTheme">
-			<div class="flex">
+			<div class="character flex">
 				<img class="w-[26%] me-4" alt="" />
 				<div class="flex-1" v-lang="'zh'">
 					<div><span>姓名：</span> <span>星川陽凪乃（ほしかわひなの）</span></div>
@@ -133,4 +133,19 @@ const i18nStore = useI18nStore();
 const store = useStore();
 </script>
 
-<style scoped></style>
+<style scoped>
+.character {
+	& > img {
+		aspect-ratio: 1;
+		align-self: center;
+	}
+}
+
+.small-screen {
+	.character {
+		& > img {
+			display: none;
+		}
+	}
+}
+</style>

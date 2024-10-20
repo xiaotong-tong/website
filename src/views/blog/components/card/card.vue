@@ -10,54 +10,35 @@
 		}"
 	>
 		<div class="thumbnail-wrap">
-			<img
-				class="thumbnail"
-				:src="props.info.thumbnail || 'https://image.xtt.moe/images/bg.webp'"
-				alt="缩略图"
-			/>
+			<img class="thumbnail" :src="props.info.thumbnail || 'https://image.xtt.moe/images/bg.webp'" alt="缩略图" />
 		</div>
 		<div class="info-wrap">
 			<Link :to="props.info.headerLink" block class="header-link justify-start ps-0">
 				<h2 class="text-xl font-bold">
-					{{
-						i18nStore.lang === "ja"
-							? props.info.jaTitle || props.info.title
-							: props.info.title
-					}}
+					{{ i18nStore.lang === "ja" ? props.info.jaTitle || props.info.title : props.info.title }}
 				</h2>
 			</Link>
-			<p>
-				<span>{{
-					(i18nStore.lang === "ja" ? "post on " : "发布于 ") + props.info.createDate
-				}}</span>
+			<p class="flex items-center">
+				<span class="inline-flex items-center gap-x-1 mr-4">
+					<nami-icon icon="mdiClockOutline"></nami-icon>
+					{{ props.info.createDate }}</span
+				>
 
-				&nbsp;&nbsp;&nbsp;
 				<nami-link
 					class="tag-link"
 					:isQuery="true"
 					to="category"
 					:queryValue="props.info.category"
 					@click="() => emits('changeCategory', props.info.category)"
-					>#
-					{{
-						i18nStore.lang === "ja" ? props.info.jaCategory : props.info.category
-					}}</nami-link
+					># {{ i18nStore.lang === "ja" ? props.info.jaCategory : props.info.category }}</nami-link
 				>
 			</p>
 			<p class="abstract">
-				{{
-					i18nStore.lang === "ja"
-						? props.info.jaAbstract ||
-						  props.info.jaContent ||
-						  props.info.abstract ||
-						  props.info.content
-						: props.info.abstract || props.info.content
-				}}
+				{{ i18nStore.lang === "ja" ? props.info.jaAbstract || props.info.abstract : props.info.abstract }}
 			</p>
 			<div class="footer">
 				<Link class="article-link" block :to="props.info.headerLink"
-					>{{ t("pages.blog.readMore")
-					}}<namiIcon class="ms-1" icon="mdiBookOpenBlankVariantOutline" />
+					>{{ t("pages.blog.readMore") }}<namiIcon class="ms-1" icon="mdiBookOpenBlankVariantOutline" />
 				</Link>
 			</div>
 		</div>
@@ -79,13 +60,11 @@ interface Props {
 	info: {
 		headerLink: string;
 		title: string;
-		content: string;
 		createDate: string;
 		category: string;
 		thumbnail: string;
 		abstract: string;
 		jaTitle: string;
-		jaContent: string;
 		jaAuthor: string;
 		jaAbstract: string;
 		jaTags: string;
@@ -96,13 +75,11 @@ const props = withDefaults(defineProps<Props>(), {
 	info: () => ({
 		headerLink: "",
 		title: "",
-		content: "",
 		createDate: "",
 		category: "",
 		thumbnail: "",
 		abstract: "",
 		jaTitle: "",
-		jaContent: "",
 		jaAuthor: "",
 		jaAbstract: "",
 		jaTags: "",

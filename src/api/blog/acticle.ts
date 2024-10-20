@@ -38,15 +38,17 @@ export async function getActicleList(params?: GetActicleListFilters): Promise<Ac
 		}
 		return res.filter((item: Acticle) => {
 			if (category?.includes(",")) {
-				return category
-					.split(",")
-					.includes(lang === "ja" ? item.jaCategory : item.category);
+				return category.split(",").includes(lang === "ja" ? item.jaCategory : item.category);
 			}
 			return (lang === "ja" ? item.jaCategory : item.category) === category;
 		});
 	}
 
-	const data: AxiosResponse<Acticle[]> = await http.get("/acticle/list");
+	const data: AxiosResponse<Acticle[]> = await http.get("/acticle/list", {
+		params: {
+			withOutContent: true
+		}
+	});
 
 	// 将数据缓存
 	catchs.set("acticle", {

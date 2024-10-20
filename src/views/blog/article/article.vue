@@ -8,10 +8,17 @@
 			{{ title }}
 		</h2>
 		<p>
-			<span>{{ (i18nStore.lang === "ja" ? "post on " : "发布于 ") + acticle?.createDate }}</span>
+			<span class="mr-4">
+				<nami-icon icon="mdiClockOutline"></nami-icon>
+				{{ acticle?.createDate }}</span
+			>
 
-			&nbsp;&nbsp;&nbsp; #
-			{{ i18nStore.lang === "ja" ? acticle.jaCategory || acticle.category : acticle.category }}
+			<span class="mr-4" v-if="acticle?.updateDate">
+				<nami-icon icon="mdiUpdate"></nami-icon>
+				{{ acticle?.updateDate }}</span
+			>
+
+			<span># {{ i18nStore.lang === "ja" ? acticle.jaCategory || acticle.category : acticle.category }}</span>
 		</p>
 
 		<markdown class="up:mt-4" :content="content" :textLine="true" :isDark="store.isDark"></markdown>

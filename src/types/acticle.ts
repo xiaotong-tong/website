@@ -9,6 +9,7 @@ export interface Acticle {
 	category: string;
 	tags: string;
 	createDate: string;
+	updateDate: string;
 	thumbnail: string;
 	abstract: string;
 	jaTitle: string;
