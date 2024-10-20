@@ -1,18 +1,20 @@
 <template>
 	<section class="container web-color-default">
 		<header class="header">
-			<h2>{{ i18nStore.messages.guestbook.title }}</h2>
+			<h2 class="font-bold text-xl">{{ i18nStore.messages.guestbook.title }}</h2>
 			<p>{{ i18nStore.messages.guestbook.subContent }}</p>
 		</header>
 
-		<namiCommentList
-			class="comment-list"
-			:comments="commentList"
-			:isGuestbook="true"
-		></namiCommentList>
+		<template v-if="loaded">
+			<namiCommentList class="comment-list" :comments="commentList" :isGuestbook="true"></namiCommentList>
 
-		<h3>{{ i18nStore.messages.guestbook.commentTitle }}</h3>
-		<namiCommentPanel class="comment-panel" @submit="commentSubmitEvent"></namiCommentPanel>
+			<h3 class="font-bold text-xl">{{ i18nStore.messages.guestbook.commentTitle }}</h3>
+			<namiCommentPanel class="comment-panel" @submit="commentSubmitEvent"></namiCommentPanel>
+		</template>
+
+		<section v-show="!loaded">
+			<namiPageLoading></namiPageLoading>
+		</section>
 	</section>
 </template>
 
@@ -24,6 +26,8 @@ import { useI18nStore } from "@/stores/i18n";
 
 const i18nStore = useI18nStore();
 
+const loaded = ref(false);
+
 const commentList = ref<Comment[]>([]);
 const getComments = async () => {
 	const data = await getCommentList({
@@ -31,15 +35,11 @@ const getComments = async () => {
 	});
 
 	commentList.value = data.reverse();
+	loaded.value = true;
 };
 getComments();
 
-const commentSubmitEvent = (data: {
-	commentText: string;
-	nickname: string;
-	email: string;
-	photoUrl: string;
-}) => {
+const commentSubmitEvent = (data: { commentText: string; nickname: string; email: string; photoUrl: string }) => {
 	addComment({
 		nickname: data.nickname,
 		photoUrl: data.photoUrl,

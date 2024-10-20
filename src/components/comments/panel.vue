@@ -1,7 +1,7 @@
 <template>
 	<div class="comment-panel">
 		<div class="header">
-			<label class="label w-[86px]">
+			<label class="label w-[100px]">
 				{{ i18nStore.messages.comment.avatar }}
 				<namiCommentsPhoto v-model:src="photoSrc" />
 			</label>
@@ -45,9 +45,9 @@
 				</xtt-button>
 			</div>
 			<div class="end">
-				<xtt-button type="primary" @click="submitEvent" @keydown.enter="submitEvent">
+				<NamiButton :borderColor="store.currentTheme" @click="submitEvent" @keydown.enter="submitEvent">
 					{{ i18nStore.messages.comment.submitText }}
-				</xtt-button>
+				</NamiButton>
 			</div>
 		</div>
 	</div>
@@ -56,9 +56,11 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import namiCommentsPhoto from "./photo.vue";
-import { markdown } from "@c/index";
+import { markdown, NamiButton } from "@c/index";
 import { useI18nStore } from "@/stores/i18n";
+import { useStore } from "@/stores/index";
 
+const store = useStore();
 const i18nStore = useI18nStore();
 
 const emits = defineEmits<{

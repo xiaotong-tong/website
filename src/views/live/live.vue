@@ -4,7 +4,7 @@
 		<MyAdd @submit="getList" />
 	</section>
 
-	<nami-timeline class="content" contentAlign="center">
+	<nami-timeline v-if="loaded" class="content" contentAlign="center">
 		<nami-timeline-item v-for="item in list" :key="item.id">
 			<template v-slot:body>
 				<pre v-if="item.contentType === 'text'" class="box">{{ item.content }}</pre>
@@ -30,6 +30,10 @@
 			</template>
 		</nami-timeline-item>
 	</nami-timeline>
+
+	<section v-show="!loaded">
+		<namiPageLoading></namiPageLoading>
+	</section>
 </template>
 
 <script setup lang="ts">
@@ -41,11 +45,13 @@ import { getLives, deleteLive } from "@/api/live/live";
 import { dayjs } from "@/utils/dateUtil";
 import { NButton, NPopconfirm } from "naive-ui";
 
+const loaded = ref(false);
 const list = ref<LiveInfo[]>([]);
 
 async function getList() {
 	const res = await getLives();
 	list.value = res.data;
+	loaded.value = true;
 }
 getList();
 

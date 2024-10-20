@@ -18,8 +18,8 @@
 
 <script setup lang="ts">
 import { ref, watch } from "vue";
-import { useFetch } from "@vueuse/core";
-import { getOne } from "@/utils/array";
+import type { IGetDaysPoetry } from "../../home.api";
+import { getDaysPoetry } from "../../home.api";
 import { useContentRefStore } from "@/stores/contentRef";
 import { useElementSize } from "@vueuse/core";
 
@@ -29,22 +29,16 @@ const contentStore = useContentRefStore();
 const selfPoetryRef = ref<HTMLElement>();
 const { height } = useElementSize(selfPoetryRef);
 
-interface Item {
-	key: number;
-	title: string;
-	author: string;
-	paragraphs: string[];
-}
-const { data, isFinished } = useFetch("https://api.xtt.moe/days/poetry/self").json<Item[]>();
+getDaysPoetry()
+	.then((res) => {
+		curData.value = res;
+		emits("onLoad");
+	})
+	.catch(() => {
+		emits("onLoad");
+	});
 
-let curData = ref<Item | null>(getOne(data));
-
-watch(data, () => {
-	curData.value = getOne(data);
-});
-watch(isFinished, () => {
-	emits("onLoad");
-});
+let curData = ref<IGetDaysPoetry | null>(null);
 
 const overflow = ref(false);
 

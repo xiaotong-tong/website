@@ -5,7 +5,7 @@
 		<nami-timeline>
 			<nami-timeline-item :group="true">
 				<template v-slot:body>
-					<h3>2024</h3>
+					<h3 class="font-bold text-xl">2024</h3>
 				</template>
 			</nami-timeline-item>
 			<nami-timeline-item>
@@ -77,7 +77,7 @@
 			</nami-timeline-item>
 			<nami-timeline-item :group="true">
 				<template v-slot:body>
-					<h3>2023</h3>
+					<h3 class="font-bold text-xl">2023</h3>
 				</template>
 			</nami-timeline-item>
 			<nami-timeline-item>
