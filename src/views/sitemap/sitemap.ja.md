@@ -57,7 +57,7 @@
 -   [Chevereto の api に画像をアップロードする方法](/ja/article/13)
 -   [js の数値リテラルについて](/ja/article/14)
 -   [中国語の「二」と「两」の違い方](/ja/article/16)
--   [日本語の星座について](/ja/article/17)
+-   [日本語の星について](/ja/article/17)
 -   [web の知識のまとめ - イテレーターとジェネレーター関数](/ja/article/19)
 -   [web の知識のまとめ-関数](/ja/article/20)
 -   [web の知識のまとめ-スプレッド構文と分割代入](/ja/article/21)

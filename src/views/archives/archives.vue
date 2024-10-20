@@ -122,8 +122,8 @@
 			<nami-timeline-item>
 				<template v-slot:body>
 					<span class="time">09-11</span>
-					<nami-link v-lang="'zh'" to="/article/17">日本語の星座について</nami-link>
-					<nami-link v-lang="'ja'" to="/ja/article/17">日本語の星座について</nami-link>
+					<nami-link v-lang="'zh'" to="/article/17">日本語の星について</nami-link>
+					<nami-link v-lang="'ja'" to="/ja/article/17">星について</nami-link>
 				</template>
 			</nami-timeline-item>
 			<nami-timeline-item>
