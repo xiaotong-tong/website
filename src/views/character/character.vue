@@ -239,6 +239,55 @@
 				<img src="https://image.xtt.moe/images/lian5.webp" alt="" />
 			</div>
 		</div>
+		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
+		<div class="flex">
+			<div class="flex-1">
+				<div class="flex flex-wrap">
+					<div class="w-[50%]"><span>生命：</span><span>480</span></div>
+					<div class="w-[50%]"><span>攻击：</span><span>6</span></div>
+					<div class="w-[50%]"><span>灵力：</span><span>73</span></div>
+					<div class="w-[50%]"><span>速度：</span><span>62</span></div>
+					<div class="w-[50%]"><span>防御：</span><span>56</span></div>
+					<div class="w-[50%]"><span>格挡：</span><span>42</span></div>
+					<div class="w-[50%]"><span>命中：</span><span>74</span></div>
+					<div class="w-[50%]"><span>闪避：</span><span>0</span></div>
+					<div class="w-[50%]"><span>暴击：</span><span>43</span></div>
+					<div class="w-[50%]"><span>幸运：</span><span>0</span></div>
+				</div>
+				<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+				<div>
+					<div>
+						<div>太阳雨</div>
+						<div>
+							扣除自身当前血量的 10%, 对敌方随机 3 名角色造成 扣除生命值 + 自身灵力 50% 的灵力伤害。
+						</div>
+					</div>
+					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<div>
+						<div>终末之果</div>
+						<div>
+							第三回合无视任何状态，必定释放,其他回合释放时必定失败。释放后进入“终末”状态，下回合行动时释放终末之果，对敌方全体角色造成
+							自身灵力 444% 的灵力伤害和 自身攻击 444% 的物理伤害。在终末状态下，自身受到的伤害减少 30%,
+							且自身速度提升 50 点，命中提升 50 点，幸运提升 50 点。
+						</div>
+					</div>
+					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<div>
+						<div>天梯</div>
+						<div>队长技：每回合开始时，提升自身 10 点最大生命值，并恢复 10 点血量。</div>
+					</div>
+					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<div>
+						<div>堇花</div>
+						<div>支援技：每回合结束时恢复血量最低的我方角色 10 点生命值。</div>
+					</div>
+				</div>
+			</div>
+			<div class="w-[26%] me-4">
+				<div class="text-center">堇</div>
+				<img src="https://image.xtt.moe/images/lian5.webp" alt="" />
+			</div>
+		</div>
 	</section>
 </template>
 
