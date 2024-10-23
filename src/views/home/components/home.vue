@@ -7,16 +7,12 @@
 		v-show="loaded"
 	>
 		<header class="title flex justify-between items-center">
-			<hBanner wrapperTargetName="h3">
+			<Panel wrapperTargetName="h3">
 				{{ t("pages.home.header") }}
-			</hBanner>
+			</Panel>
 			<p class="sub">
-				<span v-lang="'zh'"
-					>{{ nowDay.format("YYYY 年") }}第 {{ nowDay.dayOfYear() }} 天</span
-				>
-				<span v-lang="'ja'"
-					>{{ nowDay.format("YYYY 年") }} {{ nowDay.dayOfYear() }} 日目
-				</span>
+				<span v-lang="'zh'">{{ nowDay.format("YYYY 年") }}第 {{ nowDay.dayOfYear() }} 天</span>
+				<span v-lang="'ja'">{{ nowDay.format("YYYY 年") }} {{ nowDay.dayOfYear() }} 日目 </span>
 				<span>{{ weekNames[nowDay.day()] }}</span>
 			</p>
 		</header>
@@ -30,12 +26,7 @@
 		<Quote ref="poetryRef" @onLoad="quoteLoadedFn"></Quote>
 
 		<div class="character-wrap" aria-hidden="true">
-			<img
-				class="block w-full"
-				src="https://image.xtt.moe/images/lian5.webp"
-				alt="人物立绘"
-				draggable="false"
-			/>
+			<img class="block w-full" src="https://image.xtt.moe/images/lian5.webp" alt="人物立绘" draggable="false" />
 		</div>
 	</section>
 
@@ -50,7 +41,7 @@ import { dayjs } from "@/utils/dateUtil";
 import Quote from "./home/quote.vue";
 import Hefu from "./home/hefu.vue";
 import Poetry from "./home/poetry.vue";
-import { hBanner } from "@c/index";
+import { Panel } from "@c/index";
 import { useStore } from "@/stores";
 import { useI18n } from "vue-i18n";
 import { useContentRefStore } from "@/stores/contentRef";

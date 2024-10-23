@@ -1,6 +1,8 @@
 <template>
 	<section class="px-8 pt-4 font-[luoliti]">
-		<p class="text-center text-[24px]">君に出会えて本当に良かった！</p>
+		<h2 class="text-center">
+			<Panel targetName="div" class="text-[24px]"> 君に出会えて本当に良かった！ </Panel>
+		</h2>
 
 		<FieldsetCard title="小恸恸" :borderColor="store.currentTheme">
 			<div class="character flex">
@@ -125,7 +127,7 @@
 </template>
 
 <script setup lang="ts">
-import { FieldsetCard } from "@c/index";
+import { FieldsetCard, Panel } from "@c/index";
 import { useStore } from "@/stores";
 import { useI18nStore } from "@/stores/i18n";
 
