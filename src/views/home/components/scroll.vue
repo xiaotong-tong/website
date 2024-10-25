@@ -12,7 +12,7 @@
 			<img
 				@click="emits('click')"
 				class="img"
-				src="https://image.xtt.moe/local/images/2024/06/13/7cae5f3fc4342fdc.md.png"
+				src="https://data.xtt.moe/scrollToTop.webp"
 				draggable="false"
 				alt="scroll to top"
 				role="button"

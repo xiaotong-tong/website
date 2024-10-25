@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<img class="img" src="https://image.xtt.moe/images/22.gif" alt="loading" />
+		<img class="img" src="https://data.xtt.moe/loading.webp" alt="loading" />
 	</div>
 </template>
 
@@ -21,7 +21,7 @@
 }
 
 .img {
-	margin-block-start: -100px;
+	width: 70%;
 }
 
 .small-screen .img {

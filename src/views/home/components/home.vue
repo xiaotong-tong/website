@@ -25,9 +25,9 @@
 		<namiRoughLine :color="store.currentTheme"></namiRoughLine>
 		<Quote ref="poetryRef" @onLoad="quoteLoadedFn"></Quote>
 
-		<div class="character-wrap" aria-hidden="true">
+		<!-- <div class="character-wrap" aria-hidden="true">
 			<img class="block w-full" src="https://image.xtt.moe/images/lian5.webp" alt="人物立绘" draggable="false" />
-		</div>
+		</div> -->
 	</section>
 
 	<section v-show="!loaded">
