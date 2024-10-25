@@ -2,7 +2,7 @@
 	<div class="quote-wrap" v-if="quote">
 		<p>
 			{{ t("pages.home.quote.title") }}
-			<span v-if="quoteOverflow" class="text-[8px] text-[#f00]">{{
+			<span v-if="originalQuoteKey !== quoteKey" class="text-[8px] text-[#f00]">{{
 				t("pages.home.quote.overflowTip")
 			}}</span>
 		</p>
@@ -19,6 +19,7 @@ import { ref } from "vue";
 import type { IGetDaysQuotes } from "../../home.api";
 import { getDaysQuotes } from "../../home.api";
 import { dayjs } from "@/utils/dateUtil";
+import { useSessionStorage } from "@vueuse/core";
 import { useStore } from "@/stores";
 import { useI18n } from "vue-i18n";
 
@@ -27,34 +28,27 @@ const { t } = useI18n();
 
 const emits = defineEmits(["onLoad"]);
 
-const isFinished = ref(false);
+const originalQuoteKey = dayjs().diff(dayjs("2024-04-14"), "day");
+
+const quoteKey = useSessionStorage<number>("quoteKey", originalQuoteKey);
 
 const quote = ref<IGetDaysQuotes>();
-const quoteOverflow = ref(false);
 
-const key = dayjs().diff(dayjs("2024-04-14"), "day");
-
-getDaysQuotes(key)
+getDaysQuotes(quoteKey.value)
 	.then((res) => {
 		quote.value = res;
-		isFinished.value = true;
 		emits("onLoad");
 	})
 	.catch((error) => {
 		// 如果传出的错误是超出最大值，则进行取余后再次请求
 		if (error.maxKey) {
-			getDaysQuotes(key % error.maxKey).then((res) => {
+			quoteKey.value = quoteKey.value % error.maxKey;
+			getDaysQuotes(quoteKey.value).then((res) => {
 				quote.value = res;
-				quoteOverflow.value = true;
-				isFinished.value = true;
 				emits("onLoad");
 			});
 		}
 	});
-
-defineExpose({
-	isFinished
-});
 </script>
 
 <style scoped>
