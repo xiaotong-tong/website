@@ -115,6 +115,7 @@ const reflectIcon = (icon: Props["icon"]) => {
 
 <style>
 .icon {
+	display: inline-block;
 	width: 1em;
 	height: 1em;
 	fill: currentColor;
