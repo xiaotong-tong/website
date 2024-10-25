@@ -16,25 +16,14 @@
 				<markdown class="content" :content="props.comment.content"></markdown>
 			</div>
 			<div class="right">
-				<!-- <xtt-button
-					v-if="userInfoStore.userInfo.id"
-					class="deleteBtn"
-					text
-					type="danger"
-					data-xtt-tooltip="删除该条评论"
-					@click="deleteBtnClick"
-				>
-					删除
-				</xtt-button> -->
-
-				<xtt-button
+				<NButton
 					class="replyBtn"
 					text
-					data-xtt-tooltip="回复该条评论"
+					aria-label="回复该条评论"
 					@click="replyCommentShowed = !replyCommentShowed"
 				>
 					<namiIcon icon="mdiReplyOutline" />
-				</xtt-button>
+				</NButton>
 			</div>
 		</div>
 		<transition name="fade">
@@ -58,10 +47,9 @@ import type { Comment } from "@/types/comment";
 import { ref, provide, inject } from "vue";
 import { addComment } from "@/api/blog/comment";
 import { markdown } from "@c/index";
-// import { useUserInfoStore } from "@/stores/user";
+import { NButton } from "naive-ui";
 import { useRoute } from "vue-router";
 const route = useRoute();
-// const userInfoStore = useUserInfoStore();
 
 interface Props {
 	comment: Comment;
@@ -75,20 +63,12 @@ const props = withDefaults(defineProps<Props>(), {
 
 const delected = ref(false);
 
-// const deleteBtnClick = () => {
-// 	if (confirm("确定删除该条评论吗？")) {
-// 		delectComment(props.comment.id).then(() => {
-// 			delected.value = true;
-// 		});
-// 	}
-// };
-
 const parentCommentId = inject("commentId", null);
 const childSubmitCallback = inject("commentsChildSubmitCallback", Function.prototype);
 
 const replyCommentShowed = ref(false);
 
-const replyCommentSubmitEvent = (data: { commentText: string; nickname: string; email: string; photoUrl: string }) => {
+const replyCommentSubmitEvent = (data: { commentText: string; nickname: string; photoUrl: string }) => {
 	const articleId = Number(route.params.id);
 
 	if (!articleId && !props.isGuestbook) return;
@@ -96,7 +76,6 @@ const replyCommentSubmitEvent = (data: { commentText: string; nickname: string; 
 	const commentBody = Object.assign(
 		{
 			nickname: data.nickname,
-			email: data.email,
 			content: data.commentText,
 			photoUrl: data.photoUrl,
 			parent: parentCommentId || props.comment.id,

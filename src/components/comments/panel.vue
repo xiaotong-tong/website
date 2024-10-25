@@ -6,16 +6,18 @@
 				<namiCommentsPhoto v-model:src="photoSrc" />
 			</label>
 			<label class="label">
-				{{ i18nStore.messages.comment.nickname }}
-				<xtt-input type="text" class="input" maxlength="32" v-model="nickname" placeholder="匿名" />
+				<span class="text-nowrap">{{ i18nStore.messages.comment.nickname }}</span>
+				<NInput type="text" class="bg-transparent" maxlength="32" v-model="nickname" placeholder="匿名" />
 			</label>
-			<!-- <label class="label">
-				{{ i18nStore.messages.comment.email }}
-				<xtt-input type="text" class="input" v-model="email" placeholder="example@a.com" />
-			</label> -->
 		</div>
 		<div class="content">
-			<xtt-textarea class="textarea" block auto-size v-model="commentText" />
+			<NInput
+				type="textarea"
+				class="bg-transparent"
+				v-model="commentText"
+				placeholder="请输入留言内容"
+				:rows="5"
+			/>
 
 			<div class="preview" v-if="previewShowed">
 				<div>
@@ -28,21 +30,9 @@
 		</div>
 		<div class="footer">
 			<div class="start">
-				<xtt-button
-					class="previewBtn"
-					text
-					:data-xtt-tooltip="
-						previewShowed
-							? i18nStore.messages.comment.previewTipClose
-							: i18nStore.messages.comment.previewTipOpen
-					"
-					:style="{
-						color: previewShowed ? '#f34159' : undefined
-					}"
-					@click="previewBtnClick"
-				>
+				<NButton class="previewBtn" text @click="previewBtnClick">
 					<namiIcon icon="mdiMapSearchOutline" />
-				</xtt-button>
+				</NButton>
 			</div>
 			<div class="end">
 				<NamiButton :borderColor="store.currentTheme" @click="submitEvent" @keydown.enter="submitEvent">
@@ -57,6 +47,7 @@
 import { ref } from "vue";
 import namiCommentsPhoto from "./photo.vue";
 import { markdown, NamiButton } from "@c/index";
+import { NInput, NButton } from "naive-ui";
 import { useI18nStore } from "@/stores/i18n";
 import { useStore } from "@/stores/index";
 
@@ -64,7 +55,7 @@ const store = useStore();
 const i18nStore = useI18nStore();
 
 const emits = defineEmits<{
-	(e: "submit", data: { commentText: string; nickname: string; email: string; photoUrl: string }): void;
+	(e: "submit", data: { commentText: string; nickname: string; photoUrl: string }): void;
 }>();
 
 const previewShowed = ref(false);
@@ -73,7 +64,6 @@ const photoSrc = ref("https://image.xtt.moe/images/mlian2.md.webp");
 
 const commentText = ref("");
 const nickname = ref("");
-const email = ref("");
 
 const previewBtnClick = () => {
 	previewShowed.value = !previewShowed.value;
@@ -83,13 +73,11 @@ const submitEvent = () => {
 	emits("submit", {
 		commentText: commentText.value,
 		nickname: nickname.value,
-		email: email.value,
 		photoUrl: photoSrc.value
 	});
 
 	commentText.value = "";
 	nickname.value = "";
-	email.value = "";
 
 	previewShowed.value = false;
 };
@@ -115,22 +103,6 @@ const submitEvent = () => {
 	align-items: center;
 	column-gap: 4px;
 }
-.input::part(input) {
-	border: none;
-	background-color: transparent;
-}
-.theme-dark .input::part(input) {
-	color: #fff;
-}
-
-.textarea::part(textarea) {
-	min-height: 100px;
-	border: none;
-	background-color: transparent;
-}
-.theme-dark .textarea::part(textarea) {
-	color: #fff;
-}
 
 .footer {
 	display: flex;
@@ -139,7 +111,6 @@ const submitEvent = () => {
 }
 
 .previewBtn:hover {
-	background-color: transparent;
 	color: #f34159;
 }
 

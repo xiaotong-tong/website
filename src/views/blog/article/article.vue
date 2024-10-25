@@ -110,11 +110,10 @@ const getActicle = async () => {
 		}
 	}
 };
-const commentSubmitEvent = (data: { commentText: string; nickname: string; email: string; photoUrl: string }) => {
+const commentSubmitEvent = (data: { commentText: string; nickname: string; photoUrl: string }) => {
 	addComment({
 		nickname: data.nickname,
 		photoUrl: data.photoUrl,
-		email: data.email,
 		content: data.commentText,
 		articleId: id.value
 	}).then(() => {

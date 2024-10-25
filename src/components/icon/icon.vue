@@ -1,9 +1,9 @@
 <template>
-	<xtt-icon class="icon">
+	<i class="icon">
 		<svg aria-hidden="true" viewBox="0 0 24 24">
 			<path :d="reflectIcon(props.icon)"></path>
 		</svg>
-	</xtt-icon>
+	</i>
 </template>
 
 <script setup lang="ts">
@@ -113,4 +113,15 @@ const reflectIcon = (icon: Props["icon"]) => {
 };
 </script>
 
-<style></style>
+<style>
+.icon {
+	width: 1em;
+	height: 1em;
+	fill: currentColor;
+}
+
+.theme-dark .icon {
+	color: #cfd3dc;
+	stroke: currentColor;
+}
+</style>

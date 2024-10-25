@@ -1,11 +1,11 @@
 <template>
 	<img :src="props.src" alt="评论头像" class="pic" @click="openChoicePicDialog" />
 
-	<xtt-dialog
-		align-center
-		class="choicePicDialog"
+	<Modal
+		v-model:show="showModal"
+		:color="store.currentTheme"
 		:title="i18nStore.lang === 'ja' ? '使うアバターを選んでください' : '请选择要使用的头像'"
-		ref="choicePicDialog"
+		@ok="submit"
 	>
 		<div class="active">
 			<p>
@@ -43,64 +43,28 @@
 				:key="item.id"
 				@click="choicePhtotClick(item.url)"
 			/>
-			<xtt-button
-				class="photo"
-				ref="upload"
-				:style="{
-					'border-radius': '50%',
-					'font-size': '24px',
-					display: 'flex',
-					'justify-content': 'center',
-					'align-items': 'center'
-				}"
-				@click="uploadImageEvent"
-				>+</xtt-button
-			>
 		</div>
 
-		<div style="margin-block-start: 16px">
-			<xtt-button
-				v-if="cropperSrc"
-				@click="cancelCropperSrc"
-				type="primary"
-				:style="{
-					'margin-block-end': '8px'
-				}"
-			>
-				{{ i18nStore.lang === "ja" ? "トリミングキャンセル" : "取消裁切" }}
-			</xtt-button>
-
-			<xtt-button
-				v-if="cropperSrc"
-				@click="getCropPic"
-				type="primary"
-				:style="{
-					'margin-block-end': '8px',
-					'margin-inline-start': '8px'
-				}"
-			>
-				{{ i18nStore.lang === "ja" ? "トリミング完了" : "完成裁切" }}
-			</xtt-button>
-
-			<namiCropper
-				v-if="cropperSrc"
-				:src="cropperSrc"
-				class="choicePicCropper"
-				ref="cropper"
-			></namiCropper>
-		</div>
-	</xtt-dialog>
+		<Cropper
+			class="mt-4"
+			:color="store.currentTheme"
+			@submit="avatarSubmit"
+			:asyncOkCallback="true"
+			:buttonText="'上传图片'"
+		></Cropper>
+	</Modal>
 </template>
 
 <script setup lang="ts">
-import type { XttDialogElement } from "xtt-ui";
-import { ref, reactive, onMounted } from "vue";
-import namiCropper from "@/components/cropper/cropper.vue";
+import { ref, reactive } from "vue";
 import { uploadImage } from "@/api/image/image";
+import { Modal, Cropper } from "@c/index";
 import { uploadPhoto, getPhotoList } from "@/api/blog/comment";
 import { useI18nStore } from "@/stores/i18n";
+import { useStore } from "@/stores";
 
 const i18nStore = useI18nStore();
+const store = useStore();
 
 const props = withDefaults(
 	defineProps<{
@@ -112,6 +76,7 @@ const props = withDefaults(
 );
 const emits = defineEmits(["update:src"]);
 
+const showModal = ref(false);
 const activePhoto = ref(props.src);
 
 const photoList: {
@@ -130,73 +95,45 @@ const getPhotos = async () => {
 };
 getPhotos();
 
-const choicePicDialog = ref<XttDialogElement | null>(null);
-const cropper = ref<InstanceType<typeof namiCropper> | null>(null);
-
 const openChoicePicDialog = () => {
-	choicePicDialog.value?.open();
-	cropper.value?.resetImage();
+	showModal.value = true;
 };
 
-const cropperSrc = ref("");
+// 提交裁切的图片
+async function avatarSubmit(canvas: any, callback?: Function) {
+	if (!canvas) {
+		callback?.();
+		return;
+	}
 
-const uploadImageEvent = () => {
-	const file = document.createElement("input");
-	file.type = "file";
-	file.accept = "image/*";
-	file.click();
-
-	file.onchange = async () => {
-		if (!file.files) {
-			return;
-		}
-		const url = URL.createObjectURL(file.files[0]);
-
-		cropperSrc.value = url;
-
-		file.remove();
-	};
-};
-const getCropPic = async () => {
-	const b64Data = await cropper.value?.toFileOfBase64();
+	const b64Data = await canvas.toDataURL("image/png");
 
 	if (b64Data) {
 		const { data } = await uploadImage(b64Data);
 
 		await uploadPhoto(data.url);
-		cropperSrc.value = "";
 		getPhotos();
 	}
-};
-const cancelCropperSrc = () => {
-	cropperSrc.value = "";
-};
+
+	callback?.();
+}
 
 const choicePhtotClick = (url: string) => {
 	activePhoto.value = url;
 };
 
-onMounted(() => {
-	choicePicDialog.value?.addEventListener("xtt-submit", () => {
-		emits("update:src", activePhoto.value);
-	});
-});
+function submit() {
+	emits("update:src", activePhoto.value);
+}
 </script>
 
 <style scoped>
-.choicePicDialog::part(dialog) {
-	width: min(calc(100% - 64px), 500px);
-}
 .pic {
 	width: 30px;
 	height: 30px;
 	vertical-align: middle;
 	cursor: pointer;
 	border-radius: 50%;
-}
-
-.choicePicCropper {
-	width: min(100%, 500px);
 }
 
 .photoWrap {
