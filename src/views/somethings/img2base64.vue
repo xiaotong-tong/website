@@ -6,7 +6,7 @@
 		<input type="file" accept="image/*" @change="fileChange" />
 
 		<p>base64:</p>
-		<xtt-textarea v-model="textarea" block rows="10"></xtt-textarea>
+		<NInput type="textarea" v-model="textarea" rows="10"></NInput>
 	</section>
 
 	<Teleport to="head">
@@ -17,6 +17,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { toDataUrl } from "xtt-utils";
+import { NInput } from "naive-ui";
 import { useI18nStore } from "@/stores/i18n";
 
 const i18nStore = useI18nStore();

@@ -11,16 +11,16 @@
 				</span>
 			</div>
 		</section>
-		<xtt-textarea
+		<NInput
+			type="textarea"
 			v-model="text"
 			placeholder="请输入聊天内容"
-			block
 			autosize
 			autofocus
 			@keydown="keydown"
-		></xtt-textarea>
+		></NInput>
 		<div style="text-align: end">
-			<xtt-button @click="chat" type="primary" :disabled="loading">发送</xtt-button>
+			<NamiButton @click="chat" :disabled="loading">发送</NamiButton>
 		</div>
 	</section>
 </template>
@@ -28,6 +28,8 @@
 <script setup lang="ts">
 import { chatWithBot } from "@/api/chat/chat";
 import { ref, nextTick } from "vue";
+import { NInput } from "naive-ui";
+import { NamiButton } from "@c/index";
 
 const text = ref("");
 const history = ref<string[]>([]);

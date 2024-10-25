@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<xtt-button ref="btn" @click="togglePIP"> Toggle Picture-in-Picture </xtt-button>
+		<NamiButton ref="btn" @click="togglePIP"> Toggle Picture-in-Picture </NamiButton>
 
 		<iframe
 			ref="content"
@@ -15,6 +15,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { NamiButton } from "@c/index";
 
 const btn = ref<HTMLElement | null>(null);
 const content = ref<HTMLElement | null>(null);

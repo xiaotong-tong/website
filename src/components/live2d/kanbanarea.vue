@@ -18,10 +18,8 @@
 		<namiChatBox ref="chatBox"></namiChatBox>
 
 		<div class="chat-input-box" v-if="chatInputShowed">
-			<xtt-input v-model="chatInputElConent"></xtt-input>
-			<xtt-button @click="chatInputSubmitEvent" :disabled="chatLoading ? true : undefined"
-				>提交</xtt-button
-			>
+			<NInput v-model="chatInputElConent" class="w-[180px]"></NInput>
+			<NButton @click="chatInputSubmitEvent" :disabled="chatLoading ? true : undefined">提交</NButton>
 		</div>
 	</section>
 </template>
@@ -29,6 +27,7 @@
 <script setup lang="ts">
 import { onMounted, ref, onBeforeUnmount } from "vue";
 import namiChatBox from "@/components/live2d/chatbox.vue";
+import { NInput, NButton } from "naive-ui";
 import { chatWithBot } from "@/api/chat/chat";
 import { useLive2dStore } from "@/stores/live2d";
 

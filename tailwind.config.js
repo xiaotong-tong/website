@@ -25,6 +25,11 @@ module.exports = {
 					return {
 						"margin-block-end": value
 					};
+				},
+				mss: (value) => {
+					return {
+						"margin-block-start": value
+					};
 				}
 			};
 

@@ -63,7 +63,7 @@
 				:ref="appendIcon"
 				class="icon"
 				icon="mdiHomeOutline"
-				data-xtt-tooltip="首页"
+				aria-label="首页"
 				@click="router.push('/')"
 				@mouseenter="live2d?.showChatBox('要回到首页吗？', 3000)"
 			></namiIcon>
@@ -71,7 +71,7 @@
 				:ref="appendIcon"
 				class="icon"
 				:icon="chatInputBoxShowed ? 'mdiChatRemoveOutline' : 'mdiChatOutline'"
-				:data-xtt-tooltip="chatInputBoxShowed ? '关闭聊天框' : '打开聊天框'"
+				:aria-label="chatInputBoxShowed ? '关闭聊天框' : '打开聊天框'"
 				@click="chatInputBoxClickEvent"
 				@mouseenter="live2d?.showChatBox('想聊聊天吗？', 3000)"
 			></namiIcon>
@@ -80,14 +80,14 @@
 				:ref="appendIcon"
 				class="icon"
 				icon="mdiBookEditOutline"
-				data-xtt-tooltip="新增 blog"
+				aria-label="新增 blog"
 				@click="router.push('/editor/add')"
 			></namiIcon>
 			<namiIcon
 				:ref="appendIcon"
 				class="icon"
 				icon="mdiThemeLightDark"
-				data-xtt-tooltip="切换主题"
+				aria-label="切换主题"
 				@click="store.isDark = !store.isDark"
 				@mouseenter="live2d?.showChatBox('点击可以切换深色或浅色模式哦~', 3000)"
 			></namiIcon>
@@ -95,11 +95,10 @@
 				:ref="appendIcon"
 				class="icon"
 				icon="mdiClose"
-				data-xtt-tooltip="隐藏 live2d"
+				aria-label="隐藏 live2d"
 				@click="live2dShowed = false"
 				@mouseenter="live2d?.showChatBox('还需要我帮忙吗？', 3000)"
 			></namiIcon>
-			<xtt-tooltip ref="iconTooltip">default value</xtt-tooltip>
 		</template>
 	</kanbanarea>
 
@@ -109,7 +108,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, provide, computed } from "vue";
+import { ref, provide, computed } from "vue";
 import kanbanarea from "@/components/live2d/kanbanarea.vue";
 import namiHeader from "@/components/page/header/header.vue";
 import namiMHeader from "@/components/page/header/m-header.vue";
@@ -122,7 +121,6 @@ import { useRouter } from "vue-router";
 import { useStore } from "@/stores/index";
 import { useUserInfoStore } from "@/stores/user";
 import { useContentRefStore } from "@/stores/contentRef";
-import type { XttTooltipElement } from "xtt-ui/index.d.ts";
 import { bgUrl } from "@/utils/webBG";
 import { useElementBounding, useScroll } from "@vueuse/core";
 
@@ -146,7 +144,6 @@ setTimeout(() => {
 	aplayerShowed.value = true;
 }, 1000 * 10);
 
-const iconTooltip = ref<XttTooltipElement | null>(null);
 const icons: HTMLElement[] = [];
 
 const chatInputBoxShowed = ref(false);
@@ -167,10 +164,6 @@ const appendIcon = (icon: any) => {
 const namiNavRef = ref<typeof namiNav>();
 
 provide("namiNavRef", namiNavRef);
-
-onMounted(() => {
-	iconTooltip.value?.initTrigger(icons);
-});
 
 const tipIsShow = computed(() => {
 	return store.isSmallScreen

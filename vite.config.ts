@@ -38,7 +38,8 @@ export default defineConfig({
 			template: {
 				compilerOptions: {
 					// 以 xtt- 开头的标签都当作 Web Components 自定义元素处理
-					isCustomElement: (tag) => tag.startsWith("xtt-") || tag.startsWith("cropper-")
+					// isCustomElement: (tag) => tag.startsWith("xtt-") || tag.startsWith("cropper-")
+					isCustomElement: (tag) => tag.startsWith("cropper-")
 				}
 			}
 		})

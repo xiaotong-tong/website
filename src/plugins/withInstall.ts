@@ -1,6 +1,3 @@
-// 加载 xtt-ui 组件库
-import "xtt-ui";
-
 // 加载网站公共样式
 import "@/assets/css/style.css";
 import "@/assets/css/color.css";

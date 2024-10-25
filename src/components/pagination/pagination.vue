@@ -2,26 +2,24 @@
 	<nav ref="pagination" v-if="!isSinglePage">
 		<ul class="pagination">
 			<li class="item">
-				<xtt-button
+				<NButton
 					class="button arrow-button"
 					@click="currentPageChange(currentPage - 1)"
 					:disabled="currentPage === 1"
-					>&lt;</xtt-button
+					>&lt;</NButton
 				>
 			</li>
 			<li v-for="item in list" :key="item.id" class="item">
-				<xtt-button
-					:class="['button', item.class, { current: item.current }]"
-					@click="item.click"
-					>{{ item.value }}</xtt-button
-				>
+				<NButton :class="['button', item.class, { current: item.current }]" @click="item.click">{{
+					item.value
+				}}</NButton>
 			</li>
 			<li class="item">
-				<xtt-button
+				<NButton
 					class="button arrow-button"
 					@click="currentPageChange(currentPage + 1)"
 					:disabled="currentPage === pageCount"
-					>&gt;</xtt-button
+					>&gt;</NButton
 				>
 			</li>
 		</ul>
@@ -30,6 +28,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, watch, nextTick, onUnmounted } from "vue";
+import { NButton } from "naive-ui";
 
 const liWidth = 40;
 const gap = 8;
@@ -256,8 +255,7 @@ onUnmounted(() => {
 	border: none;
 	font-size: 16px;
 	border-radius: 4px;
-	box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
-		0 1px 5px 0 rgb(0 0 0 / 12%);
+	box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
 	background-color: #ffffffaa;
 	backdrop-filter: blur(5px);
 	color: var(--color);

@@ -1,48 +1,39 @@
 <template>
 	<header class="header web-color-default">
-		<xtt-icon-button class="menu" @click="sidebarShowed = true"
+		<NButton class="text-[22px] ml-2" text @click="sidebarShowed = true"
 			><nami-icon icon="mdiMenu"></nami-icon
-		></xtt-icon-button>
+		></NButton>
 		<h1 class="title">星川漣の家</h1>
 	</header>
 
 	<div class="sidebar" v-show="sidebarShowed" @click.self="sidebarShowed = false">
 		<div class="main">
 			<h2 class="side-title">星川漣</h2>
-			<xtt-icon-button class="close" @click="sidebarShowed = false"
+			<NButton class="absolute top-2 right-2 text-[22px]" text @click="sidebarShowed = false"
 				><nami-icon icon="mdiClose"></nami-icon
-			></xtt-icon-button>
+			></NButton>
 			<div class="side-menus">
 				<div class="side-menu-item-title">
 					{{ t("main.nav.quickFeat") }}
 				</div>
 				<div class="side-menu-item">
-					<xtt-button class="side-menu-item-unit" @click="store.isDark = !store.isDark">
+					<NButton class="side-menu-item-unit" @click="store.isDark = !store.isDark">
 						<namiIcon icon="mdiThemeLightDark"></namiIcon>
 						{{ store.isDark ? t("main.nav.toLightMode") : t("main.nav.toDarkMode") }}
-					</xtt-button>
+					</NButton>
 
-					<xtt-button
+					<NButton
 						class="side-menu-item-unit"
 						@click="i18nStore.lang = i18nStore.lang === 'zh' ? 'ja' : 'zh'"
 					>
 						<namiIcon icon="mdiTranslate"></namiIcon>
-						{{
-							i18nStore.lang === "zh"
-								? t("main.nav.toJaLang")
-								: t("main.nav.toZhLang")
-						}}
-					</xtt-button>
+						{{ i18nStore.lang === "zh" ? t("main.nav.toJaLang") : t("main.nav.toZhLang") }}
+					</NButton>
 
-					<xtt-button
-						class="side-menu-item-unit"
-						@click="store.animeLess = !store.animeLess"
-					>
+					<NButton class="side-menu-item-unit" @click="store.animeLess = !store.animeLess">
 						<namiIcon icon="mdiAnimationPlayOutline"></namiIcon>
-						{{
-							store.animeLess ? t("main.nav.toAnimeLess") : t("main.nav.toAnimeMore")
-						}}
-					</xtt-button>
+						{{ store.animeLess ? t("main.nav.toAnimeLess") : t("main.nav.toAnimeMore") }}
+					</NButton>
 				</div>
 
 				<div class="side-menu-item-title">
@@ -124,6 +115,7 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import kanbanarea from "@/components/live2d/kanbanarea.vue";
+import { NButton } from "naive-ui";
 import { useStore } from "@/stores/index";
 import { useI18nStore } from "@/stores/i18n";
 import { useI18n } from "vue-i18n";
@@ -153,10 +145,6 @@ router.afterEach(() => {
 	transition: background-color 0.5s;
 }
 
-.menu {
-	border: none;
-}
-
 .title {
 	flex: 1;
 	font-family: luoliti, sans-serif;
@@ -184,13 +172,6 @@ router.afterEach(() => {
 .theme-dark .sidebar .main {
 	background-color: #1e1e1e;
 	color: #cfd3dc;
-}
-
-.sidebar .close {
-	position: absolute;
-	top: 8px;
-	right: 8px;
-	border: none;
 }
 
 .side-title {
