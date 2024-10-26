@@ -101,6 +101,9 @@ const getActicle = async () => {
 		title.value = data[i18nStore.lang === "ja" ? "jaTitle" : "title"];
 		// 修改页面标题
 		document.title = title.value + " - 星川漣の家";
+
+		// 获取文章成功后再获取文章评论，因为评论不是主要内容，避免影响文章的加载速度
+		getComments();
 	} catch (error) {
 		// 如果请求文章失败，并且状态码为 404，那么就跳转到 404 页面
 		if ((error as any).response?.status === 404) {
@@ -131,7 +134,7 @@ const getComments = async () => {
 };
 
 getActicle();
-getComments();
+
 
 provide("commentsChildSubmitCallback", () => {
 	getComments();
@@ -141,7 +144,6 @@ provide("commentsChildSubmitCallback", () => {
 onBeforeRouteUpdate((to, _) => {
 	id.value = Number(to.params.id);
 	getActicle();
-	getComments();
 });
 
 watch(
