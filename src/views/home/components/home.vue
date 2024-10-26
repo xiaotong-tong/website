@@ -33,6 +33,10 @@
 	<section v-show="!loaded">
 		<namiPageLoading></namiPageLoading>
 	</section>
+
+	<Teleport to="head">
+		<link rel="preload" href="https://api.xtt.moe/days/poetry/self" as="fetch" />
+	</Teleport>
 </template>
 
 <script setup lang="ts">

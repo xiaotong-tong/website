@@ -46,7 +46,8 @@ export async function getActicleList(params?: GetActicleListFilters): Promise<Ac
 
 	const data: AxiosResponse<Acticle[]> = await http.get("/acticle/list", {
 		params: {
-			withOutContent: true
+			withOutContent: true,
+			lang: lang
 		}
 	});
 
@@ -68,16 +69,27 @@ export async function getActicleList(params?: GetActicleListFilters): Promise<Ac
 	});
 }
 
-export async function getActicleById(id: number): Promise<ActicleById> {
+export async function getActicleById(
+	id: number,
+	params: {
+		lang?: string;
+	}
+): Promise<ActicleById> {
+	const { lang } = params;
+
 	// 如果缓存中有数据，直接返回缓存中的数据
-	if (catchs.has("acticleId" + id)) {
-		return catchs.get("acticleId" + id).value;
+	if (catchs.has(lang + "acticleId" + id)) {
+		return catchs.get(lang + "acticleId" + id).value;
 	}
 
-	const data = (await http.get(`/acticle/${id}`)).data;
+	const data = (
+		await http.get(`/acticle/${id}`, {
+			params
+		})
+	).data;
 
 	// 将数据缓存
-	catchs.set("acticleId" + id, {
+	catchs.set(lang + "acticleId" + id, {
 		value: data,
 		expires: Date.now() + 1000 * 60 * 10 // 设置缓存时间为10分钟，其实没有意义，因为数据不会改变
 	});

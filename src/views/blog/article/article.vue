@@ -1,11 +1,11 @@
 <template>
-	<div class="flex justify-end mb-2 gap-x-4 pe-4">
-		<TextButton v-if="content" type="primary" @click="downloadMd">下载</TextButton>
+	<div class="flex justify-end mb-2 gap-x-4 pe-4" v-if="acticle">
+		<TextButton type="primary" @click="downloadMd">下载</TextButton>
 		<Link v-login type="primary" :to="'/editor/edit/' + id">编辑</Link>
 	</div>
 	<section class="container web-color-default" v-if="acticle">
 		<h2 class="text-xl font-bold">
-			{{ title }}
+			{{ acticle.title }}
 		</h2>
 		<p>
 			<span class="mr-4">
@@ -18,10 +18,10 @@
 				{{ acticle?.updateDate }}</span
 			>
 
-			<span># {{ i18nStore.lang === "ja" ? acticle.jaCategory || acticle.category : acticle.category }}</span>
+			<span># {{ acticle.category }}</span>
 		</p>
 
-		<markdown class="up:mt-4" :content="content" :textLine="true" :isDark="store.isDark"></markdown>
+		<markdown class="up:mt-4" :content="acticle.content" :textLine="true" :isDark="store.isDark"></markdown>
 
 		<div class="pagination">
 			<Link :to="'/article/' + acticle.prev.id" v-if="acticle?.prev" class="link">{{
@@ -45,20 +45,15 @@
 	</section>
 
 	<Teleport to="head">
+		<link rel="preload" :href="'https://api.xtt.moe/acticle/' + id" as="fetch" />
+
 		<link rel="alternate" hreflang="ja" :href="'https://xtt.moe/ja/article/' + id" />
 		<link rel="alternate" hreflang="zh" :href="'https://xtt.moe/article/' + id" />
 		<link rel="alternate" hreflang="x-default" :href="'https://xtt.moe/article/' + id" />
 		<link ref="canonical" :href="'https://xtt.moe/article/' + id" />
 	</Teleport>
 
-	<template v-if="i18nStore.lang === 'ja'">
-		<Teleport to="head">
-			<!-- 如果文章中有 tags 属性，那么就将 tags 的内容添加到 meta 标签中的 keywords 中 -->
-			<meta v-if="acticle?.jaTags" name="keywords" :content="acticle?.jaTags" />
-			<meta v-if="acticle?.jaAbstract" name="description" :content="acticle?.jaAbstract" />
-		</Teleport>
-	</template>
-	<template v-else>
+	<template>
 		<Teleport to="head">
 			<!-- 如果文章中有 tags 属性，那么就将 tags 的内容添加到 meta 标签中的 keywords 中 -->
 			<meta v-if="acticle?.tags" name="keywords" :content="acticle?.tags" />
@@ -86,21 +81,21 @@ const i18nStore = useI18nStore();
 const id = ref(Number(route.params.id));
 
 const acticle = ref<ActicleById | null>(null);
-const content = ref("");
-const title = ref("");
 
 // 获取文章内容
 const getActicle = async () => {
 	if (!id.value) return;
 
+	acticle.value = null;
+
 	try {
-		const data = await getActicleById(id.value);
+		const data = await getActicleById(id.value, {
+			lang: i18nStore.lang
+		});
 		acticle.value = data;
 
-		content.value = data[i18nStore.lang === "ja" ? "jaContent" : "content"];
-		title.value = data[i18nStore.lang === "ja" ? "jaTitle" : "title"];
 		// 修改页面标题
-		document.title = title.value + " - 星川漣の家";
+		document.title = data.title + " - 星川漣の家";
 
 		// 获取文章成功后再获取文章评论，因为评论不是主要内容，避免影响文章的加载速度
 		getComments();
@@ -135,7 +130,6 @@ const getComments = async () => {
 
 getActicle();
 
-
 provide("commentsChildSubmitCallback", () => {
 	getComments();
 });
@@ -149,23 +143,20 @@ onBeforeRouteUpdate((to, _) => {
 watch(
 	() => i18nStore.lang,
 	() => {
-		if (acticle.value) {
-			content.value = acticle.value[i18nStore.lang === "ja" ? "jaContent" : "content"];
-			title.value = acticle.value[i18nStore.lang === "ja" ? "jaTitle" : "title"];
-			// 修改页面标题
-			document.title = title.value + " - 星川漣の家";
-		}
+		getActicle();
 	}
 );
 
 // 下载文章为 md 文件
 const downloadMd = () => {
-	const mdText = `# ${title.value}\n\n${content.value}`;
+	if (acticle.value === null) return;
+
+	const mdText = `# ${acticle.value.title}\n\n${acticle.value.content}`;
 	const blob = new Blob([mdText], { type: "text/plain" });
 	const url = URL.createObjectURL(blob);
 	const a = document.createElement("a");
 	a.href = url;
-	a.download = `${title.value}.md`;
+	a.download = `${acticle.value.title}.md`;
 	a.click();
 	URL.revokeObjectURL(url);
 };
