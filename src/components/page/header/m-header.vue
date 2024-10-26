@@ -107,7 +107,7 @@
 			</div>
 		</div>
 
-		<kanbanarea ref="live2d" class="m-live2d"> </kanbanarea>
+		<kanbanarea v-if="sidebarShowed && live2dShowed" ref="live2d" class="m-live2d"> </kanbanarea>
 	</div>
 </template>
 
@@ -126,6 +126,12 @@ const router = useRouter();
 const { t } = useI18n();
 
 const sidebarShowed = ref(false);
+
+const live2dShowed = ref(false);
+// Aplayer 和 live2d 相关的文件过大，在首页加载会影响首页加载速度，所以在首页加载完成 10 秒后再加载 live2d 相关文件
+setTimeout(() => {
+	live2dShowed.value = true;
+}, 1000 * 10);
 
 router.afterEach(() => {
 	sidebarShowed.value = false;
