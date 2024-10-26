@@ -55,10 +55,10 @@ export default defineConfig({
 		rollupOptions: {
 			output: {
 				manualChunks: {
-					xttUtils: ["xtt-utils"],
+					xttUtils: ["xtt-utils"]
 
 					// 主页面
-					main: ["./src/views/home.vue"],
+					// main: ["./src/views/home.vue"],
 
 					// // 主页面中右侧 nav 副主页面的内容
 					// subMain: [
@@ -84,7 +84,7 @@ export default defineConfig({
 					// ],
 
 					// 非网站使用页面
-					other: ["./src/views/bot/ruby.vue"],
+					// other: ["./src/views/bot/ruby.vue"],
 
 					// // tools 子页面
 					// tools: [
@@ -106,10 +106,10 @@ export default defineConfig({
 					// 	"./src/views/save/children/daysQuote/daysQuote.vue"
 					// ],
 
-					blog: ["./src/views/blog/article/article.vue"],
-					editor: ["./src/views/blog/editor/add.vue", "./src/views/blog/editor/edit.vue"],
-					ex: ["./src/views/ex/space/index.vue", "./src/views/ex/pip/index.vue"],
-					cv: ["./src/views/cv/cv.pdf.vue"]
+					// blog: ["./src/views/blog/article/article.vue"],
+					// editor: ["./src/views/blog/editor/add.vue", "./src/views/blog/editor/edit.vue"],
+					// ex: ["./src/views/ex/space/index.vue", "./src/views/ex/pip/index.vue"],
+					// cv: ["./src/views/cv/cv.pdf.vue"]
 				}
 			}
 		}
