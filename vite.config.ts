@@ -60,51 +60,51 @@ export default defineConfig({
 					// 主页面
 					main: ["./src/views/home.vue"],
 
-					// 主页面中右侧 nav 副主页面的内容
-					subMain: [
-						"./src/views/blog/home.vue",
-						"./src/views/music/music.vue",
-						"./src/views/save/save.vue",
-						"./src/views/tools/tools.vue",
-						"./src/views/info/info.vue",
-						"./src/views/setting/index.vue"
-					],
+					// // 主页面中右侧 nav 副主页面的内容
+					// subMain: [
+					// 	"./src/views/blog/home.vue",
+					// 	"./src/views/music/music.vue",
+					// 	"./src/views/save/save.vue",
+					// 	"./src/views/tools/tools.vue",
+					// 	"./src/views/info/info.vue",
+					// 	"./src/views/setting/index.vue"
+					// ],
 
-					// 非主页面右侧 nav 部分副页面的内容
-					sub: [
-						"./src/views/404.vue",
-						"./src/views/login/login.vue",
-						"./src/views/character/character.vue",
-						"./src/views/links/links.vue",
-						"./src/views/blog/guestbook/index.vue",
-						"./src/views/bot/bot.vue",
-						"./src/views/sitemap/index.vue",
-						"./src/views/dashboard/index.vue",
-						"./src/views/archives/archives.vue"
-					],
+					// // 非主页面右侧 nav 部分副页面的内容
+					// sub: [
+					// 	"./src/views/404.vue",
+					// 	"./src/views/login/login.vue",
+					// 	"./src/views/character/character.vue",
+					// 	"./src/views/links/links.vue",
+					// 	"./src/views/blog/guestbook/index.vue",
+					// 	"./src/views/bot/bot.vue",
+					// 	"./src/views/sitemap/index.vue",
+					// 	"./src/views/dashboard/index.vue",
+					// 	"./src/views/archives/archives.vue"
+					// ],
 
 					// 非网站使用页面
 					other: ["./src/views/bot/ruby.vue"],
 
-					// tools 子页面
-					tools: [
-						"./src/views/somethings/kana.vue",
-						"./src/views/somethings/qrcode.vue",
-						"./src/views/somethings/pinyin.vue",
-						"./src/views/somethings/img2base64.vue",
-						"./src/views/somethings/toWebp.vue",
-						"./src/views/somethings/sudoku.vue",
-						"./src/views/somethings/chat.vue"
-					],
-					// save 子页面
-					save: [
-						"./src/views/reading/index.vue",
-						"./src/views/save/children/webLinks/links.vue",
-						"./src/views/save/children/emoji/emoji.vue",
-						"./src/views/photos/index.vue",
-						"./src/views/save/children/jpWord/kudamono.vue",
-						"./src/views/save/children/daysQuote/daysQuote.vue"
-					],
+					// // tools 子页面
+					// tools: [
+					// 	"./src/views/somethings/kana.vue",
+					// 	"./src/views/somethings/qrcode.vue",
+					// 	"./src/views/somethings/pinyin.vue",
+					// 	"./src/views/somethings/img2base64.vue",
+					// 	"./src/views/somethings/toWebp.vue",
+					// 	"./src/views/somethings/sudoku.vue",
+					// 	"./src/views/somethings/chat.vue"
+					// ],
+					// // save 子页面
+					// save: [
+					// 	"./src/views/reading/index.vue",
+					// 	"./src/views/save/children/webLinks/links.vue",
+					// 	"./src/views/save/children/emoji/emoji.vue",
+					// 	"./src/views/photos/index.vue",
+					// 	"./src/views/save/children/jpWord/kudamono.vue",
+					// 	"./src/views/save/children/daysQuote/daysQuote.vue"
+					// ],
 
 					blog: ["./src/views/blog/article/article.vue"],
 					editor: ["./src/views/blog/editor/add.vue", "./src/views/blog/editor/edit.vue"],

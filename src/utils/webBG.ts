@@ -3,8 +3,8 @@ import { ref } from "vue";
 import { useStore } from "@/stores/index";
 
 const bgMap = {
-	dark: "https://image.xtt.moe/images/eso1242a.webp",
-	light: "https://image.xtt.moe/images/bg.webp"
+	dark: "https://data.xtt.moe/eso1242a.webp",
+	light: "https://data.xtt.moe/bg.webp"
 };
 
 const dbPromise = openDB("xtt-web-bg-table", 1, {
@@ -37,8 +37,7 @@ export const initWebBGUrl = async (defaultUrl?: string, key?: "dark" | "light") 
 	typeof lightContent === "string" && (lightBgUrl.value = lightContent);
 	typeof darkContent === "string" && (darkBgUrl.value = darkContent);
 
-	(content instanceof Blob || content instanceof File) &&
-		(bgUrl.value = URL.createObjectURL(content));
+	(content instanceof Blob || content instanceof File) && (bgUrl.value = URL.createObjectURL(content));
 	(lightContent instanceof Blob || lightContent instanceof File) &&
 		(lightBgUrl.value = URL.createObjectURL(lightContent));
 	(darkContent instanceof Blob || darkContent instanceof File) &&
@@ -47,10 +46,7 @@ export const initWebBGUrl = async (defaultUrl?: string, key?: "dark" | "light") 
 	return bgUrl;
 };
 
-export const setWebBGUrl = async (
-	content: string | Blob | File | undefined | null,
-	key?: "dark" | "light"
-) => {
+export const setWebBGUrl = async (content: string | Blob | File | undefined | null, key?: "dark" | "light") => {
 	const store = useStore();
 
 	if (!key) {
