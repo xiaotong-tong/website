@@ -28,7 +28,7 @@
 					: "自定义上传的头像会向所有人员公开，所有人都可以使用"
 			}}
 		</span>
-		<div class="photoWrap">
+		<div class="photoWrap" v-if="showModal">
 			<img
 				class="photo"
 				src="https://image.xtt.moe/images/mlian2.md.webp"
@@ -46,6 +46,7 @@
 		</div>
 
 		<Cropper
+			v-if="showModal"
 			class="mt-4"
 			:color="store.currentTheme"
 			@submit="avatarSubmit"
