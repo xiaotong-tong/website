@@ -3,8 +3,14 @@ title: android 和 pc 的调试
 author: 小恸恸
 createDate: 2024-01-02
 updateDate: 2024-09-20
+category: 网络互联
 tags: android,localhost,debug,inspect
+thumbnail: https://image.xtt.moe/local/images/2024/09/20/GALCG----2.jpg
 abstract: 本文主要介绍如何使用手机访问电脑的 localhost，以及使用 Chrome 调试手机页面
+prevId: 23
+prevTitle: documentPictureInPicture API 学习记录
+nextId: 25
+nextTitle: 使用 Web NFC 实现手机端浏览器的登录功能
 ---
 
 ## 使用手机访问电脑的 localhost

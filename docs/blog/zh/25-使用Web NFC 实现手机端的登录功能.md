@@ -3,8 +3,13 @@ title: 使用 Web NFC 实现手机端浏览器的登录功能
 author: 小恸恸
 createDate: 2024-01-02
 updateDate: 2024-09-19
+category: 网络互联
 tags: nfc
 abstract: 学习并了解如何使用 Web NFC 实现NFC卡片的读取与写入，然后实现手机端通过刷卡登录的功能。
+prevId: 24
+prevTitle: android 和 pc 的调试
+nextId: 26
+nextTitle: 在 Linux 中运行 Puppeteer
 ---
 
 ## 前言

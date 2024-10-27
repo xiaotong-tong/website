@@ -6,6 +6,8 @@ category: ウェブ
 tags: tailwind,css
 thumbnail: https://image.xtt.moe/local/images/2024/10/14/0c9de0473b4cfceaf2e386893409125b-2.jpg
 abstract: is() セレクタを使用してセレクタの優先度を上げ、tailwind プラグインを作成して修飾子をカスタマイズし、`up:` 修飾子を使用してセレクタの優先度を上げます。
+prevId: 32
+prevTitle: ヨルシカ - 憂、燦々 歌詞
 ---
 
 ## 前書き

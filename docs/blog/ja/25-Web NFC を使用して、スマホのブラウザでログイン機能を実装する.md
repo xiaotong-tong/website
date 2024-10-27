@@ -2,9 +2,13 @@
 title: Web NFC を使用して、スマホのブラウザでログイン機能を実装する
 author: 星川漣
 createDate: 2024-09-19
-updateDate: 2024-09-19
+category: ウェブ
 tags: nfc
 abstract: Web NFC を使用して、NFC カードの読み取りと書き込みを勉強します、そして、スマホでカードをスキャンしてログインする機能を実装します。
+prevId: 24
+prevTitle: android と pc のデバッグ
+nextId: 26
+nextTitle: Linux で Puppeteer を実行する
 ---
 
 ## はじめに

@@ -2,9 +2,14 @@
 title: monaco编辑器使用
 author: 小恸恸
 createDate: 2024-09-13
-updateDate: 2024-09-13
+category: 网络互联
 tags: monaco, editor
+thumbnail: https://image.xtt.moe/local/images/2024/09/13/5----.jpg
 abstract: monaco编辑器使用与vue中使用卡死问题的记录
+prevId: 28
+prevTitle: QQ机器人开发(1) - 注册与权限认证
+nextId: 31
+nextTitle: QQ机器人开发(2)-私聊信息的接收与回复
 ---
 
 # monaco 编辑器使用

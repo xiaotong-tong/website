@@ -2,9 +2,14 @@
 title: android と pc のデバッグ
 author: 星川漣
 createDate: 2024-09-20
-updateDate: 2024-09-20
+category: ウェブ
 tags: android,localhost,debug,inspect
+thumbnail: https://image.xtt.moe/local/images/2024/09/20/GALCG----2.jpg
 abstract: スマホで PC の localhost にアクセスする方法と、Chrome でスマホのページをデバッグする方法を紹介します
+prevId: 23
+prevTitle: documentPictureInPicture API 勉強記録
+nextId: 25
+nextTitle: Web NFC を使用して、スマホのブラウザでログイン機能を実装する
 ---
 
 ## スマホで PC の localhost にアクセスする

@@ -2,9 +2,14 @@
 title: QQ bot 開発(2) - プライベートメッセージの受信と返信
 author: 星川漣
 createDate: 2024-09-24
-updateDate: 2024-09-24
+category: ウェブ
 tags: nodejs,QQ bot
+thumbnail: https://image.xtt.moe/local/images/2024/09/24/planetarian---.gif
 abstract: QQ　公式ロボットの開発チュートリアル、この記事では、QQ ロボットのプライベートメッセージの受信と返信方法について説明します。
+prevId: 30
+prevTitle: monaco-editorの使い方
+nextId: 32
+nextTitle: ヨルシカ - 憂、燦々 歌詞
 ---
 
 > [QQ bot 開発(1) - 登録と権限認証](https://xtt.moe/ja/article/28)

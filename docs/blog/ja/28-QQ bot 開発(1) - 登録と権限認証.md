@@ -2,9 +2,14 @@
 title: QQ bot 開発(1) - 登録と権限認証
 author: 星川漣
 createDate: 2024-09-17
-updateDate: 2024-09-17
+category: ウェブ
 tags: nodejs,QQ bot
+thumbnail: https://image.xtt.moe/local/images/2024/09/16/ATRI--My-Dear-Moments--CG---.jpg
 abstract: QQ　公式ロボットの登録と開発の権限認証の方法を紹介します。
+prevId: 27
+prevTitle: ナミダノコエ 歌詞
+nextId: 30
+nextTitle: monaco-editorの使い方
 ---
 
 > 開発する前に、QQ 番号を持っている必要がある。

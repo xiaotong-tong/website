@@ -2,9 +2,13 @@
 title: Linux で Puppeteer を実行する
 author: 星川漣
 createDate: 2024-09-17
-updateDate: 2024-09-17
+category: ウェブ
 tags: linux, puppeteer
 abstract: Linux で Puppeteer を実行する方法について説明します。puppeteer パッケージのインストール、chromium が必要とする依存関係のインストール、フォントのインストールなどについて説明します。
+prevId: 25
+prevTitle: Web NFC を使用して、スマホのブラウザでログイン機能を実装する
+nextId: 27
+nextTitle: ナミダノコエ 歌詞
 ---
 
 windows で Puppeteer を実行するのは簡単です。puppeteer パッケージをインストールするだけです。しかし、Linux で Puppeteer を実行する場合、依存関係が不足して実行に失敗する、フォントが不足してページが文字化けするなどの問題が発生する可能性があります。

@@ -2,9 +2,14 @@
 title: monaco-editorの使い方
 author: 星川漣
 createDate: 2024-09-15
-updateDate: 2024-09-15
+category: ウェブ
 tags: monaco, editor
+thumbnail: https://image.xtt.moe/local/images/2024/09/13/5----.jpg
 abstract: monaco-editorの使い方とVueでの使用時のフリーズ問題の記録
+prevId: 28
+prevTitle: QQ bot 開発(1) - 登録と権限認証
+nextId: 31
+nextTitle: QQ bot 開発(2) - プライベートメッセージの受信と返信
 ---
 
 # monaco-editor の使い方
