@@ -6,6 +6,8 @@ import type { ManifestOptions } from "vite-plugin-pwa";
 import { VitePWA } from "vite-plugin-pwa";
 import manifest from "./manifest.json" assert { type: "json" };
 // import monacoEditorPlugin from "vite-plugin-monaco-editor";
+// import vitePrerender from "vite-plugin-prerender";
+// import { viteStaticCopy } from "vite-plugin-static-copy";
 
 const isDev = process.env.NODE_ENV === "development";
 
@@ -26,14 +28,21 @@ export default defineConfig({
 			},
 			strategies: "injectManifest",
 			srcDir: "src",
-			filename: "sw.ts"
+			filename: "sw.ts",
 			// registerType: "autoUpdate"
+			injectManifest: {
+				maximumFileSizeToCacheInBytes: 10000000
+			}
 			// workbox: {
 			// 	globPatterns: [
 			// 		"**/*.{js,css,html,png,jpg,jpeg,svg,webp,woff2,woff,ttf,eot,mp3,pdf}"
 			// 	]
 			// }
 		}),
+		// vitePrerender({
+		// 	routes: ["/"],
+		// 	staticDir: "dist"
+		// }),
 		vue({
 			template: {
 				compilerOptions: {
@@ -43,11 +52,20 @@ export default defineConfig({
 				}
 			}
 		})
+		// viteStaticCopy({
+		// 	targets: [
+		// 		{
+		// 			src: "docs/blog/**/*",
+		// 			dest: "/blog"
+		// 		}
+		// 	]
+		// })
 	],
 	resolve: {
 		alias: {
 			"@": resolve(__dirname, "src"),
 			"@c": resolve(__dirname, "package"),
+			"@blog": resolve(__dirname, "docs/blog"),
 			vue: "vue/dist/vue.esm-bundler.js"
 		}
 	},

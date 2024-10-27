@@ -45,7 +45,7 @@
 	</section>
 
 	<Teleport to="head">
-		<link rel="preload" :href="'https://api.xtt.moe/acticle/' + id" as="fetch" />
+		<!-- <link rel="preload" :href="'https://api.xtt.moe/acticle/' + id" as="fetch" /> -->
 
 		<link rel="alternate" hreflang="ja" :href="'https://xtt.moe/ja/article/' + id" />
 		<link rel="alternate" hreflang="zh" :href="'https://xtt.moe/article/' + id" />

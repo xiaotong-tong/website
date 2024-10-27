@@ -3,7 +3,9 @@ title: js排序
 author: 小恸恸
 createDate: 2023-07-18
 updateDate: 2024-09-13
+category: 网络互联
 tags: 快速排序,冒泡排序
+thumbnail: https://image.xtt.moe/images/177.md.webp
 abstract: 本文主要讲解了快速排序和冒泡排序
 ---
 

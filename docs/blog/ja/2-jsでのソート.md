@@ -2,8 +2,9 @@
 title: jsでのソート
 author: 星川漣
 createDate: 2024-09-13
-updateDate: 2024-09-13
+category: ウェブ
 tags: クイックソート,バブルソート
+thumbnail: https://image.xtt.moe/images/177.md.webp
 abstract: クイックソートとバブルソートについて記録します
 ---
 

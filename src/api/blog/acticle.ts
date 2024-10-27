@@ -1,6 +1,7 @@
 import type { AxiosResponse } from "axios";
 import type { Acticle, AddActicleBody, EditActicleBody, ActicleById } from "@/types/acticle";
 import http from "../axios";
+import { hasId, getById } from "@/utils/localBlog";
 
 const catchs = new Map();
 
@@ -71,11 +72,16 @@ export async function getActicleList(params?: GetActicleListFilters): Promise<Ac
 
 export async function getActicleById(
 	id: number,
-	params: {
+	params?: {
 		lang?: string;
 	}
 ): Promise<ActicleById> {
-	const { lang } = params;
+	const { lang = "zh" } = params || {};
+
+	// 如果本地有数据，直接返回本地数据，不请求网络
+	if (hasId(id)) {
+		return getById(id, lang);
+	}
 
 	// 如果缓存中有数据，直接返回缓存中的数据
 	if (catchs.has(lang + "acticleId" + id)) {

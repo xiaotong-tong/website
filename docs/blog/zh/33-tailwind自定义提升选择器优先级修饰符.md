@@ -3,7 +3,9 @@ title: tailwind 自定义提升选择器优先级修饰符
 author: 小恸恸
 createDate: 2024-10-13
 updateDate: 2024-10-13
+category: 网络互联
 tags: tailwind,css
+thumbnail: https://image.xtt.moe/local/images/2024/10/14/0c9de0473b4cfceaf2e386893409125b-2.jpg
 abstract: 使用 `:is()` 选择器来提升选择器的优先级，并实现一个 tailwind 插件来自定义修饰符，使用 `up:` 修饰符来提升选择器的优先级。
 ---
 
