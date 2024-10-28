@@ -218,13 +218,13 @@
     <changefreq>never</changefreq>
   </url>
   <url>
-    <loc>https://xtt.moe/something/soduku</loc>
+    <loc>https://xtt.moe/something/sudoku</loc>
     <priority>0.7</priority>
     <lastmod>2024-08-26</lastmod>
     <changefreq>never</changefreq>
   </url>
   <url>
-	<loc>https://xtt.moe/ja/something/soduku</loc>
+	<loc>https://xtt.moe/ja/something/sudoku</loc>
 	<priority>0.7</priority>
 	<lastmod>2024-08-26</lastmod>
 	<changefreq>never</changefreq>
@@ -298,13 +298,13 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://xtt.moe/save/daysQuotes</loc>
+    <loc>https://xtt.moe/save/daysQuote</loc>
     <priority>0.7</priority>
     <lastmod>2024-08-26</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://xtt.moe/ja/save/daysQuotes</loc>
+    <loc>https://xtt.moe/ja/save/daysQuote</loc>
     <priority>0.7</priority>
     <lastmod>2024-08-26</lastmod>
     <changefreq>monthly</changefreq>
