@@ -2,9 +2,13 @@
 title: tsのsetTimeoutの型についての記録
 author: 星川漣
 createDate: 2024-09-21
-updateDate: 2024-09-21
+category: エッセイ
 tags: typeScript,setTimeout
 abstract: tsのsetTimeoutの型についての記録
+prevId: 11
+prevTitle: css highlights 勉強と括弧内のテキストのハイライト
+nextId: 13
+nextTitle: Cheveretoのapiに画像をアップロードする方法
 ---
 
 ts の中では　`const timer: number = setTimeout(() => {}, 0);`　のようなコードを書くと `型 'Timeout' を型 'number' に割り当てることはできません。ts(2322)` というエラーが発生してかもしれません。

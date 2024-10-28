@@ -2,9 +2,13 @@
 title: webの知識のまとめ - イテレーターとジェネレーター関数
 author: 星川漣
 createDate: 2024-09-21
-updateDate: 2024-09-21
+category: ウェブ
 tags: Iterator,Generator
 abstract: es6でのイテレーターとジェネレーター関数に関する知識について説明します。
+prevId: 17
+prevTitle: 星について
+nextId: 20
+nextTitle: webの知識のまとめ - 関数
 ---
 
 ## 1. ジェネレーター関数

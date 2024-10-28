@@ -3,8 +3,13 @@ title: Chevereto 上传功能的使用记录
 author: 小恸恸
 createDate: 2023-08-18
 updateDate: 2024-09-21
+category: 网络互联
 tags: Chevereto
 abstract: 上传图片到 Chevereto 的 api 的使用记录
+prevId: 12
+prevTitle: 关于 ts 中 setTimeout 类型的记录
+nextId: 14
+nextTitle: js 中的数字字面量
 ---
 
 Chevereto 暴露出 `http://{mysite.com}/api/1/upload/`, 访问这个 api 按照一定的参数传参就可以上传图片。

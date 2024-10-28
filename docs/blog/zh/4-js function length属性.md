@@ -3,8 +3,14 @@ title: js function length 属性
 author: 小恸恸
 createDate: 2023-07-21
 updateDate: 2024-09-14
+category: 喵随笔
 tags: function
+thumbnail: https://image.xtt.moe/local/images/2024/09/14/0c9de0473b4cfceaf2e386893409125b.jpg
 abstract: 函数的 length 属性为该函数预期传入的参数个数
+prevId: 2
+prevTitle: js排序
+nextId: 6
+nextTitle: 数据库基础学习
 ---
 
 **函数的 length 属性为该函数预期传入的参数个数**

@@ -3,8 +3,13 @@ title: 关于 ts 中 setTimeout 类型的记录
 author: 小恸恸
 createDate: 2023-08-14
 updateDate: 2024-09-21
+category: 喵随笔
 tags: typeScript,setTimeout
 abstract: 关于 ts 中 setTimeout 类型的记录
+prevId: 11
+prevTitle: css highlights 学习之括号内文本高亮
+nextId: 13
+nextTitle: Chevereto 上传功能的使用记录
 ---
 
 ts 中不能直接为 setTimeout 标注 number 类型。如 `const timer: number = setTimeout(() => {}, 0);` 会有 `不能将类型“Timeout”分配给类型“number”。ts(2322)` 报错。

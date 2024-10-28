@@ -2,9 +2,14 @@
 title: css highlights 勉強と括弧内のテキストのハイライト
 author: 星川漣
 createDate: 2024-09-21
-updateDate: 2024-09-21
+category: ウェブ
 tags: Highlight,Range,ハイライト
-abstract:　CSS 原生ハイライト API を使用して、ハイライトする span を含む Web Componentを実装します。
+thumbnail: https://image.xtt.moe/images/422ae67c9d3cf274c.md.webp
+abstract: CSS 原生ハイライト API を使用して、ハイライトする span を含む Web Componentを実装します。
+prevId: 10
+prevTitle: ウェブサイトの背景の変更ガイド
+nextId: 12
+nextTitle: ts で setTimeout の型についての記録
 ---
 
 chrome 105 以降、Google Chrome は [CSS ハイライト API](https://developer.mozilla.org/zh-CN/docs/Web/API/CSS_Custom_Highlight_API) をサポートしています。

@@ -3,8 +3,13 @@ title: npm 打包小记
 author: 小恸恸
 createDate: 2023-08-01
 updateDate: 2024-09-21
+category: 喵随笔
 tags: npm,package
 abstract: npm 打测试包与发布包的小记
+prevId: 8
+prevTitle: 两数相加
+nextId: 10
+nextTitle: 关于网站背景的更换指南
 ---
 
 ## 测试包内容

@@ -2,9 +2,13 @@
 title: Cheveretoのapiに画像をアップロードする方法
 author: 星川漣
 createDate: 2024-09-21
-updateDate: 2024-09-21
+category: ウェブ
 tags: Chevereto
 abstract: Cheveretoのapiに画像をアップロードする方法の記録
+prevId: 12
+prevTitle: tsのsetTimeoutの型についての記録
+nextId: 14
+nextTitle: jsの数字リテラル
 ---
 
 Chevereto が `http://{mysite.com}/api/1/upload/` を公開しており、この api には特定のパラメータを渡すことで画像をアップロードできます。

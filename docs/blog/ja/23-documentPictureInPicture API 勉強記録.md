@@ -2,9 +2,13 @@
 title: documentPictureInPicture API 勉強記録
 author: 星川漣
 createDate: 2024-09-20
-updateDate: 2024-09-20
+category: ウェブ
 tags: documentPictureInPicture
 abstract: documentPictureInPicture API の勉強
+prevId: 22
+prevTitle: ごはんを食べよう 歌詞
+nextId: 24
+nextTitle: android と pc のデバッグ
 ---
 
 # [documentPictureInPicture](https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPicture)

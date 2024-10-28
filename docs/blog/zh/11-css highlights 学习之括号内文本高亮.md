@@ -3,8 +3,14 @@ title: css highlights 学习之括号内文本高亮
 author: 小恸恸
 createDate: 2023-08-03
 updateDate: 2024-09-21
+category: 网络互联
 tags: Highlight,Range,高亮,原生CSS高亮
+thumbnail: https://image.xtt.moe/images/422ae67c9d3cf274c.md.webp
 abstract: 使用 CSS 原生高亮 API 实现一个 Web Component 组件，实现高亮组件内需要高亮的文本。
+prevId: 10
+prevTitle: 关于网站背景的更换指南
+nextId: 12
+nextTitle: 关于 ts 中 setTimeout 类型的记录
 ---
 
 在 chrome 105 之后谷歌浏览器支持了 [CSS 原生高亮 API](https://developer.mozilla.org/zh-CN/docs/Web/API/CSS_Custom_Highlight_API)

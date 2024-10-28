@@ -6,6 +6,8 @@ category: ウェブ
 tags: クイックソート,バブルソート
 thumbnail: https://image.xtt.moe/images/177.md.webp
 abstract: クイックソートとバブルソートについて記録します
+nextId: 4
+nextTitle: js function length プロパティ
 ---
 
 ## クイックソート

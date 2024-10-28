@@ -2,9 +2,13 @@
 title: web の知識のまとめ-スプレッド構文と分割代入
 author: 星川漣
 createDate: 2023-11-12
-updateDate: 2023-11-12
+category: ウェブ
 tags: スプレッド構文, 分割代入
 abstract: 本文はスプレッド構文と分割代入の基本構文と原理を紹介します。
+prevId: 20
+prevTitle: web の知識のまとめ-関数
+nextId: 22
+nextTitle: ごはんを食べよう 歌詞
 ---
 
 ## スプレッド構文

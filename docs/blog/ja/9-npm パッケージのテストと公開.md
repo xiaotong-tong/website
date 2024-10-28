@@ -2,9 +2,13 @@
 title: npm パッケージのテストと公開
 author: 星川漣
 createDate: 2024-09-21
-updateDate: 2024-09-21
+category: エッセイ
 tags: npm,package
 abstract: npm パッケージのテストと公開についてのメモ
+prevId: 8
+prevTitle: ふたつの数の足し算
+nextId: 10
+nextTitle: ウェブサイトの背景の変更ガイド
 ---
 
 ## パッケージをテストする

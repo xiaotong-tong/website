@@ -2,8 +2,13 @@
 title: webの知識のまとめ-関数
 author: 星川漣
 createDate: 2023-11-29
+category: ウェブ
 tags: 関数,アロー関数,ジェネレーター関数,残余引数,デフォルト引数
 abstract: アロー関数、ジェネレーター関数、残余引数、デフォルト引数を紹介します。
+prevId: 19
+prevTitle: webの知識のまとめ - イテレーターとジェネレーター関数
+nextId: 21
+nextTitle: webの知識のまとめ-スプレッド構文と分割代入
 ---
 
 ## 1. アロー関数

@@ -3,8 +3,13 @@ title: documentPictureInPicture API 学习记录
 author: 小恸恸
 createDate: 2023-12-26
 updateDate: 2024-09-20
+category: 网络互联
 tags: documentPictureInPicture
 abstract: documentPictureInPicture API 学习
+prevId: 22
+prevTitle: ごはんを食べよう 歌词
+nextId: 24
+nextTitle: android 和 pc 的调试
 ---
 
 # [documentPictureInPicture](https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPicture)
