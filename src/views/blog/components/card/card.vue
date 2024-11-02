@@ -12,7 +12,7 @@
 		<div class="thumbnail-wrap">
 			<img class="thumbnail" :src="props.info.thumbnail || 'https://image.xtt.moe/images/bg.webp'" alt="缩略图" />
 		</div>
-		<div class="info-wrap">
+		<div class="info-wrap pb-8">
 			<Link :to="props.info.headerLink" block class="header-link justify-start ps-0">
 				<h2 class="text-xl font-bold">
 					{{ i18nStore.lang === "ja" ? props.info.jaTitle || props.info.title : props.info.title }}
@@ -211,13 +211,13 @@ onBeforeUnmount(() => {
 		);
 		color: azure;
 		padding: 8px;
+		padding-block-end: 2em;
 		display: flex;
 		flex-wrap: wrap;
 		align-items: flex-end;
 	}
 	.info-wrap > :is(h2, p) {
 		flex: 0 0 100%;
-		padding-inline: 8px;
 	}
 	.info-wrap > p:nth-of-type(1) {
 		margin-block: -8px 4px;

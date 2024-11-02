@@ -184,4 +184,9 @@ const downloadMd = () => {
 .pagination .link:hover {
 	color: #f34159;
 }
+
+.small-screen .pagination {
+	flex-direction: column;
+	row-gap: 0.5em;
+}
 </style>
