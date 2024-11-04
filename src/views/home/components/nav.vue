@@ -22,12 +22,7 @@
 					fill: item.color
 				}"
 			></roughCard>
-			<namiCIcon
-				class="active-icon"
-				v-if="store.currentTheme === item.color"
-				icon="cat"
-				:size="28"
-			></namiCIcon>
+			<Icon class="active-icon" v-if="store.currentTheme === item.color" icon="cat" :size="28"></Icon>
 		</li>
 	</ul>
 </template>
@@ -35,7 +30,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, watch, ref } from "vue";
 import gsap from "gsap";
-import { roughCard } from "@c/index";
+import { roughCard, Icon } from "@c/index";
 import { useStore } from "@/stores";
 import { useI18n } from "vue-i18n";
 const { t } = useI18n();

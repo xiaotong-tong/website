@@ -113,7 +113,7 @@ const reflectIcon = (icon: Props["icon"]) => {
 };
 </script>
 
-<style>
+<style scoped>
 .icon {
 	display: inline-block;
 	width: 1em;

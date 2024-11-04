@@ -21,7 +21,7 @@
 		>
 			<RouterView />
 			<namiTextAutoScroll v-if="tipIsShow" />
-			<namiCIcon
+			<Icon
 				:style="{
 					position: 'fixed',
 					insetBlockStart: '80px',
@@ -31,8 +31,8 @@
 				}"
 				:size="64"
 				icon="heart"
-			></namiCIcon>
-			<namiCIcon
+			></Icon>
+			<Icon
 				:style="{
 					position: 'fixed',
 					insetBlockEnd: '64px',
@@ -42,7 +42,7 @@
 				}"
 				:size="64"
 				icon="heart"
-			></namiCIcon>
+			></Icon>
 		</section>
 		<nav class="nav">
 			<namiNav ref="namiNavRef"></namiNav>
@@ -123,6 +123,7 @@ import { useUserInfoStore } from "@/stores/user";
 import { useContentRefStore } from "@/stores/contentRef";
 import { bgUrl } from "@/utils/webBG";
 import { useElementBounding, useScroll } from "@vueuse/core";
+import { Icon } from "@c/index";
 
 const store = useStore();
 const contentStore = useContentRefStore();

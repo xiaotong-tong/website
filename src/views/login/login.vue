@@ -1,10 +1,7 @@
 <template>
 	<section class="login-wrap">
-		<label
-			v-if="!userInfoStore.userInfo?.id"
-			class="text-[#e78190] flex mb-2 mt-4 w-[500px] items-center"
-		>
-			<namiCIcon :size="24" icon="heart"></namiCIcon>
+		<label v-if="!userInfoStore.userInfo?.id" class="text-[#e78190] flex mb-2 mt-4 w-[500px] items-center">
+			<Icon :size="24" icon="heart"></Icon>
 			<span class="flex-none ms-1">秘密口令</span>
 
 			<NInput
@@ -20,16 +17,14 @@
 		</label>
 
 		<div v-else class="text-[#e78190] flex mb-2 mt-4 items-center">
-			<namiCIcon :size="24" icon="heart"></namiCIcon>
+			<Icon :size="24" icon="heart"></Icon>
 			<span class="flex-none ms-1">您已登录，点击此处</span>
 			<NButton class="ms-4" color="#e78190" ghost @click="exitLogin"> 退出登录 </NButton>
 		</div>
 
 		<div class="mt-4">
 			<hBanner wrapperTargetName="h4">秘密口令获取指南</hBanner>
-			<p>
-				1. 添加 QQ 群 <a href="https://qm.qq.com/q/HQIjivJg66" target="_blank">754923572</a>
-			</p>
+			<p>1. 添加 QQ 群 <a href="https://qm.qq.com/q/HQIjivJg66" target="_blank">754923572</a></p>
 			<p>2. 在群内发送 “登录”，或私聊群内的 星川涟 发送 “登录”</p>
 			<p>3. 记录星川涟发给你的登录口令</p>
 		</div>
@@ -43,7 +38,7 @@ import { ref } from "vue";
 import { verifyMasterUid } from "@/api/blog/verify";
 import { useRouter } from "vue-router";
 import { NButton, NInput } from "naive-ui";
-import { hBanner } from "@c/index";
+import { hBanner, Icon } from "@c/index";
 import { useUserInfoStore } from "@/stores/user";
 
 const userInfoStore = useUserInfoStore();
