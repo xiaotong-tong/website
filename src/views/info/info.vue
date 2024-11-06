@@ -109,8 +109,6 @@
 			</div>
 		</FieldsetCard>
 
-		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
-
 		<FieldsetCard :title="i18nStore.lang === 'ja' ? 'サイトって' : '关于本站'" :borderColor="store.currentTheme">
 			<p v-lang="'zh'">
 				本站是个人网站，主要用于存放一些个人作品，以及一些个人的日常记录。<br />

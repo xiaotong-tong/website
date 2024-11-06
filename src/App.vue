@@ -5,6 +5,7 @@ import "@/function/joke";
 import "@/function/visibility";
 import { initWebBGUrl } from "@/utils/webBG";
 import { useStore } from "@/stores/index";
+import { config } from "@c/index";
 
 const store = useStore();
 
@@ -19,6 +20,14 @@ watch(
 );
 
 initWebBGUrl();
+
+watch(
+	() => store.currentTheme,
+	() => {
+		config.defaultColor.value = store.currentTheme;
+	},
+	{ immediate: true }
+);
 </script>
 
 <template>

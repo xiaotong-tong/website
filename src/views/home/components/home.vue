@@ -16,13 +16,13 @@
 				<span>{{ weekNames[nowDay.day()] }}</span>
 			</p>
 		</header>
-		<namiRoughLine :color="store.currentTheme"></namiRoughLine>
+		<namiRoughLine></namiRoughLine>
 		<div class="poetry-wrap mb-2" lang="zh-CN">
 			<Hefu v-if="loaded"></Hefu>
 			<Poetry @onLoad="poetryLoadedFn"></Poetry>
 		</div>
 
-		<namiRoughLine :color="store.currentTheme"></namiRoughLine>
+		<namiRoughLine></namiRoughLine>
 		<Quote ref="poetryRef" @onLoad="quoteLoadedFn"></Quote>
 
 		<!-- <div class="character-wrap" aria-hidden="true">
@@ -46,11 +46,9 @@ import Quote from "./home/quote.vue";
 import Hefu from "./home/hefu.vue";
 import Poetry from "./home/poetry.vue";
 import { Panel } from "@c/index";
-import { useStore } from "@/stores";
 import { useI18n } from "vue-i18n";
 import { useContentRefStore } from "@/stores/contentRef";
 
-const store = useStore();
 const { t } = useI18n();
 const contentRefStore = useContentRefStore();
 

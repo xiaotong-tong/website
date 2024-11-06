@@ -33,12 +33,7 @@
 				}}</NamiButton>
 			</NUpload>
 
-			<NInput
-				type="text"
-				v-model:value="thumbnail"
-				class="up:w-[400px]"
-				placeholder="输入图片URL"
-			/>
+			<NInput type="text" v-model:value="thumbnail" class="up:w-[400px]" placeholder="输入图片URL" />
 		</div>
 	</div>
 
@@ -54,11 +49,9 @@
 		<markdown :content="content"></markdown>
 	</div>
 
-	<namiRoughLine :color="store.currentTheme"></namiRoughLine>
+	<namiRoughLine></namiRoughLine>
 
-	<div class="item mt-2">
-		<span>日文标题：</span> <NInput type="text" v-model:value="jaTitle" />
-	</div>
+	<div class="item mt-2"><span>日文标题：</span> <NInput type="text" v-model:value="jaTitle" /></div>
 
 	<div class="item">
 		<span>日文作者名：</span>
@@ -75,9 +68,7 @@
 		<NInput type="text" v-model:value="jaTags" class="up:w-[200px]" />
 	</div>
 
-	<div class="item">
-		<span>日文摘要：</span> <NInput type="textarea" v-model:value="jaAbstract" />
-	</div>
+	<div class="item"><span>日文摘要：</span> <NInput type="textarea" v-model:value="jaAbstract" /></div>
 
 	<div class="item editor-wrapper">
 		<span>正文：</span>
@@ -89,7 +80,7 @@
 		<markdown :content="jaContent"></markdown>
 	</div>
 
-	<namiRoughLine :color="store.currentTheme"></namiRoughLine>
+	<namiRoughLine></namiRoughLine>
 
 	<div class="mt-4 mb-4 flex justify-end gap-x-4">
 		<NamiButton @click="deleteEvent" :borderColor="store.currentTheme">删除</NamiButton>
@@ -102,13 +93,7 @@ import { ref, toRaw, onUnmounted } from "vue";
 import type { UploadOnChange } from "naive-ui";
 import { NInput, NSelect, NUpload } from "naive-ui";
 import { NamiButton, markdown } from "@c/index";
-import {
-	editActicleById,
-	getCategories,
-	getCategoriesJP,
-	getActicleById,
-	deleteActicleById
-} from "@/api/blog/acticle";
+import { editActicleById, getCategories, getCategoriesJP, getActicleById, deleteActicleById } from "@/api/blog/acticle";
 import { uploadLocalImage } from "@/api/image/image";
 import * as monaco from "monaco-editor";
 import { useStore } from "@/stores/index";

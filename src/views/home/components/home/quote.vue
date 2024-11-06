@@ -6,7 +6,7 @@
 				t("pages.home.quote.overflowTip")
 			}}</span>
 		</p>
-		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
+		<namiRoughLine class="my-2"></namiRoughLine>
 		<p lang="ja-JP" class="custom-font" v-html="quote.parse"></p>
 		<p lang="zh-CN" class="custom-font">
 			{{ quote.chinese }}
@@ -20,10 +20,8 @@ import type { IGetDaysQuotes } from "../../home.api";
 import { getDaysQuotes } from "../../home.api";
 import { dayjs } from "@/utils/dateUtil";
 import { useSessionStorage } from "@vueuse/core";
-import { useStore } from "@/stores";
 import { useI18n } from "vue-i18n";
 
-const store = useStore();
 const { t } = useI18n();
 
 const emits = defineEmits(["onLoad"]);

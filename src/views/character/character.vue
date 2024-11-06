@@ -14,7 +14,7 @@
 					<div class="w-[50%]"><span>暴击：</span><span>50</span></div>
 					<div class="w-[50%]"><span>幸运：</span><span>88</span></div>
 				</div>
-				<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+				<namiRoughLine class="my-1"></namiRoughLine>
 				<div>
 					<div>
 						<div>元素共鸣</div>
@@ -23,7 +23,7 @@
 							且在每次伤害判定时有 10% 的几率使目标陷入沉睡状态,持续到本回合结束。
 						</div>
 					</div>
-					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<namiRoughLine class="my-1"></namiRoughLine>
 					<div>
 						<div>魔法~魔法~呼呼</div>
 						<div>
@@ -34,12 +34,12 @@
 							50%。
 						</div>
 					</div>
-					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<namiRoughLine class="my-1"></namiRoughLine>
 					<div>
 						<div>我不会让大家失望的！</div>
 						<div>队长技：我方全体提升 10 点速度, 并在技能释放判定时, 提升 10% 的技能释放几率。</div>
 					</div>
-					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<namiRoughLine class="my-1"></namiRoughLine>
 					<div>
 						<div>风之魔法</div>
 						<div>支援技：提升我方全体 7 点速度。</div>
@@ -50,7 +50,7 @@
 				<Image src="https://image.xtt.moe/images/lian5.webp" description="星川涟 - 魔法见习生" fullView />
 			</div>
 		</div>
-		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
+		<namiRoughLine class="my-2"></namiRoughLine>
 		<div class="flex">
 			<div class="flex-1">
 				<div class="flex flex-wrap">
@@ -65,13 +65,13 @@
 					<div class="w-[50%]"><span>暴击：</span><span>44</span></div>
 					<div class="w-[50%]"><span>幸运：</span><span>78</span></div>
 				</div>
-				<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+				<namiRoughLine class="my-1"></namiRoughLine>
 				<div>
 					<div>
 						<div>普攻： Roll!</div>
 						<div>对 .d3 名敌人造成 .d200 灵力的灵力伤害。</div>
 					</div>
-					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<namiRoughLine class="my-1"></namiRoughLine>
 					<div>
 						<div>技能： 骰娘天使的赐福</div>
 						<div>
@@ -79,14 +79,14 @@
 							灵力的灵力伤害。并在释放完成后进入赐福状态，在下次投掷骰子时,额外进行一次判定,并选择最优结果。
 						</div>
 					</div>
-					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<namiRoughLine class="my-1"></namiRoughLine>
 					<div>
 						<div>队长技： 一切都交给骰娘吧</div>
 						<div>
 							我方进行伤害判定时，伤害值额外进行一次 .d11+94 的骰子判定，即最终伤害会在 95%-105% 间波动。
 						</div>
 					</div>
-					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<namiRoughLine class="my-1"></namiRoughLine>
 					<div>
 						<div>支援技： 见习骰娘的赐福</div>
 						<div>提升我方全体 10 点幸运。</div>
@@ -98,7 +98,7 @@
 				<Image src="https://image.xtt.moe/images/lian5.webp" description="星川涟 - 骰子天使见习生" fullView />
 			</div>
 		</div>
-		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
+		<namiRoughLine class="my-2"></namiRoughLine>
 		<div class="flex">
 			<div class="flex-1">
 				<div class="flex flex-wrap">
@@ -113,23 +113,23 @@
 					<div class="w-[50%]"><span>暴击：</span><span>58</span></div>
 					<div class="w-[50%]"><span>幸运：</span><span>49</span></div>
 				</div>
-				<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+				<namiRoughLine class="my-1"></namiRoughLine>
 				<div>
 					<div>
 						<div>普攻： 火箭飞拳</div>
 						<div>对 1 名敌人造成 120% 攻击的物理伤害</div>
 					</div>
-					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<namiRoughLine class="my-1"></namiRoughLine>
 					<div>
 						<div>技能： 人を守るため！</div>
 						<div>偶数回合 100% 几率释放, 为我方全体施加 170% 防御的护盾, 持续 2 回合。</div>
 					</div>
-					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<namiRoughLine class="my-1"></namiRoughLine>
 					<div>
 						<div>队长技： 责任的光环</div>
 						<div>我方全体受到的最终伤害减少 10 点。</div>
 					</div>
-					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<namiRoughLine class="my-1"></namiRoughLine>
 					<div>
 						<div>支援技： 支援指令，启动！</div>
 						<div>提升我方全体 7 点防御。</div>
@@ -141,7 +141,7 @@
 				<img src="https://image.xtt.moe/images/lian5.webp" alt="" />
 			</div>
 		</div>
-		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
+		<namiRoughLine class="my-2"></namiRoughLine>
 		<div class="flex">
 			<div class="flex-1">
 				<div class="flex flex-wrap">
@@ -156,7 +156,7 @@
 					<div class="w-[50%]"><span>暴击：</span><span>27</span></div>
 					<div class="w-[50%]"><span>幸运：</span><span>97</span></div>
 				</div>
-				<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+				<namiRoughLine class="my-1"></namiRoughLine>
 				<div>
 					<div>
 						<div>潮汐</div>
@@ -165,12 +165,12 @@
 							50% 的物理伤害。
 						</div>
 					</div>
-					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<namiRoughLine class="my-1"></namiRoughLine>
 					<div>
 						<div>月光</div>
 						<div>被动技：奇数回合行动开始时 200% 几率释放，为我方全体恢复 60% 灵力的生命。</div>
 					</div>
-					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<namiRoughLine class="my-1"></namiRoughLine>
 					<div>
 						<div>幸运7</div>
 						<div>
@@ -178,7 +178,7 @@
 							的几率减少 7 点。
 						</div>
 					</div>
-					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<namiRoughLine class="my-1"></namiRoughLine>
 					<div>
 						<div>月影</div>
 						<div>支援技：提升我方全体 10 点闪避。</div>
@@ -190,7 +190,7 @@
 				<img src="https://image.xtt.moe/images/lian5.webp" alt="" />
 			</div>
 		</div>
-		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
+		<namiRoughLine class="my-2"></namiRoughLine>
 		<div class="flex">
 			<div class="flex-1">
 				<div class="flex flex-wrap">
@@ -205,13 +205,13 @@
 					<div class="w-[50%]"><span>暴击：</span><span>55</span></div>
 					<div class="w-[50%]"><span>幸运：</span><span>11</span></div>
 				</div>
-				<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+				<namiRoughLine class="my-1"></namiRoughLine>
 				<div>
 					<div>
 						<div>流逝</div>
 						<div>对血量最低的敌方角色造成自身攻击 100% + 10 * 回合数的物理伤害</div>
 					</div>
-					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<namiRoughLine class="my-1"></namiRoughLine>
 					<div>
 						<div>裁决</div>
 						<div>
@@ -219,12 +219,12 @@
 							50% 生命。
 						</div>
 					</div>
-					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<namiRoughLine class="my-1"></namiRoughLine>
 					<div>
 						<div>黄泉</div>
 						<div>队长技：第一回合“裁决”释放几率提示至 100%。</div>
 					</div>
-					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<namiRoughLine class="my-1"></namiRoughLine>
 					<div>
 						<div>爱与幻想</div>
 						<div>
@@ -239,7 +239,7 @@
 				<img src="https://image.xtt.moe/images/lian5.webp" alt="" />
 			</div>
 		</div>
-		<namiRoughLine class="my-2" :color="store.currentTheme"></namiRoughLine>
+		<namiRoughLine class="my-2"></namiRoughLine>
 		<div class="flex">
 			<div class="flex-1">
 				<div class="flex flex-wrap">
@@ -254,7 +254,7 @@
 					<div class="w-[50%]"><span>暴击：</span><span>43</span></div>
 					<div class="w-[50%]"><span>幸运：</span><span>0</span></div>
 				</div>
-				<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+				<namiRoughLine class="my-1"></namiRoughLine>
 				<div>
 					<div>
 						<div>太阳雨</div>
@@ -262,7 +262,7 @@
 							扣除自身当前血量的 10%, 对敌方随机 3 名角色造成 扣除生命值 + 自身灵力 50% 的灵力伤害。
 						</div>
 					</div>
-					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<namiRoughLine class="my-1"></namiRoughLine>
 					<div>
 						<div>终末之果</div>
 						<div>
@@ -271,12 +271,12 @@
 							且自身速度提升 50 点，命中提升 50 点，幸运提升 50 点。
 						</div>
 					</div>
-					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<namiRoughLine class="my-1"></namiRoughLine>
 					<div>
 						<div>天梯</div>
 						<div>队长技：每回合开始时，提升自身 10 点最大生命值，并恢复 10 点血量。</div>
 					</div>
-					<namiRoughLine class="my-1" :color="store.currentTheme"></namiRoughLine>
+					<namiRoughLine class="my-1"></namiRoughLine>
 					<div>
 						<div>堇花</div>
 						<div>支援技：每回合结束时恢复血量最低的我方角色 10 点生命值。</div>
@@ -293,9 +293,6 @@
 
 <script setup lang="ts">
 import { Image } from "@c/index";
-import { useStore } from "@/stores";
-
-const store = useStore();
 </script>
 
 <style scoped></style>

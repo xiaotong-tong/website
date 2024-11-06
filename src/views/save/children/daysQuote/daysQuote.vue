@@ -21,14 +21,13 @@
 			<p>
 				{{ item.chinese }}
 			</p>
-			<namiRoughLine :color="store.currentTheme"></namiRoughLine>
+			<namiRoughLine></namiRoughLine>
 		</div>
 	</section>
 </template>
 
 <script setup lang="ts">
 import { useFetch, useClipboard } from "@vueuse/core";
-import { useStore } from "@/stores";
 import { dayjs } from "@/utils/dateUtil";
 import confetti from "canvas-confetti";
 
@@ -39,7 +38,6 @@ interface Item {
 	sentence: string;
 }
 
-const store = useStore();
 const { data, isFinished } = useFetch("https://api.xtt.moe/days/quotes/list").json<Item[]>();
 
 const startDay = dayjs("2024-04-14");
@@ -84,10 +82,9 @@ function downloadJson() {
 	download(blob, "daysQuotes.json");
 }
 function downloadTxt() {
-	const blob = new Blob(
-		[data.value!.map((item) => item.sentence + "\n" + item.chinese).join("\n\n")],
-		{ type: "text/plain" }
-	);
+	const blob = new Blob([data.value!.map((item) => item.sentence + "\n" + item.chinese).join("\n\n")], {
+		type: "text/plain"
+	});
 	download(blob, "daysQuotes.txt");
 }
 </script>
