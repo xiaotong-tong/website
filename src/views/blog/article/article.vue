@@ -21,6 +21,10 @@
 			<span># {{ acticle.category }}</span>
 		</p>
 
+		<div v-if="acticle.thumbnail">
+			<Image :src="acticle.thumbnail" alt="文章图片" class="w-full max-h-[280px] object-cover" fullView />
+		</div>
+
 		<markdown class="up:mt-4" :content="acticle.content" :textLine="true" :isDark="store.isDark"></markdown>
 
 		<div class="pagination">
@@ -70,7 +74,7 @@ import { getActicleById } from "@/api/blog/acticle";
 import { addComment, getCommentList } from "@/api/blog/comment";
 import { useRoute, useRouter, onBeforeRouteUpdate } from "vue-router";
 import { useI18nStore } from "@/stores/i18n";
-import { markdown, Link, TextButton } from "@c/index";
+import { markdown, Link, TextButton, Image } from "@c/index";
 import { useStore } from "@/stores";
 
 const store = useStore();
