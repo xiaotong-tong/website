@@ -1,15 +1,7 @@
 <template>
-	<NamiButton v-login class="flex-none" :borderColor="store.currentTheme" @click="openModal"
-		>新增动态</NamiButton
-	>
+	<NamiButton v-bind="$attrs" v-login :borderColor="store.currentTheme" @click="openModal">新增动态</NamiButton>
 
-	<Modal
-		v-model:show="showModal"
-		:color="store.currentTheme"
-		@ok="submit"
-		@cancel="onCancel"
-		okText="提交"
-	>
+	<Modal v-model:show="showModal" :color="store.currentTheme" @ok="submit" @cancel="onCancel" okText="提交">
 		<h3>发布动态</h3>
 		<NRadioGroup v-model:value="type" class="mt-4">
 			<NRadioButton value="text">text</NRadioButton>

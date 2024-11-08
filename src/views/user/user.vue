@@ -1,33 +1,27 @@
 <template>
 	<section class="user-wrap">
-		<div class="title">
-			<hBanner wrapperTargetName="h2">用户</hBanner>
+		<div class="title text-center">
+			<Panel>用户</Panel>
 		</div>
 		<div class="item">
 			<span class="label">标识: </span><span>{{ userInfoStore.userInfo.password }}</span>
 		</div>
 		<div class="item">
-			<span class="label">昵称: </span
-			><span>{{ userInfoStore.userInfo.name || "暂无" }}</span>
+			<span class="label">昵称: </span><span>{{ userInfoStore.userInfo.name || "暂无" }}</span>
 		</div>
 		<div class="item">
 			<span class="label">头像: </span>
 			<div>
 				<img
 					class="w-[64px] rounded-full"
-					:src="
-						userInfoStore.userInfo.avatar ||
-						'https://image.xtt.moe/images/mlian2.md.webp'
-					"
+					:src="userInfoStore.userInfo.avatar || 'https://image.xtt.moe/images/mlian2.md.webp'"
 					alt="头像"
 				/>
 			</div>
 		</div>
 		<div class="item">
 			<span class="label"></span>
-			<NamiButton :borderColor="store.currentTheme" @click="openEditModal"
-				>修改用户信息</NamiButton
-			>
+			<NamiButton :borderColor="store.currentTheme" @click="openEditModal">修改用户信息</NamiButton>
 		</div>
 	</section>
 
@@ -54,7 +48,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { editUserInfo } from "@/api/blog/verify";
-import { hBanner, NamiButton, Modal, Cropper } from "@c/index";
+import { Panel, NamiButton, Modal, Cropper } from "@c/index";
 import { NInput } from "naive-ui";
 import { useUserInfoStore } from "@/stores/user";
 import { useStore } from "@/stores/index";

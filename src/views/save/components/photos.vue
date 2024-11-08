@@ -2,14 +2,10 @@
 	<div>
 		<div class="pos-relative">
 			<nami-link to="/photos" type="primary">
-				<hBanner>{{ i18nStore.lang === "ja" ? "写真" : "图片" }}</hBanner>
+				<Panel> {{ i18nStore.lang === "ja" ? "写真" : "图片" }}</Panel>
 			</nami-link>
 
-			<NamiButton
-				class="add-photo-btn"
-				@click="showModal = true"
-				:border-color="store.currentTheme"
-				v-login
+			<NamiButton class="add-photo-btn" @click="showModal = true" :border-color="store.currentTheme" v-login
 				>新增</NamiButton
 			>
 		</div>
@@ -25,12 +21,7 @@
 					图片 url:
 					<NInput v-model:value="url" />
 				</div>
-				<NUpload
-					class="my-4"
-					accept="image/*"
-					@change="uploadImage"
-					:show-file-list="false"
-				>
+				<NUpload class="my-4" accept="image/*" @change="uploadImage" :show-file-list="false">
 					<NButton>上传图片</NButton>
 				</NUpload>
 				<div>
@@ -49,7 +40,7 @@
 import { ref } from "vue";
 import { useImageList } from "@/utils/photos";
 import { useI18nStore } from "@/stores/i18n";
-import { hBanner, NamiButton } from "@c/index";
+import { Panel, NamiButton } from "@c/index";
 import type { UploadOnChange } from "naive-ui";
 import { NButton, NModal, NInput, NCard, NCheckbox, NUpload } from "naive-ui";
 import { uploadLocalImage } from "@/api/image/image";

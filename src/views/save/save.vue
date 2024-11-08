@@ -8,19 +8,15 @@
 			<nami-link to="/save/emoji" class="link" type="primary">
 				{{ i18nStore.lang === "ja" ? "絵文字" : "颜文字" }}
 			</nami-link>
-			<nami-link to="/reading" class="link" type="primary">
-				文字な日々
-			</nami-link>
+			<nami-link to="/reading" class="link" type="primary"> 文字な日々 </nami-link>
 		</div>
 		<div class="jp-section">
-			<hBanner>日本語勉強</hBanner>
+			<Panel>日本語勉強</Panel>
 			<div class="jp-content">
 				<div>
 					<div>単語</div>
 					<div class="jp-next-content">
-						<nami-link to="/save/jpWord/kudamono" class="link" type="primary">
-							果物
-						</nami-link>
+						<nami-link to="/save/jpWord/kudamono" class="link" type="primary"> 果物 </nami-link>
 					</div>
 				</div>
 				<div>
@@ -34,9 +30,7 @@
 						>
 							{{ "日本语句型辞典" }}
 						</nami-link>
-						<nami-link to="/save/daysQuote" class="link" type="primary">
-							每日日语
-						</nami-link>
+						<nami-link to="/save/daysQuote" class="link" type="primary"> 每日日语 </nami-link>
 					</div>
 				</div>
 			</div>
@@ -47,7 +41,7 @@
 <script setup lang="ts">
 import { useI18nStore } from "@/stores/i18n";
 import myPhotosArea from "./components/photos.vue";
-import { hBanner } from "@c/index";
+import { Panel } from "@c/index";
 const i18nStore = useI18nStore();
 </script>
 

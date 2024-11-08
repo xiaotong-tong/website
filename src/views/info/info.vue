@@ -1,9 +1,7 @@
 <template>
 	<section class="px-8 pt-4 font-[luoliti]">
 		<h2 class="text-center">
-			<Panel targetName="div" class="text-[24px]" :color="store.currentTheme">
-				君に出会えて本当に良かった！
-			</Panel>
+			<Panel targetName="div" class="text-[24px]"> 君に出会えて本当に良かった！ </Panel>
 		</h2>
 
 		<FieldsetCard title="小恸恸" :borderColor="store.currentTheme">

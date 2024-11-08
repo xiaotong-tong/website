@@ -1,7 +1,7 @@
 <template>
-	<section class="flex justify-between items-center">
-		<hBanner wrapperTargetName="h2">动态</hBanner>
-		<MyAdd @submit="getList" />
+	<section class="w-full flex justify-center items-center">
+		<Panel wrapperTargetName="h2">动态</Panel>
+		<MyAdd class="absolute right-4 top-3" @submit="getList" />
 	</section>
 
 	<nami-timeline v-if="loaded" class="content" contentAlign="center">
@@ -39,7 +39,7 @@
 <script setup lang="ts">
 import type { LiveInfo } from "@/types/live";
 import { ref } from "vue";
-import { hBanner, markdown } from "@c/index";
+import { Panel, markdown } from "@c/index";
 import MyAdd from "./components/add.vue";
 import { getLives, deleteLive } from "@/api/live/live";
 import { dayjs } from "@/utils/dateUtil";

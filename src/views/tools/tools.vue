@@ -1,5 +1,7 @@
 <template>
-	<hBanner wrapperTargetName="h1">Tools</hBanner>
+	<h2 class="text-center">
+		<Panel targetName="div" class="text-[24px]"> Tools </Panel>
+	</h2>
 	<markdown class="custom-font" :content="i18nStore.lang === 'ja' ? jaLinkContent : linkContent"></markdown>
 </template>
 
@@ -7,7 +9,7 @@
 import linkContent from "./tools.md";
 import jaLinkContent from "./tools.ja.md";
 import { useI18nStore } from "@/stores/i18n";
-import { hBanner, markdown } from "@c/index";
+import { Panel, markdown } from "@c/index";
 
 const i18nStore = useI18nStore();
 </script>
