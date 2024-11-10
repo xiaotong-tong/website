@@ -15,24 +15,19 @@
 			</div>
 		</div>
 
-		<NModal class="web-color-default" v-model:show="showModal">
-			<NCard title="新增图片" class="modal-card">
-				<div>
-					图片 url:
-					<NInput v-model:value="url" />
-				</div>
-				<NUpload class="my-4" accept="image/*" @change="uploadImage" :show-file-list="false">
-					<NButton>上传图片</NButton>
-				</NUpload>
-				<div>
-					<NCheckbox v-model:checked="botCanUse"> bot 能否使用 </NCheckbox>
-				</div>
-				<template #footer>
-					<NButton @click="showModal = false">取消</NButton>
-					<NButton :color="store.currentTheme" @click="handlerSubmit">确定</NButton>
-				</template>
-			</NCard>
-		</NModal>
+		<Modal v-model:show="showModal" @cancel="showModal = false" @ok="handlerSubmit">
+			<h2>新增图片</h2>
+			<div>
+				图片 url:
+				<NInput v-model:value="url" />
+			</div>
+			<NUpload class="my-4" accept="image/*" @change="uploadImage" :show-file-list="false">
+				<NButton>上传图片</NButton>
+			</NUpload>
+			<div>
+				<NCheckbox v-model:checked="botCanUse"> bot 能否使用 </NCheckbox>
+			</div>
+		</Modal>
 	</div>
 </template>
 
@@ -40,9 +35,9 @@
 import { ref } from "vue";
 import { useImageList } from "@/utils/photos";
 import { useI18nStore } from "@/stores/i18n";
-import { Panel, NamiButton } from "@c/index";
+import { Panel, NamiButton, Modal } from "@c/index";
 import type { UploadOnChange } from "naive-ui";
-import { NButton, NModal, NInput, NCard, NCheckbox, NUpload } from "naive-ui";
+import { NButton, NInput, NCheckbox, NUpload } from "naive-ui";
 import { uploadLocalImage } from "@/api/image/image";
 import { useStore } from "@/stores";
 
@@ -55,9 +50,9 @@ const showModal = ref(false);
 const url = ref("https://image.xtt.moe/local/images/");
 const botCanUse = ref(true);
 
-function handlerSubmit() {
-	addImage(url, botCanUse);
-	showModal.value = false;
+async function handlerSubmit(callback?: Function) {
+	await addImage(url, botCanUse);
+	callback?.();
 }
 
 async function uploadImage(option: Parameters<UploadOnChange>[0]) {

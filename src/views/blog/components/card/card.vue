@@ -14,7 +14,7 @@
 		</div>
 		<div class="info-wrap pb-8">
 			<Link :to="props.info.headerLink" block class="header-link justify-start ps-0">
-				<h2 class="text-xl font-bold">
+				<h2 class="text-xl font-bold" :class="[store.isSmallScreen ? 'line-clamp-1' : 'line-clamp-2']">
 					{{ i18nStore.lang === "ja" ? props.info.jaTitle || props.info.title : props.info.title }}
 				</h2>
 			</Link>
@@ -33,7 +33,7 @@
 					># {{ i18nStore.lang === "ja" ? props.info.jaCategory : props.info.category }}</nami-link
 				>
 			</p>
-			<p class="abstract">
+			<p class="text-[14px]" :class="[store.isSmallScreen ? 'line-clamp-2' : 'line-clamp-3']">
 				{{ i18nStore.lang === "ja" ? props.info.jaAbstract || props.info.abstract : props.info.abstract }}
 			</p>
 			<div class="footer">
@@ -157,15 +157,6 @@ onBeforeUnmount(() => {
 
 .small-screen .info-wrap h2 {
 	font-size: 18px;
-}
-
-.abstract {
-	font-size: 14px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	display: -webkit-box;
-	-webkit-line-clamp: 3;
-	-webkit-box-orient: vertical;
 }
 
 .footer {
