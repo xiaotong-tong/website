@@ -4,9 +4,20 @@
 			'timeline-item': true,
 			simple: props.simple
 		}"
+		:style="{
+			height: 'calc-size(auto, min(size, 500px))'
+		}"
 	>
 		<div class="timeline-item-body">
-			<slot name="body"></slot>
+			<FieldsetCard
+				class="card"
+				:style="{
+					height: 'calc-size(auto, min(size, 500px))'
+				}"
+			>
+				<slot name="body"></slot>
+			</FieldsetCard>
+
 			<div class="arrow" v-if="!props.simple"></div>
 		</div>
 		<div class="timeline-item-divider">
@@ -24,14 +35,18 @@
 </template>
 
 <script setup lang="ts">
+import { FieldsetCard } from "@c/index";
+
 const props = withDefaults(
 	defineProps<{
 		simple?: boolean;
 		group?: boolean;
+		maxHeight?: string;
 	}>(),
 	{
 		simple: true,
-		group: false
+		group: false,
+		maxHeight: "500px"
 	}
 );
 </script>
@@ -43,8 +58,8 @@ const props = withDefaults(
 	--itemline-item-arrow-border-color: #ddd;
 }
 .theme-dark .timeline-item {
-	--itemline-item-box-shadow: 0 3px 1px -2px rgba(255, 255, 255, 0.2),
-		0 2px 2px 0 rgba(255, 255, 255, 0.14), 0 1px 5px 0 rgba(255, 255, 255, 0.12);
+	--itemline-item-box-shadow: 0 3px 1px -2px rgba(255, 255, 255, 0.2), 0 2px 2px 0 rgba(255, 255, 255, 0.14),
+		0 1px 5px 0 rgba(255, 255, 255, 0.12);
 	--itemline-item-arrow-border-color: #666;
 }
 .theme-transparent .timeline-item {
@@ -66,9 +81,15 @@ const props = withDefaults(
 .timeline-item-body {
 	position: relative;
 	max-width: calc(100% - 48px);
+	height: 100%;
 	flex: 1;
 	border-radius: 4px;
 	align-content: center;
+
+	& > .card {
+		width: 100%;
+		max-width: 100%;
+	}
 }
 .timeline-item:not(.simple) .timeline-item-body {
 	box-shadow: var(--itemline-item-box-shadow);

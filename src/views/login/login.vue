@@ -23,10 +23,11 @@
 		</div>
 
 		<div class="mt-4">
-			<hBanner wrapperTargetName="h4">秘密口令获取指南</hBanner>
-			<p>1. 添加 QQ 群 <a href="https://qm.qq.com/q/HQIjivJg66" target="_blank">754923572</a></p>
-			<p>2. 在群内发送 “登录”，或私聊群内的 星川涟 发送 “登录”</p>
-			<p>3. 记录星川涟发给你的登录口令</p>
+			<Panel targetName="h4">秘密口令获取指南</Panel>
+			<p>1. 添加 QQ机器人 “星川涟bot”, QQ号为 3889198334</p>
+			<p>2. 发送 “/登录” 指令</p>
+			<p>3. 记录星川涟回复您的秘密口令，并小心不要泄露哦，因为这是确认用户的唯一凭证。</p>
+			<p>ex1. 再次私信 “/登录” 指令可重置秘密口令</p>
 		</div>
 
 		<p v-if="nfcSupported">请刷 NFC 卡片登录</p>
@@ -38,7 +39,7 @@ import { ref } from "vue";
 import { verifyMasterUid } from "@/api/blog/verify";
 import { useRouter } from "vue-router";
 import { NButton, NInput } from "naive-ui";
-import { hBanner, Icon } from "@c/index";
+import { Panel, Icon } from "@c/index";
 import { useUserInfoStore } from "@/stores/user";
 
 const userInfoStore = useUserInfoStore();

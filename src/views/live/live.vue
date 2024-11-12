@@ -7,8 +7,8 @@
 	<nami-timeline v-if="loaded" class="content" contentAlign="center">
 		<nami-timeline-item v-for="item in list" :key="item.id">
 			<template v-slot:body>
-				<pre v-if="item.contentType === 'text'" class="box">{{ item.content }}</pre>
-				<markdown v-if="item.contentType === 'markdown'" class="up:pt-0 box" :content="item.content"></markdown>
+				<pre v-if="item.contentType === 'text'">{{ item.content }}</pre>
+				<markdown v-if="item.contentType === 'markdown'" class="up:pt-0" :content="item.content"></markdown>
 			</template>
 			<template v-slot:opposite>
 				<div>{{ dayjs(item.createTime).format("YYYY-MM-DD hh:mm:ss") }}</div>
@@ -67,13 +67,10 @@ function handlePositiveClick(id: number) {
 	flex: 0 0 180px;
 	text-align: right;
 }
+.content :deep(.timeline-item-body) {
+	width: calc(100% - 180px - 48px);
+}
 .content.content.content::before {
 	left: 203px;
-}
-
-.box {
-	border: 1px solid #ddd;
-	border-radius: 4px;
-	padding: 8px;
 }
 </style>
