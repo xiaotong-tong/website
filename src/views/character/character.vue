@@ -1,55 +1,6 @@
 <template>
 	<section class="px-8 pt-4 font-[luoliti]">
-		<div class="flex">
-			<div class="flex-1">
-				<div class="flex flex-wrap">
-					<div class="w-[50%]"><span>生命：</span><span>425</span></div>
-					<div class="w-[50%]"><span>攻击：</span><span>36</span></div>
-					<div class="w-[50%]"><span>灵力：</span><span>61</span></div>
-					<div class="w-[50%]"><span>速度：</span><span>40</span></div>
-					<div class="w-[50%]"><span>防御：</span><span>43</span></div>
-					<div class="w-[50%]"><span>格挡：</span><span>18</span></div>
-					<div class="w-[50%]"><span>命中：</span><span>76</span></div>
-					<div class="w-[50%]"><span>闪避：</span><span>37</span></div>
-					<div class="w-[50%]"><span>暴击：</span><span>50</span></div>
-					<div class="w-[50%]"><span>幸运：</span><span>88</span></div>
-				</div>
-				<namiRoughLine class="my-1"></namiRoughLine>
-				<div>
-					<div>
-						<div>元素共鸣</div>
-						<div>
-							吟唱魔法书中的咒文, 沟通周围的魔法元素，对敌方全体角色连续造成 3 次自身灵力 20% 的灵力伤害,
-							且在每次伤害判定时有 10% 的几率使目标陷入沉睡状态,持续到本回合结束。
-						</div>
-					</div>
-					<namiRoughLine class="my-1"></namiRoughLine>
-					<div>
-						<div>魔法~魔法~呼呼</div>
-						<div>
-							第 2,5,8 行动回合 100% 几率释放, 吟唱魔法书中的未知咒文, 对自己与敌方全体角色连续造成 5
-							次自身灵力 30% 的灵力伤害， 且在每次伤害判定时有 10% 的 几率使目标陷入沉睡状态,
-							持续到本回合结束。 技能释放完成后提升我方全体 20%
-							技能释放几率,持续到下回合结束。技能释放中断时，为自己施加 1 层灵力护盾，下次受到的伤害减少
-							50%。
-						</div>
-					</div>
-					<namiRoughLine class="my-1"></namiRoughLine>
-					<div>
-						<div>我不会让大家失望的！</div>
-						<div>队长技：我方全体提升 10 点速度, 并在技能释放判定时, 提升 10% 的技能释放几率。</div>
-					</div>
-					<namiRoughLine class="my-1"></namiRoughLine>
-					<div>
-						<div>风之魔法</div>
-						<div>支援技：提升我方全体 7 点速度。</div>
-					</div>
-				</div>
-			</div>
-			<div class="w-[26%] me-4">
-				<Image src="https://image.xtt.moe/images/lian5.webp" description="星川涟 - 魔法见习生" fullView />
-			</div>
-		</div>
+		<MyCharacter1 />
 		<namiRoughLine class="my-2"></namiRoughLine>
 		<div class="flex">
 			<div class="flex-1">
@@ -293,6 +244,7 @@
 
 <script setup lang="ts">
 import { Image } from "@c/index";
+import MyCharacter1 from "./components/character1.vue";
 </script>
 
 <style scoped></style>
