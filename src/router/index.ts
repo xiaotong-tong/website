@@ -328,6 +328,18 @@ let routes: Route[] = [
 				}
 			},
 			{
+				path: "/bot/words",
+				name: "botWords",
+				component: () => import("../views/bot/word.vue"),
+				meta: {
+					title: {
+						zh: "三题故事",
+						ja: "三题故事"
+					},
+					theme: 3
+				}
+			},
+			{
 				path: "/link",
 				name: "link",
 				component: () => import("../views/links/links.vue"),

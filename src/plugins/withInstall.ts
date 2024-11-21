@@ -5,7 +5,7 @@ import "@/assets/css/color.css";
 // 一个像素字体文件库，暂时没有使用
 // import "galmuri/dist/galmuri.css";
 
-import { App } from "vue";
+import type { App } from "vue";
 
 // 加载自定义组件
 import icon from "../components/icon/icon.vue";
