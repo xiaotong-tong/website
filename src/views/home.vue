@@ -8,6 +8,7 @@
 		is="main"
 		class="main web-color-default"
 		:color="store.currentTheme"
+		:useBorder="store.isSmallScreen"
 		:style="{
 			width: `min(${store.pageConfig.inlineSize.minPx}px, ${store.pageConfig.inlineSize.percentage * 100}%)`
 		}"

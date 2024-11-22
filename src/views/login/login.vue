@@ -1,8 +1,16 @@
 <template>
 	<section class="login-wrap">
-		<label v-if="!userInfoStore.userInfo?.id" class="text-[#e78190] flex mb-2 mt-4 w-[500px] items-center">
-			<Icon :size="24" icon="heart"></Icon>
-			<span class="flex-none ms-1">秘密口令</span>
+		<label
+			v-if="!userInfoStore.userInfo?.id"
+			class="row text-[#e78190] flex mb-2 mt-4 items-center"
+			:style="{
+				flexDirection: contentRefStore.width <= 500 ? 'column' : 'row'
+			}"
+		>
+			<div class="flex-none inline-flex items-center">
+				<Icon :size="24" icon="heart"></Icon>
+				<span class="ms-1">秘密口令</span>
+			</div>
 
 			<NInput
 				class="ms-4 bg-transparent"
@@ -13,7 +21,18 @@
 				autofocus
 			/>
 
-			<NButton class="ms-4" color="#e78190" ghost @click="login"> 提交 </NButton>
+			<NButton
+				class="ms-4"
+				:style="{
+					marginTop: contentRefStore.width <= 500 ? '8px' : '0'
+				}"
+				color="#e78190"
+				ghost
+				@click="login"
+				:block="contentRefStore.width <= 500"
+			>
+				提交
+			</NButton>
 		</label>
 
 		<div v-else class="text-[#e78190] flex mb-2 mt-4 items-center">
@@ -41,7 +60,9 @@ import { useRouter } from "vue-router";
 import { NButton, NInput } from "naive-ui";
 import { Panel, Icon } from "@c/index";
 import { useUserInfoStore } from "@/stores/user";
+import { useContentRefStore } from "@/stores/contentRef";
 
+const contentRefStore = useContentRefStore();
 const userInfoStore = useUserInfoStore();
 const router = useRouter();
 
@@ -114,4 +135,8 @@ const exitLogin = () => {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.row {
+	width: min(calc(100% - 16px), 500px);
+}
+</style>
