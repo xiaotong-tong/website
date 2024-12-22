@@ -28,6 +28,13 @@ watch(
 	},
 	{ immediate: true }
 );
+watch(
+	() => store.isDark,
+	(v) => {
+		config.isDark.value = v;
+	},
+	{ immediate: true }
+);
 </script>
 
 <template>

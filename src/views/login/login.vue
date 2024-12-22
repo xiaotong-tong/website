@@ -58,9 +58,11 @@ import { ref } from "vue";
 import { verifyMasterUid } from "@/api/blog/verify";
 import { useRouter } from "vue-router";
 import { NButton, NInput } from "naive-ui";
-import { Panel, Icon } from "@c/index";
+import { Panel, Icon, useMessage } from "@c/index";
 import { useUserInfoStore } from "@/stores/user";
 import { useContentRefStore } from "@/stores/contentRef";
+
+const message = useMessage();
 
 const contentRefStore = useContentRefStore();
 const userInfoStore = useUserInfoStore();
@@ -69,14 +71,22 @@ const router = useRouter();
 const keyInput = ref("");
 
 async function login() {
-	const data = await verifyMasterUid(keyInput.value);
+	if (!keyInput.value) {
+		return;
+	}
 
-	if (data.code === 0) {
-		userInfoStore.userInfo = data.data;
-		keyInput.value = "";
-	} else {
-		alert("口令错误");
-		// userInfoStore.userInfo = {};
+	try {
+		const data = await verifyMasterUid(keyInput.value);
+
+		if (data.code === 200) {
+			userInfoStore.userInfo = data.data;
+			keyInput.value = "";
+		} else {
+			message("口令错误，请重试");
+		}
+	} catch (error) {
+		console.error("error", error);
+		message("口令错误, 请重试");
 	}
 }
 
