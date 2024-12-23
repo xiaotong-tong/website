@@ -9,13 +9,15 @@
 		>
 			<div class="flex-none inline-flex items-center">
 				<Icon :size="24" icon="heart"></Icon>
-				<span class="ms-1">秘密口令</span>
+				<span class="ms-1">
+					{{ t("pages.login.label") }}
+				</span>
 			</div>
 
 			<NInput
 				class="ms-4 bg-transparent"
 				v-model:value="keyInput"
-				placeholder="请输入秘密口令"
+				:placeholder="t('pages.login.placeholder')"
 				:clearable="true"
 				:maxlength="36"
 				autofocus
@@ -31,22 +33,34 @@
 				@click="login"
 				:block="contentRefStore.width <= 500"
 			>
-				提交
+				{{ t("pages.login.submit") }}
 			</NButton>
 		</label>
 
 		<div v-else class="text-[#e78190] flex mb-2 mt-4 items-center">
 			<Icon :size="24" icon="heart"></Icon>
-			<span class="flex-none ms-1">您已登录，点击此处</span>
-			<NButton class="ms-4" color="#e78190" ghost @click="exitLogin"> 退出登录 </NButton>
+			<span class="flex-none ms-1">{{ t("pages.login.loginedMsg") }}</span>
+			<NButton class="ms-4" color="#e78190" ghost @click="exitLogin">
+				{{ t("pages.login.logout") }}
+			</NButton>
 		</div>
 
-		<div class="mt-4">
+		<div class="mt-4" v-lang="'zh'">
 			<Panel targetName="h4">秘密口令获取指南</Panel>
 			<p>1. 添加 QQ机器人 “星川涟bot”, QQ号为 3889198334</p>
 			<p>2. 发送 “/登录” 指令</p>
 			<p>3. 记录星川涟回复您的秘密口令，并小心不要泄露哦，因为这是确认用户的唯一凭证。</p>
 			<p>ex1. 再次私信 “/登录” 指令可重置秘密口令</p>
+		</div>
+		<div class="mt-4" v-lang="'ja'">
+			<Panel targetName="h4">秘密のパスワードを取る</Panel>
+			<p>1. QQを使て、QQロボット「星川涟bot」を追加してください。QQ番号は3889198334です。</p>
+			<p>2. 「/登录」を送信してください。</p>
+			<p>
+				3.
+				星川涟から秘密のパスワードを受け取り、漏洩しないように注意してください。これはユーザーを確認する唯一の証拠です。
+			</p>
+			<p>ex1. 再び「/登录」を送信して、秘密のパスワードをリセットできます。</p>
 		</div>
 
 		<p v-if="nfcSupported">请刷 NFC 卡片登录</p>
@@ -61,8 +75,10 @@ import { NButton, NInput } from "naive-ui";
 import { Panel, Icon, useMessage } from "@c/index";
 import { useUserInfoStore } from "@/stores/user";
 import { useContentRefStore } from "@/stores/contentRef";
+import { useI18n } from "vue-i18n";
 
 const message = useMessage();
+const { t } = useI18n();
 
 const contentRefStore = useContentRefStore();
 const userInfoStore = useUserInfoStore();

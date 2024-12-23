@@ -103,6 +103,13 @@ export const jaMsg = {
 			mouseSnow: "マウス移動雪花エフェクトを有効にするかどうか：",
 			toggleColor: "色を切り替え",
 			toDefaultColor: "最初の色に戻す"
+		},
+		login: {
+			label: "秘密のパスワード",
+			placeholder: "秘密のパスワードを入力してください",
+			submit: "きゅん",
+			loginedMsg: "もう確認しましたよ~忘れさせたいですか？",
+			logout: "忘れる"
 		}
 	}
 };

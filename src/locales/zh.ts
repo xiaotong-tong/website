@@ -103,6 +103,13 @@ export const zhMsg = {
 			mouseSnow: "是否开启鼠标移动雪花特效：",
 			toggleColor: "切换颜色",
 			toDefaultColor: "恢复默认颜色"
+		},
+		login: {
+			label: "秘密口令",
+			placeholder: "请输入秘密口令",
+			submit: "验证",
+			loginedMsg: "已经验证过了哦~想要让我忘记您吗？",
+			logout: "忘记"
 		}
 	}
 };
