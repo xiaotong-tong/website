@@ -10,6 +10,18 @@ const i18n = createI18n({
 	messages: {
 		zh: zhMsg,
 		ja: jaMsg
+	},
+	datetimeFormats: {
+		zh: {
+			week: {
+				weekday: "long"
+			}
+		},
+		ja: {
+			week: {
+				weekday: "long"
+			}
+		}
 	}
 });
 

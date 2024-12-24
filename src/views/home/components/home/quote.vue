@@ -35,7 +35,6 @@ const quote = ref<IGetDaysQuotes>();
 getDaysQuotes(quoteKey.value)
 	.then((res) => {
 		quote.value = res;
-		emits("onLoad");
 	})
 	.catch((error) => {
 		// 如果传出的错误是超出最大值，则进行取余后再次请求
@@ -43,9 +42,19 @@ getDaysQuotes(quoteKey.value)
 			quoteKey.value = quoteKey.value % error.maxKey;
 			getDaysQuotes(quoteKey.value).then((res) => {
 				quote.value = res;
-				emits("onLoad");
 			});
+		} else {
+			// 即使无网络等请求失败，也要展示默认日语
+			quote.value = {
+				key: 100,
+				sentence: "初心忘るべからず。",
+				parse: "<ruby>初心忘<rp>(</rp><rt>しょしんわす</rt><rp>)</rp></ruby>るべからず。",
+				chinese: "不忘初心。"
+			};
 		}
+	})
+	.finally(() => {
+		emits("onLoad");
 	});
 </script>
 

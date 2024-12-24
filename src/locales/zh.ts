@@ -67,7 +67,8 @@ export const zhMsg = {
 			quote: {
 				title: "每日日语",
 				overflowTip: "兼容"
-			}
+			},
+			dayOfYear: "{year}年 第{day}天"
 		},
 		blog: {
 			readMore: "阅读全文"

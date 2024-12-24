@@ -63,11 +63,12 @@ export const jaMsg = {
 	},
 	pages: {
 		home: {
-			header: "星川漣の文字の世界",
+			header: "星川漣の文字世界",
 			quote: {
 				title: "今日の一言",
 				overflowTip: "回る"
-			}
+			},
+			dayOfYear: "{year}年 {day}日目"
 		},
 		blog: {
 			readMore: "私の全部を見る"
