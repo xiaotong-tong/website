@@ -8,6 +8,8 @@ thumbnail: https://image.xtt.moe/local/images/2024/10/14/0c9de0473b4cfceaf2e3868
 abstract: 使用 `:is()` 选择器来提升选择器的优先级，并实现一个 tailwind 插件来自定义修饰符，使用 `up:` 修饰符来提升选择器的优先级。
 prevId: 32
 prevTitle: ヨルシカ - 憂、燦々 歌詞
+nextId: 34
+nextTitle: js 中的 0 和 -0
 ---
 
 ## 前言

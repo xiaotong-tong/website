@@ -3,6 +3,8 @@ import { unref } from "vue";
 import frontMatter from "front-matter";
 import { dayjs } from "@/utils/dateUtil";
 
+import zh34 from "@blog/zh/34-js中的0和-0.md";
+import ja34 from "@blog/ja/34-js の 0 と -0.md";
 import zh33 from "@blog/zh/33-tailwind自定义提升选择器优先级修饰符.md";
 import ja33 from "@blog/ja/33-tailwindカスタムセレクタ優先度修飾子.md";
 import zh32 from "@blog/zh/32-ヨルシカ - 憂、燦々.md";
@@ -61,6 +63,7 @@ import ja2 from "@blog/ja/2-jsでのソート.md";
 const localBlogMap: {
 	[key: string]: (lang?: string) => string;
 } = {
+	"34": (lang?: string) => (lang === "ja" ? ja34 : zh34),
 	"33": (lang?: string) => (lang === "ja" ? ja33 : zh33),
 	"32": (lang?: string) => (lang === "ja" ? ja32 : zh32),
 	"31": (lang?: string) => (lang === "ja" ? ja31 : zh31),

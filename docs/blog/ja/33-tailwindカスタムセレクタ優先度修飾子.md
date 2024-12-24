@@ -8,6 +8,8 @@ thumbnail: https://image.xtt.moe/local/images/2024/10/14/0c9de0473b4cfceaf2e3868
 abstract: is() セレクタを使用してセレクタの優先度を上げ、tailwind プラグインを作成して修飾子をカスタマイズし、`up:` 修飾子を使用してセレクタの優先度を上げます。
 prevId: 32
 prevTitle: ヨルシカ - 憂、燦々 歌詞
+nextId: 34
+nextTitle: js の 0 と -0
 ---
 
 ## 前書き
