@@ -8,8 +8,6 @@ import "@/assets/css/color.css";
 import type { App } from "vue";
 
 // 加载自定义组件
-import icon from "../components/icon/icon.vue";
-
 import table from "../components/table/table.vue";
 import tableColumn from "../components/table/table-column.vue";
 
@@ -33,8 +31,6 @@ import withNamiInstall from "@c/index";
 
 const withInstall = {
 	install(app: App) {
-		app.component("namiIcon", icon);
-
 		app.component("namiTable", table);
 		app.component("namiTableColumn", tableColumn);
 

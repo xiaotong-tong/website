@@ -94,9 +94,15 @@ const list = ref([
 		content: "main.nav.bot",
 		color: store.theme[2]
 	},
+	// {
+	// 	key: "f3",
+	// 	url: "/guestbook",
+	// 	content: "main.nav.guestbook",
+	// 	color: store.theme[3]
+	// },
 	{
 		key: "f3",
-		url: "/guestbook",
+		url: "/bulletin",
 		content: "main.nav.guestbook",
 		color: store.theme[3]
 	},

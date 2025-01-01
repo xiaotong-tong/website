@@ -457,6 +457,14 @@ let routes: Route[] = [
 			}
 		]
 	},
+	{
+		path: "/bulletin",
+		name: "bulletin",
+		component: () => import("../views/bulletin/index.vue"),
+		meta: {
+			theme: 0
+		}
+	},
 	// cv 页面
 	{
 		path: "/cv/pdf",

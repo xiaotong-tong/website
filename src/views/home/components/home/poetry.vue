@@ -22,9 +22,12 @@ import type { IGetDaysPoetry } from "../../home.api";
 import { getDaysPoetry } from "../../home.api";
 import { useContentRefStore } from "@/stores/contentRef";
 import { useElementSize } from "@vueuse/core";
+import { useMessage } from "@c/index";
 
 const emits = defineEmits(["onLoad"]);
 const contentStore = useContentRefStore();
+
+const message = useMessage();
 
 const selfPoetryRef = ref<HTMLElement>();
 const { height } = useElementSize(selfPoetryRef);
@@ -34,6 +37,7 @@ getDaysPoetry()
 		curData.value = res;
 	})
 	.catch(() => {
+		message.error("获取诗词失败, 显示默认诗词");
 		// 即使请求失败，也要展示默认诗词
 		curData.value = {
 			key: 1,

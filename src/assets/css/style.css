@@ -5,21 +5,23 @@
 
 @tailwind utilities;
 
-/* 自定义页面滚动条 */
-::-webkit-scrollbar {
-	width: 5px;
-	height: 5px;
-	margin: 5px 0;
-}
-::-webkit-scrollbar-thumb {
-	margin: 5px 0;
-	border-radius: 15px;
-	background: var(--d-color, #a5a9aa);
-}
+@layer base {
+	/* 自定义页面滚动条 */
+	::-webkit-scrollbar {
+		width: 5px;
+		height: 5px;
+		margin: 5px 0;
+	}
+	::-webkit-scrollbar-thumb {
+		margin: 5px 0;
+		border-radius: 15px;
+		background: var(--d-color, #a5a9aa);
+	}
 
-::-webkit-scrollbar-track {
-	margin: 5px 0;
-	border-radius: 15px;
+	::-webkit-scrollbar-track {
+		margin: 5px 0;
+		border-radius: 15px;
+	}
 }
 
 /* 自定义网站字体 */

@@ -21,8 +21,10 @@ import { getDaysQuotes } from "../../home.api";
 import { dayjs } from "@/utils/dateUtil";
 import { useSessionStorage } from "@vueuse/core";
 import { useI18n } from "vue-i18n";
+import { useMessage } from "@c/index";
 
 const { t } = useI18n();
+const message = useMessage();
 
 const emits = defineEmits(["onLoad"]);
 
@@ -44,6 +46,7 @@ getDaysQuotes(quoteKey.value)
 				quote.value = res;
 			});
 		} else {
+			message.error("获取一言失败, 显示默认一言");
 			// 即使无网络等请求失败，也要展示默认日语
 			quote.value = {
 				key: 100,
