@@ -2,7 +2,9 @@
 	<div
 		class="bulletin-bg bulletin-bg-01"
 		:style="{
-			backgroundImage: `url(${bgUrl})`
+			backgroundImage: `url(${bulletin.url})`,
+			width: `${bulletin.width}px`,
+			height: `${bulletin.height}px`
 		}"
 	>
 		<LineCard
@@ -24,28 +26,35 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { useFetch } from "@vueuse/core";
+import { PropType, ref, watch } from "vue";
 import { LineCard } from "@c/index";
+import { type BulletinGroup, getBulletinList, type BulletinCard } from "../api";
 
-interface BulletinCard {
-	content: string;
-	width: number;
-	height: number;
-	x: number;
-	y: number;
-	type: number;
-	theme: {
-		bgColor: string;
-		color: string;
-		borderColor: string;
-		borderSize: number;
-	};
+const { bulletin } = defineProps({
+	bulletin: {
+		type: Object as PropType<BulletinGroup>,
+		required: true
+	}
+});
+
+const data = ref<BulletinCard[]>([]);
+
+async function fetchData() {
+	const res = await getBulletinList({
+		groupId: bulletin.id
+	});
+
+	data.value = res;
 }
+fetchData();
 
-const bgUrl = ref("https://data.xtt.moe/bulletin-01.webp");
-// https://api.xtt.moe/bulletin/list
-const { data } = useFetch("http://localhost:5001/bulletin/list").json<BulletinCard[]>();
+watch(
+	() => bulletin,
+	() => {
+		data.value = [];
+		fetchData();
+	}
+);
 </script>
 
 <style scoped>
