@@ -1,4 +1,7 @@
 export const jaMsg = {
+	common: {
+		unknownErrorMsg: "未知のエラーが発生しました。後でお試しください"
+	},
 	main: {
 		homeNav: {
 			home: "看板",
@@ -110,7 +113,8 @@ export const jaMsg = {
 			placeholder: "秘密のパスワードを入力してください",
 			submit: "きゅん",
 			loginedMsg: "もう確認しましたよ~忘れさせたいですか？",
-			logout: "忘れる"
+			logout: "忘れる",
+			loginSuccessMsg: "確認しましたよ❤"
 		}
 	}
 };

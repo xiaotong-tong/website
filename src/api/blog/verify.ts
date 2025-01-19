@@ -4,6 +4,7 @@ import type { UserInfo } from "@/types/user";
 export async function verifyMasterUid(uid: string): Promise<{
 	code: number;
 	data: any;
+	msg: string;
 }> {
 	if (!uid) {
 		throw new Error("uid is required");

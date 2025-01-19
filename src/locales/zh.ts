@@ -1,4 +1,7 @@
 export const zhMsg = {
+	common: {
+		unknownErrorMsg: "发生未知错误, 请稍后再试"
+	},
 	main: {
 		homeNav: {
 			home: "看板墙",
@@ -110,7 +113,8 @@ export const zhMsg = {
 			placeholder: "请输入秘密口令",
 			submit: "验证",
 			loginedMsg: "已经验证过了哦~想要让我忘记您吗？",
-			logout: "忘记"
+			logout: "忘记",
+			loginSuccessMsg: "验证成功！"
 		}
 	}
 };

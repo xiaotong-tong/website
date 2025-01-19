@@ -53,13 +53,10 @@
 			<p>ex1. 再次私信 “/登录” 指令可重置秘密口令</p>
 		</div>
 		<div class="mt-4" v-lang="'ja'">
-			<Panel targetName="h4">秘密のパスワードを取る</Panel>
-			<p>1. QQを使て、QQロボット「星川涟bot」を追加してください。QQ番号は3889198334です。</p>
-			<p>2. 「/登录」を送信してください。</p>
-			<p>
-				3.
-				星川涟から秘密のパスワードを受け取り、漏洩しないように注意してください。これはユーザーを確認する唯一の証拠です。
-			</p>
+			<Panel targetName="h4">秘密のパスワードを取るため</Panel>
+			<p>1. QQを使て、「星川涟bot」という名前のQQロボットを友達になってください。 QQ番号は3889198334です。</p>
+			<p>2. 「/登录」という指令を送信してください。</p>
+			<p>3. 星川涟から秘密のパスワードを受け取り、他の人に言わないでね。これはあなたはあなたの唯一の証明です。</p>
 			<p>ex1. 再び「/登录」を送信して、秘密のパスワードをリセットできます。</p>
 		</div>
 
@@ -69,6 +66,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { isAxiosError } from "axios";
 import { verifyMasterUid } from "@/api/blog/verify";
 import { useRouter } from "vue-router";
 import { NButton, NInput } from "naive-ui";
@@ -97,12 +95,17 @@ async function login() {
 		if (data.code === 200) {
 			userInfoStore.userInfo = data.data;
 			keyInput.value = "";
+			message.success(t("pages.login.loginSuccessMsg"));
 		} else {
-			message("口令错误，请重试");
+			message.error(data.msg);
 		}
 	} catch (error) {
 		console.error("error", error);
-		message("口令错误, 请重试");
+		if (isAxiosError(error) && error.response && error.response.status === 400) {
+			message.error(error.response.data.msg);
+			return;
+		}
+		message.error(t("common.unknownErrorMsg"));
 	}
 }
 
