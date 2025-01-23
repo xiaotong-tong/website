@@ -1,54 +1,10 @@
 <template>
 	<section class="px-8 pt-4 font-[luoliti]">
 		<MyCharacter1 />
-		<namiRoughLine class="my-2"></namiRoughLine>
-		<div class="flex">
-			<div class="flex-1">
-				<div class="flex flex-wrap">
-					<div class="w-[50%]"><span>生命：</span><span>435</span></div>
-					<div class="w-[50%]"><span>攻击：</span><span>36</span></div>
-					<div class="w-[50%]"><span>灵力：</span><span>67</span></div>
-					<div class="w-[50%]"><span>速度：</span><span>76</span></div>
-					<div class="w-[50%]"><span>防御：</span><span>41</span></div>
-					<div class="w-[50%]"><span>格挡：</span><span>18</span></div>
-					<div class="w-[50%]"><span>命中：</span><span>82</span></div>
-					<div class="w-[50%]"><span>闪避：</span><span>21</span></div>
-					<div class="w-[50%]"><span>暴击：</span><span>44</span></div>
-					<div class="w-[50%]"><span>幸运：</span><span>78</span></div>
-				</div>
-				<namiRoughLine class="my-1"></namiRoughLine>
-				<div>
-					<div>
-						<div>普攻： Roll!</div>
-						<div>对 .d3 名敌人造成 .d200 灵力的灵力伤害。</div>
-					</div>
-					<namiRoughLine class="my-1"></namiRoughLine>
-					<div>
-						<div>技能： 骰娘天使的赐福</div>
-						<div>
-							偶数回合 100% 几率释放, 对 .d3 名敌人造成 .3d150+50 %
-							灵力的灵力伤害。并在释放完成后进入赐福状态，在下次投掷骰子时,额外进行一次判定,并选择最优结果。
-						</div>
-					</div>
-					<namiRoughLine class="my-1"></namiRoughLine>
-					<div>
-						<div>队长技： 一切都交给骰娘吧</div>
-						<div>
-							我方进行伤害判定时，伤害值额外进行一次 .d11+94 的骰子判定，即最终伤害会在 95%-105% 间波动。
-						</div>
-					</div>
-					<namiRoughLine class="my-1"></namiRoughLine>
-					<div>
-						<div>支援技： 见习骰娘的赐福</div>
-						<div>提升我方全体 10 点幸运。</div>
-					</div>
-				</div>
-			</div>
-			<div class="w-[26%] me-4">
-				<div class="text-center">星川涟 - 骰子天使见习生</div>
-				<Image src="https://image.xtt.moe/images/lian5.webp" description="星川涟 - 骰子天使见习生" fullView />
-			</div>
-		</div>
+		<namiRoughLine class="my-4"></namiRoughLine>
+		<MyCharacter2 />
+		<namiRoughLine class="my-4"></namiRoughLine>
+		<MyCharacter3 />
 		<namiRoughLine class="my-2"></namiRoughLine>
 		<div class="flex">
 			<div class="flex-1">
@@ -89,55 +45,6 @@
 			</div>
 			<div class="w-[26%] me-4">
 				<div class="text-center">萝卜 - DL01</div>
-				<img src="https://image.xtt.moe/images/lian5.webp" alt="" />
-			</div>
-		</div>
-		<namiRoughLine class="my-2"></namiRoughLine>
-		<div class="flex">
-			<div class="flex-1">
-				<div class="flex flex-wrap">
-					<div class="w-[50%]"><span>生命：</span><span>370</span></div>
-					<div class="w-[50%]"><span>攻击：</span><span>77</span></div>
-					<div class="w-[50%]"><span>灵力：</span><span>57</span></div>
-					<div class="w-[50%]"><span>速度：</span><span>67</span></div>
-					<div class="w-[50%]"><span>防御：</span><span>37</span></div>
-					<div class="w-[50%]"><span>格挡：</span><span>47</span></div>
-					<div class="w-[50%]"><span>命中：</span><span>87</span></div>
-					<div class="w-[50%]"><span>闪避：</span><span>57</span></div>
-					<div class="w-[50%]"><span>暴击：</span><span>27</span></div>
-					<div class="w-[50%]"><span>幸运：</span><span>97</span></div>
-				</div>
-				<namiRoughLine class="my-1"></namiRoughLine>
-				<div>
-					<div>
-						<div>潮汐</div>
-						<div>
-							以月亮的力量引动潮汐，对敌方全体造成自身灵力 20% 的灵力伤害，并在命中敌方时，对目标额外造成
-							50% 的物理伤害。
-						</div>
-					</div>
-					<namiRoughLine class="my-1"></namiRoughLine>
-					<div>
-						<div>月光</div>
-						<div>被动技：奇数回合行动开始时 200% 几率释放，为我方全体恢复 60% 灵力的生命。</div>
-					</div>
-					<namiRoughLine class="my-1"></namiRoughLine>
-					<div>
-						<div>幸运7</div>
-						<div>
-							队长技：自身在受到伤害时，最终伤害有 0.7% 的几率减少 777 点， 7% 的几率减少 77 点， 77%
-							的几率减少 7 点。
-						</div>
-					</div>
-					<namiRoughLine class="my-1"></namiRoughLine>
-					<div>
-						<div>月影</div>
-						<div>支援技：提升我方全体 10 点闪避。</div>
-					</div>
-				</div>
-			</div>
-			<div class="w-[26%] me-4">
-				<div class="text-center">因幡汐（いなばうしお）</div>
 				<img src="https://image.xtt.moe/images/lian5.webp" alt="" />
 			</div>
 		</div>
@@ -243,8 +150,9 @@
 </template>
 
 <script setup lang="ts">
-import { Image } from "@c/index";
 import MyCharacter1 from "./components/character1.vue";
+import MyCharacter2 from "./components/character2.vue";
+import MyCharacter3 from "./components/character3.vue";
 </script>
 
 <style scoped></style>
