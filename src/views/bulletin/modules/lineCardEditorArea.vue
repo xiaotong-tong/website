@@ -40,10 +40,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { LineCard, BaseIcon, TextArea, useMessage } from "@c/index";
 import { useDraggable } from "@vueuse/core";
 import { NColorPicker, NInputNumber, NButton } from "naive-ui";
+import { type BulletinGroup } from "../api";
+
+interface Props {
+	containerRef?: HTMLElement;
+	bulletin: BulletinGroup;
+}
+const { containerRef, bulletin } = defineProps<Props>();
 
 const message = useMessage();
 
@@ -60,7 +67,18 @@ const dragRef = ref();
 const { x, y } = useDraggable(editorRef, {
 	initialValue: { x: 40, y: 60 },
 	preventDefault: true,
-	handle: dragRef
+	handle: dragRef,
+	containerElement() {
+		return containerRef;
+	},
+	onMove(position) {
+		if (position.x + editorWidth.value > bulletin.width) {
+			x.value = bulletin.width - editorWidth.value;
+		}
+		if (position.y + editorHeight.value > bulletin.height) {
+			y.value = bulletin.height - editorHeight.value;
+		}
+	}
 });
 
 async function submit() {
@@ -71,6 +89,7 @@ async function submit() {
 		height: editorHeight.value,
 		content: editorContent.value,
 		type: 1,
+		groupId: bulletin.id,
 		theme: {
 			bgColor: editorBgColor.value,
 			color: editorColor.value,
@@ -95,6 +114,14 @@ async function submit() {
 			message.error("发布失败");
 		});
 }
+
+watch(
+	() => bulletin,
+	() => {
+		x.value = 40;
+		y.value = 60;
+	}
+);
 </script>
 
 <style scoped>

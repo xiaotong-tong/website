@@ -3,9 +3,9 @@
 	<namiMHeader v-else></namiMHeader>
 
 	<section class="page" v-if="loaded">
-		<div class="view-content" v-if="curGroup">
+		<div class="view-content" v-if="curGroup" ref="containerRef">
 			<MyBulletinBG01 :bulletin="curGroup"></MyBulletinBG01>
-			<MyLineCardEditorArea></MyLineCardEditorArea>
+			<MyLineCardEditorArea :containerRef="containerRef" :bulletin="curGroup"></MyLineCardEditorArea>
 		</div>
 		<div class="right-action">
 			<div class="flex flex-col w-full gap-y-2 overflow-y-auto pe-1">
@@ -34,6 +34,7 @@ const store = useStore();
 
 const loaded = ref(false);
 
+const containerRef = ref<HTMLElement>();
 const curGroup = ref<BulletinGroup>();
 
 const groupList = ref<BulletinGroup[]>([]);
