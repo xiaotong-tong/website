@@ -13,6 +13,8 @@
 		<MyCharacter6 />
 		<namiRoughLine class="my-4"></namiRoughLine>
 		<MyCharacter7 />
+		<namiRoughLine class="my-4"></namiRoughLine>
+		<MyCharacter8 />
 	</section>
 </template>
 
@@ -24,6 +26,7 @@ import MyCharacter4 from "./components/character4.vue";
 import MyCharacter5 from "./components/character5.vue";
 import MyCharacter6 from "./components/character6.vue";
 import MyCharacter7 from "./components/character7.vue";
+import MyCharacter8 from "./components/character8.vue";
 </script>
 
 <style scoped></style>
