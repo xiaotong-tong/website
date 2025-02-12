@@ -49,6 +49,8 @@ async function getGroupListData() {
 		setTimeout(() => {
 			loaded.value = true;
 		}, 1000 - diffTime);
+	} else {
+		loaded.value = true;
 	}
 }
 getGroupListData();
