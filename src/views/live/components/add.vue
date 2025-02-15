@@ -1,8 +1,16 @@
 <template>
-	<NamiButton v-bind="$attrs" v-login :borderColor="store.currentTheme" @click="openModal">新增动态</NamiButton>
+	<NamiButton v-bind="$attrs" v-login :borderColor="store.currentTheme" @click="openModal">
+		{{ t("pages.live.addLive") }}
+	</NamiButton>
 
-	<Modal v-model:show="showModal" :color="store.currentTheme" @ok="submit" @cancel="onCancel" okText="提交">
-		<h3>发布动态</h3>
+	<Modal
+		v-model:show="showModal"
+		:color="store.currentTheme"
+		@ok="submit"
+		@cancel="onCancel"
+		:okText="t('common.submit')"
+	>
+		<h3>{{ t("pages.live.addLive") }}</h3>
 		<NRadioGroup v-model:value="type" class="mt-4">
 			<NRadioButton value="text">text</NRadioButton>
 			<NRadioButton value="markdown">markdown</NRadioButton>
@@ -15,13 +23,13 @@
 import { ref, toRaw, onUnmounted, nextTick } from "vue";
 import { NamiButton, Modal } from "@c/index";
 import { useStore } from "@/stores/index";
-import { useUserInfoStore } from "@/stores/user";
 import * as monaco from "monaco-editor";
 import { addLive } from "@/api/live/live";
 import { NRadioGroup, NRadioButton } from "naive-ui";
+import { useI18n } from "vue-i18n";
 
+const { t } = useI18n();
 const store = useStore();
-const userInfoStore = useUserInfoStore();
 
 const emits = defineEmits(["submit"]);
 
@@ -67,7 +75,6 @@ async function submit() {
 
 	await addLive({
 		content,
-		userId: userInfoStore.userInfo.id,
 		contentType: type.value
 	});
 	toRaw(editor.value!)?.setValue("");

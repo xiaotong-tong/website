@@ -5,9 +5,11 @@ import "@/function/joke";
 import "@/function/visibility";
 import { initWebBGUrl } from "@/utils/webBG";
 import { useStore } from "@/stores/index";
+import { useI18nStore } from "./stores/i18n";
 import { config } from "@c/index";
 
 const store = useStore();
+const i18nStore = useI18nStore();
 
 const ms = new MouseSnow({
 	isDisabled: !store.pageConfig.mouseSnow
@@ -32,6 +34,13 @@ watch(
 	() => store.isDark,
 	(v) => {
 		config.isDark.value = v;
+	},
+	{ immediate: true }
+);
+watch(
+	() => i18nStore.lang,
+	(v) => {
+		config.lang.value = v;
 	},
 	{ immediate: true }
 );

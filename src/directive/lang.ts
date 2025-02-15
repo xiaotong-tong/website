@@ -5,6 +5,10 @@ export const myLang = {
 	beforeMount(el: HTMLElement, binding: any) {
 		const i18n = useI18nStore();
 
+		if (binding.value === "jp") {
+			binding.value = "ja";
+		}
+
 		// 隐藏不是指定语言的元素
 		watch(
 			() => i18n.lang,

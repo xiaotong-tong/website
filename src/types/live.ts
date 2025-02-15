@@ -6,6 +6,7 @@ export interface LiveInfo {
 	contentType: string;
 	verify: {
 		name: string;
+		jpName: string;
 		avatar: string;
 	};
 }

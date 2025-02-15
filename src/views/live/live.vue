@@ -1,6 +1,6 @@
 <template>
 	<section class="w-full flex justify-center items-center">
-		<Panel wrapperTargetName="h2">动态</Panel>
+		<Panel wrapperTargetName="h2">{{ t("pages.live.title") }}</Panel>
 		<MyAdd class="absolute right-4 top-3" @submit="getList" />
 	</section>
 
@@ -12,18 +12,19 @@
 			</template>
 			<template v-slot:opposite>
 				<div>{{ dayjs(item.createTime).format("YYYY-MM-DD hh:mm:ss") }}</div>
-				<div>@{{ item.verify.name }}</div>
-				<div v-login>
+				<div v-lang="'zh'">@{{ item.verify.name }}</div>
+				<div v-lang="'ja'">@{{ item.verify.jpName || item.verify.name }}</div>
+				<div v-if="userInfo.id === item.userId">
 					<NPopconfirm
-						positive-text="确认"
-						negative-text="取消"
+						:positive-text="t('common.confirm')"
+						:negative-text="t('common.cancel')"
 						@positive-click="handlePositiveClick(item.id)"
 					>
 						<template #trigger>
 							<NButton text><nami-icon icon="mdiDeleteOutline" /></NButton>
 						</template>
 						<template #default>
-							<div>确认删除？</div>
+							<div>{{ t("common.confirmDelete") }}</div>
 						</template>
 					</NPopconfirm>
 				</div>
@@ -44,6 +45,11 @@ import MyAdd from "./components/add.vue";
 import { getLives, deleteLive } from "@/api/live/live";
 import { dayjs } from "@/utils/dateUtil";
 import { NButton, NPopconfirm } from "naive-ui";
+import { useUserInfoStore } from "@/stores/user";
+import { useI18n } from "vue-i18n";
+
+const { userInfo } = useUserInfoStore();
+const { t } = useI18n();
 
 const loaded = ref(false);
 const list = ref<LiveInfo[]>([]);

@@ -1,6 +1,10 @@
 export const zhMsg = {
 	common: {
-		unknownErrorMsg: "发生未知错误, 请稍后再试"
+		unknownErrorMsg: "发生未知错误, 请稍后再试",
+		submit: "提交",
+		confirm: "确认",
+		cancel: "取消",
+		confirmDelete: "确认删除"
 	},
 	main: {
 		homeNav: {
@@ -115,6 +119,21 @@ export const zhMsg = {
 			loginedMsg: "已经验证过了哦~想要让我忘记您吗？",
 			logout: "忘记",
 			loginSuccessMsg: "验证成功！"
+		},
+		live: {
+			title: "动态",
+			addLive: "新增动态"
+		},
+		user: {
+			title: "用户",
+			uid: "用户 ID",
+			nickname: "昵称",
+			otherNickname: "日文昵称",
+			avatar: "头像",
+			editUserInfo: "修改用户信息",
+			avatarUpload: "上传头像",
+			avatarEdit: "更改头像",
+			avatarAlt: "用户头像"
 		}
 	}
 };

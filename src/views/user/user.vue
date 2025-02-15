@@ -1,45 +1,60 @@
 <template>
 	<section class="user-wrap">
 		<div class="title text-center">
-			<Panel>用户</Panel>
+			<Panel>{{ t("pages.user.title") }}</Panel>
 		</div>
 		<div class="item">
-			<span class="label">标识: </span><span>{{ userInfoStore.userInfo.password }}</span>
+			<span class="label">{{ t("pages.user.uid") }}: </span><span>{{ userInfoStore.userInfo.password }}</span>
 		</div>
 		<div class="item">
-			<span class="label">昵称: </span><span>{{ userInfoStore.userInfo.name || "暂无" }}</span>
+			<span class="label">{{ t("pages.user.nickname") }}: </span>
+			<span v-lang="'zh'">{{ userInfoStore.userInfo.name || "暂无" }}</span>
+			<span v-lang="'ja'">{{ userInfoStore.userInfo.jpName || "なし" }}</span>
 		</div>
 		<div class="item">
-			<span class="label">头像: </span>
+			<span class="label">{{ t("pages.user.otherNickname") }}: </span>
+			<span v-lang="'zh'">{{ userInfoStore.userInfo.jpName || "暂无" }}</span>
+			<span v-lang="'jp'">{{ userInfoStore.userInfo.name || "なし" }}</span>
+		</div>
+		<div class="item">
+			<span class="label">{{ t("pages.user.avatar") }}: </span>
 			<div>
 				<img
 					class="w-[64px] rounded-full"
 					:src="userInfoStore.userInfo.avatar || 'https://image.xtt.moe/images/mlian2.md.webp'"
-					alt="头像"
+					:alt="t('pages.user.avatar')"
 				/>
 			</div>
 		</div>
 		<div class="item">
 			<span class="label"></span>
-			<NamiButton :borderColor="store.currentTheme" @click="openEditModal">修改用户信息</NamiButton>
+			<NamiButton :borderColor="store.currentTheme" @click="openEditModal">{{
+				t("pages.user.editUserInfo")
+			}}</NamiButton>
 		</div>
 	</section>
 
-	<Modal v-model:show="showModal" :color="store.currentTheme" @ok="editSubmit" okText="提交">
-		<h3>修改用户信息</h3>
+	<Modal v-model:show="showModal" :color="store.currentTheme" @ok="editSubmit" :okText="t('common.submit')">
+		<h3 class="text-2xl">{{ t("pages.user.editUserInfo") }}</h3>
 		<div class="item">
-			<span class="label">昵称: </span>
-			<NInput v-model:value="nickName" />
+			<span class="label">{{ t("pages.user.nickname") }}: </span>
+			<NInput v-lang="'zh'" v-model:value="nickName" />
+			<NInput v-lang="'ja'" v-model:value="jaName" />
 		</div>
 		<div class="item">
-			<span class="label">头像: </span>
-			<img class="w-[64px] rounded-full" :src="url" alt="要设置的头像" />
+			<span class="label">{{ t("pages.user.otherNickname") }}: </span>
+			<NInput v-lang="'zh'" v-model:value="jaName" />
+			<NInput v-lang="'ja'" v-model:value="nickName" />
+		</div>
+		<div class="item">
+			<span class="label">{{ t("pages.user.avatar") }}: </span>
+			<img class="w-[64px] rounded-full" :src="url" :alt="t('pages.user.avatarAlt')" />
 			<Cropper
 				class="ms-4"
 				:color="store.currentTheme"
 				@submit="avatarSubmit"
 				:asyncOkCallback="true"
-				:buttonText="url ? '更改' : '上传图片'"
+				:buttonText="url ? t('pages.user.avatarEdit') : t('pages.user.avatarUpload')"
 			></Cropper>
 		</div>
 	</Modal>
@@ -53,7 +68,9 @@ import { NInput } from "naive-ui";
 import { useUserInfoStore } from "@/stores/user";
 import { useStore } from "@/stores/index";
 import { uploadLocalImage } from "@/api/image/image";
+import { useI18n } from "vue-i18n";
 
+const { t } = useI18n();
 const userInfoStore = useUserInfoStore();
 const store = useStore();
 
@@ -61,9 +78,11 @@ const showModal = ref(false);
 
 const url = ref("");
 const nickName = ref("");
+const jaName = ref("");
 
 function openEditModal() {
 	nickName.value = userInfoStore.userInfo.name;
+	jaName.value = userInfoStore.userInfo.jpName;
 	url.value = userInfoStore.userInfo.avatar;
 	showModal.value = true;
 }
@@ -72,7 +91,11 @@ async function editSubmit() {
 	if (!url.value && !nickName.value) return;
 
 	const res = await editUserInfo(
-		Object.assign({}, userInfoStore.userInfo, { avatar: url.value, name: nickName.value })
+		Object.assign({}, userInfoStore.userInfo, {
+			avatar: url.value,
+			name: nickName.value,
+			jpName: jaName.value
+		})
 	);
 
 	if (res.id === userInfoStore.userInfo.id) {
@@ -112,9 +135,10 @@ async function avatarSubmit(canvas: any, callback?: Function) {
 	align-items: center;
 
 	& > .label {
-		width: 100px;
+		width: 160px;
 		text-align: end;
 		padding-inline-end: 16px;
+		flex: none;
 	}
 }
 </style>

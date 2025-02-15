@@ -1,6 +1,10 @@
 export const jaMsg = {
 	common: {
-		unknownErrorMsg: "未知のエラーが発生しました。後でお試しください"
+		unknownErrorMsg: "未知のエラーが発生しました。後でお試しください",
+		submit: "送信",
+		confirm: "確認",
+		cancel: "キャンセル",
+		confirmDelete: "削除を確認"
 	},
 	main: {
 		homeNav: {
@@ -115,6 +119,21 @@ export const jaMsg = {
 			loginedMsg: "もう確認しましたよ~忘れさせたいですか？",
 			logout: "忘れる",
 			loginSuccessMsg: "確認しましたよ❤"
+		},
+		live: {
+			title: "ライブ",
+			addLive: "ライブを追加"
+		},
+		user: {
+			title: "ユーザー",
+			uid: "ユーザー ID",
+			nickname: "ニックネーム",
+			otherNickname: "中国語ののニックネーム",
+			avatar: "アバター",
+			editUserInfo: "ユーザー情報を編集",
+			avatarUpload: "アバターをアップロード",
+			avatarEdit: "アバターを変更",
+			avatarAlt: "ユーザーアバター"
 		}
 	}
 };
