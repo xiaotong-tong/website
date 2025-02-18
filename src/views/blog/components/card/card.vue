@@ -65,7 +65,6 @@ interface Props {
 		thumbnail: string;
 		abstract: string;
 		jaTitle: string;
-		jaAuthor: string;
 		jaAbstract: string;
 		jaTags: string;
 		jaCategory: string;
@@ -80,7 +79,6 @@ const props = withDefaults(defineProps<Props>(), {
 		thumbnail: "",
 		abstract: "",
 		jaTitle: "",
-		jaAuthor: "",
 		jaAbstract: "",
 		jaTags: "",
 		jaCategory: ""

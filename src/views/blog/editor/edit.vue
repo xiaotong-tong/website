@@ -2,11 +2,6 @@
 	<div class="item"><span>标题：</span> <NInput type="text" v-model:value="title" /></div>
 
 	<div class="item">
-		<span>作者：</span>
-		<NInput type="text" v-model:value="author" class="up:w-[200px]" />
-	</div>
-
-	<div class="item">
 		<span>分类：</span>
 		<NSelect v-model:value="category" filterable tag :options="categories" />
 	</div>
@@ -52,11 +47,6 @@
 	<namiRoughLine></namiRoughLine>
 
 	<div class="item mt-2"><span>日文标题：</span> <NInput type="text" v-model:value="jaTitle" /></div>
-
-	<div class="item">
-		<span>日文作者名：</span>
-		<NInput type="text" v-model:value="jaAuthor" class="up:w-[200px]" />
-	</div>
 
 	<div class="item">
 		<span>日文分类：</span>
@@ -107,14 +97,13 @@ const title = ref("");
 const jaTitle = ref("");
 const content = ref("");
 const jaContent = ref("");
-const author = ref("");
-const jaAuthor = ref("");
 const category = ref("");
 const jaCategory = ref("");
 const tags = ref("");
 const jaTags = ref("");
 const abstract = ref("");
 const jaAbstract = ref("");
+const userId = ref();
 
 const thumbnail = ref("");
 
@@ -165,8 +154,6 @@ const getActicle = async () => {
 	jaContent.value = data.jaContent;
 	contentValue = data.content;
 	jaContentValue = data.jaContent;
-	author.value = data.author;
-	jaAuthor.value = data.jaAuthor;
 	category.value = data.category;
 	jaCategory.value = data.jaCategory;
 	tags.value = data.tags;
@@ -174,6 +161,7 @@ const getActicle = async () => {
 	abstract.value = data.abstract;
 	jaAbstract.value = data.jaAbstract;
 	thumbnail.value = data.thumbnail;
+	userId.value = data.userId;
 
 	renderMonacoEditor();
 	renderJaMonacoEditor();
@@ -236,16 +224,15 @@ const submitEvent = async () => {
 	if (!content) return alert("内容不能为空");
 
 	await editActicleById(id.value, {
+		userId: userId.value,
 		title: title.value,
 		content: content,
-		author: author.value,
 		category: category.value,
 		tags: tags.value,
 		abstract: abstract.value,
 		thumbnail: thumbnail.value,
 		jaTitle: jaTitle.value,
 		jaContent: jaContent.value,
-		jaAuthor: jaAuthor.value,
 		jaCategory: jaCategory.value,
 		jaTags: jaTags.value,
 		jaAbstract: jaAbstract.value

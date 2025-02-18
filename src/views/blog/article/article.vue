@@ -1,7 +1,7 @@
 <template>
 	<div class="flex justify-end mb-2 gap-x-4 pe-4" v-if="acticle">
 		<TextButton type="primary" @click="downloadMd">下载</TextButton>
-		<Link v-login type="primary" :to="'/editor/edit/' + id">编辑</Link>
+		<Link v-login="acticle.userId" type="primary" :to="'/editor/edit/' + id">编辑</Link>
 	</div>
 	<section class="container web-color-default" v-if="acticle">
 		<h2 class="text-xl font-bold">

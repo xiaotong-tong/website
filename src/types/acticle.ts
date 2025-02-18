@@ -5,7 +5,6 @@ export interface Acticle {
 	uid: UUID;
 	title: string;
 	content: string;
-	author: string;
 	category: string;
 	tags: string;
 	createDate: string;
@@ -14,10 +13,14 @@ export interface Acticle {
 	abstract: string;
 	jaTitle: string;
 	jaContent: string;
-	jaAuthor: string;
 	jaAbstract: string;
 	jaTags: string;
 	jaCategory: string;
+	userId: number;
+	verify: {
+		name: string;
+		jpName: string;
+	};
 }
 
 export interface ActicleById extends Acticle {
@@ -38,14 +41,12 @@ export interface ActicleById extends Acticle {
 export interface AddActicleBody {
 	title: string;
 	content: string;
-	author: string;
 	category: string;
 	tags?: string;
 	abstract?: string;
 	thumbnail?: string;
 	jaTitle: string;
 	jaContent: string;
-	jaAuthor: string;
 	jaAbstract: string;
 	jaTags: string;
 	jaCategory: string;
@@ -54,15 +55,14 @@ export interface AddActicleBody {
 export interface EditActicleBody {
 	title?: string;
 	content?: string;
-	author?: string;
 	category?: string;
 	tags?: string;
 	abstract?: string;
 	thumbnail?: string;
 	jaTitle: string;
 	jaContent: string;
-	jaAuthor: string;
 	jaAbstract: string;
 	jaTags: string;
 	jaCategory: string;
+	userId: number;
 }
