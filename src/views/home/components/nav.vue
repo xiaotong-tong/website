@@ -239,12 +239,30 @@ const keydownHandler = (e: KeyboardEvent) => {
 
 const autoPlayPiano = (score: string, speed = 75) => {
 	const timeUnit = (1000 * 60) / speed;
-	const scoreArr = score.split("");
+	const scoreArr = score.split("").filter((item) => item !== " ");
 	let i = 0;
 
 	const keyMap = [undefined, "c3", "d3", "e3", "f3", "g3", "a3", "b3"] as const;
 
-	const loop = (unit: number | "-") => {
+	const loop = (unit: number | "-", nextUnit: number | string) => {
+		let curTimeUnit = timeUnit;
+		let nextUnitIsUnit = false;
+		if (nextUnit === "_") {
+			nextUnitIsUnit = true;
+			curTimeUnit = timeUnit * 0.5;
+		}
+		setTimeout(() => {
+			if (i > scoreArr.length) {
+				return;
+			}
+			if (nextUnitIsUnit) {
+				i = i + 2;
+			} else {
+				i++;
+			}
+			loop(+scoreArr[i], scoreArr[i + 1]);
+		}, curTimeUnit);
+
 		if (unit === 0 || unit === "-") {
 			return;
 		}
@@ -291,15 +309,7 @@ const autoPlayPiano = (score: string, speed = 75) => {
 
 		playPianoAudio(key);
 	};
-
-	const timer = setInterval(() => {
-		loop(+scoreArr[i]);
-		i++;
-
-		if (i > scoreArr.length) {
-			clearInterval(timer);
-		}
-	}, timeUnit);
+	loop(+scoreArr[i], scoreArr[i + 1]);
 };
 
 onMounted(() => {

@@ -4,7 +4,9 @@ export const jaMsg = {
 		submit: "送信",
 		confirm: "確認",
 		cancel: "キャンセル",
-		confirmDelete: "削除を確認"
+		confirmDelete: "削除を確認",
+		add: "追加",
+		uploadImage: "画像をアップロード"
 	},
 	main: {
 		homeNav: {
@@ -134,6 +136,21 @@ export const jaMsg = {
 			avatarUpload: "アバターをアップロード",
 			avatarEdit: "アバターを変更",
 			avatarAlt: "ユーザーアバター"
+		},
+		save: {
+			webLink: "フロントエンドについてのインク",
+			emoji: "絵文字",
+			photo: {
+				title: "写真",
+				addModalTitle: "写真を追加",
+				addModalURL: "写真の URL",
+				canBotUse: "bot が使用できる"
+			},
+			piano: {
+				title: "ピアノ音",
+				songOfStar: "きらきら星",
+				songOfTiger: "两只老虎"
+			}
 		}
 	}
 };

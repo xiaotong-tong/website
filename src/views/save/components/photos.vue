@@ -2,12 +2,12 @@
 	<div>
 		<div class="pos-relative">
 			<nami-link to="/photos" type="primary">
-				<Panel> {{ i18nStore.lang === "ja" ? "写真" : "图片" }}</Panel>
+				<Panel>{{ t("pages.save.photo.title") }}</Panel>
 			</nami-link>
 
-			<NamiButton class="add-photo-btn" @click="showModal = true" :border-color="store.currentTheme" v-login
-				>新增</NamiButton
-			>
+			<NamiButton class="add-photo-btn" @click="showModal = true" :border-color="store.currentTheme" v-login>{{
+				t("common.add")
+			}}</NamiButton>
 		</div>
 		<div class="flex h-[150px] gap-x-2 overflow-x-auto pe-1">
 			<div class="flex-none" v-for="item in imageList" :key="item.id">
@@ -16,16 +16,16 @@
 		</div>
 
 		<Modal v-model:show="showModal" @cancel="showModal = false" @ok="handlerSubmit">
-			<h2>新增图片</h2>
+			<h2 class="text-2xl">{{ t("pages.save.photo.addModalTitle") }}</h2>
 			<div>
-				图片 url:
+				{{ t("pages.save.photo.addModalURL") }}:
 				<NInput v-model:value="url" />
 			</div>
 			<NUpload class="my-4" accept="image/*" @change="uploadImage" :show-file-list="false">
-				<NButton>上传图片</NButton>
+				<NButton>{{ t("common.uploadImage") }}</NButton>
 			</NUpload>
 			<div>
-				<NCheckbox v-model:checked="botCanUse"> bot 能否使用 </NCheckbox>
+				<NCheckbox v-model:checked="botCanUse"> {{ t("pages.save.photo.canBotUse") }}: </NCheckbox>
 			</div>
 		</Modal>
 	</div>
@@ -34,14 +34,14 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useImageList } from "@/utils/photos";
-import { useI18nStore } from "@/stores/i18n";
 import { Panel, NamiButton, Modal } from "@c/index";
 import type { UploadOnChange } from "naive-ui";
 import { NButton, NInput, NCheckbox, NUpload } from "naive-ui";
 import { uploadLocalImage } from "@/api/image/image";
 import { useStore } from "@/stores";
+import { useI18n } from "vue-i18n";
 
-const i18nStore = useI18nStore();
+const { t } = useI18n();
 const store = useStore();
 
 const { list: imageList, addImage } = useImageList(true);

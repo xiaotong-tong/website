@@ -4,7 +4,9 @@ export const zhMsg = {
 		submit: "提交",
 		confirm: "确认",
 		cancel: "取消",
-		confirmDelete: "确认删除"
+		confirmDelete: "确认删除",
+		add: "新增",
+		uploadImage: "上传图片"
 	},
 	main: {
 		homeNav: {
@@ -134,6 +136,21 @@ export const zhMsg = {
 			avatarUpload: "上传头像",
 			avatarEdit: "更改头像",
 			avatarAlt: "用户头像"
+		},
+		save: {
+			webLink: "前端链接",
+			emoji: "颜文字",
+			photo: {
+				title: "图片",
+				addModalTitle: "新增图片",
+				addModalURL: "图片 url",
+				canBotUse: "bot 能否使用"
+			},
+			piano: {
+				title: "钢琴音",
+				songOfStar: "小星星",
+				songOfTiger: "两只老虎"
+			}
 		}
 	}
 };

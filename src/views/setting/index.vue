@@ -93,12 +93,6 @@
 				</n-switch>
 			</label>
 		</div>
-		<div class="item" v-if="!store.isSmallScreen">
-			<label>
-				<span class="me-2">{{ t("pages.setting.autoPlayPiano") }}</span>
-				<NButton text color="#8bcecb" @click="play">小星星</NButton>
-			</label>
-		</div>
 		<namiRoughLine class="my-2"></namiRoughLine>
 		<div class="item">
 			<label>
@@ -128,8 +122,6 @@
 </template>
 
 <script setup lang="ts">
-import namiNav from "@/views/home/components/nav.vue";
-import { inject } from "vue";
 import MyChangeBG from "./components/bg.vue";
 import { useStore } from "@/stores/index";
 import { useI18nStore } from "@/stores/i18n";
@@ -140,12 +132,6 @@ import MyCache from "./components/cache.vue";
 const { t } = useI18n();
 const store = useStore();
 const i18nStore = useI18nStore();
-
-const namiNavRef = inject<typeof namiNav>("namiNavRef");
-
-function play() {
-	namiNavRef?.value.autoPlayPiano("1155665-4433221-5544332-5544332-1155665-4433221", 120);
-}
 </script>
 
 <style scoped>

@@ -3,13 +3,14 @@
 		<myPhotosArea></myPhotosArea>
 		<div class="nomoal">
 			<nami-link to="/save/webLinks" class="link" type="primary">
-				{{ i18nStore.lang === "ja" ? "Web リンク" : "前端链接" }}
+				{{ t("pages.save.webLink") }}
 			</nami-link>
 			<nami-link to="/save/emoji" class="link" type="primary">
-				{{ i18nStore.lang === "ja" ? "絵文字" : "颜文字" }}
+				{{ t("pages.save.emoji") }}
 			</nami-link>
 			<nami-link to="/reading" class="link" type="primary"> 文字な日々 </nami-link>
 		</div>
+		<myPlayPiano></myPlayPiano>
 		<div class="jp-section">
 			<Panel>日本語勉強</Panel>
 			<div class="jp-content">
@@ -39,10 +40,12 @@
 </template>
 
 <script setup lang="ts">
-import { useI18nStore } from "@/stores/i18n";
 import myPhotosArea from "./components/photos.vue";
+import myPlayPiano from "./components/playPiano.vue";
 import { Panel } from "@c/index";
-const i18nStore = useI18nStore();
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 </script>
 
 <style scoped>
