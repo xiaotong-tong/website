@@ -7,7 +7,7 @@
 	<nami-timeline v-if="loaded" class="content" contentAlign="center">
 		<nami-timeline-item v-for="item in list" :key="item.id">
 			<template v-slot:body>
-				<pre v-if="item.contentType === 'text'">{{ item.content }}</pre>
+				<div class="whitespace-pre-wrap" v-if="item.contentType === 'text'">{{ item.content }}</div>
 				<markdown v-if="item.contentType === 'markdown'" class="up:pt-0" :content="item.content"></markdown>
 			</template>
 			<template v-slot:opposite>
