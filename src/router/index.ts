@@ -413,6 +413,18 @@ let routes: Route[] = [
 				}
 			},
 			{
+				path: "/santi",
+				name: "santi",
+				component: () => import("../views/santi/santi.vue"),
+				meta: {
+					title: {
+						zh: "三题故事",
+						ja: "三題噺"
+					},
+					theme: 1
+				}
+			},
+			{
 				path: "/dashboard",
 				name: "dashboard",
 				component: () => import("../views/dashboard/index.vue"),

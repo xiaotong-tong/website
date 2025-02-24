@@ -50,7 +50,8 @@ export const jaMsg = {
 			setting: "設定",
 			live: "ライブ",
 			bot: "bot",
-			character: "キャラクター"
+			character: "キャラクター",
+			santi: "三題噺"
 		},
 		footer: {
 			sitemap: "サイトマップ"
@@ -151,6 +152,10 @@ export const jaMsg = {
 				songOfStar: "きらきら星",
 				songOfTiger: "两只老虎"
 			}
+		},
+		santi: {
+			title: "三題噺",
+			add: "三題噺を追加"
 		}
 	}
 };

@@ -50,7 +50,8 @@ export const zhMsg = {
 			setting: "设置",
 			live: "动态",
 			bot: "bot",
-			character: "角色"
+			character: "角色",
+			santi: "三题故事"
 		},
 		footer: {
 			sitemap: "站点地图"
@@ -151,6 +152,10 @@ export const zhMsg = {
 				songOfStar: "小星星",
 				songOfTiger: "两只老虎"
 			}
+		},
+		santi: {
+			title: "三题故事",
+			add: "新增三题故事"
 		}
 	}
 };

@@ -64,7 +64,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 import { useStore } from "@/stores/index";
 import { useI18nStore } from "@/stores/i18n";
 import { useUserInfoStore } from "@/stores/user";
@@ -129,8 +129,26 @@ const list = ref([
 		url: "/live",
 		content: "main.nav.live",
 		color: store.theme[7]
+	},
+	{
+		key: "d4",
+		url: "/santi",
+		content: "main.nav.santi",
+		color: store.theme[8]
 	}
 ]);
+
+watch(
+	() => store.theme,
+	() => {
+		list.value.forEach((item, index) => {
+			item.color = store.theme[index];
+		});
+	},
+	{
+		deep: true
+	}
+);
 
 // 防止 blur 事件与 focus 事件冲突
 const blurDelay = 100;
