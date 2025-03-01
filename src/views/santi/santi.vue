@@ -4,6 +4,8 @@
 		<MyAdd class="absolute right-4 top-3" @submit="getList" />
 	</section>
 
+	<Alert class="mb-4" type="warning"> 下面的三题故事由AI生成，仅限记录。</Alert>
+
 	<NCollapse v-show="loaded">
 		<NCollapseItem v-for="item in list" :key="item.id" :title="item.topic" :name="item.id">
 			<div class="whitespace-pre-wrap">{{ item.content }}</div>
@@ -18,7 +20,7 @@
 <script setup lang="ts">
 import type { SantiInfo } from "@/types/santi";
 import { ref } from "vue";
-import { Panel } from "@c/index";
+import { Panel, Alert } from "@c/index";
 import MyAdd from "./components/add.vue";
 import { getSanti } from "@/api/santi/santi";
 import { NCollapse, NCollapseItem } from "naive-ui";

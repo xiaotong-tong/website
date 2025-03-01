@@ -3,12 +3,18 @@
 		{{ t("pages.santi.add") }}
 	</NamiButton>
 
-	<Modal v-model:show="showModal" :color="store.currentTheme" @ok="submit" :okText="t('common.submit')">
+	<Modal
+		v-model:show="showModal"
+		:color="store.currentTheme"
+		@ok="submit"
+		:okText="t('common.submit')"
+		@cancel="cancel"
+	>
 		<h3>{{ t("pages.santi.add") }}</h3>
 		<p>题目:</p>
 		<NInput v-model:value="topic" placeholder="Topic" />
 		<p>内容:</p>
-		<NInput v-model:value="content" type="textarea" placeholder="Content" />
+		<NInput v-model:value="content" :rows="12" type="textarea" placeholder="Content" />
 	</Modal>
 </template>
 
@@ -44,6 +50,13 @@ async function submit() {
 		topic: topic.value
 	});
 	emits("submit");
+	content.value = "";
+	topic.value = "";
+}
+
+function cancel() {
+	content.value = "";
+	topic.value = "";
 }
 </script>
 

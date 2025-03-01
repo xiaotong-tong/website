@@ -118,18 +118,20 @@ import namiNav from "./home/components/nav.vue";
 import namiTextAutoScroll from "@/components/textAutoScroll/index.vue";
 import myScrollTop from "./home/components/scroll.vue";
 import myAplayer from "./home/components/aplayer.vue";
+import { refreshUserInfo } from "@/api/blog/verify";
 import { useRouter } from "vue-router";
 import { useStore } from "@/stores/index";
 import { useUserInfoStore } from "@/stores/user";
 import { useContentRefStore } from "@/stores/contentRef";
 import { bgUrl } from "@/utils/webBG";
 import { useElementBounding, useScroll } from "@vueuse/core";
-import { Icon } from "@c/index";
+import { Icon, useMessage } from "@c/index";
 
 const store = useStore();
 const contentStore = useContentRefStore();
 const userInfoStore = useUserInfoStore();
 const router = useRouter();
+const message = useMessage();
 
 const contentRef = ref<HTMLElement | null>(null);
 const { x: contentX, y: contentY } = useElementBounding(contentRef);
@@ -171,6 +173,20 @@ const tipIsShow = computed(() => {
 	return store.isSmallScreen
 		? store.pageConfig.showContentTip && store.pageConfig.showContentTipOfSmallScreen
 		: store.pageConfig.showContentTip;
+});
+
+// 刷新用户信息
+refreshUserInfo().then((res) => {
+	if (res.code === -1) {
+		return;
+	}
+	if (res.code !== 200) {
+		userInfoStore.userInfo = {};
+
+		if (res.code === 3) {
+			message.error(res.msg);
+		}
+	}
 });
 </script>
 

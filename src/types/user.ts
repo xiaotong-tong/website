@@ -4,3 +4,8 @@ export interface UserInfo {
 	avatar: string;
 	password: string;
 }
+
+export interface RefreshUserInfo {
+	code: number;
+	msg: string;
+}

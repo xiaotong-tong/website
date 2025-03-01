@@ -2,7 +2,7 @@
 	<footer class="footer web-color-default">
 		<div class="content">
 			<div>
-				CopyRight © 2024 <nami-link class="link" to="/">星川漣の家</nami-link> |
+				CopyRight © 2023-2025 <nami-link class="link" to="/">星川漣の家</nami-link> |
 				<nami-link class="link" to="/sitemap">
 					{{ i18nStore.messages.main.footer.sitemap }}
 				</nami-link>
