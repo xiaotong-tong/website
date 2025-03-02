@@ -239,28 +239,41 @@ const keydownHandler = (e: KeyboardEvent) => {
 
 const autoPlayPiano = (score: string, speed = 75) => {
 	const timeUnit = (1000 * 60) / speed;
-	const scoreArr = score.split("").filter((item) => item !== " ");
+	const scoreArr = score.replaceAll(" ", "").split("");
 	let i = 0;
 
 	const keyMap = [undefined, "c3", "d3", "e3", "f3", "g3", "a3", "b3"] as const;
 
-	const loop = (unit: number | "-", nextUnit: number | string) => {
+	const loop = (
+		unit: number | "-",
+		nextUnit: number | string,
+		nextNextUnit?: number | string,
+		nextttUnit?: number | string
+	) => {
 		let curTimeUnit = timeUnit;
-		let nextUnitIsUnit = false;
+		let toNextUnit = 1;
 		if (nextUnit === "_") {
-			nextUnitIsUnit = true;
+			toNextUnit = 2;
 			curTimeUnit = timeUnit * 0.5;
+
+			if (nextNextUnit === "_") {
+				toNextUnit = 3;
+				curTimeUnit = timeUnit * 0.25;
+
+				if (nextttUnit === "_") {
+					toNextUnit = 4;
+					curTimeUnit = timeUnit * 0.125;
+				}
+			}
 		}
 		setTimeout(() => {
+			i = i + toNextUnit;
+
 			if (i > scoreArr.length) {
 				return;
 			}
-			if (nextUnitIsUnit) {
-				i = i + 2;
-			} else {
-				i++;
-			}
-			loop(+scoreArr[i], scoreArr[i + 1]);
+
+			loop(+scoreArr[i], scoreArr[i + 1], scoreArr[i + 2], scoreArr[i + 3]);
 		}, curTimeUnit);
 
 		if (unit === 0 || unit === "-") {
@@ -272,7 +285,7 @@ const autoPlayPiano = (score: string, speed = 75) => {
 			return;
 		}
 
-		const keyEl = listRef.value[unit];
+		const keyEl = listRef.value[unit - 1];
 
 		const tween = gsap.fromTo(
 			keyEl.querySelector(".bg"),
@@ -309,7 +322,7 @@ const autoPlayPiano = (score: string, speed = 75) => {
 
 		playPianoAudio(key);
 	};
-	loop(+scoreArr[i], scoreArr[i + 1]);
+	loop(+scoreArr[i], scoreArr[i + 1], scoreArr[i + 2], scoreArr[i + 3]);
 };
 
 onMounted(() => {
