@@ -40,11 +40,20 @@
 					<div><span>身高：</span> <span>152cm</span></div>
 					<div><span>职业：</span> <span>学生、文学少女见习生</span></div>
 					<div><span>喜欢的东西：</span> <span>文字、音乐</span></div>
+					<div><span>最喜欢的音乐：</span> <span>《漂洋过海来看你》</span></div>
 					<div><span>爱好：</span> <span>享受文字中的情感</span></div>
 					<div>
 						<span>性格：</span>
 						<span>沉静缄默、内心敏感，珍视身边的亲人和朋友，同时又怯懦怕生</span>
 					</div>
+					<div>
+						<span>背景：</span>
+						<span
+							>破碎的异世界的公主，母亲一直在寻找拯救世界的方法。同时在凌昕夕六岁生日那天，因为意外，失去了原本的妹妹，
+							母亲捕获到了这份思念与愿望，以整个世界为代价将星川涟送到了地球上，到地球后，成为妹妹的替代品，一直过着平凡又幸福的生活。</span
+						>
+					</div>
+					<div><span>补充：</span><span>星川涟并不知道自己的来历，以及曾经姐姐有过一个妹妹。</span></div>
 				</div>
 				<div class="flex-1" v-lang="'ja'">
 					<div><span>名字：</span> <span>星川（ほしかわ）</span></div>

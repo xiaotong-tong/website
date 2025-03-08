@@ -1,101 +1,52 @@
 <template>
-	<div :class="['time-line', props.contentAlign]">
+	<div :class="['time-line']" ref="timeLineRef">
 		<slot></slot>
+		<roughLine
+			class="divider-line"
+			dir="y"
+			:style="{
+				transform: `translateX(${dividerLeft}px)`
+			}"
+		></roughLine>
 	</div>
 </template>
 
 <script setup lang="ts">
-const props = withDefaults(
-	defineProps<{
-		contentAlign?: string;
-	}>(),
-	{
-		contentAlign: "left"
+import { ref, useTemplateRef, onMounted } from "vue";
+import { roughLine } from "@c/index";
+import { useResizeObserver } from "@vueuse/core";
+
+const timeLineRef = useTemplateRef<HTMLDivElement>("timeLineRef");
+
+const dividerLeft = ref(0);
+
+function changeDividerLeft() {
+	if (timeLineRef.value) {
+		const divider = timeLineRef.value.querySelector(".timeline-item-divider");
+		if (divider) {
+			const left = (divider as HTMLElement).offsetLeft;
+			const width = (divider as HTMLElement).offsetWidth;
+			dividerLeft.value = left + width / 2;
+		}
 	}
-);
+}
+
+useResizeObserver(timeLineRef, changeDividerLeft);
+onMounted(() => {
+	changeDividerLeft();
+});
 </script>
 
 <style scoped>
 .time-line {
-	--time-line-line-color: #ddd;
-}
-.theme-dark .time-line {
-	--time-line-line-color: #555;
-}
-
-.time-line {
 	position: relative;
 	padding-block: 24px;
 }
-.time-line::before {
-	content: "";
+
+.divider-line {
 	position: absolute;
 	top: 0;
-	bottom: 0;
-	width: 2px;
-	height: 100%;
-	background-color: var(--time-line-line-color);
-}
-.time-line:not(.center) :deep(.timeline-item-opposite) {
-	display: none;
-}
-
-.time-line.left::before {
-	/* 24px - 1px */
-	/* 24px 是 timeline-item-divider 的宽 */
-	left: 23px;
-}
-.time-line.left :deep(.timeline-item-divider) {
-	order: 1;
-}
-.time-line.left :deep(.timeline-item-body) {
-	order: 2;
-}
-
-.time-line.right::before {
-	right: calc(48px - 1px);
-}
-.time-line.right :deep(.timeline-item) {
-	flex-direction: row-reverse;
-}
-.time-line.right :deep(.timeline-item-divider) {
-	order: 1;
-}
-.time-line.right :deep(.timeline-item-body) {
-	order: 2;
-}
-.time-line.right :deep(.arrow) {
-	left: unset;
-	right: -16px;
-	clip-path: polygon(100% 100%, 100% 0, 0 0);
-}
-
-.time-line.center::before {
-	left: calc(50% - 1px);
-}
-.time-line.center :deep(.timeline-item-opposite) {
-	order: 1;
-}
-.time-line.center :deep(.timeline-item-divider) {
-	order: 2;
-}
-.time-line.center :deep(.timeline-item-body) {
-	order: 3;
-}
-.time-line.center :deep(.arrow) {
-	left: unset;
-	right: -16px;
-	clip-path: polygon(100% 100%, 100% 0, 0 0);
-}
-/* .time-line.center :deep(.timeline-item):nth-of-type(2n) {
-	flex-direction: row-reverse;
-}
-.time-line.center :deep(.timeline-item):nth-of-type(2n) .arrow {
 	left: 0;
-	right: unset;
-	clip-path: polygon(100% 100%, 0 100%, 0 0);
-} */
-/* .time-line.center :deep(.timeline-item):nth-of-type(2n) .timeline-item-opposite {
-	justify-content: end;
-} */
+	z-index: -99;
+}
 </style>

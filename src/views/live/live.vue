@@ -5,28 +5,35 @@
 	</section>
 
 	<nami-timeline v-if="loaded" class="content" contentAlign="center">
-		<nami-timeline-item v-for="item in list" :key="item.id">
+		<nami-timeline-item v-for="item in list" :key="item.id" :oppositeWidth="180">
 			<template v-slot:body>
 				<div class="whitespace-pre-wrap" v-if="item.contentType === 'text'">{{ item.content }}</div>
 				<markdown v-if="item.contentType === 'markdown'" class="up:pt-0" :content="item.content"></markdown>
 			</template>
-			<template v-slot:opposite>
-				<div>{{ dayjs(item.createTime).format("YYYY-MM-DD hh:mm:ss") }}</div>
-				<div v-lang="'zh'">@{{ item.verify.name }}</div>
-				<div v-lang="'ja'">@{{ item.verify.jpName || item.verify.name }}</div>
-				<div v-if="userInfo.id === item.userId">
-					<NPopconfirm
-						:positive-text="t('common.confirm')"
-						:negative-text="t('common.cancel')"
-						@positive-click="handlePositiveClick(item.id)"
-					>
-						<template #trigger>
-							<NButton text><nami-icon icon="mdiDeleteOutline" /></NButton>
-						</template>
-						<template #default>
-							<div>{{ t("common.confirmDelete") }}</div>
-						</template>
-					</NPopconfirm>
+			<template v-slot:opposite="{ small }">
+				<div
+					:style="{
+						display: small ? 'inline-flex' : 'block',
+						gap: small ? '8px' : '0'
+					}"
+				>
+					<div>{{ dayjs(item.createTime).format("YYYY-MM-DD hh:mm:ss") }}</div>
+					<div v-lang="'zh'">@{{ item.verify.name }}</div>
+					<div v-lang="'ja'">@{{ item.verify.jpName || item.verify.name }}</div>
+					<div v-if="userInfo.id === item.userId">
+						<NPopconfirm
+							:positive-text="t('common.confirm')"
+							:negative-text="t('common.cancel')"
+							@positive-click="handlePositiveClick(item.id)"
+						>
+							<template #trigger>
+								<NButton text><nami-icon icon="mdiDeleteOutline" /></NButton>
+							</template>
+							<template #default>
+								<div>{{ t("common.confirmDelete") }}</div>
+							</template>
+						</NPopconfirm>
+					</div>
 				</div>
 			</template>
 		</nami-timeline-item>
@@ -68,15 +75,4 @@ function handlePositiveClick(id: number) {
 }
 </script>
 
-<style scoped>
-.content :deep(.timeline-item-opposite) {
-	flex: 0 0 180px;
-	text-align: right;
-}
-.content :deep(.timeline-item-body) {
-	width: calc(100% - 180px - 48px);
-}
-.content.content.content::before {
-	left: 203px;
-}
-</style>
+<style scoped></style>

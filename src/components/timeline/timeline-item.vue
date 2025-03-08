@@ -2,53 +2,50 @@
 	<div
 		:class="{
 			'timeline-item': true,
-			simple: props.simple
+			small: width < 600
 		}"
 		:style="{
-			height: 'calc-size(auto, min(size, 500px))'
+			'--opposite-width': typeof oppositeWidth === 'number' ? `${oppositeWidth}px` : oppositeWidth
 		}"
+		ref="itemRef"
 	>
-		<div class="timeline-item-body">
-			<FieldsetCard
-				class="card"
-				:style="{
-					height: 'calc-size(auto, min(size, 500px))'
-				}"
-			>
+		<div class="timeline-item-body" v-if="$slots.body">
+			<FieldsetCard class="card">
 				<slot name="body"></slot>
 			</FieldsetCard>
 
-			<div class="arrow" v-if="!props.simple"></div>
+			<!-- <div class="arrow"></div> -->
 		</div>
-		<div class="timeline-item-divider">
+		<div class="timeline-item-divider" ref="dividerRef">
 			<template v-if="$slots.divider">
 				<slot name="divider"></slot>
 			</template>
 			<template v-else>
-				<namiIcon class="catIcon" :icon="props.group ? 'mdiCat' : 'mdiPaw'"></namiIcon>
+				<namiIcon class="catIcon" :icon="group ? 'mdiCat' : 'mdiPaw'"></namiIcon>
 			</template>
 		</div>
-		<div class="timeline-item-opposite">
-			<slot name="opposite"></slot>
+		<div class="timeline-item-opposite" :style="oppositeStyle" v-if="$slots.opposite">
+			<slot name="opposite" :small="width < 600"></slot>
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
+import type { StyleValue } from "vue";
+import { useTemplateRef } from "vue";
 import { FieldsetCard } from "@c/index";
+import { useElementSize } from "@vueuse/core";
 
-const props = withDefaults(
-	defineProps<{
-		simple?: boolean;
-		group?: boolean;
-		maxHeight?: string;
-	}>(),
-	{
-		simple: true,
-		group: false,
-		maxHeight: "500px"
-	}
-);
+interface Props {
+	group?: boolean;
+	oppositeStyle?: StyleValue;
+	oppositeWidth?: string | number;
+}
+const { group = false, oppositeStyle, oppositeWidth = "1fr" } = defineProps<Props>();
+
+const itemRef = useTemplateRef<HTMLDivElement>("itemRef");
+
+const { width } = useElementSize(itemRef);
 </script>
 
 <style scoped>
@@ -67,36 +64,49 @@ const props = withDefaults(
 }
 
 .timeline-item {
-	display: flex;
+	display: grid;
+	grid-template-areas: "opposite divider body";
+	grid-template-columns: var(--opposite-width, 1fr) 48px 1fr;
 	position: relative;
 	padding-block-end: 24px;
 	align-items: center;
+
+	.timeline-item-opposite {
+		grid-area: opposite;
+		text-align: right;
+	}
 }
+.timeline-item:not(:has(> .timeline-item-opposite)) {
+	grid-template-areas: "divider body";
+	grid-template-columns: 48px 1fr;
+}
+
+.timeline-item.small {
+	grid-template-areas: "divider opposite" "divider body";
+	grid-template-columns: 48px 1fr;
+
+	.timeline-item-opposite {
+		text-align: left;
+	}
+}
+
 .timeline-item-divider {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-width: 48px;
+	grid-area: divider;
 }
 .timeline-item-body {
 	position: relative;
-	max-width: calc(100% - 48px);
 	height: 100%;
-	flex: 1;
-	border-radius: 4px;
-	align-content: center;
+	grid-area: body;
 
 	& > .card {
 		width: 100%;
 		max-width: 100%;
 	}
 }
-.timeline-item:not(.simple) .timeline-item-body {
-	box-shadow: var(--itemline-item-box-shadow);
-}
-.timeline-item-opposite {
-	flex: 1;
-}
+
 .arrow {
 	position: absolute;
 	box-sizing: border-box;
