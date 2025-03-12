@@ -104,13 +104,23 @@ watch(
 	}
 );
 
-const playPianoAudio = (key: PianoKey) => {
+const playPianoAudio = async (key: PianoKey, duration?: number) => {
 	let audio = new Audio(`/piano/${key}.mp3`);
+	const audioContext = new AudioContext();
 
-	audio?.play();
+	const source = audioContext.createMediaElementSource(audio);
+	const gainNode = audioContext.createGain();
+
+	gainNode.connect(audioContext.destination);
+	gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+	source.connect(gainNode);
+
+	audio.play();
+	gainNode.gain.linearRampToValueAtTime(1, audioContext.currentTime + 0.03);
 
 	audio?.addEventListener("ended", () => {
 		audio?.remove();
+		audioContext.close();
 	});
 };
 
