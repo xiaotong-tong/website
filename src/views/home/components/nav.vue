@@ -104,24 +104,30 @@ watch(
 	}
 );
 
-const playPianoAudio = async (key: PianoKey, duration?: number) => {
+const playPianoAudio = async (key: PianoKey, duration = 0) => {
 	let audio = new Audio(`/piano/${key}.mp3`);
-	const audioContext = new AudioContext();
 
-	const source = audioContext.createMediaElementSource(audio);
-	const gainNode = audioContext.createGain();
+	if (duration) {
+		const audioContext = new AudioContext();
+		const source = audioContext.createMediaElementSource(audio);
+		const gainNode = audioContext.createGain();
 
-	gainNode.connect(audioContext.destination);
-	gainNode.gain.setValueAtTime(0, audioContext.currentTime);
-	source.connect(gainNode);
+		gainNode.connect(audioContext.destination);
+		gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+		source.connect(gainNode);
 
-	audio.play();
-	gainNode.gain.linearRampToValueAtTime(1, audioContext.currentTime + 0.03);
-
-	audio?.addEventListener("ended", () => {
-		audio?.remove();
-		audioContext.close();
-	});
+		gainNode.gain.exponentialRampToValueAtTime(1.3, audioContext.currentTime + duration);
+		audio.play();
+		audio?.addEventListener("ended", () => {
+			audio?.remove();
+			audioContext.close();
+		});
+	} else {
+		audio.play();
+		audio?.addEventListener("ended", () => {
+			audio?.remove();
+		});
+	}
 };
 
 const mouseenterHandler = (e: MouseEvent, item: List) => {
@@ -258,24 +264,46 @@ const autoPlayPiano = (score: string, speed = 75) => {
 		unit: number | "-",
 		nextUnit: number | string,
 		nextNextUnit?: number | string,
-		nextttUnit?: number | string
+		nextttUnit?: number | string,
+		nexttttUnit?: number | string
 	) => {
 		let curTimeUnit = timeUnit;
 		let toNextUnit = 1;
+		let hasDot = false;
+
 		if (nextUnit === "_") {
 			toNextUnit = 2;
 			curTimeUnit = timeUnit * 0.5;
 
-			if (nextNextUnit === "_") {
+			if (nextNextUnit === "^") {
+				toNextUnit = toNextUnit + 1;
+				curTimeUnit = curTimeUnit + curTimeUnit * 0.5;
+				hasDot = true;
+			} else if (nextNextUnit === "_") {
 				toNextUnit = 3;
 				curTimeUnit = timeUnit * 0.25;
 
-				if (nextttUnit === "_") {
+				if (nextttUnit === "^") {
+					toNextUnit = toNextUnit + 1;
+					curTimeUnit = curTimeUnit + curTimeUnit * 0.5;
+					hasDot = true;
+				} else if (nextttUnit === "_") {
 					toNextUnit = 4;
 					curTimeUnit = timeUnit * 0.125;
+
+					if (nexttttUnit === "^") {
+						toNextUnit = toNextUnit + 1;
+						curTimeUnit = curTimeUnit + curTimeUnit * 0.5;
+						hasDot = true;
+					}
 				}
 			}
+		} else if (nextUnit === "^") {
+			toNextUnit = 2;
+			curTimeUnit = curTimeUnit + curTimeUnit * 0.5;
+			hasDot = true;
 		}
+
 		setTimeout(() => {
 			i = i + toNextUnit;
 
@@ -283,7 +311,7 @@ const autoPlayPiano = (score: string, speed = 75) => {
 				return;
 			}
 
-			loop(+scoreArr[i], scoreArr[i + 1], scoreArr[i + 2], scoreArr[i + 3]);
+			loop(+scoreArr[i], scoreArr[i + 1], scoreArr[i + 2], scoreArr[i + 3], scoreArr[i + 4]);
 		}, curTimeUnit);
 
 		if (unit === 0 || unit === "-") {
@@ -330,9 +358,9 @@ const autoPlayPiano = (score: string, speed = 75) => {
 		tween.play();
 		colorTW.play();
 
-		playPianoAudio(key);
+		playPianoAudio(key, hasDot ? (timeUnit * 0.5) / 1000 : 0);
 	};
-	loop(+scoreArr[i], scoreArr[i + 1], scoreArr[i + 2], scoreArr[i + 3]);
+	loop(+scoreArr[i], scoreArr[i + 1], scoreArr[i + 2], scoreArr[i + 3], scoreArr[i + 4]);
 };
 
 onMounted(() => {
