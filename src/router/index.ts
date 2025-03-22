@@ -482,6 +482,11 @@ let routes: Route[] = [
 		path: "/cv/pdf",
 		name: "cvpdf",
 		component: () => import("../views/cv/cv.pdf.vue")
+	},
+	{
+		path: "/cv",
+		name: "cv",
+		component: () => import("../views/cv/cv.vue")
 	}
 ];
 
