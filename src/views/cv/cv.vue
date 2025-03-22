@@ -3,7 +3,7 @@
 		<div ref="printRef" class="flex-none w-[90%] max-w-[900px] bg-[#fff] p-4">
 			<section class="">
 				<h2 class="text-2xl">基本资料</h2>
-				<div class="pt-2 pl-4 grid grid-cols-2 gap-2">
+				<div class="pt-2 pl-4 grid grid-cols-1 md:grid-cols-2 gap-2">
 					<div>
 						<span class="mr-2">姓名:</span>
 						<span>吴同同 - 男 - 1999</span>
@@ -73,7 +73,7 @@
 				<h2 class="text-2xl">工作经历</h2>
 				<div class="pt-2 pl-4">
 					<section>
-						<div class="flex justify-between">
+						<div class="flex justify-between flex-col md:flex-row">
 							<span class="text-xl">
 								{{ atobUnicode("5LiK5rW36Ie75ZOJ5L+h5oGv56eR5oqA5pyJ6ZmQ5YWs5Y+4") }}
 							</span>
@@ -89,7 +89,7 @@
 						</div>
 					</section>
 					<section class="pt-4">
-						<div class="flex justify-between">
+						<div class="flex justify-between flex-col md:flex-row">
 							<span class="text-xl">
 								{{ atobUnicode("5a6J5b6956eR5aSn5Zu95Yib6L2v5Lu256eR5oqA5pyJ6ZmQ5YWs5Y+4") }}
 							</span>
@@ -110,7 +110,7 @@
 				<h2 class="text-2xl">项目经历</h2>
 				<div class="pl-4 pt-2 grid grid-cols-1 gap-3">
 					<section>
-						<div class="flex justify-between">
+						<div class="flex justify-between flex-col md:flex-row">
 							<span class="text-xl">MES 管理系统后台 + 产线终端 + 生产数据看板</span>
 							<span>2023年12月 - 至今</span>
 						</div>
@@ -154,7 +154,7 @@
 						</div>
 					</section>
 					<section>
-						<div class="flex justify-between">
+						<div class="flex justify-between flex-col md:flex-row">
 							<span class="text-xl">MES 管理系统移动端 APP</span>
 							<span>2023年12月 - 至今</span>
 						</div>
@@ -174,7 +174,7 @@
 						</div>
 					</section>
 					<section>
-						<div class="flex justify-between">
+						<div class="flex justify-between flex-col md:flex-row">
 							<span class="text-xl"
 								>{{ atobUnicode("5LyY55Ge54m5IOW+ruS/oeWwj+eoi+W6jw==") }} + 管理后台</span
 							>
@@ -206,7 +206,7 @@
 						</div>
 					</section>
 					<section>
-						<div class="flex justify-between">
+						<div class="flex justify-between flex-col md:flex-row">
 							<span class="text-xl">
 								<a
 									v-if="showLink"
@@ -236,7 +236,7 @@
 						</div>
 					</section>
 					<section>
-						<div class="flex justify-between">
+						<div class="flex justify-between flex-col md:flex-row">
 							<span class="text-xl">XUX</span>
 							<span>2020年12月 - 2023年6月</span>
 						</div>
@@ -271,7 +271,7 @@
 				<h2 class="text-2xl">个人项目</h2>
 				<div class="pl-4 pt-2 grid grid-cols-1 gap-3">
 					<section>
-						<div class="flex justify-between">
+						<div class="flex justify-between flex-col md:flex-row">
 							<span class="text-xl">
 								<a href="https://xtt.moe/" target="_blank">基于 Vue 的个人博客前端</a>
 							</span>
@@ -307,7 +307,7 @@
 						</div>
 					</section>
 					<section>
-						<div class="flex justify-between">
+						<div class="flex justify-between flex-col md:flex-row">
 							<span class="text-xl">
 								<a href="https://github.com/xiaotong-tong/website-server" target="_blank"
 									>基于 Node.js 的个人博客后端</a
@@ -330,7 +330,7 @@
 						</div>
 					</section>
 					<section>
-						<div class="flex justify-between">
+						<div class="flex justify-between flex-col md:flex-row">
 							<span class="text-xl">
 								<a href="https://github.com/xiaotong-tong/qq-bot" target="_blank"
 									>基于 Node.js 的 QQ机器人</a
@@ -367,9 +367,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { roughLine } from "@c/index";
 import { useUrlSearchParams } from "@vueuse/core";
+import { useElementSize } from "@vueuse/core";
+
+const printRef = ref<HTMLElement | null>(null);
+
+const { width } = useElementSize(printRef);
+
+const smallScreen = computed(() => width.value < 800);
 
 function btoaUnicode(str: string) {
 	return window.btoa(
