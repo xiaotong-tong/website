@@ -100,35 +100,12 @@ watch(
 
 <style scoped>
 .tip {
-	position: fixed;
-	inset-block-end: 1px;
-	inset-inline-start: 8px;
-	inset-inline-end: 208px;
-	height: 24px;
-	padding-inline-start: 8px;
-	box-sizing: border-box;
-	margin-block-end: 4px;
-	background-color: #ffffffdd;
+	overflow: hidden;
 
 	& > .item {
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 	}
-}
-.theme-dark .tip {
-	background-color: #151b1f66;
-}
-
-@media (max-width: 1024px) {
-	.tip {
-		inset-inline-end: 12px;
-		font-size: 16px;
-	}
-}
-
-.small-screen .tip {
-	inset-inline-end: 8px;
-	font-size: 14px;
 }
 </style>

@@ -4,51 +4,44 @@
 	<namiHeader v-if="!store.isSmallScreen"></namiHeader>
 	<namiMHeader v-else></namiMHeader>
 
-	<namiRoughCard
-		is="main"
-		class="main web-color-default"
-		:color="store.currentTheme"
-		:useBorder="store.isSmallScreen"
+	<FieldsetCard
+		class="h-auto min-h-[calc(100vh-114px)] md:h-[calc(100vh-114px)] my-2 mx-auto p-0"
 		:style="{
 			width: `min(${store.pageConfig.inlineSize.minPx}px, ${store.pageConfig.inlineSize.percentage * 100}%)`
 		}"
 	>
-		<section
-			ref="contentRef"
-			class="content"
-			:class="{
-				'tip-hidden': !tipIsShow
-			}"
-		>
-			<RouterView />
-			<namiTextAutoScroll v-if="tipIsShow" />
-			<Icon
-				:style="{
-					position: 'fixed',
-					insetBlockStart: '80px',
-					insetInlineEnd: store.isSmallScreen ? '64px' : '264px',
-					zIndex: -1,
-					opacity: 0.6
-				}"
-				:size="64"
-				icon="heart"
-			></Icon>
-			<Icon
-				:style="{
-					position: 'fixed',
-					insetBlockEnd: '64px',
-					insetInlineStart: '64px',
-					zIndex: -1,
-					opacity: 0.6
-				}"
-				:size="64"
-				icon="heart"
-			></Icon>
-		</section>
-		<nav class="nav">
-			<namiNav ref="namiNavRef"></namiNav>
-		</nav>
-	</namiRoughCard>
+		<main class="main h-full web-color-default">
+			<section ref="contentRef" class="content p-2 box-border overflow-auto relative">
+				<RouterView />
+				<Icon
+					:style="{
+						position: 'fixed',
+						insetBlockStart: '80px',
+						insetInlineEnd: store.isSmallScreen ? '64px' : '264px',
+						zIndex: -1,
+						opacity: 0.6
+					}"
+					:size="64"
+					icon="heart"
+				></Icon>
+				<Icon
+					:style="{
+						position: 'fixed',
+						insetBlockEnd: '64px',
+						insetInlineStart: '64px',
+						zIndex: -1,
+						opacity: 0.6
+					}"
+					:size="64"
+					icon="heart"
+				></Icon>
+			</section>
+			<nav class="nav hidden md:block">
+				<namiNav ref="namiNavRef"></namiNav>
+			</nav>
+			<namiTextAutoScroll class="tip pl-2" v-if="tipIsShow" />
+		</main>
+	</FieldsetCard>
 
 	<namiFooter></namiFooter>
 
@@ -125,7 +118,7 @@ import { useUserInfoStore } from "@/stores/user";
 import { useContentRefStore } from "@/stores/contentRef";
 import { bgUrl } from "@/utils/webBG";
 import { useElementBounding, useScroll } from "@vueuse/core";
-import { Icon, useMessage } from "@c/index";
+import { Icon, useMessage, FieldsetCard } from "@c/index";
 
 const store = useStore();
 const contentStore = useContentRefStore();
@@ -192,36 +185,35 @@ refreshUserInfo().then((res) => {
 
 <style scoped>
 .main {
-	height: calc(100vh - 114px);
-	margin: 8px auto;
-	border: 1px solid transparent;
-	display: flex;
-}
-.small-screen .main {
-	height: auto;
-}
+	--nav-width: 200px;
+	--tip-height: 1.5em;
 
-.content {
-	position: relative;
-	flex: 1;
-	overflow: auto;
-	height: 100%;
-	box-sizing: border-box;
-	padding: 8px 8px 24px;
+	display: grid;
+	grid-template:
+		"main nav" 1fr
+		"tip nav" var(--tip-height)
+		/ 1fr var(--nav-width);
 
-	&.tip-hidden {
-		padding-block-end: 8px;
+	.content {
+		grid-area: main;
+	}
+	.nav {
+		grid-area: nav;
+	}
+	.tip {
+		grid-area: tip;
 	}
 }
 
-.nav {
-	flex: 0 0 200px;
-	position: sticky;
-	top: 48px;
-}
 @media (max-width: 1024px) {
-	.nav {
-		flex: 0 0 120px;
+	.main {
+		--nav-width: 120px;
+	}
+}
+@media (max-width: 768px) {
+	.main {
+		--nav-width: 0px;
+		--tip-height: 0px;
 	}
 }
 
@@ -230,12 +222,5 @@ refreshUserInfo().then((res) => {
 }
 .theme-dark .icon {
 	color: #fff;
-}
-
-.small-screen .content {
-	min-block-size: calc(100vh - 130px);
-}
-.small-screen .nav {
-	display: none;
 }
 </style>

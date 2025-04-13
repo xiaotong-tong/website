@@ -7,7 +7,10 @@
 			}}</span>
 		</p>
 		<namiRoughLine class="my-2"></namiRoughLine>
-		<p lang="ja-JP" class="custom-font" v-html="quote.parse"></p>
+		<div lang="ja-JP" class="custom-font">
+			<div class="inline-block" v-html="quote.parse"></div>
+			<Sound class="ml-2" :src="quote.sound"></Sound>
+		</div>
 		<p lang="zh-CN" class="custom-font">
 			{{ quote.chinese }}
 		</p>
@@ -21,7 +24,7 @@ import { getDaysQuotes } from "../../home.api";
 import { dayjs } from "@/utils/dateUtil";
 import { useSessionStorage } from "@vueuse/core";
 import { useI18n } from "vue-i18n";
-import { useMessage } from "@c/index";
+import { useMessage, Sound } from "@c/index";
 
 const { t } = useI18n();
 const message = useMessage();
@@ -52,7 +55,8 @@ getDaysQuotes(quoteKey.value)
 				key: 100,
 				sentence: "初心忘るべからず。",
 				parse: "<ruby>初心忘<rp>(</rp><rt>しょしんわす</rt><rp>)</rp></ruby>るべからず。",
-				chinese: "不忘初心。"
+				chinese: "不忘初心。",
+				sound: "https://file.xtt.moe/local/quotes/q100.wav"
 			};
 		}
 	})

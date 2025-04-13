@@ -9,6 +9,7 @@ export interface IGetDaysQuotes {
 	chinese: string;
 	sentence: string;
 	parse: string;
+	sound: string;
 }
 
 export interface IGetDaysQuotesError {
