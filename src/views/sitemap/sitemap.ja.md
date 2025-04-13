@@ -16,6 +16,7 @@
 -   [ライブ](/ja/live)
 -   [bot](/ja/bot) - QQ ボットページ
 -   [ダッシュボード](/ja/dashboard)
+-   [三題噺](/santi)
 
 ### 倉庫
 

@@ -360,6 +360,14 @@
     <lastmod>2024-10-10</lastmod>
     <changefreq>weekly</changefreq>
   </url>
+  <url>
+    <loc>https://xtt.moe/santi</loc>
+	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/santi" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/santi" />
+    <priority>1.0</priority>
+    <lastmod>2025-02-24</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
   <!-- 留言板页面也不算是网站中的有效页面，因为没有内容，所以从 sitemap 文件中排除 -->
   <!-- <url>
     <loc>https://xtt.moe/guestbook</loc>
@@ -837,6 +845,22 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/article/34" />
     <priority>0.8</priority>
     <lastmod>2024-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/article/35</loc>
+	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/article/35" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/article/35" />
+    <priority>0.8</priority>
+    <lastmod>2025-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://xtt.moe/article/36</loc>
+	<xhtml:link rel="alternate" hreflang="ja" href="https://xtt.moe/ja/article/36" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://xtt.moe/article/36" />
+    <priority>0.8</priority>
+    <lastmod>2025-04-13</lastmod>
     <changefreq>monthly</changefreq>
   </url>
 </urlset>

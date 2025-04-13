@@ -7,6 +7,25 @@
 		<nami-timeline>
 			<nami-timeline-item :group="true">
 				<template v-slot:body>
+					<h3 class="font-bold text-xl">2025</h3>
+				</template>
+			</nami-timeline-item>
+			<nami-timeline-item>
+				<template v-slot:body>
+					<span class="time">04-13</span>
+					<nami-link v-lang="'zh'" to="/article/36"> QQ 机器人开发(3) - 生成与发送语音 </nami-link>
+					<nami-link v-lang="'ja'" to="/ja/article/36"> QQ 机器人开发(3) - 生成与发送语音 </nami-link>
+				</template>
+			</nami-timeline-item>
+			<nami-timeline-item>
+				<template v-slot:body>
+					<span class="time">02-16</span>
+					<nami-link v-lang="'zh'" to="/article/35"> 不管怎样，时间都在流淌，我仍在笨拙的活着 </nami-link>
+					<nami-link v-lang="'ja'" to="/ja/article/35"> 不管怎样，时间都在流淌，我仍在笨拙的活着</nami-link>
+				</template>
+			</nami-timeline-item>
+			<nami-timeline-item :group="true">
+				<template v-slot:body>
 					<h3 class="font-bold text-xl">2024</h3>
 				</template>
 			</nami-timeline-item>
