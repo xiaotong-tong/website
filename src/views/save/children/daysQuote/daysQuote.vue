@@ -6,17 +6,17 @@
 			<span class="txt" @click="downloadTxt">下载 txt</span>
 		</div>
 		<div class="div" v-for="item in data" :key="item.key">
-			<p class="top">
-				<span>
-					{{ startDay.add(item.key - 1, "day").format("YYYY-MM-DD") }}
-					{{ weekNames[startDay.add(item.key - 1, "day").day()] }}
-				</span>
+			<div class="top">
+				<div class="text-lg inline-flex items-center">
+					<span>day {{ item.key }}</span>
+					<Sound class="ml-2" :src="item.sound" preload="none"></Sound>
+				</div>
 
 				<span class="unit-parse">
 					<span @click="copyUnit(item, 'json')">复制 json</span>
 					<span @click="copyUnit(item, 'text')">复制文本</span>
 				</span>
-			</p>
+			</div>
 			<p v-html="item.parse"></p>
 			<p>
 				{{ item.chinese }}
@@ -28,20 +28,18 @@
 
 <script setup lang="ts">
 import { useFetch, useClipboard } from "@vueuse/core";
-import { dayjs } from "@/utils/dateUtil";
 import confetti from "canvas-confetti";
+import { Sound } from "@c/index";
 
 interface Item {
 	key: number;
 	parse: string;
 	chinese: string;
 	sentence: string;
+	sound: string;
 }
 
 const { data, isFinished } = useFetch("https://api.xtt.moe/days/quotes/list").json<Item[]>();
-
-const startDay = dayjs("2024-04-14");
-const weekNames = ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"];
 
 const { copy: useCopy } = useClipboard();
 
