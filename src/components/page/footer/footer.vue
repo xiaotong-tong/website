@@ -2,9 +2,14 @@
 	<footer class="footer web-color-default">
 		<div class="content">
 			<div class="text-[#39c]">
-				CopyRight © 2023-2025 <nami-link class="link" to="/">星川漣の家</nami-link> |
+				CopyRight © 2021-2025
+				<span class="pl-1 pr-1 text-[#39c]">|</span>
 				<nami-link class="link" to="/sitemap">
 					{{ i18nStore.messages.main.footer.sitemap }}
+				</nami-link>
+				<span class="pl-1 pr-1 text-[#39c]">|</span>
+				<nami-link class="text-[#39c]" to="http://beian.miit.gov.cn/" target="_blank">
+					皖ICP备19024231号-3
 				</nami-link>
 			</div>
 			<div class="text-center flex w-full items-center justify-center">
