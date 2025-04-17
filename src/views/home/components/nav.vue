@@ -253,7 +253,7 @@ const keydownHandler = (e: KeyboardEvent) => {
 	playPianoAudio(keyName.key);
 };
 
-const autoPlayPiano = (score: string, speed = 75) => {
+const autoPlayPiano = (score: string, speed = 75, endCallback = Function.prototype) => {
 	const timeUnit = (1000 * 60) / speed;
 	const scoreArr = score.replaceAll(" ", "").split("");
 	let i = 0;
@@ -305,9 +305,15 @@ const autoPlayPiano = (score: string, speed = 75) => {
 		}
 
 		setTimeout(() => {
+			if (endLoop.value) {
+				endCallback?.();
+				endLoop.value = false;
+				return;
+			}
 			i = i + toNextUnit;
 
 			if (i > scoreArr.length) {
+				endCallback?.();
 				return;
 			}
 
@@ -363,6 +369,11 @@ const autoPlayPiano = (score: string, speed = 75) => {
 	loop(+scoreArr[i], scoreArr[i + 1], scoreArr[i + 2], scoreArr[i + 3], scoreArr[i + 4]);
 };
 
+const endLoop = ref(false);
+function pauseAutoPlayPiano() {
+	endLoop.value = true;
+}
+
 onMounted(() => {
 	document.addEventListener("keydown", keydownHandler);
 });
@@ -372,7 +383,8 @@ onUnmounted(() => {
 });
 
 defineExpose({
-	autoPlayPiano
+	autoPlayPiano,
+	pauseAutoPlayPiano
 });
 </script>
 
