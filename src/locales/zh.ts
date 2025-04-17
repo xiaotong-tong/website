@@ -55,7 +55,8 @@ export const zhMsg = {
 		},
 		footer: {
 			sitemap: "站点地图"
-		}
+		},
+		unSupport: "当前浏览器版本可能过低，为了获得更好的体验，请使用最新版本的浏览器。"
 	},
 	guestbook: {
 		title: "留言板",

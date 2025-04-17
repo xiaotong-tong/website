@@ -55,7 +55,8 @@ export const jaMsg = {
 		},
 		footer: {
 			sitemap: "サイトマップ"
-		}
+		},
+		unSupport: "今のブラウザのバージョンが古いかもしれません。より良い体験のために、最新のブラウザを使ってね。"
 	},
 	guestbook: {
 		title: "ゲストブック",
