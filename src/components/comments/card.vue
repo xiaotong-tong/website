@@ -3,7 +3,7 @@
 		<div class="comment" v-if="!delected">
 			<div class="left">
 				<img
-					:src="props.comment.photoUrl || 'https://image.xtt.moe/images/mlian2.md.webp'"
+					:src="props.comment.photoUrl || 'https://image.xtt.cool/images/mlian2.md.webp'"
 					alt="评论者头像"
 					class="pic"
 				/>

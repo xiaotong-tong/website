@@ -60,7 +60,7 @@ const emits = defineEmits<{
 
 const previewShowed = ref(false);
 
-const photoSrc = ref("https://image.xtt.moe/images/mlian2.md.webp");
+const photoSrc = ref("https://image.xtt.cool/images/mlian2.md.webp");
 
 const commentText = ref("");
 const nickname = ref("");

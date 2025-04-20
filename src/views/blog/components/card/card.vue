@@ -10,7 +10,11 @@
 		}"
 	>
 		<div class="thumbnail-wrap">
-			<img class="thumbnail" :src="props.info.thumbnail || 'https://image.xtt.moe/images/bg.webp'" alt="缩略图" />
+			<img
+				class="thumbnail"
+				:src="props.info.thumbnail || 'https://image.xtt.cool/images/bg.webp'"
+				alt="缩略图"
+			/>
 		</div>
 		<div class="info-wrap pb-8">
 			<Link :to="props.info.headerLink" block class="header-link justify-start ps-0">

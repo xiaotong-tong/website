@@ -8,10 +8,10 @@ import { useUserInfoStore } from "@/stores/user";
 
 const userInfoStore = useUserInfoStore();
 
-const pdfUrl = ref("https://file.xtt.moe/files/cv/noPhoneCV.pdf");
+const pdfUrl = ref("https://file.xtt.cool/files/cv/noPhoneCV.pdf");
 
 if (userInfoStore.userInfo.id) {
-	pdfUrl.value = "https://file.xtt.moe/files/cv/cv.pdf";
+	pdfUrl.value = "https://file.xtt.cool/files/cv/cv.pdf";
 }
 </script>
 

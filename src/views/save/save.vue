@@ -24,7 +24,7 @@
 					<div>その他</div>
 					<div class="jp-next-content">
 						<nami-link
-							to="https://file.xtt.moe/local/%E6%97%A5%E6%9C%AC%E8%AF%AD%E5%8F%A5%E5%9E%8B%E8%BE%9E%E5%85%B8.pdf"
+							to="https://file.xtt.cool/local/%E6%97%A5%E6%9C%AC%E8%AF%AD%E5%8F%A5%E5%9E%8B%E8%BE%9E%E5%85%B8.pdf"
 							class="link"
 							type="primary"
 							target="_blank"

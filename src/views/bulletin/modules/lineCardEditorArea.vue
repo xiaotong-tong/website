@@ -98,8 +98,7 @@ async function submit() {
 		}
 	};
 
-	// https://api.xtt.moe/bulletin/add
-	fetch("http://localhost:5001/bulletin/add", {
+	fetch("https://api.xtt.cool/bulletin/add", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json"

@@ -47,7 +47,7 @@ const store = useStore();
 const { list: imageList, addImage } = useImageList(true);
 
 const showModal = ref(false);
-const url = ref("https://image.xtt.moe/local/images/");
+const url = ref("https://image.xtt.cool/local/images/");
 const botCanUse = ref(true);
 
 async function handlerSubmit(callback?: Function) {
@@ -65,7 +65,7 @@ async function uploadImage(option: Parameters<UploadOnChange>[0]) {
 
 	if (res.status === 200) {
 		let resUrl = res.data.image.url;
-		resUrl = resUrl.replace("https://image.xtt.moe/", "https://image.xtt.moe/local/");
+		resUrl = resUrl.replace("https://image.xtt.cool/", "https://image.xtt.cool/local/");
 		url.value = resUrl;
 	}
 }

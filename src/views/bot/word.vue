@@ -38,7 +38,7 @@ interface NewItem extends Item {
 	checked: boolean;
 }
 
-const { data } = useFetch("https://api.xtt.moe/chineseDictionaryWord/listOf100").json<Item[]>();
+const { data } = useFetch("https://api.xtt.cool/chineseDictionaryWord/listOf100").json<Item[]>();
 
 const newData = ref<NewItem[]>([]);
 
@@ -53,7 +53,7 @@ watch(data, () => {
 });
 
 async function change(item: NewItem, checked: boolean) {
-	const { data, error } = await useFetch("https://api.xtt.moe/chineseDictionaryWord/edit/" + item.id, {
+	const { data, error } = await useFetch("https://api.xtt.cool/chineseDictionaryWord/edit/" + item.id, {
 		method: "put",
 		headers: {
 			"Content-Type": "application/json",

@@ -9,7 +9,7 @@
 		<namiRoughLine class="my-2"></namiRoughLine>
 		<div lang="ja-JP" class="custom-font">
 			<div class="inline-block" v-html="quote.parse"></div>
-			<Sound class="ml-2" :src="quote.sound"></Sound>
+			<Sound class="ml-2" :src="quoteSoundPrefix + quote.sound"></Sound>
 		</div>
 		<p lang="zh-CN" class="custom-font">
 			{{ quote.chinese }}
@@ -36,6 +36,7 @@ const originalQuoteKey = dayjs().diff(dayjs("2024-04-14"), "day");
 const quoteKey = useSessionStorage<number>("quoteKey", originalQuoteKey);
 
 const quote = ref<IGetDaysQuotes>();
+const quoteSoundPrefix = "https://file.xtt.cool";
 
 getDaysQuotes(quoteKey.value)
 	.then((res) => {
@@ -56,7 +57,7 @@ getDaysQuotes(quoteKey.value)
 				sentence: "初心忘るべからず。",
 				parse: "<ruby>初心忘<rp>(</rp><rt>しょしんわす</rt><rp>)</rp></ruby>るべからず。",
 				chinese: "不忘初心。",
-				sound: "https://file.xtt.moe/local/quotes/q100.wav"
+				sound: "/local/quotes/q100.wav"
 			};
 		}
 	})

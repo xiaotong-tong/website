@@ -226,7 +226,7 @@ async function uploadImageEvent(option: Parameters<UploadOnChange>[0]) {
 
 		if (res.status === 200) {
 			let resUrl = res.data.image.url;
-			resUrl = resUrl.replace("https://image.xtt.moe/", "https://image.xtt.moe/local/");
+			resUrl = resUrl.replace("https://image.xtt.cool/", "https://image.xtt.cool/local/");
 			// 优先使用 display_url 的图片地址，display_url 地址为压缩后的图片地址，url 为原图地址
 			thumbnail.value = resUrl;
 		}

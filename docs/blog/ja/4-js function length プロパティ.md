@@ -4,7 +4,7 @@ author: 星川漣
 createDate: 2024-09-14
 category: エッセイ
 tags: function
-thumbnail: https://image.xtt.moe/local/images/2024/09/14/0c9de0473b4cfceaf2e386893409125b.jpg
+thumbnail: https://image.xtt.cool/local/images/2024/09/14/0c9de0473b4cfceaf2e386893409125b.jpg
 abstract: 関数の length プロパティは、関数が受け取る引数の数を表します
 prevId: 2
 prevTitle: jsでのソート

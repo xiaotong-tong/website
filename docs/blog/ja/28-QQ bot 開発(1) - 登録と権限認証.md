@@ -4,7 +4,7 @@ author: 星川漣
 createDate: 2024-09-17
 category: ウェブ
 tags: nodejs,QQ bot
-thumbnail: https://image.xtt.moe/local/images/2024/09/16/ATRI--My-Dear-Moments--CG---.jpg
+thumbnail: https://image.xtt.cool/local/images/2024/09/16/ATRI--My-Dear-Moments--CG---.jpg
 abstract: QQ　公式ロボットの登録と開発の権限認証の方法を紹介します。
 prevId: 27
 prevTitle: ナミダノコエ 歌詞
@@ -24,13 +24,13 @@ nextTitle: monaco-editorの使い方
 
 1.3 作成後、QQ ロボット管理ページに移動します。
 
-![ QQ ロボット管理ページ](https://image.xtt.moe/local/images/2024/09/07/image.png)
+![ QQ ロボット管理ページ](https://image.xtt.cool/local/images/2024/09/07/image.png)
 
 1.4 情報を入力した後、開発設定ページをクリックして `AppID` と `AppSecret` をとります。
 
 1.5 サンドボックス設定で、誰がサンドボックスでロボットをトリガーできるかを設定します。QQ グループはグループの所有者または管理者である必要があります。そうでない場合、ロボットをトリガーできません。個人チャットもメッセージリストに設定する必要があります。そうでない場合、ロボットもトリガーできません。
 
-![](https://image.xtt.moe/local/images/2024/09/07/image7fa1f5f20f8ab83c.png)
+![](https://image.xtt.cool/local/images/2024/09/07/image7fa1f5f20f8ab83c.png)
 
 ## 2. 権限認証
 

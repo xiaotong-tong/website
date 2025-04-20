@@ -68,7 +68,7 @@ registerRoute(
 
 // 缓存 days/poetry fetch 请求
 registerRoute(
-	new RegExp("https://api.xtt.moe/days/quotes\\?key=\\d+"),
+	new RegExp("https://api.xtt.cool/days/quotes\\?key=\\d+"),
 	new CacheFirst({
 		cacheName: "days-quotes-cache",
 		plugins: [
@@ -81,7 +81,7 @@ registerRoute(
 
 // 缓存 days/poetry fetch 请求
 registerRoute(
-	new RegExp("https://api.xtt.moe/days/poetry\\?key=\\d+"),
+	new RegExp("https://api.xtt.cool/days/poetry\\?key=\\d+"),
 	new CacheFirst({
 		cacheName: "days-poetry-cache",
 		plugins: [

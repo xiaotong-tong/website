@@ -42,7 +42,7 @@
 	</section>
 
 	<Teleport to="head">
-		<link rel="preload" href="https://api.xtt.moe/days/poetry/self" as="fetch" />
+		<link rel="preload" href="https://api.xtt.cool/days/poetry/self" as="fetch" />
 	</Teleport>
 </template>
 

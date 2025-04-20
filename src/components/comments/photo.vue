@@ -31,9 +31,9 @@
 		<div class="photoWrap" v-if="showModal">
 			<img
 				class="photo"
-				src="https://image.xtt.moe/images/mlian2.md.webp"
+				src="https://image.xtt.cool/images/mlian2.md.webp"
 				alt="头像图片"
-				@click="choicePhtotClick('https://image.xtt.moe/images/mlian2.md.webp')"
+				@click="choicePhtotClick('https://image.xtt.coolll/images/mlian2.md.webp')"
 			/>
 			<img
 				class="photo"
@@ -72,7 +72,7 @@ const props = withDefaults(
 		src: string;
 	}>(),
 	{
-		src: "https://image.xtt.moe/images/mlian2.md.webp"
+		src: "https://image.xtt.cool/images/mlian2.md.webp"
 	}
 );
 const emits = defineEmits(["update:src"]);

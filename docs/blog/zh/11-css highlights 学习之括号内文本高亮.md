@@ -5,7 +5,7 @@ createDate: 2023-08-03
 updateDate: 2024-09-21
 category: 网络互联
 tags: Highlight,Range,高亮,原生CSS高亮
-thumbnail: https://image.xtt.moe/images/422ae67c9d3cf274c.md.webp
+thumbnail: https://image.xtt.cool/images/422ae67c9d3cf274c.md.webp
 abstract: 使用 CSS 原生高亮 API 实现一个 Web Component 组件，实现高亮组件内需要高亮的文本。
 prevId: 10
 prevTitle: 关于网站背景的更换指南
@@ -40,7 +40,7 @@ nextTitle: 关于 ts 中 setTimeout 类型的记录
 
 可以看到，我们的组件已经可以正常使用了，但是还没有任何效果。
 
-![](https://image.xtt.moe/images/2023/08/03/1.md.png)
+![](https://image.xtt.cool/images/2023/08/03/1.md.png)
 
 接下来我们需要使用 CSS 原生高亮 API 来实现高亮效果。
 
@@ -74,11 +74,11 @@ shadowRoot.adoptedStyleSheets = [sheet];
 
 可以看到括号内的文本已经被高亮了。
 
-![](https://image.xtt.moe/images/2023/08/03/2.md.png)
+![](https://image.xtt.cool/images/2023/08/03/2.md.png)
 
 但是当我们尝试追加多个 xtt-hl 元素时，发现非最后一个元素的高亮都失效了。
 
-![](https://image.xtt.moe/images/2023/08/03/3.md.png)
+![](https://image.xtt.cool/images/2023/08/03/3.md.png)
 
 这是因为上面所有组件的 `CSS.highlights.set` 方法的参数是同一个字符串，那么后面在 set 的时候就会覆盖前面的。这里有可能有两种解决方法，一种是使用不同的字符串，另一种是在 set 时合并多次的 Highlight 对象。
 
@@ -97,7 +97,7 @@ shadowRoot.adoptedStyleSheets = [sheet];
 
 完成了！！虽然只是一个简单的例子，还有许多不足，如内容改变或元素被移除时没有清除内存等。
 
-![](https://image.xtt.moe/images/2023/08/03/4.md.png)
+![](https://image.xtt.cool/images/2023/08/03/4.md.png)
 
 完整代码如下：
 

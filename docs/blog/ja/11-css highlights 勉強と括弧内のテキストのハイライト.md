@@ -4,7 +4,7 @@ author: 星川漣
 createDate: 2024-09-21
 category: ウェブ
 tags: Highlight,Range,ハイライト
-thumbnail: https://image.xtt.moe/images/422ae67c9d3cf274c.md.webp
+thumbnail: https://image.xtt.cool/images/422ae67c9d3cf274c.md.webp
 abstract: CSS 原生ハイライト API を使用して、ハイライトする span を含む Web Componentを実装します。
 prevId: 10
 prevTitle: ウェブサイトの背景の変更ガイド
@@ -39,7 +39,7 @@ chrome 105 以降、Google Chrome は [CSS ハイライト API](https://develope
 
 このように、コンポーネントはすでに正常に使用できますが、まだ効果がありませんが。
 
-![](https://image.xtt.moe/images/2023/08/03/1.md.png)
+![](https://image.xtt.cool/images/2023/08/03/1.md.png)
 
 次に、CSS の Highlight API を使用してハイライト効果を実装する。
 
@@ -73,11 +73,11 @@ shadowRoot.adoptedStyleSheets = [sheet];
 
 これで、ハイライトが実装されました。
 
-![](https://image.xtt.moe/images/2023/08/03/2.md.png)
+![](https://image.xtt.cool/images/2023/08/03/2.md.png)
 
 しかし、複数の xtt-hl 要素を追加しようとすると、最後以外の要素のハイライトがすべて無効になることがわかります。
 
-![](https://image.xtt.moe/images/2023/08/03/3.md.png)
+![](https://image.xtt.cool/images/2023/08/03/3.md.png)
 
 これは、上記のすべてのコンポーネントの `CSS.highlights.set` メソッドのパラメータが同じ文字列であるためです。そのため、後で set すると前のものが上書きされます。ここで、2 つの解決方法が考えられます。1 つは異なる文字列を使用すること、もう 1 つは set 時に複数の Highlight オブジェクトをマージすることです。
 
@@ -96,7 +96,7 @@ shadowRoot.adoptedStyleSheets = [sheet];
 
 完成しました！！ただし、これは単なる簡単な例であり、メモリのクリアなど、多くの不足点があります。
 
-![](https://image.xtt.moe/images/2023/08/03/4.md.png)
+![](https://image.xtt.cool/images/2023/08/03/4.md.png)
 
 全てのコードは以下の通りです：
 

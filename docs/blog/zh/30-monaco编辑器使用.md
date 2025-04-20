@@ -4,7 +4,7 @@ author: 小恸恸
 createDate: 2024-09-13
 category: 网络互联
 tags: monaco, editor
-thumbnail: https://image.xtt.moe/local/images/2024/09/13/5----.jpg
+thumbnail: https://image.xtt.cool/local/images/2024/09/13/5----.jpg
 abstract: monaco编辑器使用与vue中使用卡死问题的记录
 prevId: 28
 prevTitle: QQ机器人开发(1) - 注册与权限认证

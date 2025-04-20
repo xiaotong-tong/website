@@ -54,7 +54,7 @@
 				<namiLink class="link avatar px-0" inline-block to="/user">
 					<img
 						class="w-6 rounded-full"
-						:src="userInfoStore.userInfo.avatar || 'https://image.xtt.moe/images/mlian2.md.webp'"
+						:src="userInfoStore.userInfo.avatar || 'https://image.xtt.cool/images/mlian2.md.webp'"
 						alt="favicon"
 					/>
 				</namiLink>

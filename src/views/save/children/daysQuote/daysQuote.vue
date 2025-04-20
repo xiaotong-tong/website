@@ -9,7 +9,7 @@
 			<div class="top">
 				<div class="text-lg inline-flex items-center">
 					<span>day {{ item.key }}</span>
-					<Sound class="ml-2" :src="item.sound" preload="none"></Sound>
+					<Sound class="ml-2" :src="quoteSoundPrefix + item.sound" preload="none"></Sound>
 				</div>
 
 				<span class="unit-parse">
@@ -39,7 +39,8 @@ interface Item {
 	sound: string;
 }
 
-const { data, isFinished } = useFetch("https://api.xtt.moe/days/quotes/list").json<Item[]>();
+const { data, isFinished } = useFetch("https://api.xtt.cool/days/quotes/list").json<Item[]>();
+const quoteSoundPrefix = "https://file.xtt.cool";
 
 const { copy: useCopy } = useClipboard();
 

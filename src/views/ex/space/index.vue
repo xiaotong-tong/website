@@ -101,9 +101,9 @@ async function getCsv() {
 	};
 
 	const res = await Promise.all([
-		axios.get("https://file.xtt.moe/files/space/hip_constellation_line_star.csv"),
-		axios.get("https://file.xtt.moe/files/space/hip_lite_a.csv"),
-		axios.get("https://file.xtt.moe/files/space/hip_lite_b.csv")
+		axios.get("https://file.xtt.cool/files/space/hip_constellation_line_star.csv"),
+		axios.get("https://file.xtt.cool/files/space/hip_lite_a.csv"),
+		axios.get("https://file.xtt.cool/files/space/hip_lite_b.csv")
 	]);
 
 	//星座線恒星データ
@@ -155,13 +155,9 @@ onMounted(async () => {
 	for (let i = 0; i < hipArray.length; i++) {
 		if (hipArray[i][8] < starGrade) {
 			//星の座標を設定
-			const a =
-				((hipArray[i][1] + (hipArray[i][2] + hipArray[i][3] / 60) / 60) * 15 * Math.PI) /
-				180;
+			const a = ((hipArray[i][1] + (hipArray[i][2] + hipArray[i][3] / 60) / 60) * 15 * Math.PI) / 180;
 			const f = hipArray[i][4] == 0 ? -1 : 1;
-			const c =
-				(f * (hipArray[i][5] + (hipArray[i][6] + hipArray[i][7] / 60) / 60) * Math.PI) /
-				180;
+			const c = (f * (hipArray[i][5] + (hipArray[i][6] + hipArray[i][7] / 60) / 60) * Math.PI) / 180;
 
 			positions[j * 3] = r * Math.cos(a) * Math.cos(c);
 			positions[j * 3 + 1] = r * Math.sin(a) * Math.cos(c);
@@ -214,23 +210,11 @@ onMounted(async () => {
 				}
 
 				if (1667 <= t && t <= 2222) {
-					c_y =
-						-1.1063814 * Math.pow(c_x, 3) -
-						1.3481102 * Math.pow(c_x, 2) +
-						2.18555832 * c_x -
-						0.20219683;
+					c_y = -1.1063814 * Math.pow(c_x, 3) - 1.3481102 * Math.pow(c_x, 2) + 2.18555832 * c_x - 0.20219683;
 				} else if (2222 < t && t <= 4000) {
-					c_y =
-						-0.9549476 * Math.pow(c_x, 3) -
-						1.37418593 * Math.pow(c_x, 2) +
-						2.09137015 * c_x -
-						0.16748867;
+					c_y = -0.9549476 * Math.pow(c_x, 3) - 1.37418593 * Math.pow(c_x, 2) + 2.09137015 * c_x - 0.16748867;
 				} else if (4000 < t && t <= 25000) {
-					c_y =
-						3.081758 * Math.pow(c_x, 3) -
-						5.8733867 * Math.pow(c_x, 2) +
-						3.75112997 * c_x -
-						0.37001483;
+					c_y = 3.081758 * Math.pow(c_x, 3) - 5.8733867 * Math.pow(c_x, 2) + 3.75112997 * c_x - 0.37001483;
 				}
 
 				if (!c_y) {
@@ -269,7 +253,7 @@ onMounted(async () => {
 	const uniforms = {
 		texture: {
 			type: "t",
-			value: new Three.TextureLoader().load("https://file.xtt.moe/files/space/star.png")
+			value: new Three.TextureLoader().load("https://file.xtt.cool/files/space/star.png")
 		}
 	};
 

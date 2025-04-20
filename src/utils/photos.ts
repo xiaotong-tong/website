@@ -39,7 +39,7 @@ export const useImageList = (shuffled?: boolean) => {
 		loading.value = false;
 	} else {
 		(async () => {
-			const { data, error } = await useFetch<Image[]>("https://api.xtt.moe/photos/list", {
+			const { data, error } = await useFetch<Image[]>("https://api.xtt.cool/photos/list", {
 				afterFetch(ctx) {
 					// 保存到 sessionStorage
 					storageRef.value = ctx.data;
@@ -72,7 +72,7 @@ export async function addImage(url: MaybeRef<string>, botUse?: MaybeRef<boolean>
 	if (!url) return;
 	if (typeof url !== "string") return;
 
-	const { data } = await useFetch<Image>("https://api.xtt.moe/photos/add", {
+	const { data } = await useFetch<Image>("https://api.xtt.cool/photos/add", {
 		headers: {
 			"Content-Type": "application/json"
 		},

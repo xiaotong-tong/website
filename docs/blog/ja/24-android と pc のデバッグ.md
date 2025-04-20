@@ -4,7 +4,7 @@ author: 星川漣
 createDate: 2024-09-20
 category: ウェブ
 tags: android,localhost,debug,inspect
-thumbnail: https://image.xtt.moe/local/images/2024/09/20/GALCG----2.jpg
+thumbnail: https://image.xtt.cool/local/images/2024/09/20/GALCG----2.jpg
 abstract: スマホで PC の localhost にアクセスする方法と、Chrome でスマホのページをデバッグする方法を紹介します
 prevId: 23
 prevTitle: documentPictureInPicture API 勉強記録
@@ -32,8 +32,8 @@ nextTitle: Web NFC を使用して、スマホのブラウザでログイン機�
 
 2. Chrome を開いて、chrome://inspect/#devices を入力する
 
-![chrome inspect](https://image.xtt.moe/local/images/2024/09/20/image.png)
+![chrome inspect](https://image.xtt.cool/local/images/2024/09/20/image.png)
 
 1. 対応の画面の `inspect` をクリックすると、スマホのページをデバッグできます
 
-![chrome inspect](https://image.xtt.moe/local/images/2024/09/20/imageb5c4f040c1ee38cf.png)
+![chrome inspect](https://image.xtt.cool/local/images/2024/09/20/imageb5c4f040c1ee38cf.png)

@@ -21,7 +21,7 @@
 			<div>
 				<img
 					class="w-[64px] rounded-full"
-					:src="userInfoStore.userInfo.avatar || 'https://image.xtt.moe/images/mlian2.md.webp'"
+					:src="userInfoStore.userInfo.avatar || 'https://image.xtt.cool/images/mlian2.md.webp'"
 					:alt="t('pages.user.avatar')"
 				/>
 			</div>
@@ -119,7 +119,7 @@ async function avatarSubmit(canvas: any, callback?: Function) {
 
 		if (res.status === 200) {
 			let resUrl = res.data.image.url;
-			resUrl = resUrl.replace("https://image.xtt.moe/", "https://image.xtt.moe/local/");
+			resUrl = resUrl.replace("https://image.xtt.cool/", "https://image.xtt.cool/local/");
 			url.value = resUrl;
 		}
 
