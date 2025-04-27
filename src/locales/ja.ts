@@ -51,7 +51,8 @@ export const jaMsg = {
 			live: "ライブ",
 			bot: "bot",
 			character: "キャラクター",
-			santi: "三題噺"
+			santi: "三題噺",
+			friends: "友達リンク"
 		},
 		footer: {
 			sitemap: "サイトマップ"

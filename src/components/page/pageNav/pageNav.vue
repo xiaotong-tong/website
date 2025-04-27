@@ -106,10 +106,16 @@ const list = ref([
 		content: "main.nav.guestbook",
 		color: store.theme[3]
 	},
+	// {
+	// 	key: "g3",
+	// 	url: "/link",
+	// 	content: "main.nav.link",
+	// 	color: store.theme[4]
+	// },
 	{
 		key: "g3",
-		url: "/link",
-		content: "main.nav.link",
+		url: "/friends",
+		content: "main.nav.friends",
 		color: store.theme[4]
 	},
 	{

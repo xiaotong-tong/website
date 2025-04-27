@@ -18,6 +18,7 @@
 -   [仪表盘](/dashboard)
 -   [简历](/cv/pdf)
 -   [三题故事](/santi)
+-   [友链](/friends)
 
 ### 储藏室
 

@@ -51,7 +51,8 @@ export const zhMsg = {
 			live: "动态",
 			bot: "bot",
 			character: "角色",
-			santi: "三题故事"
+			santi: "三题故事",
+			friends: "友链"
 		},
 		footer: {
 			sitemap: "站点地图"

@@ -19,6 +19,7 @@
 				}}</span>
 				<span class="ml-2">{{ d(new Date(), "week") }}</span>
 				<BaseIcon
+					v-if="!isSmall"
 					@click="autoPlay"
 					icon="mdiMusicNote"
 					class="cursor-pointer ml-2 text-[20px] hidden md:inline align-bottom"
@@ -151,7 +152,11 @@ function autoPlay() {
 	padding-inline-start: 8px;
 }
 
-.card.isSmall {
+.small-screen .poetry-wrap {
+	max-block-size: none;
+}
+
+.isSmall {
 	padding-inline-end: 8px;
 
 	& .title {

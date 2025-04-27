@@ -352,6 +352,18 @@ let routes: Route[] = [
 				}
 			},
 			{
+				path: "/friends",
+				name: "friends",
+				component: () => import("../views/friends/index.vue"),
+				meta: {
+					title: {
+						zh: "友链",
+						ja: "友達リンク"
+					},
+					theme: 5
+				}
+			},
+			{
 				path: "/guestbook",
 				name: "guestbook",
 				component: () => import("../views/blog/guestbook/index.vue"),

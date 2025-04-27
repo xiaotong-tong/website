@@ -8,8 +8,10 @@
 		</p>
 		<namiRoughLine class="my-2"></namiRoughLine>
 		<div lang="ja-JP" class="custom-font">
-			<div class="inline-block" v-html="quote.parse"></div>
-			<Sound class="ml-2" :src="quoteSoundPrefix + quote.sound"></Sound>
+			<div>
+				<span v-html="quote.parse"></span>
+				<Sound class="ml-2 align-middle" :src="quoteSoundPrefix + quote.sound"></Sound>
+			</div>
 		</div>
 		<p lang="zh-CN" class="custom-font">
 			{{ quote.chinese }}
@@ -71,12 +73,7 @@ getDaysQuotes(quoteKey.value)
 	overflow: auto;
 	min-block-size: 100px;
 	max-block-size: 300px;
-	inline-size: clamp(50%, 500px, 100%);
-	align-self: flex-end;
+	min-width: min(500px, 100%);
 	margin-block-end: 2em;
-}
-
-.small-screen .quote-wrap {
-	align-self: center;
 }
 </style>
