@@ -99,6 +99,12 @@
 	<myAplayer v-if="aplayerShowed" :rectX="contentX" :rectY="contentY"></myAplayer>
 
 	<myScrollTop :scrollY="y" @click="() => (y = 0)" />
+
+	<Suspense>
+		<template #default>
+			<myVisit />
+		</template>
+	</Suspense>
 </template>
 
 <script setup lang="ts">
@@ -111,6 +117,7 @@ import namiNav from "./home/components/nav.vue";
 import namiTextAutoScroll from "@/components/textAutoScroll/index.vue";
 import myScrollTop from "./home/components/scroll.vue";
 import myAplayer from "./home/components/aplayer.vue";
+import myVisit from "./home/components/visit.vue";
 import { refreshUserInfo } from "@/api/blog/verify";
 import { useRouter } from "vue-router";
 import { useStore } from "@/stores/index";
