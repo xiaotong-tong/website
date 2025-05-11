@@ -47,7 +47,7 @@ getDaysQuotes(quoteKey.value)
 	.catch((error) => {
 		// 如果传出的错误是超出最大值，则进行取余后再次请求
 		if (error.maxKey) {
-			quoteKey.value = quoteKey.value % error.maxKey;
+			quoteKey.value = (quoteKey.value % error.maxKey) + 1;
 			getDaysQuotes(quoteKey.value).then((res) => {
 				quote.value = res;
 			});
