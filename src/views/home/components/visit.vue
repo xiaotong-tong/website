@@ -2,7 +2,7 @@
 	<Transition name="slide">
 		<div
 			v-if="dayCount"
-			class="fixed top-20 left-0 right-0 w-fit mx-auto text-2xl bg-white shadow-md rounded-lg p-4 z-10"
+			class="fixed bottom-20 left-0 right-0 w-fit mx-auto text-2xl bg-white shadow-md rounded-lg p-4 z-10"
 		>
 			<div>哇！你是今天第 {{ dayCount }} 个来看小窝的！感谢！！！</div>
 		</div>
@@ -40,7 +40,14 @@ watch(
 				confetti({
 					particleCount: 100,
 					spread: 70,
-					origin: { y: 0.4 }
+					origin: { y: 0.9, x: 0.4 },
+					angle: 120
+				});
+				confetti({
+					particleCount: 100,
+					spread: 70,
+					origin: { y: 0.9, x: 0.6 },
+					angle: 60
 				});
 
 				visitInfo.value = {
