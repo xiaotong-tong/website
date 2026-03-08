@@ -10,7 +10,7 @@
 					</div>
 					<div>
 						<span class="mr-2">工作经验:</span>
-						<span>4年</span>
+						<span>5年</span>
 					</div>
 					<div>
 						<span class="mr-2">手机:</span>
@@ -52,13 +52,10 @@
 					</div>
 					<div>熟练使用 Vue 及其生态系统，以及 Rollup、Vite 等前端工程化工具的使用。</div>
 					<div>熟练使用 TypeScript， 具有良好的编程习惯，并对 JavaScript 性能优化有一定的理解。</div>
-					<div>熟悉 Node.js 后端开发，具有使用 Express 和 Sequelize ORM 框架开发网站后端的经验。</div>
-					<div>熟悉 Uniapp 的使用，具有 APP 和 微信小程序 项目经验。</div>
+					<div>熟悉 Node.js 后端开发，具有使用 Express 和 Sequelize ORM 框架开发个人网站后端的经验。</div>
+					<div>熟悉 Uniapp 的使用，具有 移动端APP 和 微信小程序 项目经验。</div>
 					<div>熟悉 自动化测试 和 单元测试，具有 Puppeteer 自动化测试和 Jest 单元测试开发经验。</div>
-					<div>
-						了解网站部署全流程，包括 Linux 服务器搭建、Nginx 与 HTTPS 部署、SEO 与 Google Search Console
-						等。
-					</div>
+					<div>了解网站部署全流程，包括 Linux 服务器搭建、Nginx 与 HTTPS 部署、SEO 等。</div>
 				</div>
 			</section>
 			<roughLine class="mt-2 mb-2" color="#a5a9aa55" />
@@ -81,8 +78,8 @@
 						</div>
 						<div class="pt-2 pl-4 grid grid-cols-1 gap-2">
 							<div>
-								参与 MES 管理系统的前端开发，包括了管理后台、产线终端系统、移动端APP、生产数据看板
-								的前端开发。
+								参与公司主项目 MES
+								管理系统的前端开发，包括管理后台、产线终端、产线移动端、生产数据看板等。
 							</div>
 							<div>负责 优瑞特 微信小程序 和 对应管理后台的从零到一的开发。</div>
 							<div>负责 客流管理系统 的前端开发，包括 ECharts 图表和数据报表等。</div>
@@ -111,64 +108,42 @@
 				<div class="pl-4 pt-2 grid grid-cols-1 gap-3">
 					<section>
 						<div class="flex justify-between flex-col md:flex-row">
-							<span class="text-xl">MES 管理系统后台 + 产线终端 + 生产数据看板</span>
+							<span class="text-xl">工厂 MES 管理系统</span>
 							<span>2023年12月 - 至今</span>
 						</div>
 						<div class="pt-2 pl-4 grid grid-cols-1 gap-2">
 							<div>
-								项目介绍： 该项目由 管理后台 和 产线终端 和 生产数据看板
+								项目介绍： 该项目由 管理后台 和 产线终端 和 产线移动端 和 生产数据看板
 								等多部分共同组成，多个项目均使用 Vue 进行开发。其中 管理后台
 								提供给工厂管理人员和操作人员使用，方便维护和查看生产数据。产线终端
 								则直接安装在生产线上，用于员工操作和记录生产数据。数据大屏看板用于 产线实时数据展示 和
 								供整体管理的生产效率和异常数据展示。
 							</div>
 							<div>
-								技术栈： Vue3 + TypeScript + Vite + Ant Design Vue + ECharts + UnoCSS + Vxe Table +
-								ExcelJS
+								技术栈： Vue3 + TypeScript + Vite + Ant Design Vue + ECharts + Vxe Table + ExcelJS +
+								Uniapp + Wot Design Uni + WebSocket
 							</div>
 							<div>
 								<div>责任描述：</div>
 								<div class="pl-4 grid grid-cols-1 gap-1.5">
-									<div>负责主档数据和报表数据的页面开发，包括对应的导入、导出功能。</div>
 									<div>
-										负责用户权限和菜单权限的功能开发，可以在后台同时管理 后台、产线终端、移动端APP
-										的用户角色及菜单权限控制。
+										负责管理后台的各种功能开发，包括各种主档数据和报表数据的页面开发，并对各种内容进行优化和封装。包括前端导出EXCEL，前端预览pdf等功能。
 									</div>
 									<div>
-										负责产线终端的开发，包括生产数据的录入、生产进度的控制、生产数据的上传等功能。
+										负责用户权限和菜单权限的功能控制优化，实现了可以在后台管理同时控制管理后台、产线终端、移动端APP的用户角色及菜单权限控制。
 									</div>
 									<div>
-										负责生产数据看板的开发，包括
-										实时生产看板、生产效率看板、生产异常看板等十数种数据大屏。
+										负责工厂产线终端系统的开发与优化，实现了工厂生产全流程的数字化管理，包括产线员工上下班的打卡功能，生产数据的录入功能，生产数据的实时展示与异常处理等。并对产线终端系统进行持续的优化和维护，保证其稳定性和可靠性。
 									</div>
 									<div>
-										产线终端使用 WebSocket 进行数据通信，保证数据的实时性，防止多终端操作数据冲突。
+										负责产线终端移动端的各种功能开发与优化，和工厂产线终端系统相辅相成，提供给员工更加便捷的操作方式。
 									</div>
 									<div>
-										产线终端操作性优化，对扫码枪短时间几秒内多次扫码进行防抖处理，防止数据重复录入。
-										因产线终端皆为触摸屏，对触摸屏操作进行优化，减少误操作。
+										负责生产数据看板的开发，实现了
+										产线生产实时数据看板、产线生产数据历史数据看板、超大屏生产数据看板等十数种数据大屏的开发，使用
+										ECharts 进行数据可视化展示，并对数据看板进行性能优化。
 									</div>
-									<div>产线终端 西班牙语 和 英语 的国际化处理，方便墨西哥工厂使用。</div>
-								</div>
-							</div>
-						</div>
-					</section>
-					<section>
-						<div class="flex justify-between flex-col md:flex-row">
-							<span class="text-xl">MES 管理系统移动端 APP</span>
-							<span>2023年12月 - 至今</span>
-						</div>
-						<div class="pl-4">
-							<div class="pt-2">
-								项目介绍： 该项目是 MES 管理系统的移动端 APP，用于员工在生产线上的操作和数据录入。和
-								产线终端 相辅相成，提供给员工更加便捷的操作方式。
-							</div>
-							<div class="pt-2">技术栈： Vue3 + Uniapp + TypeScript + Wot Design Uni</div>
-							<div class="pt-2">
-								<div>责任描述：</div>
-								<div class="pl-4 grid grid-cols-1 gap-1.5">
-									<div>负责生产数据的录入、生产数据的上传等功能，包括 扫码 与 图片上传。</div>
-									<div>负责 西班牙语 和 英语 的国际化处理，方便墨西哥工厂使用。</div>
+									<div>全部数据的 西班牙语 和 英语 的国际化处理。</div>
 								</div>
 							</div>
 						</div>
@@ -324,7 +299,6 @@
 									<div>博客后端的搭建，包括文章管理、评论管理、动态管理等功能。</div>
 									<div>用户权限的管理，防止 API 接口未鉴权导致的数据问题。</div>
 									<div>实现 阿里云 OSS 文件和图片上传功能、以及本地 Chevereto 图床的图片上传功能</div>
-									<div></div>
 								</div>
 							</div>
 						</div>
@@ -352,7 +326,7 @@
 									<div>
 										{{
 											atobUnicode(
-												"5a+55o6l6Zi/6YeM5LqR55m+54K855qEIGRlZXBzZWVrIOaooeWei++8jOWunueOsGFp5a+56K+d5Yqf6IO944CC"
+												"5a+55o6l6Zi/6YeM5LqR55m+54K85qih5Z6L77yM5a6e546wYWnlr7nor53lip/og73jgII="
 											)
 										}}
 									</div>
@@ -386,7 +360,7 @@ function btoaUnicode(str: string) {
 	);
 }
 
-console.log(btoaUnicode("安徽科大国创软件科技有限公司"));
+console.log(btoaUnicode("对接阿里云百炼模型，实现ai对话功能。"));
 
 function atobUnicode(str: string) {
 	return decodeURIComponent(

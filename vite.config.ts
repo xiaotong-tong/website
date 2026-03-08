@@ -4,7 +4,7 @@ import vue from "@vitejs/plugin-vue";
 import mdPlugin from "./plugins/mdToTextPlain";
 import type { ManifestOptions } from "vite-plugin-pwa";
 import { VitePWA } from "vite-plugin-pwa";
-import manifest from "./manifest.json" assert { type: "json" };
+import manifest from "./manifest.json" with { type: "json" };
 // import monacoEditorPlugin from "vite-plugin-monaco-editor";
 // import vitePrerender from "vite-plugin-prerender";
 // import { viteStaticCopy } from "vite-plugin-static-copy";
